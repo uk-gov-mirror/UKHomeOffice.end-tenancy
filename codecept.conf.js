@@ -9,7 +9,8 @@ module.exports = {
   name: 'end-tenancy',
   include: {
     whatPage: pagesPath('what.js'),
-    dateOfIssuePage: pagesPath('date-of-issue.js'),
+    reportDatePage: pagesPath('report-date.js'),
+    propertyAddressPage: pagesPath('property-address.js'),
     requestPage: pagesPath('request.js'),
     checkPage: pagesPath('check.js')
   }

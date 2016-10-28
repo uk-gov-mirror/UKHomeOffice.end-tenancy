@@ -13,7 +13,7 @@ module.exports = {
       fields: [
         'what'
       ],
-      next: '/date-of-issue',
+      next: '/report-nldp-date',
       forks: [{
         target: '/request',
         condition: {
@@ -32,8 +32,22 @@ module.exports = {
         'report-link': 'https://eforms.homeoffice.gov.uk/outreach/lcs-reporting.ofml'
       }
     },
-    '/date-of-issue': {},
+    '/report-nldp-date': {
+      controller: require('hof').controllers.date,
+      fields: [
+        'report-nldp-date',
+        'report-nldp-date-day',
+        'report-nldp-date-month',
+        'report-nldp-date-year'
+      ],
+      next: '/property-address',
+      dateKey: 'report-nldp-date',
+      locals: {
+        section: 'report-nldp-date'
+      }
+    },
     '/request': {},
-    '/check': {}
+    '/check': {},
+    '/property-address': {}
   }
 };

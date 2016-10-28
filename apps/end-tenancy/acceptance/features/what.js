@@ -26,14 +26,14 @@ Scenario('I see an error if I submit the page without selecting an option', (
   I.seeErrors(whatPage.fields.what);
 });
 
-Scenario('If I select the report option I am taken to the date of issue page', (
+Scenario('If I select the report option I am taken to the report date page', (
   I,
   whatPage,
-  dateOfIssuePage
+  reportDatePage
 ) => {
   I.checkOption(whatPage.fields.report);
   I.submitForm();
-  I.seeInCurrentUrl(dateOfIssuePage.url);
+  I.seeInCurrentUrl(reportDatePage.url);
 });
 
 Scenario('If I select the check option I am taken to the check page', (
