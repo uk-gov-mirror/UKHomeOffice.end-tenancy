@@ -2,4 +2,11 @@
 
 const bootstrap = require('hof-bootstrap');
 
-bootstrap();
+bootstrap({
+  translations: './apps/end-tenancy/translations',
+  views: false,
+  fields: false,
+  routes: [
+    require('./apps/end-tenancy')
+  ]
+});

@@ -1,0 +1,6 @@
+{
+  "what": {
+    "header": "What do you want to do?",
+    "report": "Placeholder text for <a href=\"{{report-link}}\">make a report</a>"
+  }
+}

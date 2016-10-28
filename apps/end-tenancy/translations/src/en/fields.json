@@ -1,0 +1,19 @@
+{
+  "what": {
+    "legend": "What do you want to do?",
+    "options": {
+      "request": {
+        "label": "Take action if you think a person may be disqualified from renting",
+        "toggle-content": "If you have reasonable cause to believe that a person is disqualified from renting due to their immigration status you can request a Notice of Letting to a Disqualified Person from the Home Office to confirm this. You can then use this to help you end the tenancy."
+      },
+      "check": {
+        "label": "Check if a person living in your property is still disqualified from renting",
+        "toggle-content": "If you have received a Notice of Letting to a Disqualified Person to confirm that someone living in your property may be disqualified from renting due to their immigration status, you can check that this is still valid. You may wish to do this if some time has passed since it was issued and you are using it to end a tenancy."
+      },
+      "report": {
+        "label": "Report that a disqualified person has left your property",
+        "toggle-content": "Tell the Home Office that a person has left your property following a Notice of Letting to a Disqualified Person ('the Notice'). This means that Home Office can update their records and you have no further actions."
+      }
+    }
+  }
+}
