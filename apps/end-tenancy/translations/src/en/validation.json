@@ -1,5 +1,10 @@
 {
   "what": {
     "required": "Tell us what you want to do"
+  },
+  "report-nldp-date": {
+    "required": "Enter a date",
+    "numeric": "Enter a valid date",
+    "future": "Date cannot be in the future"
   }
 }

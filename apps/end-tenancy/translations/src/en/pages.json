@@ -2,5 +2,8 @@
   "what": {
     "header": "What do you want to do?",
     "report": "Placeholder text for <a href=\"{{report-link}}\">make a report</a>"
+  },
+  "report-nldp-date": {
+    "header": "What was the date of issue for the Notice?"
   }
 }

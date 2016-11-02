@@ -15,5 +15,18 @@
         "toggle-content": "Tell the Home Office that a person has left your property following a Notice of Letting to a Disqualified Person ('the Notice'). This means that Home Office can update their records and you have no further actions."
       }
     }
+  },
+  "report-nldp-date": {
+    "label": "What was the date of issue for the Notice?",
+    "hint": "For example, 2 11 2016"
+  },
+  "report-nldp-date-day": {
+    "label": "Day"
+  },
+  "report-nldp-date-month": {
+    "label": "Month"
+  },
+  "report-nldp-date-year": {
+    "label": "Year"
   }
 }
