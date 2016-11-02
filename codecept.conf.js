@@ -11,6 +11,7 @@ module.exports = {
     whatPage: pagesPath('what.js'),
     reportDatePage: pagesPath('report-date.js'),
     propertyAddressPage: pagesPath('property-address.js'),
+    tenantDetailsPage: pagesPath('tenant-details.js'),
     requestPage: pagesPath('request.js'),
     checkPage: pagesPath('check.js')
   }

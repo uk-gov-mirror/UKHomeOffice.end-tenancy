@@ -4,6 +4,7 @@ const controllers = require('hof').controllers;
 
 module.exports = {
   name: 'end-tenancy',
+  params: '/:action?',
   steps: {
     '/': {
       controller: controllers.start,
@@ -40,14 +41,19 @@ module.exports = {
         'report-nldp-date-month',
         'report-nldp-date-year'
       ],
-      next: '/property-address',
+      next: '/report-property-address',
       dateKey: 'report-nldp-date',
       locals: {
         section: 'report-nldp-date'
       }
     },
+    '/report-property-address': {
+      controller: require('./controllers/address-lookup'),
+      addressField: 'address',
+      next: '/tenant-details'
+    },
+    '/tenant-details': {},
     '/request': {},
-    '/check': {},
-    '/property-address': {}
+    '/check': {}
   }
 };

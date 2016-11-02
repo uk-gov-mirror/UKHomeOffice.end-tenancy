@@ -28,5 +28,14 @@
   },
   "report-nldp-date-year": {
     "label": "Year"
+  },
+  "postcode": {
+    "label": "Postcode"
+  },
+  "address-select": {
+    "label": "Select your address as shown on the Notice"
+  },
+  "address": {
+    "label": "Address"
   }
 }
