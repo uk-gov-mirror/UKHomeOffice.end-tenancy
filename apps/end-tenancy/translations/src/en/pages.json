@@ -16,5 +16,20 @@
       "not-found": "Sorry – we couldn’t find any addresses for that postcode, enter your address manually",
       "cant-connect": "Sorry – we couldn’t connect to the postcode lookup service at this time, enter your address manually"
     }
+  },
+  "tenant-name": {
+    "header": "What's the name of the person who left the property?"
+  },
+  "tenant-name-hint": {
+    "header": "You can add more people later if required"
+  },
+  "tenant-date-left": {
+    "header": "When did {{values.name}} leave?"
+  },
+  "tenant-date-left-hint": {
+    "header": "If you don't know the exact date then please put the first date you knew they had left."
+  },
+  "add-another": {
+    "header": "Has anyone else listed on the Notice left the property?"
   }
 }

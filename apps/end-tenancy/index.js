@@ -4,7 +4,7 @@ const controllers = require('hof').controllers;
 
 module.exports = {
   name: 'end-tenancy',
-  params: '/:action?',
+  params: '/:action?/:id?',
   steps: {
     '/': {
       controller: controllers.start,
@@ -52,7 +52,57 @@ module.exports = {
       addressField: 'address',
       next: '/tenant-details'
     },
-    '/tenant-details': {},
+    '/tenant-details': {
+      controller: require('./controllers/loop.js'),
+      storeKey: 'tenants',
+      dateKey: 'date-left',
+      fields: [
+        'name',
+        'date-left',
+        'date-left-day',
+        'date-left-month',
+        'date-left-year',
+        'add-another'
+      ],
+      subSteps: {
+        name: {
+          fields: [
+            'name'
+          ],
+          locals: {
+            section: 'tenant-name',
+            subsection: 'tenant-name-hint'
+          }
+        },
+        date: {
+          template: 'date',
+          fields: [
+            'date-left',
+            'date-left-day',
+            'date-left-month',
+            'date-left-year'
+          ],
+          locals: {
+            section: 'tenant-date-left',
+            subsection: 'tenant-date-left-hint'
+          }
+        },
+        'add-another': {
+          fields: [
+            'add-another'
+          ],
+          locals: {
+            section: 'add-another'
+          }
+        }
+      },
+      loopCondition: {
+        field: 'add-another',
+        value: 'yes'
+      },
+      next: '/report-landlord-agent'
+    },
+    '/report-landlord-agent': {},
     '/request': {},
     '/check': {}
   }

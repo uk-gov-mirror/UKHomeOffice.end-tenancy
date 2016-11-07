@@ -32,5 +32,36 @@ module.exports = {
   },
   'report-nldp-date-year': {
     validate: ['required', 'numeric']
+  },
+  name: {
+    mixin: 'input-text',
+    validate: 'required'
+  },
+  'date-left': {
+    labelClassName: 'visuallyhidden'
+  },
+  'date-left-day': {
+    validate: ['required', 'numeric'],
+    includeInSummary: false
+  },
+  'date-left-month': {
+    validate: ['required', 'numeric'],
+    includeInSummary: false
+  },
+  'date-left-year': {
+    validate: ['required', 'numeric'],
+    includeInSummary: false
+  },
+  'add-another': {
+    mixin: 'radio-group',
+    legend: {
+      className: 'visuallyhidden'
+    },
+    validate: 'required',
+    options: [
+      'yes',
+      'no'
+    ],
+    includeInSummary: false
   }
 };

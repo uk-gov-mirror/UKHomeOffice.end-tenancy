@@ -37,5 +37,32 @@
   },
   "address": {
     "label": "Address"
+  },
+  "name": {
+    "label": "Full name as it's written on the Notice"
+  },
+  "date-left": {
+    "label": "When did {{values.name}} leave?",
+    "hint": "For example, 31 3 2016"
+  },
+  "date-left-day": {
+    "label": "Day"
+  },
+  "date-left-month": {
+    "label": "Month"
+  },
+  "date-left-year": {
+    "label": "Year"
+  },
+  "add-another": {
+    "legend": "Has anyone else listed on the Notice left the property?",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    }
   }
 }

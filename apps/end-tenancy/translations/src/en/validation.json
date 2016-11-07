@@ -6,5 +6,18 @@
     "required": "Enter a date",
     "numeric": "Enter a valid date",
     "future": "Date cannot be in the future"
+  },
+  "postcode": {
+    "required": "Enter the postcode of the property",
+    "postcode": "Enter a valid postcode"
+  },
+  "address-select": {
+    "required": "Select an address"
+  },
+  "address": {
+    "required": "Enter the address of the property"
+  },
+  "name": {
+    "required": "Enter the name of the person who left the property"
   }
 }
