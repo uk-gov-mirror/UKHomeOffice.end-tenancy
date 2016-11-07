@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  url: 'request'
+  url: 'request-property-address'
 };

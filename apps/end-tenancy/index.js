@@ -16,13 +16,13 @@ module.exports = {
       ],
       next: '/report-nldp-date',
       forks: [{
-        target: '/request',
+        target: '/request-property-address',
         condition: {
           field: 'what',
           value: 'request'
         }
       }, {
-        target: '/check',
+        target: '/check-nldp-date',
         condition: {
           field: 'what',
           value: 'check'
@@ -112,7 +112,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {},
-    '/request': {},
-    '/check': {}
+    '/request-property-address': {},
+    '/check-nldp-date': {}
   }
 };
