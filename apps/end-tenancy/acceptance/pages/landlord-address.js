@@ -8,16 +8,17 @@ module.exports = {
     I = require('so-acceptance/steps')();
   },
 
-  url: 'report-property-address',
+  url: 'landlord-address',
   postcode: {
     url: '/postcode',
     fields: {
-      postcode: '#property-address-postcode'
+      postcode: '#landlord-address-postcode',
+      usePrevious: '#landlord-address-use-previous-address'
     },
     content: {
-      invalid: '12345',
+      invalid: 'xxxxxx',
       valid: 'CR0 2EU',
-      notFound: 'AA11 1AA',
+      notFound: 'AA1 1AA',
       belfast: 'BT11 1AB'
     }
   },
@@ -25,7 +26,7 @@ module.exports = {
     url: '/lookup',
 
     fields: {
-      'address-select': '#property-address-select'
+      'address-select': '#landlord-address-select'
     },
 
     content: {
@@ -40,7 +41,7 @@ module.exports = {
   manual: {
     url: '/manual',
     fields: {
-      address: '#property-address'
+      address: '#landlord-address'
     }
   },
 

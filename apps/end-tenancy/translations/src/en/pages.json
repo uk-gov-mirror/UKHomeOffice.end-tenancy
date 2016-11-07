@@ -7,15 +7,15 @@
     "header": "What was the date of issue for the Notice?"
   },
   "address-lookup": {
-    "header": "What's the address of the property the person has left",
     "cantfind": "I can't find my address in the list",
-    "edit": "Change"
-  },
-  "address": {
+    "edit": "Change",
     "postcode-api": {
       "not-found": "Sorry – we couldn’t find any addresses for that postcode, enter your address manually",
       "cant-connect": "Sorry – we couldn’t connect to the postcode lookup service at this time, enter your address manually"
     }
+  },
+  "report-property-address": {
+    "header": "What's the address of the property the person has left"
   },
   "tenant-name": {
     "header": "What's the name of the person who left the property?"
@@ -31,5 +31,8 @@
   },
   "add-another": {
     "header": "Has anyone else listed on the Notice left the property?"
+  },
+  "landlord-address": {
+    "header": "What's your contact address?"
   }
 }

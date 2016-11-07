@@ -8,29 +8,40 @@ const dataValidator = require('hmpo-form-controller/lib/validation');
 const dataFormatter = require('hmpo-form-controller/lib/formatting');
 const mixins = require('hmpo-template-mixins');
 
-const fields = {
-  postcode: {
-    mixin: 'input-text-code',
-    validate: ['required', 'postcode'],
-    formatter: 'uppercase'
-  },
-  'address-select': {},
-  address: {
-    mixin: 'textarea',
-    validate: 'required',
-    'ignore-defaults': true,
-    formatter: ['trim', 'hyphens'],
-    attributes: [{
-      attribute: 'rows',
-      value: 6
-    }]
-  }
-};
-
 module.exports = class AddressLookup extends BaseController {
+
   constructor(options) {
     super(options);
-    this.use(mixins(fields));
+    this.addressKey = options.addressKey || 'address';
+    this.fields = this.getBaseFields();
+    this.use(mixins(this.fields));
+  }
+
+  getBaseFields() {
+    const addressKey = this.addressKey;
+    return {
+      [`${addressKey}-postcode`]: {
+        mixin: 'input-text-code',
+        validate: ['required', 'postcode'],
+        formatter: 'uppercase'
+      },
+      [`${addressKey}-use-previous-address`]: {
+        mixin: 'checkbox'
+      },
+      [`${addressKey}-select`]: {
+        mixin: 'select'
+      },
+      [addressKey]: {
+        mixin: 'textarea',
+        validate: 'required',
+        'ignore-defaults': true,
+        formatter: ['trim', 'hyphens'],
+        attributes: [{
+          attribute: 'rows',
+          value: 6
+        }]
+      }
+    };
   }
 
   get(req, res, callback) {
@@ -45,14 +56,21 @@ module.exports = class AddressLookup extends BaseController {
   }
 
   getFields(req) {
+    const addressKey = this.addressKey;
     if (req.params.action === 'postcode') {
-      return _.pick(fields, 'postcode');
+      const pickFields = [`${addressKey}-postcode`];
+      if (this.options.previousAddress) {
+        pickFields.push(`${addressKey}-use-previous-address`);
+      }
+      return _.pick(this.fields, pickFields);
     } else if (req.params.action === 'lookup') {
-      return _.pick(fields, 'address-select');
+      const field = `${addressKey}-select`;
+      const obj = _.pick(this.fields, field);
+      delete obj[field].validate;
+      delete obj[field].options;
+      return obj;
     }
-    return {
-      [this.options.addressField]: fields.address
-    };
+    return _.pick(this.fields, this.addressKey);
   }
 
   getBackLink(req, res, callback) {
@@ -84,8 +102,11 @@ module.exports = class AddressLookup extends BaseController {
 
   getNextStep(req, res, callback) {
     const step = super.getNextStep(req, res, callback);
-    if (req.params.action === 'postcode') {
-      const newPath = req.sessionModel.get('addresses') ? '/lookup' : '/address';
+    if (req.params.action === 'postcode' &&
+      (!this.options.previousAddress ||
+        req.form.values[`${this.addressKey}-use-previous-address`] !== 'true')
+    ) {
+      const newPath = req.sessionModel.get(`${this.addressKey}-addresses`) ? '/lookup' : '/address';
       return req.url.replace('/postcode', newPath);
     } else if (req.params.action === 'lookup') {
       return req.url.replace('/lookup', '/address');
@@ -96,11 +117,11 @@ module.exports = class AddressLookup extends BaseController {
   getValues(req, res, callback) {
     if (req.params.action === 'manual') {
       req.sessionModel.unset([
-        'postcode',
-        'postcodeApiMeta'
+        `${this.addressKey}-postcode`,
+        `${this.addressKey}-postcodeApiMeta`
       ]);
     } else if (req.params.action === 'lookup') {
-      const addresses = req.sessionModel.get('addresses');
+      const addresses = req.sessionModel.get(`${this.addressKey}-addresses`);
       const formattedlist = _.map(_.map(addresses, 'formatted_address'), address => {
         address = address.split('\n').join(', ');
         return {
@@ -110,7 +131,7 @@ module.exports = class AddressLookup extends BaseController {
       });
 
       const count = `${formattedlist.length} addresses`;
-      this.options.fields['address-select'].options = [{value: count, label: count}].concat(formattedlist);
+      this.options.fields[`${this.addressKey}-select`].options = [{value: count, label: count}].concat(formattedlist);
     }
     super.getValues(req, res, callback);
   }
@@ -118,12 +139,16 @@ module.exports = class AddressLookup extends BaseController {
   locals(req, res, callback) {
     const isManual = req.params.action === 'manual';
     const locals = super.locals(req, res, callback);
-    const postcode = req.sessionModel.get('postcode');
-    const section = 'address-lookup';
+    const postcode = req.sessionModel.get(`${this.addressKey}-postcode`);
+    const section = this.options.route.replace(/^\//, '');
     return Object.assign({}, locals, {
+      postcodeLabel: req.translate(`fields.${this.addressKey}-postcode.label`),
       postcode,
       section,
-      postcodeApiMessageKey: isManual ? '' : (req.sessionModel.get('postcodeApiMeta') || {}).messageKey
+      route: this.options.route,
+      postcodeApiMessageKey: isManual ?
+        '' :
+        (req.sessionModel.get(`${this.addressKey}-postcodeApiMeta`) || {}).messageKey
     });
   }
 
@@ -131,17 +156,22 @@ module.exports = class AddressLookup extends BaseController {
   process(req, res, callback) {
     if (req.params.action !== 'postcode') {
       return super.process(req, res, callback);
+    } else if (this.options.previousAddress && req.form.values[`${this.addressKey}-use-previous-address`] === 'true') {
+      req.sessionModel.set(this.addressKey, req.sessionModel.get(this.options.previousAddress));
+      return this.successHandler(req, res);
     }
-    const postcode = req.form.values.postcode;
-    const previousPostcode = req.sessionModel.get('postcode');
+    const postcode = req.form.values[`${this.addressKey}-postcode`];
+    const previousPostcode = req.sessionModel.get(`${this.addressKey}-postcode`);
     if (!postcode
       || previousPostcode && previousPostcode === postcode) {
       return callback();
     }
 
     if (_.startsWith(postcode, 'BT')) {
-      req.sessionModel.unset('postcodeApiMeta');
-      req.sessionModel.unset('addresses');
+      req.sessionModel.unset([
+        `${this.addressKey}-postcodeApiMeta`,
+        `${this.addressKey}-addresses`
+      ]);
       return callback();
     }
 
@@ -149,17 +179,17 @@ module.exports = class AddressLookup extends BaseController {
     postcodesModel.fetch(postcode)
       .then(data => {
         if (data.length) {
-          req.sessionModel.set('addresses', data);
+          req.sessionModel.set(`${this.addressKey}-addresses`, data);
         } else {
-          req.sessionModel.unset('addresses');
-          req.sessionModel.set('postcodeApiMeta', {
+          req.sessionModel.unset(`${this.addressKey}-addresses`);
+          req.sessionModel.set(`${this.addressKey}-postcodeApiMeta`, {
             messageKey: 'not-found'
           });
         }
         return callback();
       })
       .catch(err => {
-        req.sessionModel.set('postcodeApiMeta', {
+        req.sessionModel.set(`${this.addressKey}-postcodeApiMeta`, {
           messageKey: 'cant-connect'
         });
         // eslint-disable-next-line no-console
@@ -178,19 +208,20 @@ module.exports = class AddressLookup extends BaseController {
 
   saveValues(req, res, callback) {
     if (req.params.action === 'lookup') {
-      const addressLines = req.form.values['address-select'].split(', ').join('\n');
-      req.sessionModel.set('address', addressLines);
+      const addressLines = req.form.values[`${this.addressKey}-select`].split(', ').join('\n');
+      req.sessionModel.set(this.addressKey, addressLines);
     }
     super.saveValues(req, res, callback);
   }
 
   // eslint-disable-next-line consistent-return
   validateField(key, req) {
+    const field = `${this.addressKey}-select`;
     if (req.params.action === 'lookup' &&
-      req.form.values[key] === this.options.fields['address-select'].options[0].value
+      req.form.values[key] === this.options.fields[field].options[0].value
     ) {
-      return new ErrorController('address-select', {
-        key: 'address-select',
+      return new ErrorController(field, {
+        key: field,
         type: 'required',
         redirect: undefined
       });

@@ -49,7 +49,7 @@ module.exports = {
     },
     '/report-property-address': {
       controller: require('./controllers/address-lookup'),
-      addressField: 'address',
+      addressKey: 'property-address',
       next: '/tenant-details'
     },
     '/tenant-details': {
@@ -102,7 +102,16 @@ module.exports = {
       },
       next: '/report-landlord-agent'
     },
-    '/report-landlord-agent': {},
+    '/report-landlord-agent': {
+      next: '/landlord-address'
+    },
+    '/landlord-address': {
+      controller: require('./controllers/address-lookup'),
+      addressKey: 'landlord-address',
+      previousAddress: 'property-address',
+      next: '/confirm'
+    },
+    '/confirm': {},
     '/request': {},
     '/check': {}
   }

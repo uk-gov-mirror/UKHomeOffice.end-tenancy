@@ -29,13 +29,13 @@
   "report-nldp-date-year": {
     "label": "Year"
   },
-  "postcode": {
+  "property-address-postcode": {
     "label": "Postcode"
   },
-  "address-select": {
+  "property-address-select": {
     "label": "Select your address as shown on the Notice"
   },
-  "address": {
+  "property-address": {
     "label": "Address"
   },
   "name": {
@@ -64,5 +64,17 @@
         "label": "No"
       }
     }
+  },
+  "landlord-address-postcode": {
+    "label": "Postcode"
+  },
+  "landlord-address-select": {
+    "label": "Select your address from the list"
+  },
+  "landlord-address": {
+    "label": "Address"
+  },
+  "landlord-address-use-previous-address": {
+    "label": "Use the same address I provided earlier"
   }
 }

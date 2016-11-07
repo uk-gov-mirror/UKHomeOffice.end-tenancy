@@ -7,17 +7,27 @@
     "numeric": "Enter a valid date",
     "future": "Date cannot be in the future"
   },
-  "postcode": {
+  "property-address-postcode": {
     "required": "Enter the postcode of the property",
     "postcode": "Enter a valid postcode"
   },
-  "address-select": {
+  "property-address-select": {
     "required": "Select an address"
   },
-  "address": {
+  "property-address": {
     "required": "Enter the address of the property"
   },
   "name": {
     "required": "Enter the name of the person who left the property"
+  },
+  "landlord-address-postcode": {
+    "required": "Enter your postcode",
+    "postcode": "Enter a valid postcode"
+  },
+  "landlord-address-select": {
+    "required": "Select an address"
+  },
+  "landlord-address": {
+    "required": "Enter your address"
   }
 }

@@ -1,9 +1,7 @@
 {{<partials-page}}
   {{$page-content}}
     {{#postcode}}
-      <label>
-        {{#t}}fields.postcode.label{{/t}}
-      </label>
+      <label>{{postcodeLabel}}</label>
       <p>
         <span class="postcode">{{postcode}}</span>
         <span class="link"><a class="change-postcode" href="{{baseUrl}}/report-property-address/postcode">{{#t}}pages.address-lookup.edit{{/t}}</a></span>
@@ -12,7 +10,7 @@
     {{#postcodeApiMessageKey}}
       <div class="alert-info">
         <span class="info-message">
-          {{#t}}pages.address.postcode-api.{{postcodeApiMessageKey}}{{/t}}
+          {{#t}}pages.address-lookup.postcode-api.{{postcodeApiMessageKey}}{{/t}}
         </span>
       </div>
     {{/postcodeApiMessageKey}}
