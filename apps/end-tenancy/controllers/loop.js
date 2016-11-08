@@ -26,6 +26,11 @@ module.exports = class LoopController extends DateController {
     return super.get(req, res, callback);
   }
 
+  post(req, res, callback) {
+    this.options.fields = this.getFields(req);
+    return super.post(req, res, callback);
+  }
+
   getTemplate(req) {
     const step = this.options.subSteps[req.params.action];
     if (step.template) {
