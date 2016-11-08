@@ -201,12 +201,12 @@ module.exports = class AddressLookup extends BaseController {
   }
 
   post(req, res, callback) {
-    if (req.params.action === 'lookup') {
-      this.getValues(req, res, () => {});
-    }
     this.options.fields = this.getFields(req);
     this.validator = dataValidator(this.options.fields);
     this.formatter = dataFormatter(this.options.fields, this.options.defaultFormatters);
+    if (req.params.action === 'lookup') {
+      this.getValues(req, res, () => {});
+    }
     super.post(req, res, callback);
   }
 
