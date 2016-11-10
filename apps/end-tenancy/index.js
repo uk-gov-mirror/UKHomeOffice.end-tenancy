@@ -29,12 +29,12 @@ module.exports = {
         }
       }],
       locals: {
-        section: 'what',
+        section: 'tenant-property',
         'report-link': 'https://eforms.homeoffice.gov.uk/outreach/lcs-reporting.ofml'
       }
     },
     '/report-nldp-date': {
-      controller: require('hof').controllers.date,
+      controller: controllers.date,
       fields: [
         'report-nldp-date',
         'report-nldp-date-day',
@@ -44,13 +44,19 @@ module.exports = {
       next: '/report-property-address',
       dateKey: 'report-nldp-date',
       locals: {
-        section: 'report-nldp-date'
+        section: 'tenant-property'
       }
     },
     '/report-property-address': {
       controller: require('./controllers/address-lookup'),
+      fields: [
+        'property-address'
+      ],
       addressKey: 'property-address',
-      next: '/tenant-details'
+      next: '/tenant-details',
+      locals: {
+        section: 'tenant-property'
+      }
     },
     '/tenant-details': {
       controller: require('./controllers/loop.js'),
@@ -68,11 +74,7 @@ module.exports = {
         name: {
           fields: [
             'name'
-          ],
-          locals: {
-            section: 'tenant-name',
-            subsection: 'tenant-name-hint'
-          }
+          ]
         },
         date: {
           template: 'date',
@@ -81,38 +83,71 @@ module.exports = {
             'date-left-day',
             'date-left-month',
             'date-left-year'
-          ],
-          locals: {
-            section: 'tenant-date-left',
-            subsection: 'tenant-date-left-hint'
-          }
+          ]
         },
         'add-another': {
           fields: [
             'add-another'
-          ],
-          locals: {
-            section: 'add-another'
-          }
+          ]
         }
       },
       loopCondition: {
         field: 'add-another',
         value: 'yes'
       },
-      next: '/report-landlord-agent'
+      next: '/report-landlord-agent',
+      locals: {
+        section: 'tenant-property'
+      }
     },
     '/report-landlord-agent': {
-      next: '/landlord-address'
+      fields: [
+        'who'
+      ],
+      next: '/landlord-details',
+      forks: [{
+        target: '/agent-details',
+        condition: {
+          field: 'who',
+          value: 'agent'
+        }
+      }]
+    },
+    '/landlord-details': {
+      next: '/landlord-address',
+      fields: [
+        'landlord-name',
+        'landlord-company',
+        'email-address',
+        'phone-number'
+      ]
     },
     '/landlord-address': {
       controller: require('./controllers/address-lookup'),
       addressKey: 'landlord-address',
+      fields: [
+        'landlord-address'
+      ],
       previousAddress: 'property-address',
+      next: '/confirm',
+      locals: {
+        section: 'landlord-details'
+      }
+    },
+    '/agent-details': {
+      fields: [
+        'agent-company',
+        'agent-name',
+        'email-address',
+        'phone-number'
+      ],
+      next: '/agent-address'
+    },
+    '/agent-address': {
       next: '/confirm'
     },
-    '/confirm': {},
     '/request-property-address': {},
-    '/check-nldp-date': {}
+    '/check-nldp-date': {},
+    '/confirmation': {}
   }
 };

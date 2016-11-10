@@ -4,7 +4,7 @@
     "report": "Placeholder text for <a href=\"{{report-link}}\">make a report</a>"
   },
   "report-nldp-date": {
-    "header": "What was the date of issue for the Notice?"
+    "intro": "If you have another Notice you can add this later."
   },
   "address-lookup": {
     "cantfind": "I can't find my address in the list",
@@ -17,22 +17,27 @@
   "report-property-address": {
     "header": "What's the address of the property the person has left"
   },
-  "tenant-name": {
-    "header": "What's the name of the person who left the property?"
+  "tenant-details-name": {
+    "header": "What's the name of the person who left the property?",
+    "intro": "You can add more people later if required"
   },
-  "tenant-name-hint": {
-    "header": "You can add more people later if required"
+  "tenant-details-date": {
+    "header": "When did {{values.name}} leave?",
+    "intro": "If you don't know the exact date then please put the first date you knew they had left."
   },
-  "tenant-date-left": {
-    "header": "When did {{values.name}} leave?"
-  },
-  "tenant-date-left-hint": {
-    "header": "If you don't know the exact date then please put the first date you knew they had left."
-  },
-  "add-another": {
+  "tenant-details-add-another": {
     "header": "Has anyone else listed on the Notice left the property?"
+  },
+  "landlord-details": {
+    "header": "Landlord details"
+  },
+  "agent-details": {
+    "header": "Agent details"
   },
   "landlord-address": {
     "header": "What's your contact address?"
+  },
+  "tenant-property": {
+    "header": "Tenant and property details"
   }
 }

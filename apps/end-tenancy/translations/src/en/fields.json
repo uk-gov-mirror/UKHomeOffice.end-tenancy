@@ -1,6 +1,7 @@
 {
   "what": {
     "legend": "What do you want to do?",
+    "summary": "Enquiry type",
     "options": {
       "request": {
         "label": "Take action if you think a person may be disqualified from renting",
@@ -18,7 +19,8 @@
   },
   "report-nldp-date": {
     "label": "What was the date of issue for the Notice?",
-    "hint": "For example, 2 11 2016"
+    "hint": "For example, 2 11 2016",
+    "summary": "Date of issue for Notice"
   },
   "report-nldp-date-day": {
     "label": "Day"
@@ -39,11 +41,15 @@
     "label": "Address"
   },
   "name": {
-    "label": "Full name as it's written on the Notice"
+    "label": "What's the name of the person who left the property?",
+    "intro": "You can add more people later if required",
+    "hint": "Full name as it's written on the Notice",
+    "summary": "Name"
   },
   "date-left": {
     "label": "When did {{values.name}} leave?",
-    "hint": "For example, 31 3 2016"
+    "hint": "For example, 31 3 2016",
+    "summary": "Date tenant left"
   },
   "date-left-day": {
     "label": "Day"
@@ -65,6 +71,36 @@
       }
     }
   },
+  "who": {
+    "legend": "Who are you?",
+    "options": {
+      "landlord": {
+        "label": "Landlord"
+      },
+      "agent": {
+        "label": "Agent acting on behalf of a landlord"
+      }
+    }
+  },
+  "landlord-name": {
+    "label": "Your full name"
+  },
+  "landlord-company": {
+    "label": "Your company's name",
+    "hint": "(if you have one, if you don't leave blank)"
+  },
+  "agent-name": {
+    "label": "Your full name"
+  },
+  "agent-company": {
+    "label": "Your company's name"
+  },
+  "email-address": {
+    "label": "Your email address"
+  },
+  "phone-number": {
+    "label": "Your phone number"
+  },
   "landlord-address-postcode": {
     "label": "Postcode"
   },
@@ -72,7 +108,8 @@
     "label": "Select your address from the list"
   },
   "landlord-address": {
-    "label": "Address"
+    "label": "Address",
+    "summary": "Contact address"
   },
   "landlord-address-use-previous-address": {
     "label": "Use the same address I provided earlier"

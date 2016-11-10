@@ -25,16 +25,21 @@ module.exports = {
     labelClassName: 'visuallyhidden'
   },
   'report-nldp-date-day': {
-    validate: ['required', 'numeric']
+    validate: ['required', 'numeric'],
+    includeInSummary: false
   },
   'report-nldp-date-month': {
-    validate: ['required', 'numeric']
+    validate: ['required', 'numeric'],
+    includeInSummary: false
   },
   'report-nldp-date-year': {
-    validate: ['required', 'numeric']
+    validate: ['required', 'numeric'],
+    includeInSummary: false
   },
+  'property-address': {},
   name: {
     mixin: 'input-text',
+    labelClassName: 'visuallyhidden',
     validate: 'required'
   },
   'date-left': {
@@ -63,5 +68,40 @@ module.exports = {
       'no'
     ],
     includeInSummary: false
+  },
+  'landlord-address': {},
+  who: {
+    mixin: 'radio-group',
+    validate: 'required',
+    legend: {
+      className: 'visuallyhidden'
+    },
+    options: [
+      'landlord',
+      'agent'
+    ]
+  },
+  'landlord-name': {
+    mixin: 'input-text',
+    validate: 'required'
+  },
+  'landlord-company': {
+    mixin: 'input-text'
+  },
+  'agent-company': {
+    mixin: 'input-text',
+    validate: 'required'
+  },
+  'agent-name': {
+    mixin: 'input-text',
+    validate: 'required'
+  },
+  'email-address': {
+    mixin: 'input-text',
+    validate: ['required', 'email']
+  },
+  'phone-number': {
+    mixin: 'input-text',
+    validate: ['required', 'numeric']
   }
 };

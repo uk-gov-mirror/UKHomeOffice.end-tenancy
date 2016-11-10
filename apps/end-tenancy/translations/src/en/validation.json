@@ -20,6 +20,26 @@
   "name": {
     "required": "Enter the name of the person who left the property"
   },
+  "who": {
+    "required": "Tell us who you are"
+  },
+  "landlord-name": {
+    "required": "Tell us your full name"
+  },
+  "agent-company": {
+    "required": "Tell us your company's name"
+  },
+  "agent-name": {
+    "required": "Tell us your full name"
+  },
+  "email-address": {
+    "required": "Tell us your email address",
+    "email": "Enter a valid email address"
+  },
+  "phone-number": {
+    "required": "Tell us your phone number",
+    "numeric": "Enter a valid phone number"
+  },
   "landlord-address-postcode": {
     "required": "Enter your postcode",
     "postcode": "Enter a valid postcode"

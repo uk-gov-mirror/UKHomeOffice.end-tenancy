@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  url: '/report-landlord-agent'
+  url: 'agent-details'
 };
