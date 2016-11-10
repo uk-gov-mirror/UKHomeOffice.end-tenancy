@@ -8,12 +8,12 @@ module.exports = {
     I = require('so-acceptance/steps')();
   },
 
-  url: 'report-nldp-date',
+  url: 'nldp-date',
   fields: {
-    date: '#report-nldp-date-group',
-    day: '#report-nldp-date-day',
-    month: '#report-nldp-date-month',
-    year: '#report-nldp-date-year'
+    date: '#nldp-date-group',
+    day: '#nldp-date-day',
+    month: '#nldp-date-month',
+    year: '#nldp-date-year'
   },
   content: {
     'future-date': {

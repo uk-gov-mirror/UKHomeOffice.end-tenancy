@@ -2,7 +2,7 @@
   "what": {
     "required": "Tell us what you want to do"
   },
-  "report-nldp-date": {
+  "nldp-date": {
     "required": "Enter a date",
     "numeric": "Enter a valid date",
     "future": "Date cannot be in the future"
@@ -26,17 +26,25 @@
   "landlord-name": {
     "required": "Tell us your full name"
   },
+  "landlord-email-address": {
+    "required": "Tell us your email address",
+    "email": "Enter a valid email address"
+  },
+  "landlord-phone-number": {
+    "required": "Tell us your phone number",
+    "numeric": "Enter a valid phone number"
+  },
   "agent-company": {
     "required": "Tell us your company's name"
   },
   "agent-name": {
     "required": "Tell us your full name"
   },
-  "email-address": {
+  "agent-email-address": {
     "required": "Tell us your email address",
     "email": "Enter a valid email address"
   },
-  "phone-number": {
+  "agent-phone-number": {
     "required": "Tell us your phone number",
     "numeric": "Enter a valid phone number"
   },

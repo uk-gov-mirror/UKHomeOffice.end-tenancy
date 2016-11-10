@@ -2,7 +2,7 @@
 
 const steps = require('../../');
 
-Feature('Report NLDP Date');
+Feature('NLDP Date Step');
 
 Before((
   I,

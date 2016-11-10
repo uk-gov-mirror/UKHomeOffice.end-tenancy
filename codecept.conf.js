@@ -9,7 +9,7 @@ module.exports = {
   name: 'end-tenancy',
   include: {
     whatPage: pagesPath('what.js'),
-    reportDatePage: pagesPath('report-date.js'),
+    reportDatePage: pagesPath('nldp-date.js'),
     propertyAddressPage: pagesPath('property-address.js'),
     tenantDetailsPage: pagesPath('tenant-details.js'),
     requestPage: pagesPath('request.js'),
@@ -18,6 +18,8 @@ module.exports = {
     landlordDetailsPage: pagesPath('landlord-details.js'),
     landlordAddressPage: pagesPath('landlord-address.js'),
     agentDetailsPage: pagesPath('agent-details.js'),
+    agentAddressPage: pagesPath('agent-address.js'),
+    landlordNamePage: pagesPath('landlord-name.js'),
     confirmPage: pagesPath('confirm.js')
   }
 };

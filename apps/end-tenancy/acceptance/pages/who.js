@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'report-landlord-agent',
+  url: 'landlord-agent',
   fields: {
     who: '#who-group',
     landlord: '[value=landlord]',

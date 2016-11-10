@@ -17,18 +17,18 @@
       }
     }
   },
-  "report-nldp-date": {
+  "nldp-date": {
     "label": "What was the date of issue for the Notice?",
     "hint": "For example, 2 11 2016",
     "summary": "Date of issue for Notice"
   },
-  "report-nldp-date-day": {
+  "nldp-date-day": {
     "label": "Day"
   },
-  "report-nldp-date-month": {
+  "nldp-date-month": {
     "label": "Month"
   },
-  "report-nldp-date-year": {
+  "nldp-date-year": {
     "label": "Year"
   },
   "property-address-postcode": {
@@ -89,16 +89,22 @@
     "label": "Your company's name",
     "hint": "(if you have one, if you don't leave blank)"
   },
+  "landlord-email-address": {
+    "label": "Your email address"
+  },
+  "landlord-phone-number": {
+    "label": "Your phone number"
+  },
   "agent-name": {
     "label": "Your full name"
   },
   "agent-company": {
     "label": "Your company's name"
   },
-  "email-address": {
+  "agent-email-address": {
     "label": "Your email address"
   },
-  "phone-number": {
+  "agent-phone-number": {
     "label": "Your phone number"
   },
   "landlord-address-postcode": {
@@ -113,5 +119,15 @@
   },
   "landlord-address-use-previous-address": {
     "label": "Use the same address I provided earlier"
+  },
+  "agent-address-postcode": {
+    "label": "Postcode"
+  },
+  "agent-address": {
+    "label": "Address",
+    "summary": "Contact address"
+  },
+  "agent-address-select": {
+    "label": "Select your address from the list"
   }
 }

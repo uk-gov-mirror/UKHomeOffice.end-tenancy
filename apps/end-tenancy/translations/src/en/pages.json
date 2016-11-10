@@ -1,9 +1,12 @@
 {
+  "tenant-property": {
+    "header": "Tenant and property details"
+  },
   "what": {
     "header": "What do you want to do?",
     "report": "Placeholder text for <a href=\"{{report-link}}\">make a report</a>"
   },
-  "report-nldp-date": {
+  "nldp-date": {
     "intro": "If you have another Notice you can add this later."
   },
   "address-lookup": {
@@ -14,7 +17,7 @@
       "cant-connect": "Sorry – we couldn’t connect to the postcode lookup service at this time, enter your address manually"
     }
   },
-  "report-property-address": {
+  "property-address": {
     "header": "What's the address of the property the person has left"
   },
   "tenant-details-name": {
@@ -37,7 +40,8 @@
   "landlord-address": {
     "header": "What's your contact address?"
   },
-  "tenant-property": {
-    "header": "Tenant and property details"
+  "agent-address": {
+    "header": "Agent's postal address",
+    "intro": "We need these details in case we have any queries"
   }
 }

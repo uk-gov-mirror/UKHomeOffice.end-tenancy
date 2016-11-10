@@ -14,7 +14,7 @@ module.exports = {
       fields: [
         'what'
       ],
-      next: '/report-nldp-date',
+      next: '/nldp-date',
       forks: [{
         target: '/request-property-address',
         condition: {
@@ -33,21 +33,21 @@ module.exports = {
         'report-link': 'https://eforms.homeoffice.gov.uk/outreach/lcs-reporting.ofml'
       }
     },
-    '/report-nldp-date': {
+    '/nldp-date': {
       controller: controllers.date,
       fields: [
-        'report-nldp-date',
-        'report-nldp-date-day',
-        'report-nldp-date-month',
-        'report-nldp-date-year'
+        'nldp-date',
+        'nldp-date-day',
+        'nldp-date-month',
+        'nldp-date-year'
       ],
-      next: '/report-property-address',
-      dateKey: 'report-nldp-date',
+      next: '/property-address',
+      dateKey: 'nldp-date',
       locals: {
         section: 'tenant-property'
       }
     },
-    '/report-property-address': {
+    '/property-address': {
       controller: require('./controllers/address-lookup'),
       fields: [
         'property-address'
@@ -95,12 +95,12 @@ module.exports = {
         field: 'add-another',
         value: 'yes'
       },
-      next: '/report-landlord-agent',
+      next: '/landlord-agent',
       locals: {
         section: 'tenant-property'
       }
     },
-    '/report-landlord-agent': {
+    '/landlord-agent': {
       fields: [
         'who'
       ],
@@ -118,8 +118,8 @@ module.exports = {
       fields: [
         'landlord-name',
         'landlord-company',
-        'email-address',
-        'phone-number'
+        'landlord-email-address',
+        'landlord-phone-number'
       ]
     },
     '/landlord-address': {
@@ -138,13 +138,30 @@ module.exports = {
       fields: [
         'agent-company',
         'agent-name',
-        'email-address',
-        'phone-number'
+        'agent-email-address',
+        'agent-phone-number'
       ],
       next: '/agent-address'
     },
     '/agent-address': {
-      next: '/confirm'
+      controller: require('./controllers/address-lookup'),
+      addressKey: 'agent-address',
+      fields: [
+        'agent-address'
+      ],
+      next: '/landlord-name',
+      locals: {
+        section: 'agent-details'
+      }
+    },
+    '/landlord-name': {
+      next: '/landlord-address'
+    },
+    '/confirm': {
+      next: '/confirmation'
+    },
+    confirm: {
+      next: '/confirmation'
     },
     '/request-property-address': {},
     '/check-nldp-date': {},

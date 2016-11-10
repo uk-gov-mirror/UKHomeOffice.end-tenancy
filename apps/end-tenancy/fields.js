@@ -21,18 +21,18 @@ module.exports = {
       child: 'partials/panel'
     }]
   },
-  'report-nldp-date': {
+  'nldp-date': {
     labelClassName: 'visuallyhidden'
   },
-  'report-nldp-date-day': {
+  'nldp-date-day': {
     validate: ['required', 'numeric'],
     includeInSummary: false
   },
-  'report-nldp-date-month': {
+  'nldp-date-month': {
     validate: ['required', 'numeric'],
     includeInSummary: false
   },
-  'report-nldp-date-year': {
+  'nldp-date-year': {
     validate: ['required', 'numeric'],
     includeInSummary: false
   },
@@ -88,6 +88,14 @@ module.exports = {
   'landlord-company': {
     mixin: 'input-text'
   },
+  'landlord-email-address': {
+    mixin: 'input-text',
+    validate: ['required', 'email']
+  },
+  'landlord-phone-number': {
+    mixin: 'input-text',
+    validate: ['required', 'numeric']
+  },
   'agent-company': {
     mixin: 'input-text',
     validate: 'required'
@@ -96,11 +104,11 @@ module.exports = {
     mixin: 'input-text',
     validate: 'required'
   },
-  'email-address': {
+  'agent-email-address': {
     mixin: 'input-text',
     validate: ['required', 'email']
   },
-  'phone-number': {
+  'agent-phone-number': {
     mixin: 'input-text',
     validate: ['required', 'numeric']
   }
