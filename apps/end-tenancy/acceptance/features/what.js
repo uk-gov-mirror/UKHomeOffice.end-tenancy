@@ -36,14 +36,14 @@ Scenario('If I select the report option I am taken to the report date page', (
   I.seeInCurrentUrl(reportDatePage.url);
 });
 
-Scenario('If I select the check option I am taken to the check page', (
+Scenario('If I select the check option I am taken to the report date page', (
   I,
   whatPage,
-  checkPage
+  reportDatePage
 ) => {
   I.checkOption(whatPage.fields.check);
   I.submitForm();
-  I.seeInCurrentUrl(checkPage.url);
+  I.seeInCurrentUrl(reportDatePage.url);
 });
 
 Scenario('If I select the request option I am taken to the contact page', (

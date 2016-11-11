@@ -7,7 +7,12 @@
     "report": "Placeholder text for <a href=\"{{report-link}}\">make a report</a>"
   },
   "nldp-date": {
-    "intro": "If you have another Notice you can add this later."
+    "intro": {
+      "what": {
+        "check": "The Home Office will write to you if someone who is named on a Notice of Letting to a Disqualified Person is no longer disqualified from renting. However if some time has passed since you received a Notice of Letting to a Disqualified Person you may wish to be completely sure that it is still valid before you use it to end a tenancy."
+      },
+      "default": "If you have another Notice you can add this later."
+    }
   },
   "address-lookup": {
     "cantfind": "I can't find my address in the list",

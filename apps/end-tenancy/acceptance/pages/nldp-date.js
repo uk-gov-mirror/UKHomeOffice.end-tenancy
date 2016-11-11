@@ -2,6 +2,8 @@
 
 let I;
 
+const translations = require('../../translations/en/default.json').pages['nldp-date'].intro;
+
 module.exports = {
 
   _init() {
@@ -16,6 +18,8 @@ module.exports = {
     year: '#nldp-date-year'
   },
   content: {
+    check: translations.what.check,
+    report: translations.default,
     'future-date': {
       day: '1',
       month: '1',

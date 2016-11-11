@@ -24,12 +24,6 @@ module.exports = {
           field: 'what',
           value: 'request'
         }
-      }, {
-        target: '/check-nldp-date',
-        condition: {
-          field: 'what',
-          value: 'check'
-        }
       }],
       locals: {
         section: 'tenant-property',
@@ -173,7 +167,6 @@ module.exports = {
     '/confirm': {
       next: '/confirmation'
     },
-    '/check-nldp-date': {},
     '/confirmation': {}
   }
 };

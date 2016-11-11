@@ -13,7 +13,6 @@ module.exports = {
     propertyAddressPage: pagesPath('property-address.js'),
     tenantDetailsPage: pagesPath('tenant-details.js'),
     contactPage: pagesPath('contact.js'),
-    checkPage: pagesPath('check.js'),
     whoPage: pagesPath('who.js'),
     landlordDetailsPage: pagesPath('landlord-details.js'),
     landlordAddressPage: pagesPath('landlord-address.js'),
