@@ -18,14 +18,15 @@ Scenario('I am redirected to the /postcode stubstep', (
   I.seeInCurrentUrl(landlordAddressPage.postcode.url);
 });
 
-Scenario('I see the correct fields on the page', (
+Scenario('I see the use previous checkbox if I am the landlord', function *(
   I,
   landlordAddressPage
-) => {
-  I.seeElements([
-    landlordAddressPage.postcode.fields.postcode,
-    landlordAddressPage.postcode.fields.usePrevious,
-  ]);
+) {
+  yield I.setSessionData(steps.name, {
+    who: 'landlord'
+  });
+  yield I.refreshPage();
+  I.seeElements(landlordAddressPage.postcode.fields.usePrevious);
 });
 
 Scenario('I see an error if I submit the form without entering a postcode', (
@@ -46,11 +47,15 @@ Scenario('I see an error if I enter an invalid postcode', (
   I.seeErrors(landlordAddressPage.postcode.fields.postcode);
 });
 
-Scenario('I am taken to the confirm page if I tick the use previous address checkbox', (
+Scenario('I am taken to the confirm page if I tick the use previous address checkbox', function *(
   I,
   landlordAddressPage,
   confirmPage
-) => {
+) {
+  yield I.setSessionData(steps.name, {
+    who: 'landlord'
+  });
+  yield I.refreshPage();
   I.checkOption(landlordAddressPage.postcode.fields.usePrevious);
   I.submitForm();
   I.seeInCurrentUrl(confirmPage.url);

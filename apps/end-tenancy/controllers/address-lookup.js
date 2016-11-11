@@ -27,7 +27,8 @@ module.exports = class AddressLookup extends BaseController {
       },
       [`${addressKey}-use-previous-address`]: {
         mixin: 'checkbox',
-        className: 'label'
+        className: 'label',
+        useWhen: this.options.useWhen
       },
       [`${addressKey}-select`]: {
         mixin: 'select'

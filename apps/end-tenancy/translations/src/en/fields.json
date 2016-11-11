@@ -41,9 +41,7 @@
     "label": "Address"
   },
   "name": {
-    "label": "What's the name of the person who left the property?",
-    "intro": "You can add more people later if required",
-    "hint": "Full name as it's written on the Notice",
+    "label": "Full name as it's written on the Notice",
     "summary": "Name"
   },
   "date-left": {
@@ -83,7 +81,12 @@
     }
   },
   "landlord-name": {
-    "label": "Your full name"
+    "label": {
+      "who": {
+        "landlord": "Your full name"
+      },
+      "default": "Full name"
+    }
   },
   "landlord-company": {
     "label": "Your company's name",

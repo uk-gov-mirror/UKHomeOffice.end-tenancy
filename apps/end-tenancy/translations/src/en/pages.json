@@ -38,10 +38,18 @@
     "header": "Agent details"
   },
   "landlord-address": {
-    "header": "What's your contact address?"
+    "header": {
+      "who": {
+        "landlord": "What's your contact address?"
+      },
+      "default": "What's the landlord's contact address?"
+    }
   },
   "agent-address": {
     "header": "Agent's postal address",
     "intro": "We need these details in case we have any queries"
+  },
+  "landlord-name": {
+    "header": "What are the landlord's details?"
   }
 }

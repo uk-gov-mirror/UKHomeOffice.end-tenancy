@@ -39,7 +39,6 @@ module.exports = {
   'property-address': {},
   name: {
     mixin: 'input-text',
-    labelClassName: 'visuallyhidden',
     validate: 'required'
   },
   'date-left': {

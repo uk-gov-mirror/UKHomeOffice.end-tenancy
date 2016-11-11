@@ -22,10 +22,7 @@ Scenario('I see the correct fields on the page', (
   I,
   agentAddressPage
 ) => {
-  I.seeElements([
-    agentAddressPage.postcode.fields.postcode,
-    agentAddressPage.postcode.fields.usePrevious,
-  ]);
+  I.seeElements(agentAddressPage.postcode.fields.postcode);
 });
 
 Scenario('I see an error if I submit the form without entering a postcode', (
@@ -44,16 +41,6 @@ Scenario('I see an error if I enter an invalid postcode', (
     agentAddressPage.postcode.content.invalid);
   I.submitForm();
   I.seeErrors(agentAddressPage.postcode.fields.postcode);
-});
-
-Scenario('I am taken to the confirm page if I tick the use previous address checkbox', (
-  I,
-  agentAddressPage,
-  confirmPage
-) => {
-  I.checkOption(agentAddressPage.postcode.fields.usePrevious);
-  I.submitForm();
-  I.seeInCurrentUrl(confirmPage.url);
 });
 
 Scenario('I am taken to the address step if the postcode isn\'t found', (
@@ -115,17 +102,17 @@ Scenario('I see an error if I sumbit the manual step without completing', (
   I.seeErrors(agentAddressPage.manual.fields.address);
 });
 
-Scenario('I am taken to the confirm step if I fill in the manual address field and submit', (
+Scenario('I am taken to the landlord name step if I fill in the manual address field and submit', (
   I,
   agentAddressPage,
-  confirmPage
+  landlordNamePage
 ) => {
   agentAddressPage.enterValidPostcode();
   I.click(agentAddressPage.links['cant-find']);
   I.fillField(agentAddressPage.manual.fields.address,
     agentAddressPage.address.content);
   I.submitForm();
-  I.seeInCurrentUrl(confirmPage.url);
+  I.seeInCurrentUrl(landlordNamePage.url);
 });
 
 Scenario('I am taken to the postcode step if I click the change-postcode link', (
@@ -156,7 +143,7 @@ Scenario('The address field is populated with with the address after submitting'
   I.see(agentAddressPage.address.content);
 });
 
-Scenario.only('I am taken to the landlord name page on a valid submission', (
+Scenario('I am taken to the landlord name page on a valid submission', (
   I,
   agentAddressPage,
   landlordNamePage
