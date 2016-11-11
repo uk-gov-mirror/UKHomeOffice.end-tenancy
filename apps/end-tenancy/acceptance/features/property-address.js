@@ -18,6 +18,28 @@ Scenario('I am forwarded to the postcode subsection', (
   I.seeInCurrentUrl(propertyAddressPage.postcode.url);
 });
 
+Scenario('I see the correct header if I previously selected "report"', function *(
+  I,
+  propertyAddressPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'report'
+  });
+  yield I.refreshPage();
+  I.see(propertyAddressPage.content.report);
+});
+
+Scenario('I see the correct header if I previously selected "check"', function *(
+  I,
+  propertyAddressPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'check'
+  });
+  yield I.refreshPage();
+  I.see(propertyAddressPage.content.check);
+});
+
 Scenario('I see the postcode entry field', (
   I,
   propertyAddressPage

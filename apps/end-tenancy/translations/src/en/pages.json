@@ -23,7 +23,12 @@
     }
   },
   "property-address": {
-    "header": "What's the address of the property the person has left"
+    "header": {
+      "what": {
+        "report": "What's the address of the property the person has left"
+      },
+      "default": "What's the property address?"
+    }
   },
   "tenant-details-name": {
     "header": "What's the name of the person who left the property?",
