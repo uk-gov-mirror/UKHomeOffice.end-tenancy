@@ -46,12 +46,12 @@ Scenario('If I select the check option I am taken to the check page', (
   I.seeInCurrentUrl(checkPage.url);
 });
 
-Scenario('If I select the request option I am taken to the request page', (
+Scenario('If I select the request option I am taken to the contact page', (
   I,
   whatPage,
-  requestPage
+  contactPage
 ) => {
   I.checkOption(whatPage.fields.request);
   I.submitForm();
-  I.seeInCurrentUrl(requestPage.url);
+  I.seeInCurrentUrl(contactPage.url);
 });
