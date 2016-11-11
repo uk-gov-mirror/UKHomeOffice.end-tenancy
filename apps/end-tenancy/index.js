@@ -1,6 +1,9 @@
 'use strict';
 
 const controllers = require('hof').controllers;
+const ContactController = require('./controllers/contact');
+const AddressLookupController = require('./controllers/address-lookup');
+const LoopController = require('./controllers/loop');
 
 module.exports = {
   name: 'end-tenancy',
@@ -34,7 +37,7 @@ module.exports = {
       }
     },
     '/contact': {
-      controller: require('./controllers/content')
+      controller: ContactController
     },
     '/nldp-date': {
       controller: controllers.date,
@@ -51,7 +54,7 @@ module.exports = {
       }
     },
     '/property-address': {
-      controller: require('./controllers/address-lookup'),
+      controller: AddressLookupController,
       fields: [
         'property-address'
       ],
@@ -62,7 +65,7 @@ module.exports = {
       }
     },
     '/tenant-details': {
-      controller: require('./controllers/loop.js'),
+      controller: LoopController,
       storeKey: 'tenants',
       dateKey: 'date-left',
       fields: [
@@ -126,7 +129,7 @@ module.exports = {
       ]
     },
     '/landlord-address': {
-      controller: require('./controllers/address-lookup'),
+      controller: AddressLookupController,
       addressKey: 'landlord-address',
       fields: [
         'landlord-address'
@@ -151,7 +154,7 @@ module.exports = {
       next: '/agent-address'
     },
     '/agent-address': {
-      controller: require('./controllers/address-lookup'),
+      controller: AddressLookupController,
       addressKey: 'agent-address',
       fields: [
         'agent-address'
