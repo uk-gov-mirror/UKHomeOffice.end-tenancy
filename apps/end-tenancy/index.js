@@ -16,7 +16,7 @@ module.exports = {
       ],
       next: '/nldp-date',
       forks: [{
-        target: '/request-property-address',
+        target: '/contact',
         condition: {
           field: 'what',
           value: 'request'
@@ -32,6 +32,9 @@ module.exports = {
         section: 'tenant-property',
         'report-link': 'https://eforms.homeoffice.gov.uk/outreach/lcs-reporting.ofml'
       }
+    },
+    '/contact': {
+      controller: require('./controllers/content')
     },
     '/nldp-date': {
       controller: controllers.date,
@@ -167,7 +170,6 @@ module.exports = {
     '/confirm': {
       next: '/confirmation'
     },
-    '/request-property-address': {},
     '/check-nldp-date': {},
     '/confirmation': {}
   }
