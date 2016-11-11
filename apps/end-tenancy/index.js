@@ -167,7 +167,6 @@ module.exports = {
     '/confirm': {
       next: '/confirmation'
     },
-    '/check-nldp-date': {},
     '/confirmation': {}
   }
 };
