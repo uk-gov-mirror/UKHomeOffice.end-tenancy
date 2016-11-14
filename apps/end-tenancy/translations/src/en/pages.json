@@ -31,7 +31,12 @@
     }
   },
   "tenant-details-name": {
-    "header": "What's the name of the person who left the property?",
+    "header": {
+      "what": {
+        "check": "What's the full name of the person that you’d like to check?"
+      },
+      "default": "What's the name of the person who left the property?"
+    },
     "intro": "You can add more people later if required"
   },
   "tenant-details-date": {

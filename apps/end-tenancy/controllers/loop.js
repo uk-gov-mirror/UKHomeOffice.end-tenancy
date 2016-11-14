@@ -67,13 +67,20 @@ module.exports = class LoopController extends DateController {
 
   getNextStep(req, res, callback) {
     const steps = Object.keys(this.options.subSteps);
-    const step = req.params.action;
+    const stepName = req.params.action;
+    const step = this.options.subSteps[stepName];
     const loopCondition = this.options.loopCondition;
-    let index = steps.indexOf(step);
+    let index = steps.indexOf(stepName);
+    step.forks = step.forks || [];
+
+    const next = super.getForkTarget.call(Object.assign({}, this, {
+      options: step
+    }), req, res);
+
     if (index < steps.length - 1) {
-      return req.url.replace(step, steps[index + 1]);
+      return req.url.replace(stepName, next);
     } else if (loopCondition && req.form.values[loopCondition.field] === loopCondition.value) {
-      return req.url.replace(step, steps[0]);
+      return req.url.replace(stepName, steps[0]);
     }
     return super.getNextStep(req, res, callback);
   }

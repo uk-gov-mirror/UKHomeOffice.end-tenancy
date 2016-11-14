@@ -18,6 +18,28 @@ Scenario('I am taken to the name substep when I arrive on the page', (
   I.seeInCurrentUrl(tenantDetailsPage.name.url);
 });
 
+Scenario('I see the correct label if I am on the "report" journey', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'report'
+  });
+  yield I.refreshPage();
+  I.see(tenantDetailsPage.name.content.report);
+});
+
+Scenario('I see the correct label if I am on the "check" journey', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'check'
+  });
+  yield I.refreshPage();
+  I.see(tenantDetailsPage.name.content.check);
+});
+
 Scenario('I submit the form without completing name', (
   I,
   tenantDetailsPage
@@ -34,6 +56,20 @@ Scenario('I enter a name and am taken to the date substep', (
     tenantDetailsPage.name.content.name);
   I.submitForm();
   I.seeInCurrentUrl(tenantDetailsPage.date.url);
+});
+
+Scenario('I am taken to the add-another substep if I am on the "check" journey', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'check'
+  });
+  yield I.refreshPage();
+  I.fillField(tenantDetailsPage.name.fields.name,
+    tenantDetailsPage.name.content.name);
+  I.submitForm();
+  I.seeInCurrentUrl(tenantDetailsPage['add-another'].url);
 });
 
 Scenario('I see an error if I don\'t enter a date', (
