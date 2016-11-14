@@ -5,6 +5,7 @@ const ContactController = require('./controllers/contact');
 const AddressLookupController = require('./controllers/address-lookup');
 const LoopController = require('./controllers/loop');
 const ConfirmController = require('./controllers/confirm');
+const ConfirmationController = require('./controllers/confirmation');
 
 module.exports = {
   name: 'end-tenancy',
@@ -184,6 +185,10 @@ module.exports = {
       emailConfig: require('../../config').email,
       next: '/confirmation'
     },
-    '/confirmation': {}
+    '/confirmation': {
+      controller: ConfirmationController,
+      backLink: false,
+      clearSession: false
+    }
   }
 };
