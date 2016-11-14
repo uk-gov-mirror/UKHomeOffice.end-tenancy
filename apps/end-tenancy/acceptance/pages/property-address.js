@@ -2,6 +2,8 @@
 
 let I;
 
+const translations = require('../../translations/en/default').pages['property-address'].header;
+
 module.exports = {
 
   _init() {
@@ -15,6 +17,8 @@ module.exports = {
       postcode: '#property-address-postcode'
     },
     content: {
+      check: translations.default,
+      report: translations.what.default,
       invalid: '12345',
       valid: 'CR0 2EU',
       notFound: 'AA11 1AA',
