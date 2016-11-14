@@ -103,6 +103,7 @@ module.exports = {
     mixin: 'input-text',
     validate: 'required'
   },
+  'agent-address': {},
   'agent-email-address': {
     mixin: 'input-text',
     validate: ['required', 'email']
@@ -110,5 +111,25 @@ module.exports = {
   'agent-phone-number': {
     mixin: 'input-text',
     validate: ['required', 'numeric']
+  },
+  'declaration-identity': {
+    mixin: 'checkbox',
+    validate: 'required',
+    className: 'label',
+    includeInSummary: false
+  },
+  declaration: {
+    mixin: 'checkbox',
+    validate: 'required',
+    className: 'label',
+    includeInSummary: false,
+    useWhen: {
+      field: 'what',
+      value: 'report'
+    },
+    dependent: {
+      field: 'what',
+      value: 'report'
+    }
   }
 };

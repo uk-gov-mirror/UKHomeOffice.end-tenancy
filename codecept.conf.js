@@ -19,6 +19,7 @@ module.exports = {
     agentDetailsPage: pagesPath('agent-details.js'),
     agentAddressPage: pagesPath('agent-address.js'),
     landlordNamePage: pagesPath('landlord-name.js'),
-    confirmPage: pagesPath('confirm.js')
+    confirmPage: pagesPath('confirm.js'),
+    confirmationPage: pagesPath('confirmation.js')
   }
 };

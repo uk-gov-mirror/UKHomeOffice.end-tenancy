@@ -1,0 +1,13 @@
+{{<partials-page}}
+  {{$page-content}}
+    {{#rows}}
+      {{> partials-summary-table}}
+    {{/rows}}
+    <p>{{#t}}pages.confirm.footer{{/t}}</p>
+    <p>{{#t}}pages.confirm.declaration{{/t}}</p>
+    {{#fields}}
+      {{#renderField}}{{/renderField}}
+    {{/fields}}
+    {{#input-submit}}confirm{{/input-submit}}
+  {{/page-content}}
+{{/partials-page}}

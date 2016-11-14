@@ -66,6 +66,9 @@ module.exports = class LoopController extends DateController {
   }
 
   getNextStep(req, res, callback) {
+    if (req.params.edit) {
+      return this.confirmStep;
+    }
     const steps = Object.keys(this.options.subSteps);
     const step = req.params.action;
     const loopCondition = this.options.loopCondition;
@@ -95,6 +98,14 @@ module.exports = class LoopController extends DateController {
 
   saveValues(req, res, callback) {
     const steps = Object.keys(this.options.subSteps);
+    if (req.params.edit && req.params.id) {
+      const items = req.sessionModel.get(this.options.storeKey) || {};
+      Object.keys(this.options.fields).forEach(field => {
+        items[req.params.id][field] = req.form.values[field];
+      });
+      req.sessionModel.set(this.options.storeKey, items);
+      return callback();
+    }
     if (steps.indexOf(req.params.action) === steps.length - 1) {
       const items = req.sessionModel.get(this.options.storeKey) || {};
       let id = req.params.id;
@@ -103,9 +114,7 @@ module.exports = class LoopController extends DateController {
         req.sessionModel.set(`${this.options.storeKey}-id`, id + 1);
       }
       items[id] = {};
-      Object.keys(_.pickBy(this._fields, field => {
-        return field.includeInSummary !== false;
-      })).forEach(field => {
+      Object.keys(this._fields).forEach(field => {
         items[id][field] = req.sessionModel.get(field);
       });
       req.sessionModel.set(this.options.storeKey, items);
