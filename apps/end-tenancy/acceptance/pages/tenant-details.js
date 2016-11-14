@@ -2,6 +2,8 @@
 
 let I;
 
+const translations = require('../../translations/en/default').pages['tenant-details-name'].header;
+
 module.exports = {
 
   _init() {
@@ -16,7 +18,9 @@ module.exports = {
       name: '#name'
     },
     content: {
-      name: 'Sterling Archer'
+      name: 'Sterling Archer',
+      check: translations.what.check,
+      report: translations.default
     }
   },
 

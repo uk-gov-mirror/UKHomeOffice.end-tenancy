@@ -74,7 +74,14 @@ module.exports = {
         name: {
           fields: [
             'name'
-          ]
+          ],
+          next: 'date',
+          forks: [{
+            target: 'add-another',
+            condition(req) {
+              return req.sessionModel.get('what') === 'check';
+            }
+          }]
         },
         date: {
           template: 'date',
@@ -83,7 +90,8 @@ module.exports = {
             'date-left-day',
             'date-left-month',
             'date-left-year'
-          ]
+          ],
+          next: 'add-another'
         },
         'add-another': {
           fields: [
