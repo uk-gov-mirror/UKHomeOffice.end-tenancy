@@ -56,6 +56,16 @@
     "required": "Tell us your phone number",
     "numeric": "Enter a valid phone number"
   },
+  "agent-address-postcode": {
+    "required": "Enter your company postcode",
+    "postcode": "Enter a valid postcode"
+  },
+  "agent-address-select": {
+    "required": "Select an address"
+  },
+  "agent-address": {
+    "required": "Enter your company address"
+  },
   "landlord-address-postcode": {
     "required": "Enter your postcode",
     "postcode": "Enter a valid postcode"
