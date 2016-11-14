@@ -73,7 +73,7 @@ module.exports = class LoopController extends DateController {
     let index = steps.indexOf(stepName);
     step.forks = step.forks || [];
 
-    const next = super._getForkTarget.call(Object.assign({}, this, {
+    const next = super.getForkTarget.call(Object.assign({}, this, {
       options: step
     }), req, res);
 
