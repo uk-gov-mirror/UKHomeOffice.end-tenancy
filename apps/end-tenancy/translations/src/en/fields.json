@@ -38,16 +38,17 @@
     "label": "Select your address as shown on the Notice"
   },
   "property-address": {
-    "label": "Address"
+    "label": "Address",
+    "summary": "Former address"
   },
   "name": {
     "label": "Full name as it's written on the Notice",
-    "summary": "Name"
+    "summary": "Tenant name"
   },
   "date-left": {
     "label": "When did {{values.name}} leave?",
     "hint": "For example, 31 3 2016",
-    "summary": "Date tenant left"
+    "summary": "Date left"
   },
   "date-left-day": {
     "label": "Day"
@@ -86,29 +87,37 @@
         "landlord": "Your full name"
       },
       "default": "Full name"
-    }
+    },
+    "summary": "Name"
   },
   "landlord-company": {
     "label": "Your company's name",
-    "hint": "(if you have one, if you don't leave blank)"
+    "hint": "(if you have one, if you don't leave blank)",
+    "summary": "Company name"
   },
   "landlord-email-address": {
-    "label": "Your email address"
+    "label": "Your email address",
+    "summary": "Email"
   },
   "landlord-phone-number": {
-    "label": "Your phone number"
+    "label": "Your phone number",
+    "summary": "Phone number"
   },
   "agent-name": {
-    "label": "Your full name"
+    "label": "Your full name",
+    "summary": "Name"
   },
   "agent-company": {
-    "label": "Your company's name"
+    "label": "Your company's name",
+    "summary": "Company name"
   },
   "agent-email-address": {
-    "label": "Your email address"
+    "label": "Your email address",
+    "summary": "Email address"
   },
   "agent-phone-number": {
-    "label": "Your phone number"
+    "label": "Your phone number",
+    "summary": "Phone number"
   },
   "landlord-address-postcode": {
     "label": "Postcode"
@@ -117,8 +126,7 @@
     "label": "Select your address from the list"
   },
   "landlord-address": {
-    "label": "Address",
-    "summary": "Contact address"
+    "label": "Address"
   },
   "landlord-address-use-previous-address": {
     "label": "Use the same address I provided earlier"
@@ -127,10 +135,20 @@
     "label": "Postcode"
   },
   "agent-address": {
-    "label": "Address",
-    "summary": "Contact address"
+    "label": "Address"
   },
   "agent-address-select": {
     "label": "Select your address from the list"
+  },
+  "declaration-identity": {
+    "label": {
+      "who": {
+        "agent": "I confirm I am an agent acting on behalf of the landlord"
+      },
+      "default": "I confirm I am the landlord"
+    }
+  },
+  "declaration": {
+    "label": "I confirm that the information I've submitted is correct to the best of my knowledge"
   }
 }

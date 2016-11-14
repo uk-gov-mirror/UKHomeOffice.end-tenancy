@@ -4,10 +4,11 @@ const controllers = require('hof').controllers;
 const ContactController = require('./controllers/contact');
 const AddressLookupController = require('./controllers/address-lookup');
 const LoopController = require('./controllers/loop');
+const ConfirmController = require('./controllers/confirm');
 
 module.exports = {
   name: 'end-tenancy',
-  params: '/:action?/:id?',
+  params: '/:action?/:id?/:edit?',
   steps: {
     '/': {
       controller: controllers.start,
@@ -83,7 +84,7 @@ module.exports = {
             }
           }]
         },
-        date: {
+        'date-left': {
           template: 'date',
           fields: [
             'date-left',
@@ -105,7 +106,7 @@ module.exports = {
       },
       next: '/landlord-agent',
       locals: {
-        section: 'tenant-property'
+        section: 'tenants-left'
       }
     },
     '/landlord-agent': {
@@ -128,7 +129,10 @@ module.exports = {
         'landlord-company',
         'landlord-email-address',
         'landlord-phone-number'
-      ]
+      ],
+      locals: {
+        section: 'landlord-details'
+      }
     },
     '/landlord-address': {
       controller: AddressLookupController,
@@ -153,7 +157,10 @@ module.exports = {
         'agent-email-address',
         'agent-phone-number'
       ],
-      next: '/agent-address'
+      next: '/agent-address',
+      locals: {
+        section: 'agent-details'
+      }
     },
     '/agent-address': {
       controller: AddressLookupController,
@@ -170,9 +177,19 @@ module.exports = {
       fields: [
         'landlord-name'
       ],
-      next: '/landlord-address'
+      next: '/landlord-address',
+      locals: {
+        section: 'landlord-details'
+      }
     },
     '/confirm': {
+      controller: ConfirmController,
+      fields: [
+        'declaration-identity',
+        'declaration'
+      ],
+      fieldsConfig: require('./fields'),
+      emailConfig: require('../../config').email,
       next: '/confirmation'
     },
     '/confirmation': {}

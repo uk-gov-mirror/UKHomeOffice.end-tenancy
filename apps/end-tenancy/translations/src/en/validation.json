@@ -20,6 +20,14 @@
   "name": {
     "required": "Enter the name of the person who left the property"
   },
+  "date-left": {
+    "required": "Enter a date",
+    "numeric": "Enter a valid date",
+    "future": "Date cannot be in the future"
+  },
+  "add-another": {
+    "required": "Tell us if anyone else listed on the notice has left the property"
+  },
   "who": {
     "required": "Tell us who you are"
   },
@@ -48,6 +56,16 @@
     "required": "Tell us your phone number",
     "numeric": "Enter a valid phone number"
   },
+  "agent-address-postcode": {
+    "required": "Enter your company postcode",
+    "postcode": "Enter a valid postcode"
+  },
+  "agent-address-select": {
+    "required": "Select an address"
+  },
+  "agent-address": {
+    "required": "Enter your company address"
+  },
   "landlord-address-postcode": {
     "required": "Enter your postcode",
     "postcode": "Enter a valid postcode"
@@ -57,5 +75,16 @@
   },
   "landlord-address": {
     "required": "Enter your address"
+  },
+  "declaration-identity": {
+    "required": {
+      "who": {
+        "agent": "Confirm you are an agent acting on behalf of the landlord"
+      },
+      "default": "Confirm you are the landlord"
+    }
+  },
+  "declaration": {
+    "required": "Confirm the information you have provided is correct to the best of your knowledge"
   }
 }

@@ -2,6 +2,15 @@
   "tenant-property": {
     "header": "Tenant and property details"
   },
+  "tenants-left": {
+    "header": "Tenants that left"
+  },
+  "landlord-details": {
+    "header": "Landlord details"
+  },
+  "agent-details": {
+    "header": "Agent details"
+  },
   "what": {
     "header": "What do you want to do?",
     "report": "Placeholder text for <a href=\"{{report-link}}\">make a report</a>"
@@ -39,18 +48,12 @@
     },
     "intro": "You can add more people later if required"
   },
-  "tenant-details-date": {
+  "tenant-details-date-left": {
     "header": "When did {{values.name}} leave?",
     "intro": "If you don't know the exact date then please put the first date you knew they had left."
   },
   "tenant-details-add-another": {
     "header": "Has anyone else listed on the Notice left the property?"
-  },
-  "landlord-details": {
-    "header": "Landlord details"
-  },
-  "agent-details": {
-    "header": "Agent details"
   },
   "landlord-address": {
     "header": {
@@ -66,5 +69,11 @@
   },
   "landlord-name": {
     "header": "What are the landlord's details?"
+  },
+  "confirm": {
+    "header": "Check your answers",
+    "intro": "Check the following information carefully and make any changes needed before you submit this report.",
+    "footer": "When you've submitted this report we'll email you a copy of the information you've provided.",
+    "declaration": "By submitting this report (tick the following):"
   }
 }
