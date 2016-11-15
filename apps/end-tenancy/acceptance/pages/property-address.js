@@ -18,7 +18,7 @@ module.exports = {
     },
     content: {
       check: translations.default,
-      report: translations.what.default,
+      report: translations.what.report,
       invalid: '12345',
       valid: 'CR0 2EU',
       notFound: 'AA11 1AA',

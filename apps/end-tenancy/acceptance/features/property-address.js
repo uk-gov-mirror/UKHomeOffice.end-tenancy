@@ -26,7 +26,7 @@ Scenario('I see the correct header if I previously selected "report"', function 
     what: 'report'
   });
   yield I.refreshPage();
-  I.see(propertyAddressPage.content.report);
+  I.see(propertyAddressPage.postcode.content.report);
 });
 
 Scenario('I see the correct header if I previously selected "check"', function *(
@@ -37,7 +37,7 @@ Scenario('I see the correct header if I previously selected "check"', function *
     what: 'check'
   });
   yield I.refreshPage();
-  I.see(propertyAddressPage.content.check);
+  I.see(propertyAddressPage.postcode.content.check);
 });
 
 Scenario('I see the postcode entry field', (
@@ -146,23 +146,16 @@ Scenario('I am taken to the postcode step if I click the change-postcode link', 
   I.seeInCurrentUrl(propertyAddressPage.postcode.url);
 });
 
-Scenario('I am taken to the address step if I select a valid address', (
+Scenario('I am taken to the tenant-details step if I select a valid address', (
   I,
-  propertyAddressPage
+  propertyAddressPage,
+  tenantDetailsPage
 ) => {
   propertyAddressPage.enterValidPostcode();
   I.selectOption(propertyAddressPage.lookup.fields['address-select'],
     propertyAddressPage.lookup.content['address-select']);
   I.submitForm();
-  I.seeInCurrentUrl(propertyAddressPage.address.url);
-});
-
-Scenario('The address field is populated with with the address after submitting', (
-  I,
-  propertyAddressPage
-) => {
-  propertyAddressPage.selectAddressAndSubmit();
-  I.see(propertyAddressPage.address.content);
+  I.seeInCurrentUrl(tenantDetailsPage.url);
 });
 
 Scenario('I am taken to the tenant-details page on a valid submission', (
