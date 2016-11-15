@@ -15,5 +15,8 @@
 
     </fieldset>
     {{#input-submit}}continue{{/input-submit}}
+    {{#hasItems}}
+      {{> partials-items-table}}
+    {{/hasItems}}
   {{/page-content}}
 {{/partials-page}}

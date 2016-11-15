@@ -84,7 +84,7 @@ module.exports = class LoopController extends DateController {
     if (index < steps.length - 1) {
       return req.url.replace(stepName, next);
     } else if (loopCondition && req.form.values[loopCondition.field] === loopCondition.value) {
-      return req.url.replace(stepName, steps[0]);
+      return req.url.replace(stepName, steps[0]).replace(req.params.id, '');
     }
     return super.getNextStep(req, res, callback);
   }
@@ -114,19 +114,27 @@ module.exports = class LoopController extends DateController {
       req.sessionModel.set(this.options.storeKey, items);
       return callback();
     }
-    if (steps.indexOf(req.params.action) === steps.length - 1) {
-      const items = req.sessionModel.get(this.options.storeKey) || {};
-      let id = req.params.id;
-      if (id === undefined) {
-        id = parseInt(req.sessionModel.get(`${this.options.storeKey}-id`) || 0, 10);
-        req.sessionModel.set(`${this.options.storeKey}-id`, id + 1);
-      }
-      items[id] = {};
-      Object.keys(this._fields).forEach(field => {
-        items[id][field] = req.sessionModel.get(field);
+    if (steps.indexOf(req.params.action) === steps.length - 2) {
+      return super.saveValues(req, res, (err) => {
+        if (err) {
+          return callback(err);
+        }
+        const items = req.sessionModel.get(this.options.storeKey) || {};
+        let id = req.params.id;
+        if (id === undefined) {
+          id = parseInt(req.sessionModel.get(`${this.options.storeKey}-id`) || 0, 10);
+          req.sessionModel.set(`${this.options.storeKey}-id`, id + 1);
+        }
+        items[id] = {};
+        Object.keys(this._fields).forEach(field => {
+          items[id][field] = req.sessionModel.get(field);
+        });
+        req.sessionModel.set(this.options.storeKey, items);
+        req.sessionModel.unset(Object.keys(this._fields));
+        return callback();
       });
-      req.sessionModel.set(this.options.storeKey, items);
-      req.sessionModel.unset(Object.keys(this._fields));
+    }
+    if (steps.indexOf(req.params.action) === steps.length - 1) {
       return callback();
     }
     return super.saveValues(req, res, callback);
@@ -137,9 +145,16 @@ module.exports = class LoopController extends DateController {
     const pagePath = `${locals.route}-${req.params.action}`;
     const title = hoganRender(conditionalTranslate(`pages.${pagePath}.header`, req.translate), res.locals);
     const intro = hoganRender(conditionalTranslate(`pages.${pagePath}.intro`, req.translate), res.locals);
+    const items = _.map(req.sessionModel.get(this.options.storeKey), (item, id) => ({
+      id,
+      name: item.name
+    }));
     return Object.assign({}, locals, {
       title,
-      intro
+      intro,
+      items,
+      summaryTitle: req.translate('pages.tenant-details.summary-title'),
+      hasItems: items.length
     });
   }
 };
