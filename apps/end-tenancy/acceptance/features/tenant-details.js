@@ -18,6 +18,29 @@ Scenario('I am taken to the name substep when I arrive on the page', (
   I.seeInCurrentUrl(tenantDetailsPage.name.url);
 });
 
+Scenario('I do not see a summary table if no tenants have been added', (
+  I,
+  tenantDetailsPage
+) => {
+  I.dontSeeElement(tenantDetailsPage.summaryTable);
+});
+
+Scenario('I see a summary table if a tenant has been added', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield I.setSessionData(steps.name, {
+    tenants: {
+      0: {
+        name: 'Sterling Archer',
+        'date-left': '01-01-2001'
+      }
+    }
+  });
+  yield I.refreshPage();
+  I.seeElement(tenantDetailsPage.summaryTable);
+});
+
 Scenario('I see the correct label if I am on the "report" journey', function *(
   I,
   tenantDetailsPage

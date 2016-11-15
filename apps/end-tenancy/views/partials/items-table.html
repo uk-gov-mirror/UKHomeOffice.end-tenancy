@@ -1,0 +1,13 @@
+<div class="loop-summary-table">
+  <h2>{{summaryTitle}}</h2>
+  <table>
+    <tbody>
+      {{#items}}
+        <tr>
+          <td>{{name}}</td>
+          <td class="numeric"><a href="{{baseUrl}}/{{route}}/name/{{id}}" class="button">{{#t}}buttons.change{{/t}}</a></td>
+        </tr>
+      {{/items}}
+    </tbody>
+  </table>
+</div>

@@ -12,6 +12,8 @@ module.exports = {
 
   url: 'tenant-details',
 
+  summaryTable: '.loop-summary-table',
+
   name: {
     url: '/name',
     fields: {

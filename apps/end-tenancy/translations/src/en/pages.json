@@ -39,6 +39,9 @@
       "default": "What's the property address?"
     }
   },
+  "tenant-details": {
+    "summary-title": "Tenants"
+  },
   "tenant-details-name": {
     "header": {
       "what": {
