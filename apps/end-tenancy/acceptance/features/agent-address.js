@@ -124,23 +124,16 @@ Scenario('I am taken to the postcode step if I click the change-postcode link', 
   I.seeInCurrentUrl(agentAddressPage.postcode.url);
 });
 
-Scenario('I am taken to the address step if I select a valid address', (
+Scenario('I am taken to the landlord name step if I select a valid address', (
   I,
-  agentAddressPage
+  agentAddressPage,
+  landlordNamePage
 ) => {
   agentAddressPage.enterValidPostcode();
   I.selectOption(agentAddressPage.lookup.fields['address-select'],
     agentAddressPage.lookup.content['address-select']);
   I.submitForm();
-  I.seeInCurrentUrl(agentAddressPage.address.url);
-});
-
-Scenario('The address field is populated with with the address after submitting', (
-  I,
-  agentAddressPage
-) => {
-  agentAddressPage.selectAddressAndSubmit();
-  I.see(agentAddressPage.address.content);
+  I.seeInCurrentUrl(landlordNamePage.url);
 });
 
 Scenario('I am taken to the landlord name page on a valid submission', (

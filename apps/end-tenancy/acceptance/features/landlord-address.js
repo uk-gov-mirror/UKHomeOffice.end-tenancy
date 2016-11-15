@@ -142,23 +142,16 @@ Scenario('I am taken to the postcode step if I click the change-postcode link', 
   I.seeInCurrentUrl(landlordAddressPage.postcode.url);
 });
 
-Scenario('I am taken to the address step if I select a valid address', (
+Scenario('I am taken to the confirm step if I select a valid address', (
   I,
-  landlordAddressPage
+  landlordAddressPage,
+  confirmPage
 ) => {
   landlordAddressPage.enterValidPostcode();
   I.selectOption(landlordAddressPage.lookup.fields['address-select'],
     landlordAddressPage.lookup.content['address-select']);
   I.submitForm();
-  I.seeInCurrentUrl(landlordAddressPage.address.url);
-});
-
-Scenario('The address field is populated with with the address after submitting', (
-  I,
-  landlordAddressPage
-) => {
-  landlordAddressPage.selectAddressAndSubmit();
-  I.see(landlordAddressPage.address.content);
+  I.seeInCurrentUrl(confirmPage.url);
 });
 
 Scenario('I am taken to the confirm page on a valid submission', (

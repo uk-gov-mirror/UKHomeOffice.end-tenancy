@@ -110,8 +110,6 @@ module.exports = class AddressLookup extends BaseController {
     ) {
       const newPath = req.sessionModel.get(`${this.addressKey}-addresses`) ? '/lookup' : '/address';
       return req.url.replace('/postcode', newPath);
-    } else if (req.params.action === 'lookup') {
-      return req.url.replace('/lookup', '/address');
     }
     return step;
   }
