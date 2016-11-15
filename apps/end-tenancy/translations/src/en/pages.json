@@ -75,5 +75,12 @@
     "intro": "Check the following information carefully and make any changes needed before you submit this report.",
     "footer": "When you've submitted this report we'll email you a copy of the information you've provided.",
     "declaration": "By submitting this report (tick the following):"
+  },
+  "confirmation": {
+    "alert-report": "Thank you for letting us know that a disqualified person has left your property.",
+    "alert-check": "Your request to check if a person is still disqualified from renting has been sent.",
+    "subheader": "What happens next?",
+    "content-report": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm that we received your request. Please keep a copy of this email for your records.<br /><br />The information you have provided is very important and will be used by the Home Office to tackle illegal immigration. We will update our records.<br /><br /><a href=\"/\">Report</a> that another disqualified person under a different Notice of Letting to a Disqualified Person has left your property.<br /><br /><a href=\"/\">What did you think of this service?</a> (takes 30 seconds)",
+    "content-check": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm receipt of your request. Please keep a copy of this email so you have a record of this.<br /><br />You’ll get a reply by email within five working days. In the unlikely event that you don't hear from us after this time, please call us on xxx.<br /><br /><a href=\"/\">Tell us</a> about another NLDP<br /><br /><a href=\"/\">What did you think of this service?</a> (takes 30 seconds)"
   }
 }
