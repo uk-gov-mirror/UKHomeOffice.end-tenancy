@@ -6,7 +6,6 @@ const _ = require('lodash');
 const Hogan = require('hogan.js');
 const controllers = require('hof').controllers;
 const DateController = controllers.date;
-const BaseController = controllers.base;
 
 function hoganRender(input, ctx) {
   if (input) {
@@ -78,7 +77,9 @@ module.exports = class LoopController extends DateController {
     let index = steps.indexOf(stepName);
     step.forks = step.forks || [];
 
-    const next = this.getForkTarget.call(new BaseController(step), req, res);
+    const next = super._getForkTarget.call(Object.assign({}, this, {
+      options: step
+    }), req, res);
 
     if (index < steps.length - 1) {
       return req.url.replace(stepName, next);
