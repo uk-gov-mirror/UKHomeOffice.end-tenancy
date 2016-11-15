@@ -28,6 +28,9 @@ module.exports = class ConfirmController extends controllers.confirm {
 
   post(req, res, callback) {
     this.setFields(req);
+    this.options.customerEmailField = req.sessionModel.get('who') === 'landlord' ?
+      'landlord-email-address' :
+      'agent-email-address';
     return super.post(req, res, callback);
   }
 
