@@ -77,7 +77,7 @@ module.exports = {
           fields: [
             'name'
           ],
-          next: 'date',
+          next: 'date-left',
           forks: [{
             target: 'add-another',
             condition(req) {
