@@ -78,7 +78,7 @@ Scenario('I see the correct table information if I am a landlord checking a sing
   confirmPage.checkData('check-landlord');
 });
 
-Scenario.only('I am taken to the confirmation page if I accept the declaration', function *(
+Scenario('I am taken to the confirmation page if I accept the declaration', function *(
   I,
   confirmPage,
   confirmationPage
