@@ -87,21 +87,21 @@
     "content-check": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm receipt of your request. Please keep a copy of this email so you have a record of this.<br /><br />You’ll get a reply by email within five working days. In the unlikely event that you don't hear from us after this time, please call us on xxx.<br /><br /><a href=\"/\">Tell us</a> about another NLDP<br /><br /><a href=\"/\">What did you think of this service?</a> (takes 30 seconds)"
   },
   "email": {
-    "subject": "Bacon ipsum",
+    "subject": "Placeholder subject",
     "intro": {
       "customer": [
-        "Bacon ipsum dolor amet turducken flank tri-tip landjaeger chicken beef ribs, andouille drumstick doner beef kielbasa strip steak brisket salami shoulder. Ribeye jerky drumstick prosciutto leberkas jowl filet mignon. Pig meatball shank doner chicken jerky. Leberkas spare ribs doner ham tongue alcatra salami meatball meatloaf picanha venison short loin rump sirloin swine."
+        "Placeholder intro - customer"
       ],
       "caseworker": [
-        "Bacon ipsum dolor amet turducken flank tri-tip landjaeger chicken beef ribs, andouille drumstick doner beef kielbasa strip steak brisket salami shoulder. Ribeye jerky drumstick prosciutto leberkas jowl filet mignon. Pig meatball shank doner chicken jerky. Leberkas spare ribs doner ham tongue alcatra salami meatball meatloaf picanha venison short loin rump sirloin swine."
+        "Placeholder intro - caseworker"
       ]
     },
     "outro": {
       "customer": [
-        "Bacon ipsum dolor amet turducken flank tri-tip landjaeger chicken beef ribs, andouille drumstick doner beef kielbasa strip steak brisket salami shoulder. Ribeye jerky drumstick prosciutto leberkas jowl filet mignon. Pig meatball shank doner chicken jerky. Leberkas spare ribs doner ham tongue alcatra salami meatball meatloaf picanha venison short loin rump sirloin swine."
+        "Placeholder outro - customer"
       ],
       "caseworker": [
-        "Bacon ipsum dolor amet turducken flank tri-tip landjaeger chicken beef ribs, andouille drumstick doner beef kielbasa strip steak brisket salami shoulder. Ribeye jerky drumstick prosciutto leberkas jowl filet mignon. Pig meatball shank doner chicken jerky. Leberkas spare ribs doner ham tongue alcatra salami meatball meatloaf picanha venison short loin rump sirloin swine."
+        "Placeholder outro - caseworker"
       ]
     }
   }
