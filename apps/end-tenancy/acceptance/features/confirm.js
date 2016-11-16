@@ -78,11 +78,12 @@ Scenario('I see the correct table information if I am a landlord checking a sing
   confirmPage.checkData('check-landlord');
 });
 
-Scenario('I am taken to the confirmation page if I accept the declaration', (
+Scenario('I am taken to the confirmation page if I accept the declaration', function *(
   I,
   confirmPage,
   confirmationPage
-) => {
+) {
+  yield confirmPage.setSessionData(steps.name, 'check-landlord');
   I.checkOption(confirmPage.fields['declaration-identity']);
   I.submitForm();
   I.seeInCurrentUrl(confirmationPage.url);
