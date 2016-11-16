@@ -34,6 +34,7 @@ module.exports = class LoopController extends DateController {
   get(req, res, callback) {
     if (!req.params.action ||
       Object.keys(this.options.subSteps).indexOf(req.params.action) === -1 ||
+      !req.params.edit &&
       _.some(this.options.subSteps[req.params.action].prereqs, prereq =>
         req.sessionModel.get(prereq) === undefined
       )
