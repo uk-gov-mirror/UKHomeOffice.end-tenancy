@@ -34,9 +34,17 @@ module.exports = class ConfirmController extends controllers.confirm {
     return super.post(req, res, callback);
   }
 
-  locals(req, res) {
-    const locals = super.locals(req, res);
-    const rows = locals.rows;
+  getValues(req, res, callback) {
+    this.addLoopSection(req);
+    return super.getValues(req, res, callback);
+  }
+
+  saveValues(req, res, callback) {
+    this.addLoopSection(req);
+    return super.saveValues(req, res, callback);
+  }
+
+  addLoopSection(req) {
     const loopStep = this.options.steps['/tenant-details'];
     const tenants = req.sessionModel.get(loopStep.storeKey);
 
@@ -60,10 +68,6 @@ module.exports = class ConfirmController extends controllers.confirm {
       fields
     };
 
-    rows.splice(1, 0, section);
-
-    return Object.assign({}, locals, {
-      rows
-    });
+    this.formattedData.splice(1, 0, section);
   }
 };
