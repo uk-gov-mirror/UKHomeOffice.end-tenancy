@@ -93,6 +93,9 @@ module.exports = {
             'date-left-month',
             'date-left-year'
           ],
+          prereqs: [
+            'name'
+          ],
           next: 'add-another'
         },
         'add-another': {
