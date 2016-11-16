@@ -33,7 +33,10 @@ module.exports = class LoopController extends DateController {
 
   get(req, res, callback) {
     if (!req.params.action ||
-      Object.keys(this.options.subSteps).indexOf(req.params.action) === -1
+      Object.keys(this.options.subSteps).indexOf(req.params.action) === -1 ||
+      _.some(this.options.subSteps[req.params.action].prereqs, prereq =>
+        req.sessionModel.get(prereq) === undefined
+      )
     ) {
       const step = Object.keys(this.options.subSteps)[0];
       return res.redirect(`${req.baseUrl.replace(/\/$/, '')}${this.options.route.replace(/\/$/, '')}/${step}`);
@@ -94,7 +97,7 @@ module.exports = class LoopController extends DateController {
     const step = req.params.action;
     let index = steps.indexOf(step);
     if (index > 0) {
-      return req.url.replace(step, steps[index - 1]);
+      return req.url.replace(step, steps[0]);
     }
     return super.getBackLink(req, res, callback);
   }
