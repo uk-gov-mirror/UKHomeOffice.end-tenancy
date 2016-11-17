@@ -6,7 +6,6 @@ const _ = require('lodash');
 const Hogan = require('hogan.js');
 const controllers = require('hof').controllers;
 const DateController = controllers.date;
-const BaseController = controllers.base;
 
 function hoganRender(input, ctx) {
   if (input) {
@@ -94,7 +93,9 @@ module.exports = class LoopController extends DateController {
 
   getNext(req, res) {
     const step = this.options.subSteps[req.params.action];
-    return super.getForkTarget.call(new BaseController(step), req, res);
+    return super._getForkTarget.call(Object.assign({}, {
+      options: step
+    }), req, res);
   }
 
   getBackLink(req, res, callback) {
