@@ -6,6 +6,7 @@ const _ = require('lodash');
 const Hogan = require('hogan.js');
 const controllers = require('hof').controllers;
 const DateController = controllers.date;
+const BaseController = controllers.base;
 
 function hoganRender(input, ctx) {
   if (input) {
@@ -81,9 +82,7 @@ module.exports = class LoopController extends DateController {
     let index = steps.indexOf(stepName);
     step.forks = step.forks || [];
 
-    const next = super._getForkTarget.call(Object.assign({}, this, {
-      options: step
-    }), req, res);
+    const next = this.getNext(req, res);
 
     if (index < steps.length - 1) {
       return req.url.replace(stepName, next);
@@ -91,6 +90,11 @@ module.exports = class LoopController extends DateController {
       return req.url.replace(stepName, steps[0]).replace(req.params.id, '');
     }
     return super.getNextStep(req, res, callback);
+  }
+
+  getNext(req, res) {
+    const step = this.options.subSteps[req.params.action];
+    return super.getForkTarget.call(new BaseController(step), req, res);
   }
 
   getBackLink(req, res, callback) {
@@ -118,7 +122,7 @@ module.exports = class LoopController extends DateController {
       req.sessionModel.set(this.options.storeKey, items);
       return callback();
     }
-    if (steps.indexOf(req.params.action) === steps.length - 2) {
+    if (this.getNext(req, res) === steps[steps.length - 1]) {
       return super.saveValues(req, res, (err) => {
         if (err) {
           return callback(err);
