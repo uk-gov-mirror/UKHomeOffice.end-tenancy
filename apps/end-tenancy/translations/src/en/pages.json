@@ -93,13 +93,9 @@
     },
     "intro": {
       "customer": [
-        "Ending a tenancy due to immigration status",
         "Thank you for using our service for ending a tenancy due to immigration status. Please keep a copy of this email for your records. The details you submitted are below.",
         "If you have checked if someone is still disqualified from renting, we will respond to your query within 5 working days.",
         "If you have reported that a disqualified person has left your property, please accept this email as confirmation that we have received your report. We will only be in touch with you again if we have queries."
-      ],
-      "caseworker": [
-        "Ending a tenancy due to immigration status"
       ]
     },
     "outro": {
