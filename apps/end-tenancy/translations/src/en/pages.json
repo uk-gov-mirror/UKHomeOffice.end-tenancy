@@ -1,30 +1,36 @@
 {
-  "tenant-property": {
-    "header": "Tenant and property details"
+  "key-details": {
+    "header": "Key details"
   },
   "tenants-left": {
-    "header": "Tenants that left"
+    "header": {
+      "what": {
+        "report": "Tenants who have left"
+      },
+      "default": "Tenants you are checking"
+    }
   },
   "landlord-details": {
-    "header": "Landlord details"
+    "header": "Landlord details",
+    "intro": "We need these details in case we need to contact you with queries."
   },
   "agent-details": {
-    "header": "Agent details"
+    "header": "Agent details",
+    "intro": "We need these details in case we need to contact you with queries."
   },
   "what": {
     "header": "What do you want to do?",
-    "report": "Placeholder text for <a href=\"{{report-link}}\">make a report</a>"
+    "report": "If a person living in your property has failed a <a href=\"{{right-to-rent-check-link}}\">follow-up right to rent check</a> you need to <a href=\"{{report-link}}\">make a report</a> to the Home Office."
   },
   "nldp-date": {
     "intro": {
       "what": {
-        "check": "The Home Office will write to you if someone who is named on a Notice of Letting to a Disqualified Person is no longer disqualified from renting. However if some time has passed since you received a Notice of Letting to a Disqualified Person you may wish to be completely sure that it is still valid before you use it to end a tenancy."
-      },
-      "default": "If you have another Notice you can add this later."
+        "report": "If you have another Notice of Letting to a Disqualified Person you can add this later."
+      }
     }
   },
   "address-lookup": {
-    "cantfind": "I can't find my address in the list",
+    "cantfind": "I can't find the address in the list",
     "edit": "Change",
     "postcode-api": {
       "not-found": "Sorry – we couldn’t find any addresses for that postcode, enter your address manually",
@@ -45,46 +51,63 @@
   "tenant-details-name": {
     "header": {
       "what": {
-        "check": "What's the full name of the person that you’d like to check?"
+        "check": "What's the full name of the {{next}}person that you’d like to check?"
       },
-      "default": "What's the name of the person who left the property?"
+      "default": "What's the name of the {{next}}person who left the property?"
     },
-    "intro": "You can add more people later if required"
+    "intro": "You can add more people later if you need to."
   },
   "tenant-details-date-left": {
     "header": "When did {{values.name}} leave?",
     "intro": "If you don't know the exact date then please put the first date you knew they had left."
   },
   "tenant-details-add-another": {
-    "header": "Has anyone else listed on the Notice left the property?"
+    "header": "Has anyone else listed on the same Notice of Letting to a Disqualified Person left the property?"
   },
   "landlord-address": {
     "header": {
       "who": {
         "landlord": "What's your contact address?"
       },
-      "default": "What's the landlord's contact address?"
+      "default": "What's the landlord's postal address?"
+    },
+    "intro": {
+      "who": {
+        "landlord": "You should only use the property address you provided earlier if you are the landlord and you live at this address."
+      },
+      "default": "We need these details for identification purposes."
     }
   },
   "agent-address": {
-    "header": "Agent's postal address",
-    "intro": "We need these details in case we have any queries"
-  },
-  "landlord-name": {
-    "header": "What are the landlord's details?"
+    "header": "What's the agent's contact address?"
   },
   "confirm": {
     "header": "Check your answers",
-    "intro": "Check the following information carefully and make any changes needed before you submit this report.",
-    "footer": "When you've submitted this report we'll email you a copy of the information you've provided.",
-    "declaration": "By submitting this report (tick the following):"
+    "intro": {
+      "what": {
+        "report": "Check the following information carefully and make any changes needed before you submit this report."
+      },
+      "default": "Check the following information carefully and make any changes needed before you submit this enquiry."
+    },
+    "footer": {
+      "what": {
+        "report": "When you've submitted this report we'll email you a copy of the information you've provided."
+      },
+      "default": "When you've submitted this enquiry we'll email you a copy of the information you've provided."
+    },
+    "declaration": {
+      "what": {
+        "report": "By submitting this report (tick the following):"
+      },
+      "default": "By submitting this enquiry (tick the following):"
+    }
   },
   "confirmation": {
     "alert-report": "Thank you for letting us know that a disqualified person has left your property.",
     "alert-check": "Your request to check if a person is still disqualified from renting has been sent.",
     "subheader": "What happens next?",
-    "content-report": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm that we received your request. Please keep a copy of this email for your records.<br /><br />The information you have provided is very important and will be used by the Home Office to tackle illegal immigration. We will update our records.<br /><br /><a href=\"/\">Report</a> that another disqualified person under a different Notice of Letting to a Disqualified Person has left your property.<br /><br /><a href=\"/\">What did you think of this service?</a> (takes 30 seconds)",
-    "content-check": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm receipt of your request. Please keep a copy of this email so you have a record of this.<br /><br />You’ll get a reply by email within five working days. In the unlikely event that you don't hear from us after this time, please call us on xxx.<br /><br /><a href=\"/\">Tell us</a> about another NLDP<br /><br /><a href=\"/\">What did you think of this service?</a> (takes 30 seconds)"
+    "content-report": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm that we've received your request. Please keep a copy of this email for your records.<br /><br />The information you have provided is very important and will be used by the Home Office to tackle illegal immigration. We will update our records.<br /><br /><a href=\"/\">Report that someone else</a> under a different Notice of Letting to a Disqualified Person has left your property.<br /><br /><a href=\"/\">What did you think of this service?</a> (takes 30 seconds)",
+    "content-check": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm that we've received your request. Please keep a copy of this email for your records.<br /><br />You’ll get a reply by email within 5 working days. In the unlikely event that you have not from us after this time, please call the landlord's helpline on 0300 069 9799.<br /><br /><a href=\"/\">Check if someone named on a different Notice of Letting to a Disqualified Person</a> is still disqualified from renting<br /><br /><a href=\"/\">What did you think of this service?</a> (takes 30 seconds)"
   },
   "email": {
     "subject": {

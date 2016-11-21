@@ -45,15 +45,6 @@ Scenario('I see an error if I enter an invalid email address', (
   I.seeErrors(agentDetailsPage.fields.email);
 });
 
-Scenario('I see an error if I enter an invalid phone number', (
-  I,
-  agentDetailsPage
-) => {
-  I.fillField(agentDetailsPage.fields.phone, agentDetailsPage.content.invalidPhone);
-  I.submitForm();
-  I.seeErrors(agentDetailsPage.fields.phone);
-});
-
 Scenario('I am taken to the agent address step on a valid submission', (
   I,
   agentDetailsPage,

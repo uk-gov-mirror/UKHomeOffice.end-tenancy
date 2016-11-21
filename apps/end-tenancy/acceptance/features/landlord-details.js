@@ -44,15 +44,6 @@ Scenario('I see an error if I enter an invalid email address', (
   I.seeErrors(landlordDetailsPage.fields.email);
 });
 
-Scenario('I see an error if I enter an invalid phone number', (
-  I,
-  landlordDetailsPage
-) => {
-  I.fillField(landlordDetailsPage.fields.phone, landlordDetailsPage.content.invalidPhone);
-  I.submitForm();
-  I.seeErrors(landlordDetailsPage.fields.phone);
-});
-
 Scenario('I am taken to the landlord address step on a valid submission', (
   I,
   landlordDetailsPage,

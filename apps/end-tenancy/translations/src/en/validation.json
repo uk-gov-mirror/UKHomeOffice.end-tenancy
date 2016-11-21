@@ -34,6 +34,9 @@
   "landlord-name": {
     "required": "Tell us your full name"
   },
+  "landlord-name-agent": {
+    "required": "Tell us the landlord's full name"
+  },
   "landlord-email-address": {
     "required": "Tell us your email address",
     "email": "Enter a valid email address"

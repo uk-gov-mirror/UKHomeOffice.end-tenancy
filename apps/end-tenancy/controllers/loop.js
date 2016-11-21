@@ -150,12 +150,19 @@ module.exports = class LoopController extends DateController {
   locals(req, res) {
     const locals = super.locals(req, res);
     const pagePath = `${locals.route}-${req.params.action}`;
-    const title = hoganRender(conditionalTranslate(`pages.${pagePath}.header`, req.translate), res.locals);
-    const intro = hoganRender(conditionalTranslate(`pages.${pagePath}.intro`, req.translate), res.locals);
     const items = _.map(req.sessionModel.get(this.options.storeKey), (item, id) => ({
       id,
       name: item.name
     }));
+    const title = hoganRender(conditionalTranslate(`pages.${pagePath}.header`, req.translate),
+      Object.assign({}, res.locals, {
+        next: items.length ? 'next ' : null
+      })
+    );
+    const intro = items.length ?
+      undefined :
+      hoganRender(conditionalTranslate(`pages.${pagePath}.intro`, req.translate), res.locals);
+
     return Object.assign({}, locals, {
       title,
       intro,
