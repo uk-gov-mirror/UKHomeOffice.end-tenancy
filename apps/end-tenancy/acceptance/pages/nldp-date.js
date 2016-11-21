@@ -18,8 +18,7 @@ module.exports = {
     year: '#nldp-date-year'
   },
   content: {
-    check: translations.what.check,
-    report: translations.default,
+    report: translations.what.report,
     'future-date': {
       day: '1',
       month: '1',

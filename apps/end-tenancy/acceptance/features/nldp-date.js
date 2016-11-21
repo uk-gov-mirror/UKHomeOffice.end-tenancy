@@ -23,17 +23,6 @@ Scenario('The correct fields are on the page', (
   ]);
 });
 
-Scenario('I see the correct text if I have previously selected "check"', function *(
-  I,
-  reportDatePage
-) {
-  yield I.setSessionData(steps.name, {
-    what: 'check'
-  });
-  yield I.refreshPage();
-  I.see(reportDatePage.content.check);
-});
-
 Scenario('I see the correct text if I have previously selected "report"', function *(
   I,
   reportDatePage

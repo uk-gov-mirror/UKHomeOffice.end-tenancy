@@ -84,6 +84,11 @@ module.exports = {
     mixin: 'input-text',
     validate: 'required'
   },
+  'landlord-name-agent': {
+    mixin: 'input-text',
+    validate: 'required',
+    labelClassName: 'visuallyhidden'
+  },
   'landlord-company': {
     mixin: 'input-text'
   },
@@ -93,7 +98,7 @@ module.exports = {
   },
   'landlord-phone-number': {
     mixin: 'input-text',
-    validate: ['required', 'numeric']
+    validate: ['required']
   },
   'agent-company': {
     mixin: 'input-text',
@@ -110,7 +115,7 @@ module.exports = {
   },
   'agent-phone-number': {
     mixin: 'input-text',
-    validate: ['required', 'numeric']
+    validate: ['required']
   },
   'declaration-identity': {
     mixin: 'checkbox',

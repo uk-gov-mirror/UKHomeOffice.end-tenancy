@@ -172,3 +172,25 @@ Scenario('I can edit a previously added tenant name', (
   I.amOnPage(`/${tenantDetailsPage.url}${tenantDetailsPage.name.url}/0`);
   I.seeInField(tenantDetailsPage.name.fields.name, tenantDetailsPage.name.content.name);
 });
+
+Scenario('I see the correct title if I am reporting a second tenant', (
+  I,
+  tenantDetailsPage
+) => {
+  tenantDetailsPage.addTenant();
+  I.see(tenantDetailsPage.name.content.reportAnother);
+});
+
+Scenario('I see the correct title if I am checking a second tenant', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'check'
+  });
+  yield I.refreshPage();
+  tenantDetailsPage.enterNameAndSubmit();
+  I.checkOption(tenantDetailsPage['add-another'].fields.yes);
+  I.submitForm();
+  I.see(tenantDetailsPage.name.content.checkAnother);
+});

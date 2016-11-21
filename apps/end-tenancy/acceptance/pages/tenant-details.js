@@ -21,8 +21,10 @@ module.exports = {
     },
     content: {
       name: 'Sterling Archer',
-      check: translations.what.check,
-      report: translations.default
+      check: translations.what.check.replace('{{next}}', ''),
+      report: translations.default.replace('{{next}}', ''),
+      checkAnother: translations.what.check.replace('{{next}}', 'next '),
+      reportAnother: translations.default.replace('{{next}}', 'next ')
     }
   },
 

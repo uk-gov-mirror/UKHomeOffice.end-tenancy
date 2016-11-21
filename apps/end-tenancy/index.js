@@ -28,8 +28,9 @@ module.exports = {
         }
       }],
       locals: {
-        section: 'tenant-property',
-        'report-link': 'https://eforms.homeoffice.gov.uk/outreach/lcs-reporting.ofml'
+        section: 'key-details',
+        'report-link': 'https://eforms.homeoffice.gov.uk/outreach/lcs-reporting.ofml',
+        'right-to-rent-check-link': 'https://www.gov.uk/check-tenant-right-to-rent-documents/further-checks'
       }
     },
     '/contact': {
@@ -46,7 +47,7 @@ module.exports = {
       next: '/property-address',
       dateKey: 'nldp-date',
       locals: {
-        section: 'tenant-property'
+        section: 'key-details'
       }
     },
     '/property-address': {
@@ -57,7 +58,7 @@ module.exports = {
       addressKey: 'property-address',
       next: '/tenant-details',
       locals: {
-        section: 'tenant-property'
+        section: 'key-details'
       }
     },
     '/tenant-details': {
@@ -179,7 +180,7 @@ module.exports = {
     },
     '/landlord-name': {
       fields: [
-        'landlord-name'
+        'landlord-name-agent'
       ],
       next: '/landlord-address',
       locals: {

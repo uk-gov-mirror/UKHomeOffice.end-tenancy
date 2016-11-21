@@ -1,26 +1,26 @@
 {
   "what": {
     "legend": "What do you want to do?",
-    "summary": "Enquiry type",
+    "summary": "Reason for contact",
     "options": {
       "request": {
-        "label": "Take action if you think a person may be disqualified from renting",
+        "label": "Request a Notice of Letting to a Disqualified Person if you think someone may be disqualified from renting",
         "toggle-content": "If you have reasonable cause to believe that a person is disqualified from renting due to their immigration status you can request a Notice of Letting to a Disqualified Person from the Home Office to confirm this. You can then use this to help you end the tenancy."
       },
       "check": {
         "label": "Check if a person living in your property is still disqualified from renting",
-        "toggle-content": "If you have received a Notice of Letting to a Disqualified Person to confirm that someone living in your property may be disqualified from renting due to their immigration status, you can check that this is still valid. You may wish to do this if some time has passed since it was issued and you are using it to end a tenancy."
+        "toggle-content": "The Home Office will write to you if someone who is named on a Notice of Letting to a Disqualified Person is no longer disqualified from renting. However if some time has passed since you received a Notice of Letting to a Disqualified Person you may wish to be completely sure that it is still valid before you use it to end a tenancy."
       },
       "report": {
         "label": "Report that a disqualified person has left your property",
-        "toggle-content": "Tell the Home Office that a person has left your property following a Notice of Letting to a Disqualified Person ('the Notice'). This means that Home Office can update their records and you have no further actions."
+        "toggle-content": "Tell the Home Office that a person has left your property following a Notice of Letting to a Disqualified Person. This means that the Home Office can update their records."
       }
     }
   },
   "nldp-date": {
     "label": "What was the date of issue for the Notice of Letting to a Disqualified Person?",
     "hint": "For example, 2 11 2016",
-    "summary": "Date of issue for Notice"
+    "summary": "Date of issue of Notice of Letting to a Disqualified Person"
   },
   "nldp-date-day": {
     "label": "Day"
@@ -35,19 +35,19 @@
     "label": "Postcode"
   },
   "property-address-select": {
-    "label": "Select your address as shown on the Notice"
+    "label": "Select the address as shown on the Notice of Letting to a Disqualified Person."
   },
   "property-address": {
     "label": "Address",
-    "summary": "Former address"
+    "summary": "Property address"
   },
   "name": {
-    "label": "Full name as it's written on the Notice",
-    "summary": "Tenant name"
+    "label": "Full name as it's written on the Notice of Letting to a Disqualified Person",
+    "summary": "Name"
   },
   "date-left": {
     "label": "When did {{values.name}} leave?",
-    "hint": "For example, 31 3 2016",
+    "hint": "For example, 30 11 2016",
     "summary": "Date left"
   },
   "date-left-day": {
@@ -60,7 +60,7 @@
     "label": "Year"
   },
   "add-another": {
-    "legend": "Has anyone else listed on the Notice left the property?",
+    "legend": "Has anyone else listed on the same Notice of Letting to a Disqualified Person left the property?",
     "options": {
       "yes": {
         "label": "Yes"
@@ -82,16 +82,11 @@
     }
   },
   "landlord-name": {
-    "label": {
-      "who": {
-        "landlord": "Your full name"
-      },
-      "default": "Full name"
-    },
+    "label": "Your full name",
     "summary": "Name"
   },
   "landlord-company": {
-    "label": "Your company's name",
+    "label": "Your company name",
     "hint": "(if you have one, if you don't leave blank)",
     "summary": "Company name"
   },
@@ -108,7 +103,7 @@
     "summary": "Name"
   },
   "agent-company": {
-    "label": "Your company's name",
+    "label": "Your company name",
     "summary": "Company name"
   },
   "agent-email-address": {
@@ -119,17 +114,25 @@
     "label": "Your phone number",
     "summary": "Phone number"
   },
+  "landlord-name-agent": {
+    "label": "What is the landlord's name?"
+  },
   "landlord-address-postcode": {
     "label": "Postcode"
   },
   "landlord-address-select": {
-    "label": "Select your address from the list"
+    "label": {
+      "who": {
+        "landlord": "Select your address from the list"
+      },
+      "default": "Select the address from the list"
+    }
   },
   "landlord-address": {
     "label": "Address"
   },
   "landlord-address-use-previous-address": {
-    "label": "Use the same address I provided earlier"
+    "label": "Use the address of the rental property I provided earlier"
   },
   "agent-address-postcode": {
     "label": "Postcode"
@@ -138,7 +141,7 @@
     "label": "Address"
   },
   "agent-address-select": {
-    "label": "Select your address from the list"
+    "label": "Select the address from the list."
   },
   "declaration-identity": {
     "label": {
