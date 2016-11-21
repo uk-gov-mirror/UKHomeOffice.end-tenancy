@@ -1,6 +1,6 @@
 {
   "what": {
-    "required": "Tell us what you want to do"
+    "required": "Select an option"
   },
   "nldp-date": {
     "required": "Enter a date",
@@ -8,17 +8,17 @@
     "future": "Date cannot be in the future"
   },
   "property-address-postcode": {
-    "required": "Enter the postcode of the property",
+    "required": "Enter the postcode",
     "postcode": "Enter a valid postcode"
   },
   "property-address-select": {
     "required": "Select an address"
   },
   "property-address": {
-    "required": "Enter the address of the property"
+    "required": "Enter the property address"
   },
   "name": {
-    "required": "Enter the name of the person who left the property"
+    "required": "Enter the person's name"
   },
   "date-left": {
     "required": "Enter a date",
@@ -26,58 +26,66 @@
     "future": "Date cannot be in the future"
   },
   "add-another": {
-    "required": "Tell us if anyone else listed on the notice has left the property"
+    "required": "Select an option"
   },
   "who": {
-    "required": "Tell us who you are"
+    "required": "Select an option"
   },
   "landlord-name": {
-    "required": "Tell us your full name"
+    "required": "Enter your full name"
   },
   "landlord-name-agent": {
-    "required": "Tell us the landlord's full name"
+    "required": "Enter the landlord's full name"
   },
   "landlord-email-address": {
-    "required": "Tell us your email address",
+    "required": "Enter your email address",
     "email": "Enter a valid email address"
   },
   "landlord-phone-number": {
-    "required": "Tell us your phone number",
-    "numeric": "Enter a valid phone number"
+    "required": "Enter your phone number"
   },
   "agent-company": {
-    "required": "Tell us your company's name"
+    "required": "Enter your company name"
   },
   "agent-name": {
-    "required": "Tell us your full name"
+    "required": "Enter your full name"
   },
   "agent-email-address": {
-    "required": "Tell us your email address",
+    "required": "Enter your email address",
     "email": "Enter a valid email address"
   },
   "agent-phone-number": {
-    "required": "Tell us your phone number",
-    "numeric": "Enter a valid phone number"
+    "required": "Enter your phone number"
   },
   "agent-address-postcode": {
-    "required": "Enter your company postcode",
+    "required": "Enter the agent's postcode",
     "postcode": "Enter a valid postcode"
   },
   "agent-address-select": {
     "required": "Select an address"
   },
   "agent-address": {
-    "required": "Enter your company address"
+    "required": "Enter the agent's address"
   },
   "landlord-address-postcode": {
-    "required": "Enter your postcode",
+    "required": {
+      "who": {
+        "landlord": "Enter your postcode"
+      },
+      "default": "Enter the postcode"
+    },
     "postcode": "Enter a valid postcode"
   },
   "landlord-address-select": {
     "required": "Select an address"
   },
   "landlord-address": {
-    "required": "Enter your address"
+    "required": {
+      "who": {
+        "landlord": "Enter your address"
+      },
+      "default": "Enter the address"
+    }
   },
   "declaration-identity": {
     "required": {
