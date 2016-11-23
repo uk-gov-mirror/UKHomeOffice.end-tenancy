@@ -1,6 +1,6 @@
 'use strict';
 
-const controllers = require('hof').controllers;
+const controllers = require('hof-controllers');
 const ContactController = require('./controllers/contact');
 const AddressLookupController = require('./controllers/address-lookup');
 const LoopController = require('./controllers/loop');

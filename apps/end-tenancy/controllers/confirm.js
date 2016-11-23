@@ -3,7 +3,7 @@
 'use strict';
 
 const _ = require('lodash');
-const controllers = require('hof').controllers;
+const controllers = require('hof-controllers');
 const helpers = require('hof-controllers/lib/util/helpers');
 
 module.exports = class ConfirmController extends controllers.confirm {

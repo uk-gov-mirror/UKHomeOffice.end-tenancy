@@ -1,12 +1,13 @@
 'use strict';
 
 const _ = require('lodash');
-const BaseController = require('hof').controllers.base;
-const ErrorController = require('hof').controllers.error;
+const controllers = require('hof-controllers');
 const PostcodesModel = require('../models/postcodes');
-const dataValidator = require('hmpo-form-controller/lib/validation');
-const dataFormatter = require('hmpo-form-controller/lib/formatting');
-const mixins = require('hmpo-template-mixins');
+const dataValidator = require('hof-form-controller/lib/validation');
+const dataFormatter = require('hof-form-controller/lib/formatting');
+const mixins = require('hof-template-mixins');
+const ErrorController = controllers.error;
+const BaseController = controllers.base;
 
 module.exports = class AddressLookup extends BaseController {
 

@@ -4,7 +4,7 @@
 
 const _ = require('lodash');
 const Hogan = require('hogan.js');
-const controllers = require('hof').controllers;
+const controllers = require('hof-controllers');
 const DateController = controllers.date;
 const BaseController = controllers.base;
 
