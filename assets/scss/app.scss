@@ -34,6 +34,51 @@ $path: "../img/";
   }
 }
 
+.button.button-delete, .button-delete a, td .table-summary-action .button-delete a {
+  @include bold-24;
+  color: $page-colour !important;
+  font-size: 16px !important;
+  background-image: url("../images/icons/icon-cross-remove-sign.png");
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+  background-position-x: 90%;
+  background-position-y: 50%;
+  background-color: $red;
+  -webkit-box-shadow: 0 2px 0 darken( $red, 10% );
+  -moz-box-shadow: 0 2px 0 darken( $red, 10% );
+  box-shadow: 0 2px 0 darken( $red, 10% );
+  padding: em(7) em(41) em(4) em(16);
+
+  &:hover, &:active {
+    background-color: darken( $red, 10% );
+    color: $page-colour !important;
+    font-size: 16px !important;
+  }
+
+  &:visited {
+    background-color: $red;
+    color: $page-colour !important;
+    font-size: 16px !important;
+  }
+
+  @include device-pixel-ratio {
+    background-image: url("../images/icons/icon-cross-remove-sign.png");
+    background-size: 14px 14px;
+    background-position-x: 90%;
+    background-position-y: 50%;
+  }
+
+  @include ie(6) {
+    background-image: url("../images/icons/icon-cross-remove-sign.png");
+  }
+}
+
+.edit-link {
+  font-size: 16px;
+  display: block;
+  margin: 1em 0em;
+}
+
 h1 {
   @include bold-24;
 }
@@ -46,6 +91,10 @@ h1 {
   margin-top: 30px;
   padding: 0px 30px 30px 30px;
   border: 2px solid #bfc1c3;
+
+  .button {
+    margin-right: 0;
+  }
 }
 
 // This is required due to an issue with passports-template-mixins:
@@ -59,6 +108,12 @@ input[type='checkbox'] ~ span.visuallyhidden {
   background-color: #fff;
   border: 1px solid #ccc;
   width: 65%;
+}
+
+.loop-summary-table {
+  td.numeric {
+    padding-right: 0;
+  }
 }
 
 .tt-suggestion {

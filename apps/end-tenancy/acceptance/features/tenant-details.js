@@ -18,6 +18,13 @@ Scenario('I am taken to the name substep when I arrive on the page', (
   I.seeInCurrentUrl(tenantDetailsPage.name.url);
 });
 
+Scenario('I dont see a delete button on page load', (
+  I,
+  tenantDetailsPage
+) => {
+  I.dontSeeElement(tenantDetailsPage.deleteButton);
+});
+
 Scenario('I do not see a summary table if no tenants have been added', (
   I,
   tenantDetailsPage
@@ -193,4 +200,40 @@ Scenario('I see the correct title if I am checking a second tenant', function *(
   I.checkOption(tenantDetailsPage['add-another'].fields.yes);
   I.submitForm();
   I.see(tenantDetailsPage.name.content.checkAnother);
+});
+
+Scenario('I see a delete button if I add a tenant', (
+  I,
+  tenantDetailsPage
+) => {
+  tenantDetailsPage.addTenant();
+  I.seeElement(tenantDetailsPage.deleteButton);
+});
+
+Scenario('I am taken to the add-another page if I delete a tenant but I still have tenants left', (
+  I,
+  tenantDetailsPage
+) => {
+  tenantDetailsPage.addTenant();
+  tenantDetailsPage.addTenant();
+  I.click(tenantDetailsPage.deleteButton);
+  I.seeInCurrentUrl(tenantDetailsPage['add-another'].url);
+});
+
+Scenario('I am taken to the name page if I delete the only tenant', (
+  I,
+  tenantDetailsPage
+) => {
+  tenantDetailsPage.addTenant();
+  I.click(tenantDetailsPage.deleteButton);
+  I.seeInCurrentUrl(tenantDetailsPage.name.url);
+});
+
+Scenario('I dont see a delete button if I delete all tenants', (
+  I,
+  tenantDetailsPage
+) => {
+  tenantDetailsPage.addTenant();
+  I.click(tenantDetailsPage.deleteButton);
+  I.dontSeeElement(tenantDetailsPage.deleteButton);
 });

@@ -32,20 +32,31 @@ module.exports = class LoopController extends DateController {
     this.options.storeKey = this.options.storeKey || 'items';
   }
 
+  stepIncluded(step) {
+    return Object.keys(this.options.subSteps).indexOf(step) > -1;
+  }
+
   get(req, res, callback) {
     if (!req.params.action ||
-      Object.keys(this.options.subSteps).indexOf(req.params.action) === -1 ||
-      !req.params.edit &&
-      _.some(this.options.subSteps[req.params.action].prereqs, prereq =>
-        req.sessionModel.get(prereq) === undefined
-      )
+      !this.stepIncluded(req.params.action)
     ) {
       const step = Object.keys(this.options.subSteps)[0];
       return res.redirect(`${req.baseUrl.replace(/\/$/, '')}${this.options.route.replace(/\/$/, '')}/${step}`);
     }
+    if (req.params.edit === 'delete' && req.params.id) {
+      return this.removeItem(req, res);
+    }
     this.options.fields = this.getFields(req);
     this.options.template = this.getTemplate(req);
     return super.get(req, res, callback);
+  }
+
+  removeItem(req, res) {
+    const items = req.sessionModel.get(this.options.storeKey);
+    req.sessionModel.set(this.options.storeKey, _.omit(items, req.params.id));
+    const steps = Object.keys(this.options.subSteps);
+    const step = _.size(items) > 1 ? steps[steps.length - 1] : steps[0];
+    return res.redirect(`${req.baseUrl}${this.options.route}/${step}`);
   }
 
   post(req, res, callback) {
@@ -71,8 +82,8 @@ module.exports = class LoopController extends DateController {
     });
   }
 
-  getNextStep(req, res, callback) {
-    if (req.params.edit) {
+  getNextStep(req, res) {
+    if (req.params.edit === 'edit') {
       return this.confirmStep;
     }
     const steps = Object.keys(this.options.subSteps);
@@ -87,7 +98,7 @@ module.exports = class LoopController extends DateController {
     } else if (loopCondition && req.form.values[loopCondition.field] === loopCondition.value) {
       return req.url.replace(stepName, steps[0]).replace(req.params.id, '');
     }
-    return super.getNextStep(req, res, callback);
+    return super.getNextStep(req, res);
   }
 
   getNext(req, res) {
@@ -113,7 +124,7 @@ module.exports = class LoopController extends DateController {
 
   saveValues(req, res, callback) {
     const steps = Object.keys(this.options.subSteps);
-    if (req.params.edit && req.params.id) {
+    if (req.params.id) {
       const items = req.sessionModel.get(this.options.storeKey) || {};
       Object.keys(this.options.fields).forEach(field => {
         items[req.params.id][field] = req.form.values[field];
@@ -152,8 +163,14 @@ module.exports = class LoopController extends DateController {
     const pagePath = `${locals.route}-${req.params.action}`;
     const items = _.map(req.sessionModel.get(this.options.storeKey), (item, id) => ({
       id,
-      name: item.name
+      fields: _.map(_.pickBy(item, (field, name) => this._fields[name].includeInSummary !== false), (value, key) => ({
+        field: key,
+        header: req.translate(`fields.${key}.summary`),
+        editText: `${req.translate('buttons.edit')} ${req.translate(`fields.${key}.summary`).toLowerCase()}`,
+        value
+      }))
     }));
+    const headers = items.length && _.map(items[0].fields, 'header');
     const title = hoganRender(conditionalTranslate(`pages.${pagePath}.header`, req.translate),
       Object.assign({}, res.locals, {
         next: items.length ? 'next ' : null
@@ -165,6 +182,7 @@ module.exports = class LoopController extends DateController {
 
     return Object.assign({}, locals, {
       title,
+      headers,
       intro,
       items,
       summaryTitle: req.translate('pages.tenant-details.summary-title'),

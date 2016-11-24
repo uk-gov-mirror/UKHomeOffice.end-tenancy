@@ -1,11 +1,28 @@
 <div class="loop-summary-table">
   <h2>{{summaryTitle}}</h2>
   <table>
+    <thead>
+      <tr>
+        {{#headers}}
+          <th>
+            {{.}}
+          </th>
+        {{/headers}}
+        <th></th>
+      </tr>
+    </thead>
     <tbody>
       {{#items}}
         <tr>
-          <td>{{name}}</td>
-          <td class="numeric"><a href="{{baseUrl}}/{{route}}/name/{{id}}" class="button">{{#t}}buttons.change{{/t}}</a></td>
+          {{#fields}}
+            <td>
+              {{value}}
+              <a href="{{baseUrl}}/{{route}}/{{field}}/{{id}}/change" class="edit-link">{{editText}}</a>
+            </td>
+          {{/fields}}
+          <td class="numeric">
+            <a href="{{baseUrl}}/{{route}}/name/{{id}}/delete" class="button button-delete">{{#t}}buttons.delete{{/t}}</a>
+          </td>
         </tr>
       {{/items}}
     </tbody>

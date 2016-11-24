@@ -14,6 +14,8 @@ module.exports = {
 
   summaryTable: '.loop-summary-table',
 
+  deleteButton: '.button-delete',
+
   name: {
     url: '/name',
     fields: {
