@@ -131,7 +131,7 @@ module.exports = class AddressLookup extends BaseController {
         };
       });
 
-      const count = `${formattedlist.length} addresses`;
+      const count = `${formattedlist.length} address${formattedlist.length > 1 ? 'es' : ''}`;
       this.options.fields[`${this.addressKey}-select`].options = [{value: count, label: count}].concat(formattedlist);
     }
     super.getValues(req, res, callback);

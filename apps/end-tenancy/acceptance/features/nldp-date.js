@@ -23,17 +23,6 @@ Scenario('The correct fields are on the page', (
   ]);
 });
 
-Scenario('I see the correct text if I have previously selected "report"', function *(
-  I,
-  reportDatePage
-) {
-  yield I.setSessionData(steps.name, {
-    what: 'report'
-  });
-  yield I.refreshPage();
-  I.see(reportDatePage.content.report);
-});
-
 Scenario('I see an error if I submit without completing the fields', (
   I,
   reportDatePage

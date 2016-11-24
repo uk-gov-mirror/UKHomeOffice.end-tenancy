@@ -1,8 +1,8 @@
 {
   "contact": {
     "header": "Request a Notice of Letting to a Disqualified Person if you think someone may be disqualified from renting",
-    "intro": "If you have reasonable cause to believe that a person is disqualified from renting, you can request a Notice of Letting to a Disqualified Person (‘a Notice’) from the Home Office to confirm this. You can then use this to help you end the tenancy.<br /><br />To request a Notice, please call the landlord's helpline and we'll arrange a time to call you back to collect the information we need.",
-    "subtitle": "Landlord's helpline",
+    "intro": "If you have reasonable cause to believe that a person is disqualified from renting, you can request a Notice of Letting to a Disqualified Person (‘a Notice’) from the Home Office to confirm this. You can then use this to help you end the tenancy.<br /><br />To request a Notice, please call the landlords helpline and we'll arrange a time to call you back to collect the information we need.",
+    "subtitle": "Landlords helpline",
     "contact": "0300 069 9799<br />Monday to Thursday 9am to 4:45pm<br />Friday 9am to 4:30pm",
     "required-info": {
       "intro": "For the callback you will need the following information:",
@@ -48,7 +48,7 @@
     },
     "what-next": {
       "header": "What happens next?",
-      "content": "Following the call, we'll review your request and will contact you within 10 working days. In the unlikely event that you have not heard from us after this time, please call us again on the landlord's helpline as detailed above."
+      "content": "Following the call, we'll review your request and will contact you within 10 working days. If you haven’t heard from us after this time, please call us again on the landlords helpline as detailed above."
     }
   }
 }

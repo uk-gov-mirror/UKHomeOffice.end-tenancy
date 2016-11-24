@@ -115,7 +115,7 @@
     "summary": "Phone number"
   },
   "landlord-name-agent": {
-    "label": "What is the landlord's name?"
+    "label": "What’s the landlord's name?"
   },
   "landlord-address-postcode": {
     "label": "Postcode"
@@ -152,6 +152,6 @@
     }
   },
   "declaration": {
-    "label": "I confirm that the information I've submitted is correct to the best of my knowledge"
+    "label": "I confirm that the information I've provided is correct to the best of my knowledge"
   }
 }
