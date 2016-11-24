@@ -176,7 +176,7 @@ module.exports = class LoopController extends DateController {
         next: items.length ? 'next ' : null
       })
     );
-    const intro = items.length ?
+    const intro = items.length > 1 ?
       undefined :
       hoganRender(conditionalTranslate(`pages.${pagePath}.intro`, req.translate), res.locals);
 

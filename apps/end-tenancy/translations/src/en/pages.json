@@ -38,7 +38,12 @@
     }
   },
   "tenant-details": {
-    "summary-title": "Tenants"
+    "summary-title": {
+      "what": {
+        "report": "Tenants who have left"
+      },
+      "default": "Tenants you are checking"
+    }
   },
   "tenant-details-name": {
     "header": {
