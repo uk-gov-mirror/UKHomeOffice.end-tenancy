@@ -55,6 +55,9 @@ module.exports = {
       fields: [
         'property-address'
       ],
+      countries: [
+        'england'
+      ],
       addressKey: 'property-address',
       next: '/tenant-details',
       locals: {

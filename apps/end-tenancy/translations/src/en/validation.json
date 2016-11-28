@@ -9,7 +9,8 @@
   },
   "property-address-postcode": {
     "required": "Enter the postcode",
-    "postcode": "Enter a valid postcode"
+    "postcode": "Enter a valid postcode",
+    "country": "This postcode is not in England. This service is only for rental property in England. If you are a landlord of a property in Scotland, Wales or Northern Ireland this legislation does not currently apply to you."
   },
   "property-address-select": {
     "required": "Select an address"

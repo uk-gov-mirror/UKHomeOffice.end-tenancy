@@ -22,7 +22,8 @@ module.exports = {
       invalid: '12345',
       valid: 'CR0 2EU',
       notFound: 'AA11 1AA',
-      belfast: 'BT11 1AB'
+      belfast: 'BT11 1AB',
+      welsh: 'CH5 1AB'
     }
   },
   lookup: {

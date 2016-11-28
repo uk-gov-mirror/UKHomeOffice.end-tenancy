@@ -1,11 +1,13 @@
 'use strict';
 
 const _ = require('lodash');
+const fetch = require('node-fetch');
 const controllers = require('hof-controllers');
 const PostcodesModel = require('../models/postcodes');
 const dataValidator = require('hof-form-controller/lib/validation');
 const dataFormatter = require('hof-form-controller/lib/formatting');
 const mixins = require('hof-template-mixins');
+const config = require('../../../config');
 const ErrorController = controllers.error;
 const BaseController = controllers.base;
 
@@ -216,6 +218,40 @@ module.exports = class AddressLookup extends BaseController {
       req.sessionModel.set(this.addressKey, addressLines);
     }
     super.saveValues(req, res, callback);
+  }
+
+  // eslint-disable-next-line consistent-return
+  validate(req, res, callback) {
+    if (req.params.action === 'postcode' && this.options.countries) {
+      const field = `${this.addressKey}-postcode`;
+      const postcode = encodeURIComponent(req.form.values[field]);
+      fetch(`${config.postcode.hostname}/postcodes/${postcode}`, {
+        headers: {
+          Authorization: config.postcode.authorization || ''
+        }
+      })
+      .then(response => response.json())
+      .then(json => {
+        if (json && json.country && json.country.name) {
+          const countries = this.options.countries;
+          if (!Array.isArray(this.options.countries)) {
+            countries = [countries].map(country => country.toLowerCase());
+          }
+          if (countries.indexOf(json.country.name.toLowerCase()) === -1) {
+            return callback({
+              [field]: new ErrorController(field, {
+                key: `${this.addressKey}-postcode`,
+                type: 'country',
+                redirect: undefined
+              }, req, res)
+            });
+          }
+        }
+        return callback();
+      });
+    } else {
+      return super.validate(req, res, callback);
+    }
   }
 
   // eslint-disable-next-line consistent-return

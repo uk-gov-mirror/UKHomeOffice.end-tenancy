@@ -78,6 +78,7 @@ pipeline:
       - docker push quay.io/ukhomeofficedigital/end-tenancy:${DRONE_COMMIT_SHA}
     when:
       branch: master
+      event: push
 
   trigger_deploy_to_end-tenancy_dev:
     image: quay.io/ukhomeofficedigital/drone-trigger:latest

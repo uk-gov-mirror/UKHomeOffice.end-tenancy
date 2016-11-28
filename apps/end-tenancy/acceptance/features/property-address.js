@@ -65,6 +65,17 @@ Scenario('I see an error if I submit the step with an invalid postcode', (
   I.seeErrors(propertyAddressPage.postcode.fields.postcode);
 });
 
+Scenario('I see an error if I enter a postcode that isn\'t in England', (
+  I,
+  propertyAddressPage
+) => {
+  I.fillField(propertyAddressPage.postcode.fields.postcode,
+    propertyAddressPage.postcode.content.welsh
+  );
+  I.submitForm();
+  I.seeErrors(propertyAddressPage.postcode.fields.postcode);
+});
+
 Scenario('I am taken to the address page if the postcode isn\'t found', (
   I,
   propertyAddressPage
