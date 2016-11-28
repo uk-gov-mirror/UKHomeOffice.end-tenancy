@@ -64,8 +64,7 @@
         "report": "Is there anyone else listed on the same Notice of Letting to a Disqualified Person who has left the property?"
       },
       "default": "Is there anyone else listed on the same Notice of Letting to a Disqualified Person that you'd like to check?"
-    },
-    "intro": "If only one person is listed on the Notice please select No."
+    }
   },
   "landlord-address": {
     "header": {
