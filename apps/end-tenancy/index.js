@@ -19,6 +19,7 @@ module.exports = {
       fields: [
         'what'
       ],
+      controller: require('./controllers/what'),
       next: '/nldp-date',
       forks: [{
         target: '/contact',

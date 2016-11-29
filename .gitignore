@@ -1,5 +1,6 @@
 .DS_Store
 apps/*/translations/en
 node_modules
+npm-debug.log
 public
 .idea
