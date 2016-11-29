@@ -55,3 +55,16 @@ Scenario('If I select the request option I am taken to the contact page', (
   I.submitForm();
   I.seeInCurrentUrl(contactPage.url);
 });
+
+Scenario('I am taken to the nldp-date page if I change my answer', (
+  I,
+  whatPage,
+  reportDatePage
+) => {
+  I.checkOption(whatPage.fields.report);
+  I.submitForm();
+  I.amOnPage(`/${whatPage.url}/edit`);
+  I.checkOption(whatPage.fields.check);
+  I.submitForm();
+  I.seeInCurrentUrl(reportDatePage.url);
+});
