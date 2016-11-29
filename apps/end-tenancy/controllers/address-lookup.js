@@ -230,7 +230,12 @@ module.exports = class AddressLookup extends BaseController {
           Authorization: config.postcode.authorization || ''
         }
       })
-      .then(response => response.json())
+      .then(response => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        return callback();
+      })
       .then(json => {
         if (json && json.country && json.country.name) {
           const countries = this.options.countries;
@@ -248,6 +253,9 @@ module.exports = class AddressLookup extends BaseController {
           }
         }
         return callback();
+      })
+      .catch(err => {
+        callback(err);
       });
     } else {
       return super.validate(req, res, callback);
