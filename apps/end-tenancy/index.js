@@ -32,7 +32,8 @@ module.exports = {
         section: 'key-details',
         'report-link': 'https://eforms.homeoffice.gov.uk/outreach/lcs-reporting.ofml',
         'right-to-rent-check-link': 'https://www.gov.uk/check-tenant-right-to-rent-documents/further-checks'
-      }
+      },
+      continueOnEdit: true
     },
     '/contact': {
       controller: ContactController

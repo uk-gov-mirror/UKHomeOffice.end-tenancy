@@ -56,11 +56,13 @@ Scenario('If I select the request option I am taken to the contact page', (
   I.seeInCurrentUrl(contactPage.url);
 });
 
-Scenario('I am taken to the nldp-date page if I change my answer', (
+Scenario('I am taken to the nldp-date page if I change my answer', function *(
   I,
   whatPage,
   reportDatePage
-) => {
+) {
+  yield I.setSessionSteps(steps.name, ['/', '/what', '/nldp-date']);
+  yield I.refreshPage();
   I.checkOption(whatPage.fields.report);
   I.submitForm();
   I.amOnPage(`/${whatPage.url}/edit`);
