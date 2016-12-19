@@ -7,6 +7,7 @@ const ConfirmController = require('./controllers/confirm');
 const ConfirmationController = require('./controllers/confirmation');
 
 const requestRoute = req => req.sessionModel.get('what') === 'request';
+const checkRoute = req => req.sessionModel.get('what') === 'check';
 
 module.exports = {
   name: 'end-tenancy',
@@ -89,9 +90,10 @@ module.exports = {
           next: 'date-left',
           forks: [{
             target: 'add-another',
-            condition(req) {
-              return req.sessionModel.get('what') === 'check';
-            }
+            condition: checkRoute
+          }, {
+            target: 'details',
+            condition: requestRoute
           }]
         },
         'date-left': {
@@ -107,6 +109,7 @@ module.exports = {
           ],
           next: 'add-another'
         },
+        details: {},
         'add-another': {
           fields: [
             'add-another'

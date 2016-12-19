@@ -70,6 +70,17 @@ Scenario('I see the correct label if I am on the "check" journey', function *(
   I.see(tenantDetailsPage.name.content.check);
 });
 
+Scenario('I see the correct label if I am on the "request" journey', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'request'
+  });
+  yield I.refreshPage();
+  I.see(tenantDetailsPage.name.content.request);
+});
+
 Scenario('I submit the form without completing name', (
   I,
   tenantDetailsPage
@@ -100,6 +111,20 @@ Scenario('I am taken to the add-another substep if I am on the "check" journey',
     tenantDetailsPage.name.content.name);
   I.submitForm();
   I.seeInCurrentUrl(tenantDetailsPage['add-another'].url);
+});
+
+Scenario('I am taken to the details substep if I am on the "request" journey', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'request'
+  });
+  yield I.refreshPage();
+  I.fillField(tenantDetailsPage.name.fields.name,
+    tenantDetailsPage.name.content.name);
+  I.submitForm();
+  I.seeInCurrentUrl(tenantDetailsPage.details.url);
 });
 
 Scenario('I see an error if I don\'t enter a date', (
@@ -200,6 +225,22 @@ Scenario('I see the correct title if I am checking a second tenant', function *(
   I.checkOption(tenantDetailsPage['add-another'].fields.yes);
   I.submitForm();
   I.see(tenantDetailsPage.name.content.checkAnother);
+});
+
+Scenario('I see the correct title if I am requesting an nldp for a second tenant', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'request',
+    tenants: {
+      0: {
+        name: 'Sterling Archer'
+      }
+    }
+  });
+  yield I.refreshPage();
+  I.see(tenantDetailsPage.name.content.requestAnother);
 });
 
 Scenario('I see a delete button if I add a tenant', (

@@ -42,7 +42,12 @@
     "summary": "Property address"
   },
   "name": {
-    "label": "Full name as it's written on the Notice of Letting to a Disqualified Person",
+    "label": {
+      "what": {
+        "request": "Full name"
+      },
+      "default": "Full name as it's written on the Notice of Letting to a Disqualified Person"
+    },
     "summary": "Name"
   },
   "date-left": {
