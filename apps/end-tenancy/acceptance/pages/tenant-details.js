@@ -24,8 +24,10 @@ module.exports = {
     content: {
       name: 'Sterling Archer',
       check: translations.what.check.replace('{{next}}', ''),
+      request: translations.what.request.replace('{{next}}', ''),
       report: translations.default.replace('{{next}}', ''),
       checkAnother: translations.what.check.replace('{{next}}', 'next '),
+      requestAnother: translations.what.request.replace('{{next}}', 'next '),
       reportAnother: translations.default.replace('{{next}}', 'next ')
     }
   },
@@ -55,6 +57,10 @@ module.exports = {
         year: '2016'
       }
     }
+  },
+
+  details: {
+    url: '/details'
   },
 
   'add-another': {

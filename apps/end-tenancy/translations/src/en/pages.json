@@ -48,7 +48,8 @@
   "tenant-details-name": {
     "header": {
       "what": {
-        "check": "What's the full name of the {{next}}person that you’d like to check?"
+        "check": "What's the full name of the {{next}}person that you’d like to check?",
+        "request": "What's the name of the {{next}}person you'd like to request a Notice of Letting to a Disqualified Person for?"
       },
       "default": "What's the name of the {{next}}person who left the property?"
     },
