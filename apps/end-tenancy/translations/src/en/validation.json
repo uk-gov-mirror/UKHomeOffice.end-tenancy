@@ -7,6 +7,11 @@
     "numeric": "Enter a valid date",
     "future": "Date cannot be in the future"
   },
+  "tenancy-start": {
+    "required": "Enter a date",
+    "numeric": "Enter a valid date",
+    "future": "Date cannot be in the future"
+  },
   "property-address-postcode": {
     "required": "Enter the postcode",
     "postcode": "Enter a valid postcode",

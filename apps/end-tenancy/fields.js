@@ -36,6 +36,21 @@ module.exports = {
     validate: ['required', 'numeric'],
     includeInSummary: false
   },
+  'tenancy-start': {
+    labelClassName: 'visuallyhidden'
+  },
+  'tenancy-start-day': {
+    validate: ['required', 'numeric'],
+    includeInSummary: false
+  },
+  'tenancy-start-month': {
+    validate: ['required', 'numeric'],
+    includeInSummary: false
+  },
+  'tenancy-start-year': {
+    validate: ['required', 'numeric'],
+    includeInSummary: false
+  },
   'property-address': {},
   name: {
     mixin: 'input-text',
