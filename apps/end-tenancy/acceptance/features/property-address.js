@@ -175,6 +175,18 @@ Scenario('I am taken to the tenant-details page on a valid submission', (
   tenantDetailsPage
 ) => {
   propertyAddressPage.selectAddressAndSubmit();
-  I.submitForm();
   I.seeInCurrentUrl(tenantDetailsPage.url);
+});
+
+Scenario('I am taken to the tenancy-start page if I am requesting an nldp', function *(
+  I,
+  propertyAddressPage,
+  tenancyStartPage
+) {
+  yield I.setSessionData(steps.name, {
+    what: 'request'
+  });
+  yield I.refreshPage();
+  propertyAddressPage.selectAddressAndSubmit();
+  I.seeInCurrentUrl(tenancyStartPage.url);
 });

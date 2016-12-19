@@ -1,11 +1,12 @@
 'use strict';
 
 const controllers = require('hof-controllers');
-const ContactController = require('./controllers/contact');
 const AddressLookupController = require('./controllers/address-lookup');
 const LoopController = require('./controllers/loop');
 const ConfirmController = require('./controllers/confirm');
 const ConfirmationController = require('./controllers/confirmation');
+
+const requestRoute = req => req.sessionModel.get('what') === 'request';
 
 module.exports = {
   name: 'end-tenancy',
@@ -22,7 +23,7 @@ module.exports = {
       controller: require('./controllers/what'),
       next: '/nldp-date',
       forks: [{
-        target: '/contact',
+        target: '/property-address',
         condition: {
           field: 'what',
           value: 'request'
@@ -34,9 +35,6 @@ module.exports = {
         'right-to-rent-check-link': 'https://www.gov.uk/check-tenant-right-to-rent-documents/further-checks'
       },
       continueOnEdit: true
-    },
-    '/contact': {
-      controller: ContactController
     },
     '/nldp-date': {
       controller: controllers.date,
@@ -62,10 +60,15 @@ module.exports = {
       ],
       addressKey: 'property-address',
       next: '/tenant-details',
+      forks: [{
+        target: '/tenancy-start',
+        condition: requestRoute
+      }],
       locals: {
         section: 'key-details'
       }
     },
+    '/tenancy-start': {},
     '/tenant-details': {
       controller: LoopController,
       storeKey: 'tenants',

@@ -12,7 +12,7 @@ module.exports = {
     reportDatePage: pagesPath('nldp-date.js'),
     propertyAddressPage: pagesPath('property-address.js'),
     tenantDetailsPage: pagesPath('tenant-details.js'),
-    contactPage: pagesPath('contact.js'),
+    tenancyStartPage: pagesPath('tenancy-start.js'),
     whoPage: pagesPath('who.js'),
     landlordDetailsPage: pagesPath('landlord-details.js'),
     landlordAddressPage: pagesPath('landlord-address.js'),
