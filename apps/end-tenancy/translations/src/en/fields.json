@@ -31,6 +31,20 @@
   "nldp-date-year": {
     "label": "Year"
   },
+  "tenancy-start": {
+    "label": "When did the tenancy start?",
+    "hint": "For example, 2 01 2015",
+    "summary": "Tenancy Start"
+  },
+  "tenancy-start-day": {
+    "label": "Day"
+  },
+  "tenancy-start-month": {
+    "label": "Month"
+  },
+  "tenancy-start-year": {
+    "label": "Year"
+  },
   "property-address-postcode": {
     "label": "Postcode"
   },

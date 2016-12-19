@@ -68,7 +68,20 @@ module.exports = {
         section: 'key-details'
       }
     },
-    '/tenancy-start': {},
+    '/tenancy-start': {
+      controller: controllers.date,
+      dateKey: 'tenancy-start',
+      fields: [
+        'tenancy-start',
+        'tenancy-start-day',
+        'tenancy-start-month',
+        'tenancy-start-year'
+      ],
+      next: '/tenant-details',
+      locals: {
+        section: 'key-details'
+      }
+    },
     '/tenant-details': {
       controller: LoopController,
       storeKey: 'tenants',
