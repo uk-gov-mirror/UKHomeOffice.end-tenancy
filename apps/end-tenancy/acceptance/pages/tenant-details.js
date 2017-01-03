@@ -60,7 +60,23 @@ module.exports = {
   },
 
   details: {
-    url: '/details'
+    url: '/details',
+
+    fields: {
+      visible: {
+        details: '#tenant-details-group'
+      },
+      options: {
+        dob: '[value="date-of-birth"]',
+        nationality: '[value="nationality"]',
+        reference: '[value="reference-number"]'
+      },
+      hidden: {
+        dob: '#date-of-birth-group',
+        nationality: '#nationality',
+        reference: '#reference-number'
+      }
+    }
   },
 
   'add-another': {
@@ -82,6 +98,14 @@ module.exports = {
     this.enterNameAndSubmit();
     this.enterDate('valid');
     I.submitForm();
+  },
+
+  enterNameAndSubmitRequestJourney(name) {
+    I.setSessionData(name, {
+      what: 'request'
+    });
+    I.refreshPage();
+    this.enterNameAndSubmit();
   },
 
   enterDate(type) {

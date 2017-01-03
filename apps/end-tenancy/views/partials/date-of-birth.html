@@ -1,0 +1,13 @@
+<div id="date-of-birth-toggle-content" class="panel-indent">
+  <fieldset id="date-of-birth-group" class="{{#errors.date-of-birth}}validation-error{{/errors.date-of-birth}}">
+    {{#errors.date-of-birth}}
+      <span id="date-of-birth-error" class="error-message">
+        {{errors.date-of-birth.message}}
+      </span>
+    {{/errors.date-of-birth}}
+    <p class="form-hint">{{#t}}fields.date-of-birth.hint{{/t}}</p>
+    <div class="form-group form-date">
+      {{#input-date}}date-of-birth{{/input-date}}
+    </div>
+  </fieldset>
+</div>

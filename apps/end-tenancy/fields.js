@@ -71,6 +71,71 @@ module.exports = {
     validate: ['required', 'numeric'],
     includeInSummary: false
   },
+  'tenant-details': {
+    mixin: 'checkbox-group',
+    options: [{
+      value: 'date-of-birth',
+      child: 'partials/date-of-birth',
+      toggle: 'date-of-birth-toggle-content'
+    }, {
+      value: 'nationality',
+      child: 'select',
+      toggle: 'nationality'
+    }, {
+      value: 'reference-number',
+      child: 'input-text',
+      toggle: 'reference-number'
+    }],
+    includeInSummary: false
+  },
+  'date-of-birth': {
+    labelClassName: 'visuallyhidden',
+    validate: 'required',
+    dependent: {
+      field: 'tenant-details',
+      value: 'date-of-birth'
+    }
+  },
+  'date-of-birth-day': {
+    validate: ['required', 'numeric'],
+    includeInSummary: false,
+    dependent: {
+      field: 'tenant-details',
+      value: 'date-of-birth'
+    }
+  },
+  'date-of-birth-month': {
+    validate: ['required', 'numeric'],
+    includeInSummary: false,
+    dependent: {
+      field: 'tenant-details',
+      value: 'date-of-birth'
+    }
+  },
+  'date-of-birth-year': {
+    validate: ['required', 'numeric'],
+    includeInSummary: false,
+    dependent: {
+      field: 'tenant-details',
+      value: 'date-of-birth'
+    }
+  },
+  nationality: {
+    validate: 'required',
+    className: ['typeahead', 'js-hidden'],
+    options: [''].concat(require('homeoffice-countries').allCountries),
+    dependent: {
+      field: 'tenant-details',
+      value: 'nationality'
+    }
+  },
+  'reference-number': {
+    validate: 'required',
+    dependent: {
+      field: 'tenant-details',
+      value: 'reference-number'
+    }
+  },
   'add-another': {
     mixin: 'radio-group',
     legend: {

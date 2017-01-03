@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const steps = require('../../');
 
 Feature('Report Tenants - loop');
@@ -125,6 +126,88 @@ Scenario('I am taken to the details substep if I am on the "request" journey', f
     tenantDetailsPage.name.content.name);
   I.submitForm();
   I.seeInCurrentUrl(tenantDetailsPage.details.url);
+});
+
+Scenario('I see the correct fields on the details substep', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield tenantDetailsPage.enterNameAndSubmitRequestJourney(steps.name);
+  I.seeElements(_.values(tenantDetailsPage.details.fields.visible));
+});
+
+Scenario('I don\'t see the progressive reveal fields on page load', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield tenantDetailsPage.enterNameAndSubmitRequestJourney(steps.name);
+  I.dontSeeElements(_.values(tenantDetailsPage.details.fields.hidden));
+});
+
+Scenario('I am able to submit the form without selecting any option', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield tenantDetailsPage.enterNameAndSubmitRequestJourney(steps.name);
+  I.submitForm();
+  I.seeInCurrentUrl(tenantDetailsPage['add-another'].url);
+});
+
+Scenario('I see the date field if I select date', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield tenantDetailsPage.enterNameAndSubmitRequestJourney(steps.name);
+  I.checkOption(tenantDetailsPage.details.fields.options.dob);
+  I.seeElement(tenantDetailsPage.details.fields.hidden.dob);
+});
+
+Scenario('I see an error if I select date and submit without entering a date', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield tenantDetailsPage.enterNameAndSubmitRequestJourney(steps.name);
+  I.checkOption(tenantDetailsPage.details.fields.options.dob);
+  I.submitForm();
+  I.seeErrors(tenantDetailsPage.details.fields.hidden.dob);
+});
+
+Scenario('I see the nationality field if I select nationality', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield tenantDetailsPage.enterNameAndSubmitRequestJourney(steps.name);
+  I.checkOption(tenantDetailsPage.details.fields.options.nationality);
+  I.seeElement(tenantDetailsPage.details.fields.hidden.nationality);
+});
+
+Scenario('I see an error if I select nationality and submit without entering a nationality', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield tenantDetailsPage.enterNameAndSubmitRequestJourney(steps.name);
+  I.checkOption(tenantDetailsPage.details.fields.options.nationality);
+  I.submitForm();
+  I.seeErrors(tenantDetailsPage.details.fields.hidden.nationality);
+});
+
+Scenario('I see the reference field if I select reference', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield tenantDetailsPage.enterNameAndSubmitRequestJourney(steps.name);
+  I.checkOption(tenantDetailsPage.details.fields.options.reference);
+  I.seeElement(tenantDetailsPage.details.fields.hidden.reference);
+});
+
+Scenario('I see an error if I select reference and submit without entering a reference', function *(
+  I,
+  tenantDetailsPage
+) {
+  yield tenantDetailsPage.enterNameAndSubmitRequestJourney(steps.name);
+  I.checkOption(tenantDetailsPage.details.fields.options.reference);
+  I.submitForm();
+  I.seeErrors(tenantDetailsPage.details.fields.hidden.reference);
 });
 
 Scenario('I see an error if I don\'t enter a date', (

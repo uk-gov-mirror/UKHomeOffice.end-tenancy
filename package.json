@@ -38,10 +38,11 @@
     "hof-bootstrap": "^6.0.0",
     "hof-frontend-toolkit": "^1.0.0",
     "hof-transpiler": "0.1.0",
-    "jquery": "^2.1.4",
+    "homeoffice-countries": "^0.1.0",
+    "jquery": "^3.1.1",
     "node-fetch": "^1.6.3",
     "node-sass": "^3.7.0",
-    "typeahead-aria": "^1.0.1"
+    "typeahead-aria": "^1.0.4"
   },
   "devDependencies": {
     "chai": "^3.0.0",

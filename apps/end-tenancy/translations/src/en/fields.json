@@ -78,6 +78,45 @@
   "date-left-year": {
     "label": "Year"
   },
+  "tenant-details": {
+    "legend": "Please provide as much information as you can to help us identify {{values.name}}. Tick all that you can provide.",
+    "options": {
+      "date-of-birth": {
+        "label": "Date of birth"
+      },
+      "nationality": {
+        "label": "Nationality"
+      },
+      "reference-number": {
+        "label": "Home Office reference number"
+      }
+    }
+  },
+  "date-of-birth": {
+    "hint": "For example, 23 2 1980",
+    "summary": "Date of birth"
+  },
+  "date-of-birth-day": {
+    "label": "Day"
+  },
+  "date-of-birth-month": {
+    "label": "Month"
+  },
+  "date-of-birth-year": {
+    "label": "Year"
+  },
+  "nationality": {
+    "label": "Country of nationality",
+    "summary": "Country of nationality"
+  },
+  "reference-number": {
+    "label": "Reference number",
+    "hint": "If the person has applied for a visa with the Home Office, they will be issued with a reference number. This could be an application or appeal number, an Application Registration Card (ARC) number or a case ID number. Don't worry if you don't have this.",
+    "summary": "Reference number"
+  },
+  "no-tenant-details": {
+    "label": "I don't have any more information to give"
+  },
   "add-another": {
     "legend": "Has anyone else listed on the same Notice of Letting to a Disqualified Person left the property?",
     "options": {

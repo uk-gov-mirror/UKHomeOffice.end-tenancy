@@ -31,6 +31,21 @@
     "numeric": "Enter a valid date",
     "future": "Date cannot be in the future"
   },
+  "tenant-details": {
+    "required": "Select at least one option"
+  },
+  "date-of-birth": {
+    "required": "Enter a date",
+    "numeric": "Enter a valid date",
+    "future": "Date cannot be in the future"
+  },
+  "nationality": {
+    "required": "Enter the tenant's country of nationality",
+    "equal": "Pick a country from the list"
+  },
+  "reference-number": {
+    "required": "Enter a reference number"
+  },
   "add-another": {
     "required": "Select an option"
   },

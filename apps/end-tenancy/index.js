@@ -86,15 +86,22 @@ module.exports = {
     '/tenant-details': {
       controller: LoopController,
       storeKey: 'tenants',
-      dateKey: 'date-left',
       fields: [
         'name',
         'date-left',
         'date-left-day',
         'date-left-month',
         'date-left-year',
+        'tenant-details',
+        'date-of-birth',
+        'date-of-birth-day',
+        'date-of-birth-month',
+        'date-of-birth-year',
+        'nationality',
+        'reference-number',
         'add-another'
       ],
+      firstStep: 'name',
       subSteps: {
         name: {
           fields: [
@@ -111,18 +118,30 @@ module.exports = {
         },
         'date-left': {
           template: 'date',
+          dateKey: 'date-left',
           fields: [
             'date-left',
             'date-left-day',
             'date-left-month',
             'date-left-year'
           ],
-          prereqs: [
-            'name'
-          ],
+          prereqs: ['name'],
           next: 'add-another'
         },
-        details: {},
+        details: {
+          dateKey: 'date-of-birth',
+          fields: [
+            'tenant-details',
+            'date-of-birth',
+            'date-of-birth-day',
+            'date-of-birth-month',
+            'date-of-birth-year',
+            'nationality',
+            'reference-number'
+          ],
+          prereqs: ['name'],
+          next: 'add-another'
+        },
         'add-another': {
           fields: [
             'add-another'

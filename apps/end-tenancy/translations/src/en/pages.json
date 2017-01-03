@@ -40,9 +40,10 @@
   "tenant-details": {
     "summary-title": {
       "what": {
-        "report": "Tenants who have left"
+        "report": "Tenants who have left",
+        "check": "Tenants you are checking"
       },
-      "default": "Tenants you are checking"
+      "default": "Tenants"
     }
   },
   "tenant-details-name": {
@@ -58,6 +59,9 @@
   "tenant-details-date-left": {
     "header": "When did {{values.name}} leave?",
     "intro": "If you don't know the exact date then please put the first date you knew they had left."
+  },
+  "tenant-details-details": {
+    "header": "Can you provide more information on {{values.name}}?"
   },
   "tenant-details-add-another": {
     "header": {
