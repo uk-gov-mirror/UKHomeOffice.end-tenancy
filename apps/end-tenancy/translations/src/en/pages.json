@@ -62,9 +62,15 @@
   "tenant-details-add-another": {
     "header": {
       "what": {
-        "report": "Is there anyone else listed on the same Notice of Letting to a Disqualified Person who has left the property?"
+        "report": "Is there anyone else listed on the same Notice of Letting to a Disqualified Person who has left the property?",
+        "request": "Is there another person you'd like to add to the same Notice of Letting to a Disqualified Person?"
       },
       "default": "Is there anyone else listed on the same Notice of Letting to a Disqualified Person that you'd like to check?"
+    },
+    "intro": {
+      "what": {
+        "request": "You can add more people to the same Notice if they also live in the same property"
+      }
     }
   },
   "landlord-address": {
