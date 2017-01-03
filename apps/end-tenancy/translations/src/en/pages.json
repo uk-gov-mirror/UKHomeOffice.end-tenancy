@@ -5,7 +5,8 @@
   "tenants-left": {
     "header": {
       "what": {
-        "report": "Tenants who have left"
+        "report": "Tenants who have left",
+        "request": "Notice requested for"
       },
       "default": "Tenants you are checking"
     }
