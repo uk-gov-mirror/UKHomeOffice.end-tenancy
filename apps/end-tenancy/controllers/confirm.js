@@ -48,6 +48,9 @@ module.exports = class ConfirmController extends controllers.confirm {
     const loopStep = this.options.steps['/tenant-details'];
     const tenants = req.sessionModel.get(loopStep.storeKey);
 
+    const getSubStep = (field, subSteps) =>
+      _.findKey(subSteps, subStep => subStep.fields.indexOf(field) > -1);
+
     const fields = _.flatten(
       _.map(tenants, (tenant, id) =>
         _.map(
@@ -55,7 +58,7 @@ module.exports = class ConfirmController extends controllers.confirm {
             this.options.fieldsConfig[field].includeInSummary !== false), (value, field) => ({
               field,
               value,
-              step: `/tenant-details/${field}/${id}`,
+              step: `/tenant-details/${getSubStep(field, loopStep.subSteps)}/${id}`,
               label: helpers.getTranslation(req.translate, field, true)
             }
           )
