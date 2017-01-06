@@ -244,10 +244,13 @@ module.exports = class LoopController extends DateController {
       undefined :
       hoganRender(conditionalTranslate(`pages.${pagePath}.intro`, req.translate), res.locals);
 
+    const outro = conditionalTranslate(`pages.${pagePath}.outro`, req.translate);
+
     return Object.assign({}, locals, {
       title,
       headers,
       intro,
+      outro,
       items,
       summaryTitle: req.translate('pages.tenant-details.summary-title'),
       hasItems: items.length
