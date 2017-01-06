@@ -34,7 +34,7 @@
       "what": {
         "report": "What's the address of the property the person has left?"
       },
-      "default": "What's the property address?"
+      "default": "What's the address of the rental property?"
     }
   },
   "tenant-details": {
