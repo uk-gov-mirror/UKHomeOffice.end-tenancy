@@ -145,7 +145,7 @@
   },
   "landlord-company": {
     "label": "Your company name",
-    "hint": "(if you have one, if you don't leave blank)",
+    "hint": "If you don't have one, leave this blank",
     "summary": "Company name"
   },
   "landlord-email-address": {
