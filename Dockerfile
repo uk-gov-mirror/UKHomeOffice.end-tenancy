@@ -1,6 +1,6 @@
 FROM quay.io/ukhomeofficedigital/nodejs-base:v4.4.2
 
-RUN mkdir /public
+RUN mkdir /public && chown nodejs /public
 RUN yum clean all && \
   yum update -y -q && \
   yum clean all && \
@@ -10,6 +10,7 @@ RUN yum clean all && \
 COPY package.json /app/package.json
 RUN npm --loglevel warn install --production --no-optional
 COPY . /app
-RUN npm --loglevel warn run postinstall
+RUN npm --loglevel warn run postinstall && chown -R /app
 
+USER nodejs
 CMD /app/run.sh
