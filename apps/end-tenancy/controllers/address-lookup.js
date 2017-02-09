@@ -238,7 +238,7 @@ module.exports = class AddressLookup extends BaseController {
       })
       .then(json => {
         if (json && json.country && json.country.name) {
-          const countries = this.options.countries;
+          let countries = this.options.countries;
           if (!Array.isArray(this.options.countries)) {
             countries = [countries].map(country => country.toLowerCase());
           }
