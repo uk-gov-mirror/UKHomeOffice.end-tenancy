@@ -7,6 +7,7 @@ const pagesPath = page => path.resolve(__dirname,
 
 module.exports = {
   name: 'end-tenancy',
+  tests: './apps/**/acceptance/features/*.js',
   include: {
     whatPage: pagesPath('what.js'),
     reportDatePage: pagesPath('nldp-date.js'),

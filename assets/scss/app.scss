@@ -139,6 +139,10 @@ input[type='checkbox'] ~ span.visuallyhidden {
   margin-bottom: 3em;
 
   tbody {
+    tr.tenant:not(:first-of-type) {
+      border-top: 2px solid black;
+    }
+
     td:nth-child(1) {
       width: 40%;
     }

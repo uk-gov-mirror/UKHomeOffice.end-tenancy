@@ -32,18 +32,9 @@
     "label": "Year"
   },
   "tenancy-start": {
-    "label": "When did the tenancy start?",
+    "legend": "When did the tenancy start?",
     "hint": "For example, 2 01 2015",
     "summary": "Tenancy Start"
-  },
-  "tenancy-start-day": {
-    "label": "Day"
-  },
-  "tenancy-start-month": {
-    "label": "Month"
-  },
-  "tenancy-start-year": {
-    "label": "Year"
   },
   "property-address-postcode": {
     "label": "Postcode"
@@ -65,18 +56,9 @@
     "summary": "Name"
   },
   "date-left": {
-    "label": "When did {{values.name}} leave?",
+    "legend": "When did {{values.name}} leave?",
     "hint": "For example, 30 11 2016",
     "summary": "Date left"
-  },
-  "date-left-day": {
-    "label": "Day"
-  },
-  "date-left-month": {
-    "label": "Month"
-  },
-  "date-left-year": {
-    "label": "Year"
   },
   "tenant-details": {
     "legend": "Please provide as much information as you can to help us identify {{values.name}}. Tick all that you can provide.",
@@ -189,7 +171,7 @@
   "landlord-address": {
     "label": "Address"
   },
-  "landlord-address-use-previous-address": {
+  "use-previous-address": {
     "label": "Use the address of the rental property I provided earlier"
   },
   "agent-address-postcode": {

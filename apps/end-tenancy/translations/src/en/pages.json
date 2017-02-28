@@ -118,11 +118,19 @@
     }
   },
   "confirmation": {
-    "alert-report": "Thank you for letting us know that a disqualified person has left your property.",
-    "alert-check": "Your request to check if a person is still disqualified from renting has been sent.",
-    "subheader": "What happens next?",
-    "content-report": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm that we've received your request. Please keep a copy of this email for your records.<br /><br />The information you have provided is very important and will be used by the Home Office to tackle illegal immigration. We will update our records.<br /><br /><a href=\"/\">Report that someone else</a> under a different Notice of Letting to a Disqualified Person has left your property.<br /><br /><a href=\"https://eforms.homeoffice.gov.uk/outreach/Feedback.ofml?FormName=end_tenancy\">What did you think of this service?</a> (takes 30 seconds)",
-    "content-check": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm that we've received your request. Please keep a copy of this email for your records.<br /><br />You’ll get a reply by email within 5 working days. If you haven’t heard from us after this time, please call the landlords helpline on 0300 069 9799.<br /><br /><a href=\"/\">Check if someone named on a different Notice of Letting to a Disqualified Person</a> is still disqualified from renting<br /><br /><a href=\"https://eforms.homeoffice.gov.uk/outreach/Feedback.ofml?FormName=end_tenancy\">What did you think of this service?</a> (takes 30 seconds)"
+    "alert": {
+      "what": {
+        "report": "Thank you for letting us know that a disqualified person has left your property.",
+        "check": "Your request to check if a person is still disqualified from renting has been sent."
+      }
+    },
+    "content": {
+      "what": {
+        "report": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm that we've received your request. Please keep a copy of this email for your records.<br /><br />The information you have provided is very important and will be used by the Home Office to tackle illegal immigration. We will update our records.<br /><br /><a href=\"/\">Report that someone else</a> under a different Notice of Letting to a Disqualified Person has left your property.<br /><br /><a href=\"https://eforms.homeoffice.gov.uk/outreach/Feedback.ofml?FormName=end_tenancy\">What did you think of this service?</a> (takes 30 seconds)",
+        "check": "We've sent an email to <strong>{{emailAddress}}</strong> to confirm that we've received your request. Please keep a copy of this email for your records.<br /><br />You’ll get a reply by email within 5 working days. If you haven’t heard from us after this time, please call the landlords helpline on 0300 069 9799.<br /><br /><a href=\"/\">Check if someone named on a different Notice of Letting to a Disqualified Person</a> is still disqualified from renting<br /><br /><a href=\"https://eforms.homeoffice.gov.uk/outreach/Feedback.ofml?FormName=end_tenancy\">What did you think of this service?</a> (takes 30 seconds)"
+      }
+    },
+    "subheader": "What happens next?"
   },
   "email": {
     "subject": {

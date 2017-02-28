@@ -2,7 +2,16 @@
 'use strict';
 
 const _ = require('lodash');
+const moment = require('moment');
+const FORMAT = 'YYYY-MM-DD';
+const PRETTY_FORMAT = 'Do MMMM YYYY';
+
 let I;
+
+const formatIfDate = value =>
+  value.match(/\d{4}-\d{2}-\d{2}/) ?
+    moment(value, FORMAT).format(PRETTY_FORMAT) :
+    value;
 
 module.exports = {
   _init() {
@@ -18,12 +27,12 @@ module.exports = {
 
   'report-landlord': {
     what: 'Report that a disqualified person has left your property',
-    'nldp-date': '11-11-1111',
+    'nldp-date': '1111-11-11',
     'property-address': '123 Example Street Example',
     tenants: {
       0: {
         name: 'Sterling Archer',
-        'date-left': '01-02-1234'
+        'date-left': '1234-02-01'
       }
     },
     'landlord-name': 'Fred Bloggs',
@@ -35,16 +44,16 @@ module.exports = {
 
   'report-agent': {
     what: 'Report that a disqualified person has left your property',
-    'nldp-date': '11-11-1111',
+    'nldp-date': '1111-11-11',
     'property-address': '123 Example Street Example',
     tenants: {
       0: {
         name: 'Sterling Archer',
-        'date-left': '01-02-1234'
+        'date-left': '1234-02-01'
       },
       1: {
         name: 'Fred Bloggs',
-        'date-left': '02-03-1234'
+        'date-left': '1234-03-02'
       }
     },
     'agent-name': 'Mr Agent',
@@ -57,7 +66,7 @@ module.exports = {
 
   'check-landlord': {
     what: 'Check if a person living in your property is still disqualified from renting',
-    'nldp-date': '11-11-1111',
+    'nldp-date': '1111-11-11',
     'property-address': '123 Example Street Example',
     tenants: {
       0: {
@@ -82,7 +91,7 @@ module.exports = {
       _.flatten(
         _.map(this[data].tenants, field => _.map(field, value => value))
       )
-    );
+    ).map(formatIfDate);
     values.forEach(value => {
       I.see(value);
     });

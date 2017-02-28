@@ -1,5 +1,7 @@
 'use strict';
 
+const dateComponent = require('hof-component-date');
+
 module.exports = {
   what: {
     mixin: 'radio-group',
@@ -21,62 +23,30 @@ module.exports = {
       child: 'partials/panel'
     }]
   },
-  'nldp-date': {
-    labelClassName: 'visuallyhidden'
-  },
-  'nldp-date-day': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false
-  },
-  'nldp-date-month': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false
-  },
-  'nldp-date-year': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false
-  },
-  'tenancy-start': {
-    labelClassName: 'visuallyhidden'
-  },
-  'tenancy-start-day': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false
-  },
-  'tenancy-start-month': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false
-  },
-  'tenancy-start-year': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false
-  },
+  'nldp-date': dateComponent('nldp-date', {
+    labelClassName: 'visuallyhidden',
+    validate: ['required', 'date', 'before']
+  }),
+  'tenancy-start': dateComponent('tenancy-start', {
+    labelClassName: 'visuallyhidden',
+    validate: ['required', 'date', 'before']
+  }),
   'property-address': {},
   name: {
     mixin: 'input-text',
     validate: 'required'
   },
-  'date-left': {
-    labelClassName: 'visuallyhidden'
-  },
-  'date-left-day': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false
-  },
-  'date-left-month': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false
-  },
-  'date-left-year': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false
-  },
+  'date-left': dateComponent('date-left', {
+    labelClassName: 'visuallyhidden',
+    validate: ['required', 'date', 'before']
+  }),
   'tenant-details': {
     mixin: 'checkbox-group',
+    omitFromSummary: true,
     options: [{
       value: 'date-of-birth',
-      child: 'partials/date-of-birth',
-      toggle: 'date-of-birth-toggle-content'
+      child: 'html',
+      toggle: 'date-of-birth'
     }, {
       value: 'nationality',
       child: 'select',
@@ -85,42 +55,19 @@ module.exports = {
       value: 'reference-number',
       child: 'input-text',
       toggle: 'reference-number'
-    }],
-    includeInSummary: false
+    }]
   },
-  'date-of-birth': {
+  'date-of-birth': dateComponent('date-of-birth', {
+    disableRender: true,
     labelClassName: 'visuallyhidden',
-    validate: 'required',
+    validate: ['required', 'date', 'before'],
     dependent: {
       field: 'tenant-details',
       value: 'date-of-birth'
     }
-  },
-  'date-of-birth-day': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false,
-    dependent: {
-      field: 'tenant-details',
-      value: 'date-of-birth'
-    }
-  },
-  'date-of-birth-month': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false,
-    dependent: {
-      field: 'tenant-details',
-      value: 'date-of-birth'
-    }
-  },
-  'date-of-birth-year': {
-    validate: ['required', 'numeric'],
-    includeInSummary: false,
-    dependent: {
-      field: 'tenant-details',
-      value: 'date-of-birth'
-    }
-  },
+  }),
   nationality: {
+    disableRender: true,
     validate: 'required',
     className: ['typeahead', 'js-hidden'],
     options: [''].concat(require('homeoffice-countries').allCountries),
@@ -130,6 +77,7 @@ module.exports = {
     }
   },
   'reference-number': {
+    disableRender: true,
     validate: 'required',
     dependent: {
       field: 'tenant-details',
@@ -145,8 +93,7 @@ module.exports = {
     options: [
       'yes',
       'no'
-    ],
-    includeInSummary: false
+    ]
   },
   'landlord-address': {},
   who: {
@@ -200,14 +147,12 @@ module.exports = {
   'declaration-identity': {
     mixin: 'checkbox',
     validate: 'required',
-    className: 'label',
-    includeInSummary: false
+    className: 'label'
   },
   declaration: {
     mixin: 'checkbox',
     validate: 'required',
     className: 'label',
-    includeInSummary: false,
     useWhen: {
       field: 'what',
       value: 'report'

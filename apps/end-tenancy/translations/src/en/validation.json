@@ -4,13 +4,13 @@
   },
   "nldp-date": {
     "required": "Enter a date",
-    "numeric": "Enter a valid date",
-    "future": "Date cannot be in the future"
+    "date": "Enter a valid date",
+    "before": "Date cannot be in the future"
   },
   "tenancy-start": {
     "required": "Enter a date",
-    "numeric": "Enter a valid date",
-    "future": "Date cannot be in the future"
+    "date": "Enter a valid date",
+    "before": "Date cannot be in the future"
   },
   "property-address-postcode": {
     "required": "Enter the postcode",
@@ -28,16 +28,16 @@
   },
   "date-left": {
     "required": "Enter a date",
-    "numeric": "Enter a valid date",
-    "future": "Date cannot be in the future"
+    "date": "Enter a valid date",
+    "before": "Date cannot be in the future"
   },
   "tenant-details": {
     "required": "Select at least one option"
   },
   "date-of-birth": {
     "required": "Enter a date",
-    "numeric": "Enter a valid date",
-    "future": "Date cannot be in the future"
+    "date": "Enter a valid date",
+    "before": "Date cannot be in the future"
   },
   "nationality": {
     "required": "Enter the tenant's country of nationality",

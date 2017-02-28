@@ -60,11 +60,11 @@ Scenario('I see the report message if I am on the "report" journey', function *(
   I.see(confirmationPage.content.reportAlert);
 });
 
-Scenario('I am redirected to the start page when I refresh', function *(
+Scenario('I am not redirected to the start page when I refresh', function *(
   I,
   confirmationPage
 ) {
   yield I.visitPage(confirmationPage, steps);
   yield I.refreshPage();
-  I.dontSeeInCurrentUrl(confirmationPage.url);
+  I.seeInCurrentUrl(confirmationPage.url);
 });

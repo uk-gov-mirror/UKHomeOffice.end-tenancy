@@ -14,7 +14,7 @@ module.exports = {
     url: '/postcode',
     fields: {
       postcode: '#landlord-address-postcode',
-      usePrevious: '#landlord-address-use-previous-address'
+      usePrevious: '#use-previous-address'
     },
     content: {
       invalid: 'xxxxxx',

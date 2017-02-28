@@ -1,27 +1,33 @@
 'use strict';
 
-const controllers = require('hof-controllers');
-const AddressLookupController = require('./controllers/address-lookup');
-const LoopController = require('./controllers/loop');
-const ConfirmController = require('./controllers/confirm');
-const ConfirmationController = require('./controllers/confirmation');
+const moment = require('moment');
+const SummaryPage = require('hof-behaviour-summary-page');
+const AddressLookup = require('./behaviours/address-lookup');
+const UsePrevious = require('./behaviours/use-previous');
+const Loop = require('./behaviours/loop');
+const ResetOnChange = require('./behaviours/reset-on-change');
+const LocalSummary = require('./behaviours/summary');
+const ExposeEmail = require('./behaviours/expose-email');
 
 const requestRoute = req => req.sessionModel.get('what') === 'request';
 const checkRoute = req => req.sessionModel.get('what') === 'check';
+
+const DATE_FORMAT = 'YYYY-MM-DD';
+const PRETTY_DATE_FORMAT = 'Do MMMM YYYY';
+
+const prettyDate = val => moment(val, DATE_FORMAT).format(PRETTY_DATE_FORMAT);
 
 module.exports = {
   name: 'end-tenancy',
   params: '/:action?/:id?/:edit?',
   steps: {
-    '/': {
-      controller: controllers.start,
-      next: '/what'
-    },
     '/what': {
       fields: [
         'what'
       ],
-      controller: require('./controllers/what'),
+      behaviours: ResetOnChange({
+        field: 'what'
+      }),
       next: '/nldp-date',
       forks: [{
         target: '/property-address',
@@ -31,28 +37,19 @@ module.exports = {
         }
       }],
       locals: {
-        section: 'key-details',
         'report-link': 'https://eforms.homeoffice.gov.uk/outreach/lcs-reporting.ofml',
         'right-to-rent-check-link': 'https://www.gov.uk/check-tenant-right-to-rent-documents/further-checks'
       },
       continueOnEdit: true
     },
     '/nldp-date': {
-      controller: controllers.date,
       fields: [
-        'nldp-date',
-        'nldp-date-day',
-        'nldp-date-month',
-        'nldp-date-year'
+        'nldp-date'
       ],
-      next: '/property-address',
-      dateKey: 'nldp-date',
-      locals: {
-        section: 'key-details'
-      }
+      next: '/property-address'
     },
     '/property-address': {
-      controller: AddressLookupController,
+      behaviours: AddressLookup,
       fields: [
         'property-address'
       ],
@@ -64,39 +61,22 @@ module.exports = {
       forks: [{
         target: '/tenancy-start',
         condition: requestRoute
-      }],
-      locals: {
-        section: 'key-details'
-      }
+      }]
     },
     '/tenancy-start': {
-      controller: controllers.date,
-      dateKey: 'tenancy-start',
       fields: [
-        'tenancy-start',
-        'tenancy-start-day',
-        'tenancy-start-month',
-        'tenancy-start-year'
+        'tenancy-start'
       ],
-      next: '/tenant-details',
-      locals: {
-        section: 'key-details'
-      }
+      next: '/tenant-details'
     },
     '/tenant-details': {
-      controller: LoopController,
+      behaviours: Loop,
       storeKey: 'tenants',
       fields: [
         'name',
         'date-left',
-        'date-left-day',
-        'date-left-month',
-        'date-left-year',
         'tenant-details',
         'date-of-birth',
-        'date-of-birth-day',
-        'date-of-birth-month',
-        'date-of-birth-year',
         'nationality',
         'reference-number',
         'add-another'
@@ -117,13 +97,9 @@ module.exports = {
           }]
         },
         'date-left': {
-          template: 'date',
           dateKey: 'date-left',
           fields: [
-            'date-left',
-            'date-left-day',
-            'date-left-month',
-            'date-left-year'
+            'date-left'
           ],
           prereqs: ['name'],
           next: 'add-another'
@@ -133,9 +109,6 @@ module.exports = {
           fields: [
             'tenant-details',
             'date-of-birth',
-            'date-of-birth-day',
-            'date-of-birth-month',
-            'date-of-birth-year',
             'nationality',
             'reference-number'
           ],
@@ -152,10 +125,7 @@ module.exports = {
         field: 'add-another',
         value: 'yes'
       },
-      next: '/landlord-agent',
-      locals: {
-        section: 'tenants-left'
-      }
+      next: '/landlord-agent'
     },
     '/landlord-agent': {
       fields: [
@@ -177,26 +147,21 @@ module.exports = {
         'landlord-company',
         'landlord-email-address',
         'landlord-phone-number'
-      ],
-      locals: {
-        section: 'landlord-details'
-      }
+      ]
     },
     '/landlord-address': {
-      controller: AddressLookupController,
+      behaviours: [AddressLookup, UsePrevious({
+        useWhen: {
+          field: 'who',
+          value: 'landlord'
+        },
+        previousAddress: 'property-address'
+      })],
       addressKey: 'landlord-address',
       fields: [
         'landlord-address'
       ],
-      previousAddress: 'property-address',
-      next: '/confirm',
-      useWhen: {
-        field: 'who',
-        value: 'landlord'
-      },
-      locals: {
-        section: 'landlord-details'
-      }
+      next: '/confirm'
     },
     '/agent-details': {
       fields: [
@@ -205,45 +170,75 @@ module.exports = {
         'agent-email-address',
         'agent-phone-number'
       ],
-      next: '/agent-address',
-      locals: {
-        section: 'agent-details'
-      }
+      next: '/agent-address'
     },
     '/agent-address': {
-      controller: AddressLookupController,
+      behaviours: AddressLookup,
       addressKey: 'agent-address',
       fields: [
         'agent-address'
       ],
-      next: '/landlord-name',
-      locals: {
-        section: 'agent-details'
-      }
+      next: '/landlord-name'
     },
     '/landlord-name': {
       fields: [
         'landlord-name-agent'
       ],
-      next: '/landlord-address',
-      locals: {
-        section: 'landlord-details'
-      }
+      next: '/landlord-address'
     },
     '/confirm': {
-      controller: ConfirmController,
+      behaviours: [SummaryPage, LocalSummary, 'complete'],
       fields: [
         'declaration-identity',
         'declaration'
       ],
-      fieldsConfig: require('./fields'),
-      emailConfig: require('../../config').email,
+      sections: {
+        'key-details': [
+          'what',
+          {
+            field: 'nldp-date',
+            parse: prettyDate
+          },
+          'property-address',
+          {
+            field: 'tenancy-start',
+            parse: prettyDate
+          }
+        ],
+        'tenants-left': [
+          'name',
+          {
+            field: 'date-left',
+            parse: prettyDate
+          },
+          {
+            field: 'date-of-birth',
+            parse: prettyDate
+          },
+          'nationality',
+          'reference-number'
+        ],
+        'landlord-details': [
+          'landlord-name',
+          'landlord-company',
+          'landlord-email-address',
+          'landlord-phone-number',
+          'landlord-address',
+          'landlord-name-agent'
+        ],
+        'agent-details': [
+          'agent-company',
+          'agent-name',
+          'agent-email-address',
+          'agent-phone-number',
+          'agent-address'
+        ]
+      },
       next: '/confirmation'
     },
     '/confirmation': {
-      controller: ConfirmationController,
-      backLink: false,
-      clearSession: false
+      behaviours: ExposeEmail,
+      backLink: false
     }
   }
 };
