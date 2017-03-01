@@ -93,7 +93,7 @@
     }
   },
   "agent-address": {
-    "header": "Agent contact address",
+    "header": "Agent's contact address",
     "intro": "What address should we use to contact you?"
   },
   "confirm": {
