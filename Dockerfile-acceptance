@@ -1,4 +1,4 @@
-FROM node:5
+FROM node:6
 
 WORKDIR /test
 
@@ -8,6 +8,6 @@ COPY config.js config.js
 COPY apps apps/
 COPY test.sh test.sh
 
-RUN npm --loglevel warn install --ignore-scripts
+RUN npm --loglevel warn install
 
 CMD /test/test.sh

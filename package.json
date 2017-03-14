@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "browserify": "^12.0.1",
+    "hof-behaviour-address-lookup": "^1.1.0",
     "hof-behaviour-summary-page": "^3.0.0",
     "hof-bootstrap": "^10.3.0",
     "hof-component-date": "^1.1.0",

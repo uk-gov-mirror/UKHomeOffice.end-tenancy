@@ -2,10 +2,8 @@
 
 module.exports = config => superclass => class extends superclass {
   configure(req, res, callback) {
-    if (req.params.action !== 'postcode') {
-      super.configure(req, res, callback);
-    } else {
-      super.configure(req, res, err => {
+    super.configure(req, res, err => {
+      if (req.query.step === 'postcode') {
         Object.assign(req.form.options.fields, {
           'use-previous-address': {
             mixin: 'checkbox',
@@ -13,9 +11,9 @@ module.exports = config => superclass => class extends superclass {
             useWhen: config.useWhen
           }
         });
-        callback(err);
-      });
-    }
+      }
+      callback(err);
+    });
   }
 
   process(req, res, callback) {

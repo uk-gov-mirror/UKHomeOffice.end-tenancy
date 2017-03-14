@@ -11,13 +11,6 @@ Before((
   I.visitPage(propertyAddressPage, steps);
 });
 
-Scenario('I am forwarded to the postcode subsection', (
-  I,
-  propertyAddressPage
-) => {
-  I.seeInCurrentUrl(propertyAddressPage.postcode.url);
-});
-
 Scenario('I see the correct header if I previously selected "report"', function *(
   I,
   propertyAddressPage
@@ -97,14 +90,14 @@ Scenario('I am taken to the /lookup substep if I submit a valid postcode', (
   I.seeInCurrentUrl(propertyAddressPage.lookup.url);
 });
 
-Scenario('I am taken to the /manual substep if I submit a Belfast postcode', (
+Scenario('I see an error if I submit a Belfast postcode', (
   I,
   propertyAddressPage
 ) => {
   I.fillField(propertyAddressPage.postcode.fields.postcode,
     propertyAddressPage.postcode.content.belfast);
   I.submitForm();
-  I.seeInCurrentUrl(propertyAddressPage.address.url);
+  I.seeErrors(propertyAddressPage.postcode.fields.postcode);
 });
 
 Scenario('I see an error if I try and continue without selecting an address', (

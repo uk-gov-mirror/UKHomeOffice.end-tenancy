@@ -2,12 +2,14 @@
 
 const moment = require('moment');
 const SummaryPage = require('hof-behaviour-summary-page');
-const AddressLookup = require('./behaviours/address-lookup');
+const AddressLookup = require('hof-behaviour-address-lookup');
+
 const UsePrevious = require('./behaviours/use-previous');
 const Loop = require('./behaviours/loop');
 const ResetOnChange = require('./behaviours/reset-on-change');
 const LocalSummary = require('./behaviours/summary');
 const ExposeEmail = require('./behaviours/expose-email');
+const config = require('../../config');
 
 const requestRoute = req => req.sessionModel.get('what') === 'request';
 const checkRoute = req => req.sessionModel.get('what') === 'check';
@@ -49,14 +51,16 @@ module.exports = {
       next: '/property-address'
     },
     '/property-address': {
-      behaviours: AddressLookup,
+      behaviours: AddressLookup({
+        apiSettings: config.postcode,
+        validate: {
+          allowedCountries: ['england']
+        },
+        addressKey: 'property-address',
+      }),
       fields: [
         'property-address'
       ],
-      countries: [
-        'england'
-      ],
-      addressKey: 'property-address',
       next: '/tenant-details',
       forks: [{
         target: '/tenancy-start',
@@ -150,14 +154,19 @@ module.exports = {
       ]
     },
     '/landlord-address': {
-      behaviours: [AddressLookup, UsePrevious({
-        useWhen: {
-          field: 'who',
-          value: 'landlord'
-        },
-        previousAddress: 'property-address'
-      })],
-      addressKey: 'landlord-address',
+      behaviours: [
+        AddressLookup({
+          addressKey: 'landlord-address',
+          apiSettings: config.postcode
+        }),
+        UsePrevious({
+          useWhen: {
+            field: 'who',
+            value: 'landlord'
+          },
+          previousAddress: 'property-address'
+        })
+      ],
       fields: [
         'landlord-address'
       ],
@@ -173,8 +182,10 @@ module.exports = {
       next: '/agent-address'
     },
     '/agent-address': {
-      behaviours: AddressLookup,
-      addressKey: 'agent-address',
+      behaviours: AddressLookup({
+        addressKey: 'agent-address',
+        apiSettings: config.postcode
+      }),
       fields: [
         'agent-address'
       ],

@@ -11,13 +11,6 @@ Before((
   I.visitPage(agentAddressPage, steps);
 });
 
-Scenario('I am redirected to the /postcode stubstep', (
-  I,
-  agentAddressPage
-) => {
-  I.seeInCurrentUrl(agentAddressPage.postcode.url);
-});
-
 Scenario('I see the correct fields on the page', (
   I,
   agentAddressPage

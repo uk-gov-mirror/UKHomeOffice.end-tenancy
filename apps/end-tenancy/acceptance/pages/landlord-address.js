@@ -11,7 +11,7 @@ module.exports = {
 
   url: 'landlord-address',
   postcode: {
-    url: '/postcode',
+    url: 'step=postcode',
     fields: {
       postcode: '#landlord-address-postcode',
       usePrevious: '#use-previous-address'
@@ -24,7 +24,7 @@ module.exports = {
     }
   },
   lookup: {
-    url: '/lookup',
+    url: 'step=lookup',
 
     fields: {
       'address-select': '#landlord-address-select'
@@ -35,12 +35,12 @@ module.exports = {
     }
   },
   address: {
-    url: '/address',
+    url: 'step=address',
     failedMessage: '.alert-info',
     content: '49 Sydenham Road\nCroydon\nCR0 2EU'
   },
   manual: {
-    url: '/manual',
+    url: 'step=manual',
     fields: {
       address: '#landlord-address'
     }

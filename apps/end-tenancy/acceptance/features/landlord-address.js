@@ -11,13 +11,6 @@ Before((
   I.visitPage(landlordAddressPage, steps);
 });
 
-Scenario('I am redirected to the /postcode stubstep', (
-  I,
-  landlordAddressPage
-) => {
-  I.seeInCurrentUrl(landlordAddressPage.postcode.url);
-});
-
 Scenario('I see the use previous checkbox if I am the landlord', function *(
   I,
   landlordAddressPage

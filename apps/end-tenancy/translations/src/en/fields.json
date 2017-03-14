@@ -36,9 +36,6 @@
     "hint": "For example, 2 01 2015",
     "summary": "Tenancy Start"
   },
-  "property-address-postcode": {
-    "label": "Postcode"
-  },
   "property-address-select": {
     "label": "Select the address"
   },
@@ -157,9 +154,6 @@
   "landlord-name-agent": {
     "label": "What’s the landlord's name?"
   },
-  "landlord-address-postcode": {
-    "label": "Postcode"
-  },
   "landlord-address-select": {
     "label": {
       "who": {
@@ -173,9 +167,6 @@
   },
   "use-previous-address": {
     "label": "Use the address of the rental property I provided earlier"
-  },
-  "agent-address-postcode": {
-    "label": "Postcode"
   },
   "agent-address": {
     "label": "Address"

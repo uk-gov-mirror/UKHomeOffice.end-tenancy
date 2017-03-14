@@ -22,14 +22,6 @@
   "what": {
     "header": "What do you want to do?"
   },
-  "address-lookup": {
-    "cantfind": "I can't find the address in the list",
-    "edit": "Change",
-    "postcode-api": {
-      "not-found": "Sorry – we couldn’t find any addresses for that postcode, enter your address manually",
-      "cant-connect": "Sorry – we couldn’t connect to the postcode lookup service at this time, enter your address manually"
-    }
-  },
   "property-address": {
     "header": {
       "what": {
