@@ -1,11 +1,9 @@
 $path: "../img/";
 
-@import "../../node_modules/hof-frontend-toolkit/assets/stylesheets/app.scss";
+@import "hof-theme-govuk";
 
-@import "./alert.scss";
 @import "./icons.scss";
 @import "./validation.scss";
-
 
 .phase-banner {
   @include phase-banner(beta);

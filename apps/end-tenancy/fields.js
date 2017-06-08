@@ -70,7 +70,7 @@ module.exports = {
     disableRender: true,
     validate: 'required',
     className: ['typeahead', 'js-hidden'],
-    options: [''].concat(require('homeoffice-countries').allCountries),
+    options: [''].concat(require('hof-util-countries')()),
     dependent: {
       field: 'tenant-details',
       value: 'nationality'
