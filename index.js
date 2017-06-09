@@ -1,6 +1,6 @@
 'use strict';
 
-const bootstrap = require('hof-bootstrap');
+const bootstrap = require('hof');
 const config = require('./config');
 const mockPostcode = require('./mock-postcode');
 
