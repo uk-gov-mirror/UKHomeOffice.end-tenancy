@@ -60,7 +60,7 @@ module.exports = {
   'date-of-birth': dateComponent('date-of-birth', {
     disableRender: true,
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before'],
+    validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
     dependent: {
       field: 'tenant-details',
       value: 'date-of-birth'
