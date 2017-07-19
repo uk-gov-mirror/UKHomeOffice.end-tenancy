@@ -228,9 +228,7 @@ module.exports = superclass => class extends superclass {
         next: items.length ? 'next ' : null
       })
     );
-    const intro = items.length > 0 ?
-      undefined :
-      hoganRender(conditionalTranslate(`pages.${pagePath}.intro`, req.translate), res.locals);
+    const intro = hoganRender(conditionalTranslate(`pages.${pagePath}.intro`, req.translate), res.locals);
 
     const outro = conditionalTranslate(`pages.${pagePath}.outro`, req.translate);
 
