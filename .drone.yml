@@ -71,6 +71,8 @@ pipeline:
 
   image_to_quay:
     image: docker:17.09.1
+    secrets:
+      - DOCKER_PASSWORD
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
@@ -83,6 +85,8 @@ pipeline:
 
   trigger_deploy_to_end-tenancy_dev:
     image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+    secrets:
+      - DRONE_TOKEN
     drone_server: https://drone.acp.homeoffice.gov.uk
     repo: UKHomeOffice/kube-end-tenancy
     branch: master
@@ -94,6 +98,8 @@ pipeline:
 
   trigger_deploy_to_end-tenancy_preprod:
     image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+    secrets:
+      - DRONE_TOKEN
     drone_server: https://drone.acp.homeoffice.gov.uk
     repo: UKHomeOffice/kube-end-tenancy
     branch: master
@@ -105,6 +111,8 @@ pipeline:
 
   trigger_deploy_to_end-tenancy_prod:
     image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+    secrets:
+      - DRONE_TOKEN
     drone_server: https://drone.acp.homeoffice.gov.uk
     repo: UKHomeOffice/kube-end-tenancy
     branch: master
