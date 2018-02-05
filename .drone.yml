@@ -11,7 +11,7 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker build -t app .
+      - docker build -t app-$${DRONE_COMMIT_SHA} .
     when:
       event: pull_request
 
@@ -20,16 +20,17 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker build -t app .
+      - docker build -t app-$${DRONE_COMMIT_SHA} .
     when:
       branch: master
+      event: push
 
   build_acceptance:
     image: docker:17.09.1
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker build -f Dockerfile-acceptance -t acceptance .
+      - docker build -f Dockerfile-acceptance -t acceptance-$${DRONE_COMMIT_SHA} .
     when:
       event: pull_request
 
@@ -38,17 +39,20 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker build -f Dockerfile-acceptance -t acceptance .
+      - docker build -f Dockerfile-acceptance -t acceptance-$${DRONE_COMMIT_SHA} .
     when:
       branch: master
+      event: push
 
   test_acceptance:
     image: docker:17.09.1
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -d --net host --userns host app
-      - docker run --rm --net host --userns host acceptance
+      - docker run -d --name=redis-$${DRONE_COMMIT_SHA} redis
+      - docker run -d -e NODE_ENV=ci -e DISABLE_CSP=true --net=container:redis-$${DRONE_COMMIT_SHA} --name=app-$${DRONE_COMMIT_SHA} app-$${DRONE_COMMIT_SHA}
+      - docker run --rm --net=container:app-$${DRONE_COMMIT_SHA} acceptance-$${DRONE_COMMIT_SHA}
+      - docker rm -vf "app-$${DRONE_COMMIT_SHA}" "redis-$${DRONE_COMMIT_SHA}"
     when:
       event: pull_request
 
@@ -57,10 +61,13 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -d --net host --userns host app
-      - docker run --rm --net host --userns host acceptance
+      - docker run -d --name=redis-$${DRONE_COMMIT_SHA} redis
+      - docker run -d -e NODE_ENV=ci -e DISABLE_CSP=true --net=container:redis-$${DRONE_COMMIT_SHA} --name=app-$${DRONE_COMMIT_SHA} app-$${DRONE_COMMIT_SHA}
+      - docker run --rm --net=container:app-$${DRONE_COMMIT_SHA} acceptance-$${DRONE_COMMIT_SHA}
+      - docker rm -vf "app-$${DRONE_COMMIT_SHA}" "redis-$${DRONE_COMMIT_SHA}"
     when:
       branch: master
+      event: push
 
   image_to_quay:
     image: docker:17.09.1
@@ -68,7 +75,7 @@ pipeline:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
       - docker login -u="ukhomeofficedigital+drone" -p=$${DOCKER_PASSWORD} quay.io
-      - docker tag app quay.io/ukhomeofficedigital/end-tenancy:$${DRONE_COMMIT_SHA}
+      - docker tag app-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/end-tenancy:$${DRONE_COMMIT_SHA}
       - docker push quay.io/ukhomeofficedigital/end-tenancy:$${DRONE_COMMIT_SHA}
     when:
       branch: master
@@ -106,7 +113,3 @@ pipeline:
     when:
       event: deployment
       environment: prod
-
-services:
-  redis:
-    image: redis
