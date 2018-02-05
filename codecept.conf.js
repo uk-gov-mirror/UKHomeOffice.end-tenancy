@@ -5,7 +5,9 @@ const path = require('path');
 const pagesPath = page => path.resolve(__dirname,
   `./apps/end-tenancy/acceptance/pages/${page}`);
 
-module.exports = {
+/* eslint no-process-env: 0 */
+/* eslint implicit-dependencies/no-implicit: [2, { dev: true }] */
+module.exports = require('so-acceptance').extend({
   name: 'end-tenancy',
   tests: './apps/**/acceptance/features/*.js',
   include: {
@@ -23,4 +25,4 @@ module.exports = {
     confirmPage: pagesPath('confirm.js'),
     confirmationPage: pagesPath('confirmation.js')
   }
-};
+});
