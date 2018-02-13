@@ -176,3 +176,13 @@ input[type='checkbox'] ~ span.visuallyhidden {
 .alert-message h1:first-child {
   font-size: 35px;
 }
+
+ul {
+  @extend .text;
+  @extend .list;
+  @extend .list-bullet;
+}
+
+.no-new-line {
+  margin-bottom: 0;
+}

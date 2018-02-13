@@ -153,6 +153,5 @@ Scenario('I am taken to the confirm page on a valid submission', (
   confirmPage
 ) => {
   landlordAddressPage.selectAddressAndSubmit();
-  I.submitForm();
   I.seeInCurrentUrl(confirmPage.url);
 });

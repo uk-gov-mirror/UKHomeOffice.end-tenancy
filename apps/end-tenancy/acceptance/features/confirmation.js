@@ -34,32 +34,6 @@ Scenario('I see the agent email address on the page if I am the agent', function
   I.see(confirmationPage.content['agent-email-address']);
 });
 
-Scenario('I see the check message if I am on the "check" journey', function *(
-  I,
-  confirmationPage
-) {
-  I.amOnPage('/');
-  yield I.setSessionData(steps.name, {
-    what: 'check'
-  });
-  yield I.setSessionSteps(steps.name, ['/confirm']);
-  yield I.amOnPage('/' + confirmationPage.url);
-  I.see(confirmationPage.content.checkAlert);
-});
-
-Scenario('I see the report message if I am on the "report" journey', function *(
-  I,
-  confirmationPage
-) {
-  I.amOnPage('/');
-  yield I.setSessionData(steps.name, {
-    what: 'report'
-  });
-  yield I.setSessionSteps(steps.name, ['/confirm']);
-  yield I.amOnPage('/' + confirmationPage.url);
-  I.see(confirmationPage.content.reportAlert);
-});
-
 Scenario('I am not redirected to the start page when I refresh', function *(
   I,
   confirmationPage
