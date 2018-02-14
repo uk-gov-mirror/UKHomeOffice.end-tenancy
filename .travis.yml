@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - "6"
+  - "8"
 
 services:
   - docker
@@ -9,7 +10,7 @@ services:
 before_install:
   - npm cache clean
   - docker build --tag travis .
-  - docker run -d --net=host -e NODE_ENV=ci -e DISABLE_CSP=true travis
+  - docker run -d --net=host -e CASEWORKER_EMAIL=test@example.com -e NODE_ENV=ci -e DISABLE_CSP=true travis
 
 script:
   - npm test && npm run test:acceptance
