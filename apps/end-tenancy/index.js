@@ -55,15 +55,15 @@ module.exports = {
     },
     '/property-address': {
       behaviours: AddressLookup({
-        apiSettings: config.postcode,
+        required: true,
+        addressKey: 'property-address',
+        apiSettings: {
+          hostname: config.postcode.hostname
+        },
         validate: {
           allowedCountries: ['england']
         },
-        addressKey: 'property-address',
       }),
-      fields: [
-        'property-address'
-      ],
       next: '/tenant-details',
       forks: [{
         target: '/tenancy-start',
@@ -159,8 +159,11 @@ module.exports = {
     '/landlord-address': {
       behaviours: [
         AddressLookup({
+          required: true,
           addressKey: 'landlord-address',
-          apiSettings: config.postcode
+          apiSettings: {
+            hostname: config.postcode.hostname
+          }
         }),
         UsePrevious({
           useWhen: {
@@ -186,8 +189,11 @@ module.exports = {
     },
     '/agent-address': {
       behaviours: AddressLookup({
+        required: true,
         addressKey: 'agent-address',
-        apiSettings: config.postcode
+        apiSettings: {
+          hostname: config.postcode.hostname
+        }
       }),
       fields: [
         'agent-address'
