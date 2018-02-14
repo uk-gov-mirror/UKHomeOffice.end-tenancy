@@ -3,41 +3,45 @@ services:
   app:
     build: .
     environment:
-      - NODE_ENV=docker-compose
-      - EMAIL_IGNORE_TLS=true
-      - EMAIL_HOST=maildev
-      - EMAIL_PORT=25
-      - CASEWORKER_EMAIL=caseworker@gov.uk.test
+      - NODE_ENV=development
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - PDF_CONVERTER_URL=http://html-pdf-converter:8001/convert
     links:
       - redis
-      - maildev
+      - html-pdf-converter
     ports:
       - "8080:8080"
     volumes:
-      - "/public"
+      - "/app/public"
+
   redis:
     image: redis
 
   nginx-proxy:
-    image: quay.io/ukhomeofficedigital/nginx-proxy:v1.2.3
+    image: quay.io/ukhomeofficedigital/nginx-proxy-govuk:v3.0.0.0
     environment:
       - PROXY_SERVICE_HOST=app
       - PROXY_SERVICE_PORT=8080
       - NAXSI_USE_DEFAULT_RULES=FALSE
-      - ADD_NGINX_SERVER_CFG=add_header Cache-Control private;add_header X-Frame-Options "SAMEORIGIN" always;add_header X-Content-Type-Options "nosniff" always;add_header X-XSS-Protection "1; mode=block" always;location /public {add_header Cache-Control max-age=86400;add_header X-Frame-Options "SAMEORIGIN" always;add_header X-Content-Type-Options "nosniff" always;add_header X-XSS-Protection "1; mode=block" always;alias /public;}
+      - ADD_NGINX_SERVER_CFG=add_header Cache-Control private;add_header X-Frame-Options "SAMEORIGIN" always;add_header X-Content-Type-Options "nosniff" always;add_header X-XSS-Protection "1; mode=block" always;location /public {add_header Cache-Control max-age=86400;add_header X-Frame-Options "SAMEORIGIN" always;add_header X-Content-Type-Options "nosniff" always;add_header X-XSS-Protection "1; mode=block" always;alias /app/public;}
       - ERROR_REDIRECT_CODES=599
     ports:
-      - "443:443"
-      - "80:80"
+      - "10443:10443"
+      - "10080:10080"
     links:
       - app
     volumes_from:
       - app
 
-  maildev:
-    image: djfarrelly/maildev
+  html-pdf-converter:
+    image: quay.io/ukhomeofficedigital/html-pdf-converter:01442cbca45c8c1965a64f680d8fab95998e5238
+    environment:
+      - CHROME_HOST=chrome
     ports:
-      - "8000:80"
-      - "25"
+      - "8001:8001"
+    links:
+      - chrome
+
+  chrome:
+    image: quay.io/ukhomeofficedigital/docker-chrome-headless:v1.0.0
