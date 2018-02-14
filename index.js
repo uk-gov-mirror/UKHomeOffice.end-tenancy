@@ -1,22 +1,19 @@
 'use strict';
 
+/* eslint no-process-env: 0*/
 const bootstrap = require('hof');
 const config = require('./config');
-const mockPostcode = require('./mock-postcode');
 
 const options = {
-  translations: './apps/end-tenancy/translations',
-  views: false,
-  fields: false,
   routes: [
     require('./apps/end-tenancy')
   ]
 };
 
-if (config.env === 'ci') {
-  options.middleware = [
-    mockPostcode
-  ];
+options.redis = config.redis;
+
+if (process.env.NODE_ENV !== 'production') {
+  options.middleware = [require('./mocks')];
 }
 
 bootstrap(options);
