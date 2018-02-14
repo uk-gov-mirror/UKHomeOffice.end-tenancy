@@ -9,7 +9,10 @@ const Loop = require('./behaviours/loop');
 const ResetOnChange = require('./behaviours/reset-on-change');
 const LocalSummary = require('./behaviours/summary');
 const ExposeEmail = require('./behaviours/expose-email');
+const UploadPDF = require('./behaviours/upload-pdf');
 const config = require('../../config');
+
+const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
 
 const requestRoute = req => req.sessionModel.get('what') === 'request';
 const checkRoute = req => req.sessionModel.get('what') === 'check';
@@ -198,7 +201,7 @@ module.exports = {
       next: '/landlord-address'
     },
     '/confirm': {
-      behaviours: [SummaryPage, LocalSummary, 'complete'],
+      behaviours: [SummaryPage, LocalSummary, UploadPDF, caseworkerEmailer, 'complete'],
       fields: [
         'declaration-identity',
         'declaration'
@@ -248,7 +251,7 @@ module.exports = {
       next: '/confirmation'
     },
     '/confirmation': {
-      behaviours: ExposeEmail,
+      behaviours: [ExposeEmail],
       backLink: false
     }
   }
