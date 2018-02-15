@@ -1,18 +1,21 @@
 language: node_js
 node_js:
   - "6"
+  - "8"
 
 services:
   - docker
-  - redis
 
 before_install:
-  - npm cache clean
   - docker build --tag travis .
-  - docker run -d --net=host -e NODE_ENV=ci -e DISABLE_CSP=true travis
+  - docker build -f Dockerfile-acceptance -t travis-acceptance .
 
-script:
-  - npm test && npm run test:acceptance
+  - docker run -d --name=redis redis
+  - docker run -d -e CASEWORKER_EMAIL=test@example.com -e NODE_ENV=ci -e DISABLE_CSP=true --net=container:redis --name=travis travis
+  - docker run --rm -e CASEWORKER_EMAIL=test@example.com --net=container:travis travis-acceptance
+  - docker rm -vf travis redis
+
+script: echo "Tests Successful!"
 
 notifications:
   email: false
