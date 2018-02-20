@@ -109,6 +109,13 @@
       "default": "By submitting this enquiry (tick the following):"
     }
   },
+  "declaration": {
+    "header": "Declaration",
+    "initial-paragraph": "By submitting this request:",
+    "landlord": "you confirm that you are the landlord",
+    "agent": "you confirm that you are an agent acting on behalf of the landlord",
+    "email-paragraph": "When you've submitted this request, we'll send a copy of the information you’ve provided to {{emailAddress}}."
+  },
   "confirmation": {
     "alert": {
       "what": {

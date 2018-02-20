@@ -10,6 +10,7 @@ const ResetOnChange = require('./behaviours/reset-on-change');
 const LocalSummary = require('./behaviours/summary');
 const ExposeEmail = require('./behaviours/expose-email');
 const UploadPDF = require('./behaviours/upload-pdf');
+const GetDeclarer = require('./behaviours/get-declarer');
 const config = require('../../config');
 
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
@@ -207,7 +208,7 @@ module.exports = {
       next: '/landlord-address'
     },
     '/confirm': {
-      behaviours: [SummaryPage, LocalSummary, UploadPDF, caseworkerEmailer, 'complete'],
+      behaviours: [SummaryPage, LocalSummary, UploadPDF, caseworkerEmailer],
       sections: {
         'key-details': [
           'what',
@@ -250,6 +251,10 @@ module.exports = {
           'agent-address'
         ]
       },
+      next: '/declaration'
+    },
+    '/declaration': {
+      behaviours: [ExposeEmail, GetDeclarer, 'complete'],
       next: '/confirmation'
     },
     '/confirmation': {
