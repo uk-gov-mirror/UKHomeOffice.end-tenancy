@@ -208,10 +208,6 @@ module.exports = {
     },
     '/confirm': {
       behaviours: [SummaryPage, LocalSummary, UploadPDF, caseworkerEmailer, 'complete'],
-      fields: [
-        'declaration-identity',
-        'declaration'
-      ],
       sections: {
         'key-details': [
           'what',

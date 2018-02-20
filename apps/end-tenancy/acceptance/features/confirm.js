@@ -11,46 +11,6 @@ Before((
   I.visitPage(confirmPage, steps);
 });
 
-Scenario('I see both declaration fields if I am on the "report" journey', function *(
-  I,
-  confirmPage
-) {
-  yield I.setSessionData(steps.name, {
-    what: 'report'
-  });
-  yield I.refreshPage();
-  I.seeElements([
-    confirmPage.fields['declaration-identity'],
-    confirmPage.fields.declaration
-  ]);
-});
-
-Scenario('I dont see the declaration field if I am on the "check" journey', function *(
-  I,
-  confirmPage
-) {
-  yield I.setSessionData(steps.name, {
-    what: 'check'
-  });
-  yield I.refreshPage();
-  I.dontSeeElements(confirmPage.fields.declaration);
-});
-
-Scenario('I see errors if I submit the form without accepting the declarations', function *(
-  I,
-  confirmPage
-) {
-  yield I.setSessionData(steps.name, {
-    what: 'report'
-  });
-  yield I.refreshPage();
-  I.submitForm();
-  I.seeErrors([
-    confirmPage.fields['declaration-identity'],
-    confirmPage.fields.declaration
-  ]);
-});
-
 Scenario('I see the correct table information if I am a landlord reporting 1 tenant left', function *(
   I,
   confirmPage
@@ -76,15 +36,4 @@ Scenario('I see the correct table information if I am a landlord checking a sing
   yield confirmPage.setSessionData(steps.name, 'check-landlord');
   yield I.refreshPage();
   confirmPage.checkData('check-landlord');
-});
-
-Scenario('I am taken to the confirmation page if I accept the declaration', function *(
-  I,
-  confirmPage,
-  confirmationPage
-) {
-  yield confirmPage.setSessionData(steps.name, 'check-landlord');
-  I.checkOption(confirmPage.fields['declaration-identity']);
-  I.submitForm();
-  I.seeInCurrentUrl(confirmationPage.url);
 });
