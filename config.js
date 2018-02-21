@@ -5,6 +5,9 @@ const env = process.env.NODE_ENV || 'production';
 const localhost = () => `${process.env.LISTEN_HOST || '0.0.0.0'}:${process.env.PORT || 8080}`;
 
 module.exports = {
+  DATE_FORMAT: 'YYYY-MM-DD',
+  PRETTY_DATE_FORMAT: 'Do MMMM YYYY',
+  dateTimeFormat: 'DD MMM YYYY HH:MM:SS ZZ',
   postcode: {
     mock: '/api/postcode-test',
     hostname: env !== 'production' ?

@@ -1,9 +1,6 @@
 'use strict';
 
-const moment = require('moment');
-const SummaryPage = require('hof-behaviour-summary-page');
 const AddressLookup = require('hof-behaviour-address-lookup');
-
 const UsePrevious = require('./behaviours/use-previous');
 const Loop = require('./behaviours/loop');
 const ResetOnChange = require('./behaviours/reset-on-change');
@@ -17,11 +14,6 @@ const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email)
 
 const requestRoute = req => req.sessionModel.get('what') === 'request';
 const checkRoute = req => req.sessionModel.get('what') === 'check';
-
-const DATE_FORMAT = 'YYYY-MM-DD';
-const PRETTY_DATE_FORMAT = 'Do MMMM YYYY';
-
-const prettyDate = val => moment(val, DATE_FORMAT).format(PRETTY_DATE_FORMAT);
 
 module.exports = {
   name: 'end-tenancy',
@@ -208,53 +200,19 @@ module.exports = {
       next: '/landlord-address'
     },
     '/confirm': {
-      behaviours: [SummaryPage, LocalSummary, UploadPDF, caseworkerEmailer],
-      sections: {
-        'key-details': [
-          'what',
-          {
-            field: 'nldp-date',
-            parse: prettyDate
-          },
-          'property-address',
-          {
-            field: 'tenancy-start',
-            parse: prettyDate
-          }
-        ],
-        'tenants-left': [
-          'name',
-          {
-            field: 'date-left',
-            parse: prettyDate
-          },
-          {
-            field: 'date-of-birth',
-            parse: prettyDate
-          },
-          'nationality',
-          'reference-number'
-        ],
-        'landlord-details': [
-          'landlord-name',
-          'landlord-company',
-          'landlord-email-address',
-          'landlord-phone-number',
-          'landlord-address',
-          'landlord-name-agent'
-        ],
-        'agent-details': [
-          'agent-company',
-          'agent-name',
-          'agent-email-address',
-          'agent-phone-number',
-          'agent-address'
-        ]
-      },
+      behaviours: LocalSummary,
+      sections: require('./sections/confirm-page-sections'),
       next: '/declaration'
     },
     '/declaration': {
-      behaviours: [ExposeEmail, GetDeclarer, 'complete'],
+      behaviours: [
+        ExposeEmail,
+        GetDeclarer,
+        UploadPDF,
+        caseworkerEmailer,
+        'complete'
+      ],
+      sections: require('./sections/pdf-data-sections'),
       next: '/confirmation'
     },
     '/confirmation': {

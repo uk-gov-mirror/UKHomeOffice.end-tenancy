@@ -49,18 +49,16 @@
       <h1>{{title}}</h1>
       <h2>Time and date: {{dateTime}}</h2>
       {{#rows}}
-        {{#group}}
-          <table data-section="{{section.id}}" class="table-details">
-            <tbody{{#name}} data-group="{{name}}"{{/name}}>
-              {{#fields}}
-                <tr data-id="{{field}}">
-                  <td data-label="{{label}}">{{label}}</td>
-                  <td data-value="{{value}}">{{value}}</td>
-                </tr>
-              {{/fields}}
-            </tbody>
-          </table>
-        {{/group}}
+        <table data-section="{{section.id}}" class="table-details">
+          <tbody{{#name}} data-group="{{name}}"{{/name}}>
+            {{#fields}}
+              <tr data-id="{{field}}">
+                <td data-label="{{label}}">{{label}}</td>
+                <td data-value="{{value}}">{{value}}</td>
+              </tr>
+            {{/fields}}
+          </tbody>
+        </table>
       {{/rows}}
     </main>
   {{/main}}

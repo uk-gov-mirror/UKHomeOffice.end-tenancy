@@ -1,10 +1,12 @@
 /* eslint-disable no-underscore-dangle */
-
 'use strict';
+
+const mix = require('mixwith').mix;
+const Behaviour = require('hof-behaviour-summary-page');
 
 const _ = require('lodash');
 
-module.exports = superclass => class extends superclass {
+module.exports = Base => class extends mix(Base).with(Behaviour) {
 
   configure(req, res, callback) {
     Object.assign(req.form.options, {
