@@ -3,10 +3,12 @@ services:
   app:
     build: .
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - SESSION_SECRET=123456789
       - PDF_CONVERTER_URL=http://html-pdf-converter:8001/convert
+      - CASEWORKER_EMAIL=test@example.com
     links:
       - redis
       - html-pdf-converter

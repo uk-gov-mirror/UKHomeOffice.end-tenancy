@@ -37,7 +37,14 @@ describe('behaviours/upload-pdf', () => {
       log: () => {},
       form: {
         options: {
-          sections: []
+          steps: {
+            '/tenant-details': {
+              storeKey: 'tenants'
+            }
+          },
+          sections: {
+            'tenants-left': []
+          }
         },
         values: {}
       }
@@ -48,6 +55,8 @@ describe('behaviours/upload-pdf', () => {
     };
 
     beforeEach(() => {
+      sinon.stub(req.sessionModel, 'get').withArgs('tenants').returns('tenants');
+      sinon.stub(Base.prototype, 'locals').returns({});
       sinon.stub(fs, 'readFile').yieldsAsync(null, 'body { color: red; }');
       sinon.stub(PDFModel.prototype, 'set');
       sinon.stub(PDFModel.prototype, 'save').resolves(pdf);
@@ -59,6 +68,8 @@ describe('behaviours/upload-pdf', () => {
     });
 
     afterEach(() => {
+      req.sessionModel.get.restore();
+      Base.prototype.locals.restore();
       fs.readFile.restore();
       PDFModel.prototype.set.restore();
       PDFModel.prototype.save.restore();

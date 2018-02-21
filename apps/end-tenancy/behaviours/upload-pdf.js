@@ -2,10 +2,9 @@
 
 const fs = require('fs');
 const path = require('path');
-
 const mix = require('mixwith').mix;
 const moment = require('moment');
-
+const config = require('../../../config');
 const PDFModel = require('../models/pdf');
 const UploadModel = require('../models/upload');
 
@@ -43,7 +42,7 @@ module.exports = superclass => class extends mix(superclass).with(summaryData) {
 
     const locals = Object.assign({}, this.locals(req, res));
     locals.title = 'Request has been received';
-    locals.dateTime = moment().format('DD MMM YYYY HH:MM:SS ZZ') + ' (GMT)';
+    locals.dateTime = moment().format(config.dateTimeFormat) + ' (GMT)';
     locals.values = req.sessionModel.toJSON();
 
     return Promise.resolve()
