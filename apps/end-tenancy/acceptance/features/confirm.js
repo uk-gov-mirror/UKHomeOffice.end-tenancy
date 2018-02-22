@@ -18,6 +18,8 @@ Scenario('I see the correct table information if I am a landlord reporting 1 ten
   yield confirmPage.setSessionData(steps.name, 'report-landlord');
   yield I.refreshPage();
   confirmPage.checkData('report-landlord');
+  yield I.submitForm();
+  I.seeInCurrentUrl('/confirmation');
 });
 
 Scenario('I see the correct table information if I am an agent reporting 2 tenants left', function *(
@@ -27,6 +29,8 @@ Scenario('I see the correct table information if I am an agent reporting 2 tenan
   yield confirmPage.setSessionData(steps.name, 'report-agent');
   yield I.refreshPage();
   confirmPage.checkData('report-agent');
+  yield I.submitForm();
+  I.seeInCurrentUrl('/confirmation');
 });
 
 Scenario('I see the correct table information if I am a landlord checking a single tenant', function *(
@@ -36,4 +40,24 @@ Scenario('I see the correct table information if I am a landlord checking a sing
   yield confirmPage.setSessionData(steps.name, 'check-landlord');
   yield I.refreshPage();
   confirmPage.checkData('check-landlord');
+  yield I.submitForm();
+  I.seeInCurrentUrl('/confirmation');
+});
+
+Scenario('I see the correct table information if I am requesting an NLDP', function *(
+  I,
+  confirmPage
+) {
+  yield confirmPage.setSessionData(steps.name, 'request-notice');
+  yield I.refreshPage();
+  confirmPage.checkData('request-notice');
+});
+
+Scenario('I am redirected to the declaration page when I submit the confirm page', function *(
+  I,
+  confirmPage
+) {
+  yield confirmPage.setSessionData(steps.name, 'request-notice');
+  yield I.submitForm();
+  I.seeInCurrentUrl('/declaration');
 });

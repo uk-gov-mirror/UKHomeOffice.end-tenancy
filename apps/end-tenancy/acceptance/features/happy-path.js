@@ -1,6 +1,6 @@
 'use strict';
 
-Feature('Request NLDP- Happy path');
+Feature('Request NLDP - Happy path');
 
 const values = {
   'who': 'landlord',
