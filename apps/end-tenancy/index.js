@@ -200,9 +200,15 @@ module.exports = {
       next: '/landlord-address'
     },
     '/confirm': {
-      behaviours: LocalSummary,
+      behaviours: [LocalSummary],
       sections: require('./sections/confirm-page-sections'),
-      next: '/declaration'
+      forks: [{
+        target: '/declaration',
+        condition: (req) => {
+          return req.sessionModel.get('what') === 'request';
+        }
+      }],
+      next: '/confirmation'
     },
     '/declaration': {
       behaviours: [

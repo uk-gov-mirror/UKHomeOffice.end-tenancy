@@ -65,7 +65,7 @@ module.exports = {
   },
 
   'check-landlord': {
-    what: 'Check if a person living in your property is still disqualified from renting',
+    what: 'check',
     'nldp-date': '1111-11-11',
     'property-address': '123 Example Street Example',
     tenants: {
@@ -73,6 +73,23 @@ module.exports = {
         name: 'Sterling Archer'
       }
     },
+    'landlord-name': 'Fred Bloggs',
+    'landlord-company': 'UK Home Office',
+    'landlord-email-address': 'sterling@archer.com',
+    'landlord-phone-number': '01234567890',
+    'landlord-address': '123 Example Street Example'
+  },
+
+  'request-notice': {
+    what: 'request',
+    'property-address': '123 Example Street Example',
+    'tenancy-start': '1111-11-11',
+    tenants: {
+      0: {
+        name: 'Sterling Archer'
+      }
+    },
+    name: 'John Smith',
     'landlord-name': 'Fred Bloggs',
     'landlord-company': 'UK Home Office',
     'landlord-email-address': 'sterling@archer.com',
