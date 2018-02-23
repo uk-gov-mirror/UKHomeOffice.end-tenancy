@@ -8,23 +8,23 @@ module.exports = {
     'what',
     {
       field: 'nldp-date',
-      parse: d => moment(d).format(config.PRETTY_DATE_FORMAT)
+      parse: d => d && moment(d).format(config.PRETTY_DATE_FORMAT)
     },
     'property-address',
     {
       field: 'tenancy-start',
-      parse: d => moment(d).format(config.PRETTY_DATE_FORMAT)
+      parse: d => d && moment(d).format(config.PRETTY_DATE_FORMAT)
     }
   ],
   'tenants-left': [
     'name',
     {
       field: 'date-left',
-      parse: d => moment(d).format(config.PRETTY_DATE_FORMAT)
+      parse: d => d && moment(d).format(config.PRETTY_DATE_FORMAT)
     },
     {
       field: 'date-of-birth',
-      parse: d => moment(d).format(config.PRETTY_DATE_FORMAT)
+      parse: d => d && moment(d).format(config.PRETTY_DATE_FORMAT)
     },
     'nationality',
     'reference-number'
