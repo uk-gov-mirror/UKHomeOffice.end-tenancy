@@ -66,7 +66,6 @@ module.exports = Base => class extends mix(Base).with(Behaviour) {
           }))
       )
     );
-
     return {
       section: req.translate('pages.tenants-left.header'),
       fields

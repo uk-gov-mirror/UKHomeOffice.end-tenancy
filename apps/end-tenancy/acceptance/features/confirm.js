@@ -19,6 +19,7 @@ Scenario('I see the correct table information if I am a landlord reporting 1 ten
   yield I.refreshPage();
   confirmPage.checkData('report-landlord');
   yield I.submitForm();
+  I.dontSee('Date of birth');
   I.seeInCurrentUrl('/confirmation');
 });
 
@@ -50,6 +51,7 @@ Scenario('I see the correct table information if I am requesting an NLDP', funct
 ) {
   yield confirmPage.setSessionData(steps.name, 'request-notice');
   yield I.refreshPage();
+  I.dontSee('nationality');
   confirmPage.checkData('request-notice');
 });
 

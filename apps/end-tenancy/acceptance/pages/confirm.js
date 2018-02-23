@@ -26,7 +26,7 @@ module.exports = {
   },
 
   'report-landlord': {
-    what: 'Report that a disqualified person has left your property',
+    what: 'report',
     'nldp-date': '1111-11-11',
     'property-address': '123 Example Street Example',
     tenants: {
@@ -43,7 +43,7 @@ module.exports = {
   },
 
   'report-agent': {
-    what: 'Report that a disqualified person has left your property',
+    what: 'report',
     'nldp-date': '1111-11-11',
     'property-address': '123 Example Street Example',
     tenants: {
@@ -86,7 +86,8 @@ module.exports = {
     'tenancy-start': '1111-11-11',
     tenants: {
       0: {
-        name: 'Sterling Archer'
+        name: 'Sterling Archer',
+        'date-of-birth': '1980-11-11',
       }
     },
     name: 'John Smith',
