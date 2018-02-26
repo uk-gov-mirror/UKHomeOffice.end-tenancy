@@ -20,66 +20,6 @@ module.exports = {
 
   url: 'confirm',
 
-  fields: {
-    'declaration-identity': '#declaration-identity',
-    declaration: '#declaration'
-  },
-
-  'report-landlord': {
-    what: 'report',
-    'nldp-date': '1111-11-11',
-    'property-address': '123 Example Street Example',
-    tenants: {
-      0: {
-        name: 'Sterling Archer',
-        'date-left': '1234-02-01'
-      }
-    },
-    'landlord-name': 'Fred Bloggs',
-    'landlord-company': 'UK Home Office',
-    'landlord-email-address': 'sterling@archer.com',
-    'landlord-phone-number': '01234567890',
-    'landlord-address': '123 Example Street Example'
-  },
-
-  'report-agent': {
-    what: 'report',
-    'nldp-date': '1111-11-11',
-    'property-address': '123 Example Street Example',
-    tenants: {
-      0: {
-        name: 'Sterling Archer',
-        'date-left': '1234-02-01'
-      },
-      1: {
-        name: 'Fred Bloggs',
-        'date-left': '1234-03-02'
-      }
-    },
-    'agent-name': 'Mr Agent',
-    'agent-company': 'UK Home Office',
-    'agent-email-address': 'agent@agent.com',
-    'agent-phone-number': '01234567890',
-    'landlord-name': 'Fred Bloggs',
-    'landlord-address': '123 Example Street Example'
-  },
-
-  'check-landlord': {
-    what: 'check',
-    'nldp-date': '1111-11-11',
-    'property-address': '123 Example Street Example',
-    tenants: {
-      0: {
-        name: 'Sterling Archer'
-      }
-    },
-    'landlord-name': 'Fred Bloggs',
-    'landlord-company': 'UK Home Office',
-    'landlord-email-address': 'sterling@archer.com',
-    'landlord-phone-number': '01234567890',
-    'landlord-address': '123 Example Street Example'
-  },
-
   'request-notice': {
     what: 'request',
     'property-address': '123 Example Street Example',

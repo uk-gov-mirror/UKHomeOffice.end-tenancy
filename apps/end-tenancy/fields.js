@@ -152,14 +152,6 @@ module.exports = {
   declaration: {
     mixin: 'checkbox',
     validate: 'required',
-    className: 'label',
-    useWhen: {
-      field: 'what',
-      value: 'report'
-    },
-    dependent: {
-      field: 'what',
-      value: 'report'
-    }
+    className: 'label'
   }
 };

@@ -12,6 +12,6 @@ module.exports = settings => {
     transport: settings.from ? settings.transport : 'stub',
     recipient: settings.caseworker,
     subject: (model, translate) => translate('pages.email.caseworker.subject'),
-    template: path.resolve(__dirname, '../emails/caseworker.html')
+    template: path.resolve(__dirname, '../emails/pdf-caseworker.html')
   }));
 };

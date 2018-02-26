@@ -3,6 +3,7 @@
 Feature('Request NLDP - Happy path');
 
 const values = {
+  'what': 'check',
   'who': 'landlord',
   'landlord-email-address': 's@g.com',
   'add-another': 'no',

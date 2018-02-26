@@ -23,6 +23,7 @@ module.exports = require('so-acceptance').extend({
     agentAddressPage: pagesPath('agent-address.js'),
     landlordNamePage: pagesPath('landlord-name.js'),
     confirmPage: pagesPath('confirm.js'),
+    confirmDeclarationPage: pagesPath('confirm-declaration.js'),
     confirmationPage: pagesPath('confirmation.js')
   }
 });
