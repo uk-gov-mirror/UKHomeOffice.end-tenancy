@@ -10,7 +10,9 @@ const UploadPDF = require('./behaviours/upload-pdf');
 const GetDeclarer = require('./behaviours/get-declarer');
 const config = require('../../config');
 
-const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
+const emailPDFCaseworker = require('./behaviours/email-pdf-caseworker')(config.email);
+const emailCaseworker = require('./behaviours/email-caseworker')(config.email);
+const emailCustomer = require('./behaviours/email-customer')(config.email);
 
 const requestRoute = req => req.sessionModel.get('what') === 'request';
 const checkRoute = req => req.sessionModel.get('what') === 'check';
@@ -166,10 +168,14 @@ module.exports = {
           previousAddress: 'property-address'
         })
       ],
-      fields: [
-        'landlord-address'
-      ],
-      next: '/confirm'
+      next: '/confirm-declaration',
+      forks: [{
+        target: '/confirm',
+        condition: {
+          field: 'what',
+          value: 'request'
+        }
+      }]
     },
     '/agent-details': {
       fields: [
@@ -188,9 +194,6 @@ module.exports = {
           hostname: config.postcode.hostname
         }
       }),
-      fields: [
-        'agent-address'
-      ],
       next: '/landlord-name'
     },
     '/landlord-name': {
@@ -199,23 +202,31 @@ module.exports = {
       ],
       next: '/landlord-address'
     },
+    '/confirm-declaration': {
+      behaviours: [
+        LocalSummary,
+        emailCustomer,
+        emailCaseworker,
+        'complete'
+      ],
+      fields: [
+        'declaration'
+      ],
+      sections: require('./sections/confirm-page-sections'),
+      next: '/confirmation'
+    },
     '/confirm': {
       behaviours: [LocalSummary],
       sections: require('./sections/confirm-page-sections'),
-      forks: [{
-        target: '/declaration',
-        condition: (req) => {
-          return req.sessionModel.get('what') === 'request';
-        }
-      }],
-      next: '/confirmation'
+      next: '/declaration'
     },
     '/declaration': {
       behaviours: [
         ExposeEmail,
         GetDeclarer,
+        emailCustomer,
         UploadPDF,
-        caseworkerEmailer,
+        emailPDFCaseworker,
         'complete'
       ],
       sections: require('./sections/pdf-data-sections'),

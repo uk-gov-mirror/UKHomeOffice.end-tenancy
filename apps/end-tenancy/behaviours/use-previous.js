@@ -25,10 +25,10 @@ module.exports = config => superclass => class extends superclass {
     }
   }
 
-  getNextStep(req, res, callback) {
-    if (req.form.values['use-previous-address'] === 'true') {
-      return this.options.next;
-    }
-    return super.getNextStep(req, res, callback);
-  }
+  // getNextStep(req, res, callback) {
+  //   if (req.form.values['use-previous-address'] === 'true') {
+  //     return this.options.next;
+  //   }
+  //   return super.getNextStep(req, res, callback);
+  // }
 };
