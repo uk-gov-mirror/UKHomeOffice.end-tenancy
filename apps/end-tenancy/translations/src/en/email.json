@@ -1,0 +1,66 @@
+{
+  "customer": {
+    "subject": "Ending a tenancy email",
+    "fields": {
+      "submitted": {
+        "label": "Date submitted"
+      },
+      "what": {
+        "label": "What"
+      },
+      "nldp-date": {
+        "label": "NLDP date"
+      },
+      "property-address": {
+        "label": "Property address"
+      },
+      "tenant-name": {
+        "label": "Tenant's name"
+      },
+      "landlord-name": {
+        "label": "Landord's name"
+      },
+      "landlord-company": {
+        "label": "Landord's company"
+      },
+      "landlord-email-address": {
+        "label": "Landlord's email address"
+      },
+      "landord-phone-number": {
+        "label": "Landlord's phone number"
+      }
+    }
+  },
+  "caseworker": {
+    "subject": "Ending a tenancy email",
+    "fields": {
+      "submitted": {
+        "label": "Date submitted"
+      },
+      "what": {
+        "label": "What"
+      },
+      "nldp-date": {
+        "label": "NLDP date"
+      },
+      "property-address": {
+        "label": "Property address"
+      },
+      "tenant-name": {
+        "label": "Tenant's name"
+      },
+      "landlord-name": {
+        "label": "Landord's name"
+      },
+      "landlord-company": {
+        "label": "Landord's company"
+      },
+      "landlord-email-address": {
+        "label": "Landlord's email address"
+      },
+      "landord-phone-number": {
+        "label": "Landlord's phone number"
+      }
+    }
+  }
+}
