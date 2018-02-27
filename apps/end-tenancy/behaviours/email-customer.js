@@ -15,27 +15,48 @@ const getDataRows = (model, translate) => {
   return [
     {
       table: [
-        { label: label('submitted'), value: moment().format(config.dateTimeFormat) },
-        { label: label('what'), value: model.what },
-        { label: label('nldp-date'), value: model['nldp-date'] },
-        { label: label('property-address'), value: model['property-address'] },
-        model['tenancy-start'] && { label: label('tenancy-start'), value: model['tenancy-start'] }
+        {
+          label: label('submitted'),
+          value: moment().format(config.PRETTY_DATE_FORMAT)
+        },
+        {
+          label: label('what'),
+          value: model.what
+        },
+        {
+          label: label('nldp-date'),
+          value: moment(model['nldp-date']).format(config.PRETTY_DATE_FORMAT)
+        },
+        {
+          label: label('property-address'),
+          value: model['property-address']
+        },
+        model['tenancy-start'] && {
+          label: label('tenancy-start'),
+          value: moment(model['tenancy-start']).format(config.PRETTY_DATE_FORMAT)
+        }
       ]
     },
     {
       title: 'Tenant details',
       table: _.reduce(model.tenants, (fields, tenant, i) => fields.concat([
         { linebreak: i > 0 },
-        { label: label('tenant-name'), value: tenant.name },
+        {
+          label: label('tenant-name'),
+          value: tenant.name
+        },
         tenant['date-left'] && {
           label: label('tenant-date-left'),
-          value: moment(tenant['date-left']).format(config.dateFormat)
+          value: moment(tenant['date-left']).format(config.PRETTY_DATE_FORMAT)
         },
         tenant['date-of-birth'] && {
           label: label('tenant-date-of-birth'),
-          value: moment(tenant['date-of-birth']).format(config.dateFormat)
+          value: moment(tenant['date-of-birth']).format(config.PRETTY_DATE_FORMAT)
         },
-        tenant.nationality && { label: label('tenant-nationality'), value: tenant.nationality },
+        tenant.nationality && {
+          label: label('tenant-nationality'),
+          value: tenant.nationality
+        },
         tenant['reference-number'] && {
           label: label('tenant-reference-number'),
           value: obfuscate(tenant['reference-number'])
