@@ -1,5 +1,7 @@
 {
   "delete": "Delete",
   "edit": "Edit",
-  "submit": "Submit"
+  "submit": "Submit",
+  "find-address": "Find address",
+  "continue-declaration": "Continue to declaration"
 }
