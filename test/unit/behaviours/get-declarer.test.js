@@ -52,7 +52,7 @@ describe('apps/behaviours/get-declarer', () => {
       };
 
       req.translate.withArgs('pages.declaration.landlord').returns(declarer.declarer);
-      req.sessionModel.get.withArgs('representative').returns(declarer.declarerId);
+      req.sessionModel.get.withArgs('who').returns(declarer.declarerId);
       req.sessionModel.get.withArgs('landlord-email-address').returns(declarer.declarerEmail);
 
       const result = instance.locals(req, res);
@@ -72,7 +72,7 @@ describe('apps/behaviours/get-declarer', () => {
         declarerEmail: 'agent@aol.com'
       };
 
-      req.sessionModel.get.withArgs('representative').returns(declarer.declarerId);
+      req.sessionModel.get.withArgs('who').returns(declarer.declarerId);
       req.translate.withArgs('pages.declaration.agent').returns(declarer.declarer);
       req.sessionModel.get.withArgs('agent-email-address').returns(declarer.declarerEmail);
 
