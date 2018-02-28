@@ -171,9 +171,8 @@ module.exports = {
       next: '/confirm-declaration',
       forks: [{
         target: '/confirm',
-        condition: {
-          field: 'what',
-          value: 'request'
+        condition: (req) => {
+          return req.sessionModel.get('what') === 'request';
         }
       }]
     },

@@ -3,7 +3,7 @@
 module.exports = superclass => class extends superclass {
   locals(req, res) {
     const locals = super.locals(req, res);
-    if (req.sessionModel.get('representative') === 'landlord') {
+    if (req.sessionModel.get('who') === 'landlord') {
       locals.declarer = req.translate('pages.declaration.landlord');
       locals.declarerId = 'landlord';
       locals.declarerEmail = req.sessionModel.get('landlord-email-address');
