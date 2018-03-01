@@ -5,6 +5,14 @@ const mix = require('mixwith').mix;
 const Behaviour = require('hof-behaviour-summary-page');
 
 const _ = require('lodash');
+const getValue = (value, field, translate) => {
+  const key = `fields.${field}.options.${value}.label`;
+  let result = translate(key);
+  if (result === key) {
+    result = value;
+  }
+  return result;
+};
 
 module.exports = Base => class extends mix(Base).with(Behaviour) {
 
@@ -22,6 +30,40 @@ module.exports = Base => class extends mix(Base).with(Behaviour) {
     const section = this.addLoopSection(req);
     result.splice(1, 0, section);
     return result;
+  }
+
+  getStepForField(key, steps, model) {
+
+    return Object.keys(steps).find(step => {
+      if (!steps[step].fields) {
+        return key === step.substring(1) && model.get(key) !== undefined;
+      }
+      return steps[step].fields && steps[step].fields.indexOf(key) > -1;
+    });
+  }
+
+  getFieldData(key, req) {
+    const settings = req.form.options;
+    if (typeof key === 'string') {
+      return {
+        label: req.translate([
+          `pages.confirm.fields.${key}.label`,
+          `fields.${key}.summary`,
+          `fields.${key}.label`,
+          `fields.${key}.legend`
+        ]),
+        value: getValue(req.sessionModel.get(key), key, req.translate),
+        step: this.getStepForField(key, settings.steps, req.sessionModel),
+        field: key
+      };
+    } else if (typeof key.field === 'string') {
+      const obj = Object.assign(this.getFieldData(key.field, req), key);
+      if (typeof key.parse === 'function') {
+        obj.value = key.parse(obj.value);
+      }
+      return obj;
+    }
+    return {};
   }
 
   addLoopSection(req) {
