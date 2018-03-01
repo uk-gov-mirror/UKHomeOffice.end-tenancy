@@ -11,7 +11,7 @@ module.exports = settings => {
   return Emailer(Object.assign({}, settings, {
     transport: settings.from ? settings.transport : 'stub',
     recipient: settings.caseworker,
-    subject: (model, translate) => translate('pages.email.caseworker.subject'),
+    subject: (model, translate) => translate('email.caseworker.subject'),
     template: path.resolve(__dirname, '../emails/pdf-caseworker.html')
   }));
 };
