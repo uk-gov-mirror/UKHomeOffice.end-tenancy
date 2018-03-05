@@ -20,6 +20,10 @@ const checkRoute = req => req.sessionModel.get('what') === 'check';
 module.exports = {
   name: 'end-tenancy',
   params: '/:action?/:id?/:edit?',
+  pages: {
+    '/privacy-policy': 'privacy-policy',
+    '/cookies': 'cookies'
+  },
   steps: {
     '/what': {
       fields: [

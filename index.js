@@ -7,10 +7,11 @@ const config = require('./config');
 const options = {
   routes: [
     require('./apps/end-tenancy')
-  ]
+  ],
+  getCookies: false,
+  getTerms: false,
+  redis: config.redis
 };
-
-options.redis = config.redis;
 
 if (process.env.NODE_ENV !== 'production') {
   options.middleware = [require('./mocks')];
