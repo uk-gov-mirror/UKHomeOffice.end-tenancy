@@ -76,10 +76,6 @@ $path: "../img/";
   margin: 1em 0em;
 }
 
-h1 {
-  @include bold-24;
-}
-
 .form-label-bold {
   @include core-19;
 }
