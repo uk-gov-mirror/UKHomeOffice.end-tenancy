@@ -14,6 +14,7 @@
   "scripts": {
     "start": "node .",
     "dev": "NODE_ENV=development hof-build watch",
+    "ci": "NODE_ENV=ci DISABLE_CSP=true CASEWORKER_EMAIL=test@example.com node .",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "mocha",
     "test:acceptance": "funkie so-acceptance --steps",

@@ -8,6 +8,7 @@ const LocalSummary = require('./behaviours/summary');
 const ExposeEmail = require('./behaviours/expose-email');
 const UploadPDF = require('./behaviours/upload-pdf');
 const GetDeclarer = require('./behaviours/get-declarer');
+const SetConfirmStep = require('./behaviours/set-confirm-step');
 const config = require('../../config');
 
 const emailPDFCaseworker = require('./behaviours/email-pdf-caseworker')(config.email);
@@ -24,6 +25,7 @@ module.exports = {
     '/privacy-policy': 'privacy-policy',
     '/cookies': 'cookies'
   },
+  behaviours: SetConfirmStep,
   steps: {
     '/what': {
       fields: [
