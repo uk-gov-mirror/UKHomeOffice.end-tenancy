@@ -24,10 +24,6 @@ const getDataRows = (model, translate) => {
           value: model.what
         },
         {
-          label: label('nldp-date'),
-          value: moment(model['nldp-date']).format(config.PRETTY_DATE_FORMAT)
-        },
-        {
           label: label('property-address'),
           value: model['property-address']
         },
