@@ -94,7 +94,7 @@
       "who": {
         "landlord": "Enter your postcode"
       },
-      "default": "Enter the postcode"
+      "default": "Enter the landlord's postcode"
     },
     "postcode": "Enter a valid postcode"
   },
@@ -106,7 +106,7 @@
       "who": {
         "landlord": "Enter your address"
       },
-      "default": "Enter the address"
+      "default": "Enter the landlord's address"
     }
   },
   "declaration-identity": {
