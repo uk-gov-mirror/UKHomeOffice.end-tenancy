@@ -6,10 +6,6 @@ const config = require('../../../config');
 module.exports = {
   'key-details': [
     'what',
-    {
-      field: 'nldp-date',
-      parse: d => d && moment(d).format(config.PRETTY_DATE_FORMAT)
-    },
     'property-address',
     {
       field: 'tenancy-start',
