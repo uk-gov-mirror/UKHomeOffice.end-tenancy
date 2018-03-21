@@ -27,7 +27,6 @@ module.exports = {
 
   'report-landlord': {
     what: 'Report that a disqualified person has left your property',
-    'nldp-date': '1111-11-11',
     'property-address': '123 Example Street Example',
     tenants: {
       0: {
@@ -44,7 +43,6 @@ module.exports = {
 
   'report-agent': {
     what: 'Report that a disqualified person has left your property',
-    'nldp-date': '1111-11-11',
     'property-address': '123 Example Street Example',
     tenants: {
       0: {
@@ -66,7 +64,6 @@ module.exports = {
 
   'check-landlord': {
     what: 'Check if a person living in your property is still disqualified from renting',
-    'nldp-date': '1111-11-11',
     'property-address': '123 Example Street Example',
     tenants: {
       0: {
