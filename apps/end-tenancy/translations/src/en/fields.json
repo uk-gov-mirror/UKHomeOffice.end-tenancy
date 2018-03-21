@@ -120,39 +120,40 @@
   },
   "landlord-name": {
     "label": "Your full name",
-    "summary": "Name"
+    "summary": "Landlord name"
   },
   "landlord-company": {
     "label": "Your company name",
     "hint": "If you don't have one, leave this blank",
-    "summary": "Company name"
+    "summary": "Landlord's company name"
   },
   "landlord-email-address": {
     "label": "Your email address",
-    "summary": "Email"
+    "summary": "Landlord's email"
   },
   "landlord-phone-number": {
     "label": "Your phone number",
-    "summary": "Phone number"
+    "summary": "Landlord's phone number"
   },
   "agent-name": {
     "label": "Your full name",
-    "summary": "Name"
+    "summary": "Agent's Name"
   },
   "agent-company": {
     "label": "Your company name",
-    "summary": "Company name"
+    "summary": "Agent's company name"
   },
   "agent-email-address": {
     "label": "Your email address",
-    "summary": "Email address"
+    "summary": "Agent's email address"
   },
   "agent-phone-number": {
     "label": "Your phone number",
-    "summary": "Phone number"
+    "summary": "Agent's phone number"
   },
   "landlord-name-agent": {
-    "label": "What’s the landlord's name?"
+    "label": "What’s the landlord's name?",
+    "summary": "Landlord's name"
   },
   "landlord-address-select": {
     "label": {
@@ -163,13 +164,15 @@
     }
   },
   "landlord-address": {
-    "label": "Address"
+    "label": "Address",
+    "summary": "Landlord's address"
   },
   "use-previous-address": {
     "label": "Use the address of the rental property I provided earlier"
   },
   "agent-address": {
-    "label": "Address"
+    "label": "Address",
+    "summary": "Agent's address"
   },
   "agent-address-select": {
     "label": "Select the address from the list."
