@@ -39,17 +39,18 @@ Scenario('I am redirected to the declaration page when I submit the confirm page
   I.seeInCurrentUrl('/declaration');
 });
 
-Scenario('I am redirected to the property-address page when I click the Property address change button', function *(
+Scenario('I am redirected to the property-address page when I click the Property address change button', (
   I
-) {
+) => {
   I.amOnPage('/');
-  yield I.completeToStep('/confirm', {
+  I.completeToStep('/confirm', {
     what: 'request',
     'property-address': '123 Example Street Example',
     'tenancy-start-day': '11',
     'tenancy-start-month': '11',
     'tenancy-start-year': '1111',
     'landlord-name': 'Fred Bloggs',
+    'who': 'landlord',
     'landlord-company': 'UK Home Office',
     'landlord-email-address': 'sterling@archer.com',
     'landlord-phone-number': '01234567890',
