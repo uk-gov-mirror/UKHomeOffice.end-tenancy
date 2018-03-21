@@ -158,6 +158,7 @@ module.exports = {
       ]
     },
     '/landlord-address': {
+      addressKey: 'landlord-address',
       behaviours: [
         AddressLookup({
           required: true,
