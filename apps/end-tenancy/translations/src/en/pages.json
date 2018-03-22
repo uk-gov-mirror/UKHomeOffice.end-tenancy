@@ -116,6 +116,9 @@
     "agent": "you confirm that you are an agent acting on behalf of the landlord",
     "email-paragraph": "When you've submitted this request, we'll send a copy of the information you’ve provided to {{emailAddress}}."
   },
+  "confirm-declaration": {
+    "header": "Check your answers"
+  },
   "confirmation": {
     "alert": {
       "what": {
