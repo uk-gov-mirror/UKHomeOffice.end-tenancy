@@ -7,6 +7,10 @@ Scenario('And I select previous address When I go to the confirm page Then I see
   I
 ) => {
   I.amOnPage('/');
+  I.completeToStep('/property-address', {
+    what: 'check',
+  });
+  I.click('a[href="?step=manual"]');
   I.completeToStep('/landlord-address', {
     what: 'check',
     'property-address': '123 Example Street',
