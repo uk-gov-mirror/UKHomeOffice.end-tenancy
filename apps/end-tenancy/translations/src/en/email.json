@@ -14,8 +14,20 @@
       "property-address": {
         "label": "Property address"
       },
+      "tenancy-start": {
+        "label": "Tenancy start"
+      },
       "tenant-name": {
         "label": "Tenant's name"
+      },
+      "tenant-nationality": {
+        "label": "Tenant's nationality"
+      },
+      "tenant-reference-number": {
+        "label": "Tenant's reference number"
+      },
+      "tenant-date-of-birth": {
+        "label": "Tenant's date of birth"
       },
       "tenant-date-left": {
         "label": "Date tenant left"
