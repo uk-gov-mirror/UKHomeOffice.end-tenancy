@@ -1,10 +1,11 @@
 'use strict';
 
 /* eslint no-process-env: 0*/
-const bootstrap = require('hof');
+const hof = require('hof');
 const config = require('./config');
 
 const options = {
+  start: false,
   routes: [
     require('./apps/end-tenancy')
   ],
@@ -13,8 +14,10 @@ const options = {
   redis: config.redis
 };
 
+const app = hof(options);
+
 if (process.env.NODE_ENV !== 'production') {
-  options.middleware = [require('./mocks')];
+  app.use(require('./mocks'));
 }
 
-bootstrap(options);
+module.exports = app;
