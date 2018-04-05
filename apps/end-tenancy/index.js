@@ -218,12 +218,12 @@ module.exports = {
       fields: [
         'declaration'
       ],
-      sections: require('./sections/confirm-page-sections'),
+      sections: require('./sections/check-report-confirm-sections'),
       next: '/confirmation'
     },
     '/confirm': {
       behaviours: [LocalSummary],
-      sections: require('./sections/confirm-page-sections'),
+      sections: require('./sections/request-confirm-sections'),
       next: '/declaration'
     },
     '/declaration': {

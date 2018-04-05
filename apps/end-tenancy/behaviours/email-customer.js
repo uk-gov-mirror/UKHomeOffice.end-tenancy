@@ -12,6 +12,7 @@ const obfuscate = str => str.replace(/./g, '*');
 const getDataRows = (model, translate) => {
   const label = key => translate(`email.customer.fields.${key}.label`);
   const isAgent = model['agent-email-address'] !== undefined;
+  const isNotRequest = model.what !== 'request';
   return [
     {
       table: [
@@ -22,6 +23,10 @@ const getDataRows = (model, translate) => {
         {
           label: label('what'),
           value: model.what
+        },
+        isNotRequest && {
+          label: label('nldp-date'),
+          value: moment(model['nldp-date']).format(config.PRETTY_DATE_FORMAT)
         },
         {
           label: label('property-address'),
