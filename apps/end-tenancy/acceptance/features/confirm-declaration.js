@@ -79,3 +79,34 @@ Scenario('I return to confirmation-declaration after I edit property-address', f
   I.submitForm();
   I.seeInCurrentUrl('/confirm-declaration');
 });
+
+Scenario('I return to confirmation-declaration after I edit nldp-date', (
+  I
+) => {
+  I.amOnPage('/');
+  I.completeToStep('/confirm-declaration', {
+    what: 'check',
+    'property-address': '123 Example Street Example',
+    'tenancy-start-day': '11',
+    'tenancy-start-month': '11',
+    'tenancy-start-year': '1111',
+    'who': 'landlord',
+    'landlord-name': 'Fred Bloggs',
+    'landlord-company': 'UK Home Office',
+    'landlord-email-address': 'sterling@archer.com',
+    'landlord-phone-number': '01234567890',
+    'landlord-address': '123 Example Street Example',
+    tenants: {
+      0: {
+        name: 'Sterling Archer',
+        'date-of-birth': '1980-11-11',
+      }
+    },
+    name: 'John Smith',
+  });
+  I.seeInCurrentUrl('/confirm-declaration');
+  I.click('#nldp-date-change');
+  I.seeInCurrentUrl('/nldp-date');
+  I.submitForm();
+  I.seeInCurrentUrl('/confirm-declaration');
+});
