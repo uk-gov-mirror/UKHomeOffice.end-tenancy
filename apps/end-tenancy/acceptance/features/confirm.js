@@ -21,6 +21,17 @@ Scenario('I see the correct table information if I am requesting an NLDP', funct
   confirmPage.checkData('request-notice');
 });
 
+// bugfix
+Scenario('I do not see the nldp date', function *(
+  I,
+  confirmPage
+) {
+  yield confirmPage.setSessionData(steps.name, 'request-notice');
+  yield I.refreshPage();
+  I.dontSee('Date of issue of Notice of Letting to a Disqualified Person');
+  confirmPage.checkData('request-notice');
+});
+
 Scenario('I do not see fields for information I have  not entered', function *(
   I,
   confirmPage
