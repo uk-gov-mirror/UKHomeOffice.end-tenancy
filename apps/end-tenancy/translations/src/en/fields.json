@@ -58,7 +58,7 @@
     "summary": "Date left"
   },
   "tenant-details": {
-    "legend": "Please provide as much information as you can to help us identify {{values.name}}. Tick all that you can provide.",
+    "legend": "Please provide as much information as you can to help us identify {{{values.name}}}. Tick all that you can provide.",
     "options": {
       "date-of-birth": {
         "label": "Date of birth"
