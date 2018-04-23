@@ -18,52 +18,52 @@
         "label": "Tenancy start"
       },
       "tenant-name": {
-        "label": "Tenant's name"
+        "label": "Tenant’s name"
       },
       "tenant-nationality": {
-        "label": "Tenant's nationality"
+        "label": "Tenant’s nationality"
       },
       "tenant-reference-number": {
-        "label": "Tenant's reference number"
+        "label": "Tenant’s reference number"
       },
       "tenant-date-of-birth": {
-        "label": "Tenant's date of birth"
+        "label": "Tenant’s date of birth"
       },
       "tenant-date-left": {
         "label": "Date tenant left"
       },
       "landlord-name": {
-        "label": "Landlord's name"
+        "label": "Landlord’s name"
       },
       "landlord-company": {
-        "label": "Landlord's company"
+        "label": "Landlord’s company"
       },
       "landlord-email-address": {
-        "label": "Landlord's email address"
+        "label": "Landlord’s email address"
       },
       "landlord-phone-number": {
-        "label": "Landlord's phone number"
+        "label": "Landlord’s phone number"
       },
       "landlord-address": {
-        "label": "Landlord's address"
+        "label": "Landlord’s address"
       },
       "landlord-name-agent": {
-        "label": "Landlord's name"
+        "label": "Landlord’s name"
       },
       "agent-name": {
-        "label": "Agent's name"
+        "label": "Agent’s name"
       },
       "agent-company": {
-        "label": "Agent's company"
+        "label": "Agent’s company"
       },
       "agent-email-address": {
-        "label": "Agent's email address"
+        "label": "Agent’s email address"
       },
       "agent-phone-number": {
-        "label": "Agent's phone number"
+        "label": "Agent’s phone number"
       },
       "agent-address": {
-        "label": "Agent's address"
+        "label": "Agent’s address"
       }
     }
   },
@@ -83,43 +83,43 @@
         "label": "Property address"
       },
       "tenant-name": {
-        "label": "Tenant's name"
+        "label": "Tenant’s name"
       },
       "tenant-date-left": {
         "label": "Date tenant left"
       },
       "landlord-name": {
-        "label": "Landlord's name"
+        "label": "Landlord’s name"
       },
       "landlord-company": {
-        "label": "Landlord's company"
+        "label": "Landlord’s company"
       },
       "landlord-email-address": {
-        "label": "Landlord's email address"
+        "label": "Landlord’s email address"
       },
       "landlord-phone-number": {
-        "label": "Landlord's phone number"
+        "label": "Landlord’s phone number"
       },
       "landlord-address": {
-        "label": "Landlord's address"
+        "label": "Landlord’s address"
       },
       "landlord-name-agent": {
-        "label": "Agent's name"
+        "label": "Agent’s name"
       },
       "agent-name": {
-        "label": "Agent's name"
+        "label": "Agent’s name"
       },
       "agent-company": {
-        "label": "Agent's company"
+        "label": "Agent’s company"
       },
       "agent-email-address": {
-        "label": "Agent's email address"
+        "label": "Agent’s email address"
       },
       "agent-phone-number": {
-        "label": "Agent's phone number"
+        "label": "Agent’s phone number"
       },
       "agent-address": {
-        "label": "Agent's address"
+        "label": "Agent’s address"
       }
     }
   }

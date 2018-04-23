@@ -4,7 +4,7 @@
     "summary": "Reason for contact",
     "options": {
       "request": {
-        "label": "Request a Notice of Letting to a Disqualified Person if you think someone may be disqualified from renting",
+        "label": "Request a Notice of Letting to a Disqualified Person from the Home Office to help you end a tenancy",
         "toggle-content": "If you have reasonable cause to believe that a person is disqualified from renting due to their immigration status you can request a Notice of Letting to a Disqualified Person from the Home Office to confirm this. You can then use this to help you end the tenancy."
       },
       "check": {
@@ -34,10 +34,10 @@
   "tenancy-start": {
     "legend": "When did the tenancy start?",
     "hint": "For example, 2 01 2015",
-    "summary": "Tenancy Start"
+    "summary": "Tenancy start"
   },
   "property-address-select": {
-    "label": "Select the address"
+    "label": "Select an address"
   },
   "property-address": {
     "label": "Address",
@@ -48,7 +48,7 @@
       "what": {
         "request": "Full name"
       },
-      "default": "Full name as it's written on the Notice of Letting to a Disqualified Person"
+      "default": "Full name as it’s written on the Notice of Letting to a Disqualified Person"
     },
     "summary": "Name"
   },
@@ -58,7 +58,7 @@
     "summary": "Date left"
   },
   "tenant-details": {
-    "legend": "Please provide as much information as you can to help us identify {{{values.name}}}. Tick all that you can provide.",
+    "legend": "Please provide as much information as you can to help us identify {{{values.name}}}.",
     "options": {
       "date-of-birth": {
         "label": "Date of birth"
@@ -90,11 +90,11 @@
   },
   "reference-number": {
     "label": "Reference number",
-    "hint": "If the person has applied for a visa with the Home Office, they will be issued with a reference number. This could be an application or appeal number, an Application Registration Card (ARC) number or a case ID number. Don't worry if you don't have this.",
+    "hint": "If the person has applied for a visa with the Home Office, they will be issued with a reference number. This could be an application or appeal number, an Application Registration Card (ARC) number or a case ID number. Don’t worry if you don’t have this.",
     "summary": "Reference number"
   },
   "no-tenant-details": {
-    "label": "I don't have any more information to give"
+    "label": "I don’t have any more information to give"
   },
   "add-another": {
     "legend": "Has anyone else listed on the same Notice of Letting to a Disqualified Person left the property?",
@@ -124,58 +124,58 @@
   },
   "landlord-company": {
     "label": "Your company name",
-    "hint": "If you don't have one, leave this blank",
-    "summary": "Landlord's company name"
+    "hint": "If you don’t have one, leave this blank",
+    "summary": "Landlord’s company name"
   },
   "landlord-email-address": {
     "label": "Your email address",
-    "summary": "Landlord's email"
+    "summary": "Landlord’s email"
   },
   "landlord-phone-number": {
     "label": "Your phone number",
-    "summary": "Landlord's phone number"
+    "summary": "Landlord’s phone number"
   },
   "agent-name": {
     "label": "Your full name",
-    "summary": "Agent's Name"
+    "summary": "Agent’s Name"
   },
   "agent-company": {
     "label": "Your company name",
-    "summary": "Agent's company name"
+    "summary": "Agent’s company name"
   },
   "agent-email-address": {
     "label": "Your email address",
-    "summary": "Agent's email address"
+    "summary": "Agent’s email address"
   },
   "agent-phone-number": {
     "label": "Your phone number",
-    "summary": "Agent's phone number"
+    "summary": "Agent’s phone number"
   },
   "landlord-name-agent": {
-    "label": "What’s the landlord's name?",
-    "summary": "Landlord's name"
+    "label": "What’s the landlord’s name?",
+    "summary": "Landlord’s name"
   },
   "landlord-address-select": {
     "label": {
       "who": {
         "landlord": "Select your address from the list"
       },
-      "default": "Select the address from the list"
+      "default": "Select an address from the list"
     }
   },
   "landlord-address": {
     "label": "Address",
-    "summary": "Landlord's address"
+    "summary": "Landlord’s address"
   },
   "use-previous-address": {
     "label": "Use the address of the rental property I provided earlier"
   },
   "agent-address": {
     "label": "Address",
-    "summary": "Agent's address"
+    "summary": "Agent’s address"
   },
   "agent-address-select": {
-    "label": "Select the address from the list."
+    "label": "Select an address from the list."
   },
   "declaration-identity": {
     "label": {
@@ -186,6 +186,6 @@
     }
   },
   "declaration": {
-    "label": "I confirm that the information I've provided is correct to the best of my knowledge"
+    "label": "I confirm that the information I’ve provided is correct to the best of my knowledge"
   }
 }
