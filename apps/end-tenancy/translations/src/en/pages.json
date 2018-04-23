@@ -13,11 +13,11 @@
   },
   "landlord-details": {
     "header": "Landlord details",
-    "intro": "We need these details in case we need to contact you with queries."
+    "intro": "We will use these details if we need to contact you."
   },
   "agent-details": {
     "header": "Agent details",
-    "intro": "We need these details in case we need to contact you with queries."
+    "intro": "We will use these details if we need to contact you."
   },
   "what": {
     "header": "What do you want to do?"
@@ -43,7 +43,7 @@
     "header": {
       "what": {
         "check": "What’s the full name of the {{next}}person that you’d like to check?",
-        "request": "What’s the name of the {{next}}person you’d like to request a Notice of Letting to a Disqualified Person for?"
+        "request": "What’s the name of the {{next}}person you think is disqualified from renting??"
       },
       "default": "What’s the name of the {{next}}person who left the property?"
     },
@@ -61,26 +61,26 @@
     "header": {
       "what": {
         "report": "Is there anyone else listed on the same Notice of Letting to a Disqualified Person who has left the property?",
-        "request": "Is there another person you’d like to add to the same Notice of Letting to a Disqualified Person?"
+        "request": "Are there other tenants at the same property who you think may also be disqualified from renting?"
       },
       "default": "Is there anyone else listed on the same Notice of Letting to a Disqualified Person that you’d like to check?"
     },
     "intro": {
       "what": {
-        "request": "You can add more people to the same Notice if they also live in the same property"
+        "request": "You can add several people to the same Notice of Letting to a Disqualified Person if they live in the same property"
       }
     }
   },
   "landlord-address": {
     "header": {
       "who": {
-        "landlord": "What’s your contact address?"
+        "landlord": "What’s your address?"
       },
-      "default": "What’s the landlord’s postal address?"
+      "default": "What’s the landlord's address?"
     },
     "intro": {
       "who": {
-        "agent": "We need these details for identification purposes."
+        "agent": "We need this to confirm the landlord's identity."
       }
     }
   },
