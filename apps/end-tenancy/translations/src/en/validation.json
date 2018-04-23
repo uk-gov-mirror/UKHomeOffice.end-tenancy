@@ -24,7 +24,7 @@
     "required": "Enter the property address"
   },
   "name": {
-    "required": "Enter the person's name"
+    "required": "Enter the person’s name"
   },
   "date-left": {
     "required": "Enter a date",
@@ -41,7 +41,7 @@
     "after": "This date appears to be too far in the past"
   },
   "nationality": {
-    "required": "Enter the tenant's country of nationality",
+    "required": "Enter the tenant’s country of nationality",
     "equal": "Pick a country from the list"
   },
   "reference-number": {
@@ -57,7 +57,7 @@
     "required": "Enter your full name"
   },
   "landlord-name-agent": {
-    "required": "Enter the landlord's full name"
+    "required": "Enter the landlord’s full name"
   },
   "landlord-email-address": {
     "required": "Enter your email address",
@@ -80,21 +80,21 @@
     "required": "Enter your phone number"
   },
   "agent-address-postcode": {
-    "required": "Enter the agent's postcode",
+    "required": "Enter the agent’s postcode",
     "postcode": "Enter a valid postcode"
   },
   "agent-address-select": {
     "required": "Select an address"
   },
   "agent-address": {
-    "required": "Enter the agent's address"
+    "required": "Enter the agent’s address"
   },
   "landlord-address-postcode": {
     "required": {
       "who": {
         "landlord": "Enter your postcode"
       },
-      "default": "Enter the landlord's postcode"
+      "default": "Enter the landlord’s postcode"
     },
     "postcode": "Enter a valid postcode"
   },
@@ -106,7 +106,7 @@
       "who": {
         "landlord": "Enter your address"
       },
-      "default": "Enter the landlord's address"
+      "default": "Enter the landlord’s address"
     }
   },
   "declaration-identity": {
