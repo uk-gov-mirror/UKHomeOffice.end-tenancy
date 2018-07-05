@@ -117,7 +117,7 @@ pipeline:
     repo: UKHomeOffice/kube-end-tenancy
     branch: master
     deploy_to: prod
-    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy-prod
+    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy
     when:
       event: deployment
       environment: prod
