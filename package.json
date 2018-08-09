@@ -20,7 +20,7 @@
     "watch:translations": "nodemon --watch apps/**/translations/src -x 'npm run hof-transpile'",
     "test": "NODE_ENV=test mocha",
     "test:ci": "npm run lint && npm run style && npm run test",
-    "test:acceptance": "so-acceptance",
+    "test:acceptance": "funkie so-acceptance --steps",
     "lint": "npm-run-all --parallel lint:app lint:acceptance",
     "lint:app": "eslint .",
     "lint:acceptance": "eslint --no-ignore -c ./node_modules/so-acceptance/.eslintrc ./apps/**/acceptance/**/*.js",
@@ -46,6 +46,8 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "eslint-config-homeoffice": "^2.0.0",
+    "funkie": "0.0.6",
+    "funkie-phantom": "0.0.1",
     "jscs": "^3.0.6",
     "mocha": "^2.2.5",
     "mocha-junit-reporter": "^1.4.0",
