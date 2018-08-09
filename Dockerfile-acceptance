@@ -1,4 +1,4 @@
-FROM node:5
+FROM node:8
 
 WORKDIR /test
 
@@ -8,6 +8,7 @@ RUN wget https://github.com/Medium/phantomjs/releases/download/v2.1.1/${PHANTOM_
     tar xjf ${PHANTOM_JS}.tar.bz2
 
 COPY package.json package.json
+COPY package-lock.json package-lock.json
 COPY codecept.conf.js codecept.conf.js
 COPY config.js config.js
 COPY apps apps/
