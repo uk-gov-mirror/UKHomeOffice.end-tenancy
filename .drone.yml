@@ -83,41 +83,41 @@ pipeline:
       branch: release
       event: push
 
-  # trigger_deploy_to_end-tenancy_dev:
-  #   image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
-  #   secrets:
-  #     - DRONE_TOKEN
-  #   drone_server: https://drone.acp.homeoffice.gov.uk
-  #   repo: UKHomeOffice/kube-end-tenancy
-  #   branch: release
-  #   deploy_to: dev
-  #   params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy-dev
-  #   when:
-  #     branch: release
-  #     event: push
+  trigger_deploy_to_end-tenancy_dev:
+    image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+    secrets:
+      - DRONE_TOKEN
+    drone_server: https://drone.acp.homeoffice.gov.uk
+    repo: UKHomeOffice/kube-end-tenancy
+    branch: release
+    deploy_to: dev
+    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy-dev
+    when:
+      branch: release
+      event: push
 
-  # trigger_deploy_to_end-tenancy_preprod:
-  #   image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
-  #   secrets:
-  #     - DRONE_TOKEN
-  #   drone_server: https://drone.acp.homeoffice.gov.uk
-  #   repo: UKHomeOffice/kube-end-tenancy
-  #   branch: release
-  #   deploy_to: preprod
-  #   params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy-preprod
-  #   when:
-  #     event: deployment
-  #     environment: preprod
-  #
-  # trigger_deploy_to_end-tenancy_prod:
-  #   image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
-  #   secrets:
-  #     - DRONE_TOKEN
-  #   drone_server: https://drone.acp.homeoffice.gov.uk
-  #   repo: UKHomeOffice/kube-end-tenancy
-  #   branch: release
-  #   deploy_to: prod
-  #   params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy
-  #   when:
-  #     event: deployment
-  #     environment: prod
+  trigger_deploy_to_end-tenancy_preprod:
+    image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+    secrets:
+      - DRONE_TOKEN
+    drone_server: https://drone.acp.homeoffice.gov.uk
+    repo: UKHomeOffice/kube-end-tenancy
+    branch: release
+    deploy_to: preprod
+    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy-preprod
+    when:
+      event: deployment
+      environment: preprod
+
+  trigger_deploy_to_end-tenancy_prod:
+    image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+    secrets:
+      - DRONE_TOKEN
+    drone_server: https://drone.acp.homeoffice.gov.uk
+    repo: UKHomeOffice/kube-end-tenancy
+    branch: release
+    deploy_to: prod
+    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy
+    when:
+      event: deployment
+      environment: prod
