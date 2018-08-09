@@ -5,7 +5,7 @@ const path = require('path');
 const pagesPath = page => path.resolve(__dirname,
   `./apps/end-tenancy/acceptance/pages/${page}`);
 
-module.exports = {
+module.exports = require('so-acceptance').extend({
   name: 'end-tenancy',
   include: {
     whatPage: pagesPath('what.js'),
@@ -22,4 +22,4 @@ module.exports = {
     confirmPage: pagesPath('confirm.js'),
     confirmationPage: pagesPath('confirmation.js')
   }
-};
+});
