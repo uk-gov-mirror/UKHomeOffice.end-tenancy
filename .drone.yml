@@ -1,112 +1,23 @@
 pipeline:
-  build_4:
-    image: node:4.4.2
-    commands:
-      - npm --loglevel warn install -g npm@3
-      - npm --loglevel warn install
-      - npm run test:ci
-
-  build_5:
-    image: node:5
-    commands:
-      - npm --loglevel warn install
-      - npm run test:ci
-
   build_app:
-    image: docker:1.11
+    image: docker:17.09.1
     environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
+      - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker build -t app .
+      - docker build -t app-$${DRONE_COMMIT_SHA} .
     when:
-      event: pull_request
-
-  build_app:
-    image: docker:1.11
-    environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
-    commands:
-      - docker build -t app .
-    when:
-      branch: master
-
-  build_acceptance:
-    image: docker:1.11
-    environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
-    commands:
-      - docker build -f Dockerfile-acceptance -t acceptance .
-    when:
-      event: pull_request
-
-  build_acceptance:
-    image: docker:1.11
-    environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
-    commands:
-      - docker build -f Dockerfile-acceptance -t acceptance .
-    when:
-      branch: master
-
-  test_acceptance:
-    image: docker:1.11
-    environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
-    commands:
-      - docker run -e NODE_ENV=ci -d --net host app
-      - docker run --rm --net host acceptance
-    when:
-      event: pull_request
-
-  test_acceptance:
-    image: docker:1.11
-    environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
-    commands:
-      - docker run -e NODE_ENV=ci -d --net host app
-      - docker run --rm --net host acceptance
-    when:
-      branch: master
-
-  image_to_quay:
-    image: docker:1.11
-    environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
-    commands:
-      - docker login -u="ukhomeofficedigital+drone" -p=${DOCKER_PASSWORD} quay.io
-      - docker tag app quay.io/ukhomeofficedigital/end-tenancy:${DRONE_COMMIT_SHA}
-      - docker push quay.io/ukhomeofficedigital/end-tenancy:${DRONE_COMMIT_SHA}
-    when:
-      branch: master
+      branch: rollback/v1
       event: push
-
-  trigger_deploy_to_end-tenancy_dev:
-    image: quay.io/ukhomeofficedigital/drone-trigger:latest
-    drone_server: https://drone.digital.homeoffice.gov.uk
-    repo: UKHomeOffice/kube-end-tenancy
-    branch: master
-    deploy_to: end-tenancy-dev
-    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy-dev
+   image_to_quay:
+    image: docker:17.09.1
+    secrets:
+      - DOCKER_PASSWORD
+    environment:
+      - DOCKER_HOST=tcp://172.17.0.1:2375
+    commands:
+      - docker login -u="ukhomeofficedigital+drone" -p=$${DOCKER_PASSWORD} quay.io
+      - docker tag app-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/end-tenancy:$${DRONE_COMMIT_SHA}
+      - docker push quay.io/ukhomeofficedigital/end-tenancy:$${DRONE_COMMIT_SHA}
     when:
-      branch: master
+      branch: rollback/v1
       event: push
-
-  trigger_deploy_to_end-tenancy_preprod:
-    image: quay.io/ukhomeofficedigital/drone-trigger:latest
-    drone_server: https://drone.digital.homeoffice.gov.uk
-    repo: UKHomeOffice/kube-end-tenancy
-    branch: master
-    deploy_to: end-tenancy-preprod
-    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=end-tenancy-preprod
-    when:
-      event: tag
-
-services:
-  redis:
-    image: redis
-  dind:
-    image: docker:1.11-dind
-    privileged: true
-    command:
-      - "-s"
-      - "overlay"
