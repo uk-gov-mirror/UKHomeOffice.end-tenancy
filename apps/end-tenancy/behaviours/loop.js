@@ -50,6 +50,21 @@ module.exports = superclass => class extends superclass {
     return this.options.subSteps[req.params.action];
   }
 
+  getBackLink(req, res) {
+    const subSteps = _.intersection(
+      Object.keys(this.options.subSteps),
+      [
+        ...(req.sessionModel.get('subSteps') || []),
+        req.params.action
+      ]
+    );
+    const index = subSteps.indexOf(req.params.action);
+    if (index < 1 || req.params.action === 'add-another') {
+      return super.getBackLink(req, res);
+    }
+    return subSteps[index - 1];
+  }
+
   redirectTo(step, req, res) {
     return res.redirect(`${req.baseUrl.replace(/\/$/, '')}${this.options.route.replace(/\/$/, '')}/${step}`);
   }
@@ -241,5 +256,12 @@ module.exports = superclass => class extends superclass {
       summaryTitle: req.translate('pages.tenant-details.summary-title'),
       hasItems: items.length
     });
+  }
+
+  successHandler(req, res) {
+    const subSteps = _.without((req.sessionModel.get('subSteps') || []), req.params.action);
+    subSteps.push(req.params.action);
+    req.sessionModel.set('subSteps', subSteps);
+    return super.successHandler(req, res);
   }
 };
