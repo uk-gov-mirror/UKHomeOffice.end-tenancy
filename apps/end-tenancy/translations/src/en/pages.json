@@ -43,7 +43,7 @@
     "header": {
       "what": {
         "check": "What’s the full name of the {{next}}person that you’d like to check?",
-        "request": "What’s the name of the {{next}}person you think is disqualified from renting??"
+        "request": "What’s the name of the {{next}}person you think is disqualified from renting?"
       },
       "default": "What’s the name of the {{next}}person who left the property?"
     },
