@@ -12,7 +12,7 @@ module.exports = {
     mock: '/api/postcode-test',
     hostname: env !== 'production' ?
       `http://${localhost()}/api/postcode-test` :
-      'https://postcodeinfo.service.justice.gov.uk'
+      process.env.POSTCODE_HOST
   },
   email: {
     caseworker: process.env.CASEWORKER_EMAIL || '',
