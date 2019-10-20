@@ -28,8 +28,6 @@ module.exports = superclass => class extends mix(superclass).with(summaryData) {
       })
       .then(result => {
         req.log('debug', 'Saved PDF document to S3');
-        /* eslint no-console: 0 */
-        console.log(result);
         req.form.values['pdf-upload'] = result.url;
       })
       .then(() => {

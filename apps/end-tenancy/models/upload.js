@@ -3,6 +3,7 @@
 const url = require('url');
 const Model = require('hof-model');
 const config = require('../../../config');
+const debug = require('debug')('upload-model');
 
 module.exports = class UploadModel extends Model {
 
@@ -22,14 +23,12 @@ module.exports = class UploadModel extends Model {
         }
       };
       reqConf.method = 'POST';
-      // eslint-disable-next-line no-console
-      console.log('SAVE PDF DATA', reqConf);
+      debug('SAVE PDF DATA', reqConf);
       this.request(reqConf, (err, data) => {
         if (err) {
           return reject(err);
         }
-        // eslint-disable-next-line no-console
-        console.log('RESPONSE FROM FILE VAULT SAVE', err, data);
+        debug('RESPONSE FROM FILE VAULT SAVE', err, data);
         resolve(data);
       });
     });
@@ -56,11 +55,9 @@ module.exports = class UploadModel extends Model {
     };
 
     return new Promise((resolve, reject) => {
-      // eslint-disable-next-line no-console
-      console.log('REQUEST DATA', tokenReq);
+      debug('REQUEST DATA', tokenReq);
       this._request(tokenReq, (err, res) => {
-        // eslint-disable-next-line no-console
-        console.log('RESPONSE FROM FILE VAULT', err, res);
+        debug('RESPONSE FROM FILE VAULT', err, res);
         if (err) {
           return reject(err);
         }
