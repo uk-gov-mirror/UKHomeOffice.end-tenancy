@@ -36,7 +36,7 @@
     "hof-util-countries": "^1.0.0",
     "hogan.js": "^3.0.2",
     "is-pdf": "^1.0.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "lodash": "^4.17.11",
     "mixwith": "^0.1.1",
     "moment": "^2.17.1",
