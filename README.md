@@ -6,7 +6,7 @@ This project is built with [HOF-Bootstrap](https://github.com/UKHomeOffice/hof-b
 
 ## Getting started
 
-Get the project from Github
+Get the project from Github.
 ```bash
 $ git clone git@github.com:UKHomeOffice/end-tenancy.git && cd end-tenancy
 ```
