@@ -20,9 +20,6 @@ steps:
   commands:
   - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
   - docker build -t app-$${DRONE_COMMIT_SHA} .
-  volumes:
-    - name: dockersock
-      path: /var/run
   when:
     branch: [ master, features/* ]
     event: push
@@ -33,9 +30,6 @@ steps:
   commands:
   - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
   - docker build -f Dockerfile-acceptance -t acceptance-$${DRONE_COMMIT_SHA} .
-  volumes:
-    - name: dockersock
-      path: /var/run
   when:
     branch: [ master, features/* ]
     event: push
@@ -49,9 +43,6 @@ steps:
   - docker run -d -e NODE_ENV=ci -e DISABLE_CSP=true -e CASEWORKER_EMAIL=test@example.com --net=container:redis-$${DRONE_COMMIT_SHA} --name=app-$${DRONE_COMMIT_SHA} app-$${DRONE_COMMIT_SHA}
   - docker run --rm -e CASEWORKER_EMAIL=test@example.com --net=container:app-$${DRONE_COMMIT_SHA} acceptance-$${DRONE_COMMIT_SHA}
   - docker rm -vf "app-$${DRONE_COMMIT_SHA}" "redis-$${DRONE_COMMIT_SHA}"
-  volumes:
-    - name: dockersock
-      path: /var/run
   when:
     branch: [ master, features/* ]
     event: push
@@ -67,9 +58,6 @@ steps:
   - docker login -u="ukhomeofficedigital+drone" -p=$${DOCKER_PASSWORD} quay.io
   - docker tag app-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/end-tenancy:$${DRONE_COMMIT_SHA}
   - docker push quay.io/ukhomeofficedigital/end-tenancy:$${DRONE_COMMIT_SHA}
-  volumes:
-    - name: dockersock
-      path: /var/run
   when:
     branch: master
     event: push
