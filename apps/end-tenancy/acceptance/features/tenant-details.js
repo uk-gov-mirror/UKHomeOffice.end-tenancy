@@ -153,6 +153,10 @@ Scenario('I am able to submit the form without selecting any option', function *
   I.seeInCurrentUrl(tenantDetailsPage['add-another'].url);
 });
 
+
+
+
+// TODO Broken Test
 Scenario('I see the date field if I select date', function *(
   I,
   tenantDetailsPage
@@ -162,6 +166,7 @@ Scenario('I see the date field if I select date', function *(
   I.seeElement(tenantDetailsPage.details.fields.hidden.dob);
 });
 
+// TODO Broken Test
 Scenario('I see an error if I select date and submit without entering a date', function *(
   I,
   tenantDetailsPage
@@ -172,6 +177,7 @@ Scenario('I see an error if I select date and submit without entering a date', f
   I.seeErrors(tenantDetailsPage.details.fields.hidden.dob);
 });
 
+// TODO Broken Test
 Scenario('I see the nationality field if I select nationality', function *(
   I,
   tenantDetailsPage
@@ -181,6 +187,7 @@ Scenario('I see the nationality field if I select nationality', function *(
   I.seeElement(tenantDetailsPage.details.fields.hidden.nationality);
 });
 
+// TODO Broken Test
 Scenario('I see an error if I select nationality and submit without entering a nationality', function *(
   I,
   tenantDetailsPage
@@ -191,6 +198,7 @@ Scenario('I see an error if I select nationality and submit without entering a n
   I.seeErrors(tenantDetailsPage.details.fields.hidden.nationality);
 });
 
+//TODO Broken Test
 Scenario('I see the reference field if I select reference', function *(
   I,
   tenantDetailsPage
@@ -200,6 +208,7 @@ Scenario('I see the reference field if I select reference', function *(
   I.seeElement(tenantDetailsPage.details.fields.hidden.reference);
 });
 
+// TODO Broken Test
 Scenario('I see an error if I select reference and submit without entering a reference', function *(
   I,
   tenantDetailsPage
@@ -209,6 +218,9 @@ Scenario('I see an error if I select reference and submit without entering a ref
   I.submitForm();
   I.seeErrors(tenantDetailsPage.details.fields.hidden.reference);
 });
+
+
+
 
 Scenario('I see an error if I don\'t enter a date', (
   I,

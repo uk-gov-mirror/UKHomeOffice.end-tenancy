@@ -74,9 +74,9 @@ module.exports = {
         reference: '[value="reference-number"]'
       },
       hidden: {
-        dob: '#date-of-birth-group',
-        nationality: '#nationality',
-        reference: '#reference-number'
+        dob: '#date-of-birth-group.form',
+        nationality: '#nationality-group.form',
+        reference: '#reference-number-group.form'
       }
     }
   },
