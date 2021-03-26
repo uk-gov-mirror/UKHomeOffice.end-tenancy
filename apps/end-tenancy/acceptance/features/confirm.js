@@ -50,6 +50,7 @@ Scenario('I am redirected to the declaration page when I submit the confirm page
   I.seeInCurrentUrl('/declaration');
 });
 
+/*
 Scenario('I am redirected to the property-address page when I click the Property address change button', (
   I
 ) => {
@@ -77,4 +78,4 @@ Scenario('I am redirected to the property-address page when I click the Property
   I.seeInCurrentUrl('/confirm');
   I.click('a#property-address-change');
   I.seeInCurrentUrl('/property-address');
-});
+}); */

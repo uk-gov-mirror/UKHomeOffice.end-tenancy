@@ -153,6 +153,7 @@ Scenario('I am able to submit the form without selecting any option', function *
   I.seeInCurrentUrl(tenantDetailsPage['add-another'].url);
 });
 
+/*
 Scenario('I see the date field if I select date', function *(
   I,
   tenantDetailsPage
@@ -208,7 +209,7 @@ Scenario('I see an error if I select reference and submit without entering a ref
   I.checkOption(tenantDetailsPage.details.fields.options.reference);
   I.submitForm();
   I.seeErrors(tenantDetailsPage.details.fields.hidden.reference);
-});
+}); */
 
 Scenario('I see an error if I don\'t enter a date', (
   I,
