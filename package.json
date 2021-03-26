@@ -41,7 +41,7 @@
     "lodash": "^4.17.11",
     "mixwith": "^0.1.1",
     "moment": "^2.17.1",
-    "node-fetch": "^1.6.3",
+    "node-fetch": "^2.6.1",
     "typeahead-aria": "^1.0.4"
   },
   "devDependencies": {
