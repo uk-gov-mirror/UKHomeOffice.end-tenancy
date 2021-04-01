@@ -1,10 +1,10 @@
 'use strict';
 
 /* eslint no-process-env: 0*/
-const bootstrap = require('hof');
+const hof = require('hof');
 const config = require('./config');
 
-const options = {
+const settings = {
   routes: [
     require('./apps/end-tenancy')
   ],
@@ -13,9 +13,28 @@ const options = {
   redis: config.redis
 };
 
+const addGenericLocals = (req, res, next) => {
+  res.locals.htmlLang = 'en';
+  res.locals.feedbackUrl = '/feedback';
+  res.locals.footerSupportLinks = [
+    { path: '/cookies', property: 'base.cookies' },
+    { path: '/terms-and-conditions', property: 'base.terms' },
+    { path: '/accessibility', property: 'base.accessibility' },
+  ];
+  return next();
+};
+
 if (process.env.NODE_ENV !== 'production') {
-  options.middleware = [require('./mocks')];
+  settings.middleware = [require('./mocks')];
 }
 
-bootstrap(options);
+const app = hof(settings);
 
+app.use((req, res, next) => addGenericLocals(req, res, next));
+
+app.use('/cookies', (req, res, next) => {
+  res.locals = Object.assign({}, res.locals, req.translate('cookies'));
+  next();
+});
+
+module.exports = app;
