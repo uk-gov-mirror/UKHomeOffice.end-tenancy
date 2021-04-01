@@ -1,10 +1,10 @@
 'use strict';
 
 /* eslint no-process-env: 0*/
-const bootstrap = require('hof');
+const hof = require('hof');
 const config = require('./config');
 
-const options = {
+const settings = {
   routes: [
     require('./apps/end-tenancy')
   ],
@@ -25,20 +25,16 @@ const addGenericLocals = (req, res, next) => {
 };
 
 if (process.env.NODE_ENV !== 'production') {
-  options.middleware = [require('./mocks')];
+  settings.middleware = [require('./mocks')];
 }
 
-const app = bootstrap(options);
+const app = hof(settings);
 
 app.use((req, res, next) => addGenericLocals(req, res, next));
-app.use('/terms-and-conditions', (req, res, next) => {
-  res.locals = Object.assign({}, res.locals, req.translate('terms'));
-  next();
-});
 
 app.use('/cookies', (req, res, next) => {
   res.locals = Object.assign({}, res.locals, req.translate('cookies'));
   next();
 });
 
-
+module.exports = app;
