@@ -10,7 +10,10 @@ const options = {
   ],
   getCookies: false,
   getTerms: false,
-  redis: config.redis
+  redis: config.redis,
+  session: {
+    'name': 'hof.sid'
+  },
 };
 
 if (process.env.NODE_ENV !== 'production') {
