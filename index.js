@@ -15,11 +15,9 @@ const settings = {
 
 const addGenericLocals = (req, res, next) => {
   res.locals.htmlLang = 'en';
-  res.locals.feedbackUrl = '/feedback';
   res.locals.footerSupportLinks = [
     { path: '/cookies', property: 'base.cookies' },
-    { path: '/terms-and-conditions', property: 'base.terms' },
-    { path: '/accessibility', property: 'base.accessibility' },
+    { path: '/privacy-policy', property: 'Privacy Policy' }
   ];
   return next();
 };
