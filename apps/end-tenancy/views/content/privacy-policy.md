@@ -1,5 +1,3 @@
-# Privacy Policy
-
 This privacy policy relates to the Home Office service [Ending a tenancy due to immigration status](https://www.ending-a-tenancy.homeoffice.gov.uk/what).
 ## Information we ask for
 
