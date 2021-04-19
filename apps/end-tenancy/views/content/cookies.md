@@ -1,7 +1,3 @@
-# Cookies
-
-This service puts small files (known as ‘cookies’) onto your computer in order to:
-
 * remember what messages you’ve seen so you’re not shown them again
 * understand how you use the service so we can update and improve it
 * temporarily store information you enter to support your application
