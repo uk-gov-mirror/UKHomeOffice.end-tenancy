@@ -9,6 +9,9 @@
     "type": "git",
     "url": "https://github.com/UKHomeOffice/end-tenancy"
   },
+  "engines": {
+    "node": "14.16.1"
+  },
   "license": "./LICENSE",
   "readme": "./README.md",
   "scripts": {
