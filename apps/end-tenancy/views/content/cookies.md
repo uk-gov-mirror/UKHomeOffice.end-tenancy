@@ -46,6 +46,6 @@ Session cookies are downloaded each time you visit the service and deleted when 
 
 | Name             |    Purpose                    |  Expires   |
 |:-----            |:--------------------------    |:---------  |
-| hof.sid        | Stores a session ID and temporarily stores data you enter to enable you to make an application | When you close your browser |
+| hod.sid        | Stores a session ID and temporarily stores data you enter to enable you to make an application | When you close your browser |
 | hof-wizard-sc    | Tells us when your session starts so we can tell you if it expires | When you close your browser |
 | hof-cookie-check | Tells us you have already allowed cookies so we don’t need to ask you again | When you close your browser |
