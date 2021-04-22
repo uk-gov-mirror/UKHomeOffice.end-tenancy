@@ -1,3 +1,7 @@
+# Cookies
+
+This service puts small files (known as ‘cookies’) onto your computer in order to:
+
 * remember what messages you’ve seen so you’re not shown them again
 * understand how you use the service so we can update and improve it
 * temporarily store information you enter to support your application
@@ -29,10 +33,11 @@ Google Analytics stores information about:
 
 No personal details are stored with this information, so you can’t be identified.
 
-| Name |    Purpose                    |  Expires   |
-|:-----|:--------------------------    |:---------  |
-| _ga  | Used to distinguish users     | 2 years    |
-| _gat | Used to throttle request rate | 10 minutes |
+| Name |    Purpose                         |  Expires   |
+|:-----|:-------------------------------    |:---------  |
+| _ga  | Used to distinguish users          | 2 years    |
+| _gat | Used to throttle request rate      | 10 minutes |
+| _gid | Used to count and track page views | 24 hours   |
 
 <div class="panel-indent">
   <p>Google isn’t allowed to use or share our analytics data.</p>
