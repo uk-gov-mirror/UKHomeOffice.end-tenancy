@@ -17,6 +17,7 @@ const settings = {
 
 const addGenericLocals = (req, res, next) => {
   res.locals.htmlLang = 'en';
+  res.locals.serviceName = 'Ending a Tenancy Service';
   res.locals.footerSupportLinks = [
     { path: '/cookies', property: 'base.cookies' },
     { path: '/privacy-policy', property: 'Privacy Policy' }
