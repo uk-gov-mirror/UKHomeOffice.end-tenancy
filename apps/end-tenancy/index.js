@@ -1,6 +1,6 @@
 'use strict';
 
-const AddressLookup = require('hof-behaviour-address-lookup');
+const AddressLookup = require('hof').components.addressLookup;
 const UsePrevious = require('./behaviours/use-previous');
 const Loop = require('./behaviours/loop');
 const ResetOnChange = require('./behaviours/reset-on-change');
@@ -63,7 +63,7 @@ module.exports = {
         },
         validate: {
           allowedCountries: ['england']
-        },
+        }
       }),
       next: '/tenant-details',
       forks: [{
@@ -178,7 +178,7 @@ module.exports = {
       next: '/confirm-declaration',
       forks: [{
         target: '/confirm',
-        condition: (req) => {
+        condition: req => {
           return req.sessionModel.get('what') === 'request';
         }
       }]

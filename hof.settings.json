@@ -1,0 +1,13 @@
+{
+  "appName": "UKVI Ending of Tenancy",
+  "theme": "govUK",
+  "behaviours": [
+    "hof/components/clear-session"
+  ],
+  "routes": [
+    "./apps/end-tenancy"
+  ],
+  "session": {
+    "name": "ukvi-end-tenancy.hof.sid"
+  }
+}

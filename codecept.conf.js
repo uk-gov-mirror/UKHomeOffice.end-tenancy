@@ -6,7 +6,6 @@ const pagesPath = page => path.resolve(__dirname,
   `./apps/end-tenancy/acceptance/pages/${page}`);
 
 /* eslint no-process-env: 0 */
-/* eslint implicit-dependencies/no-implicit: [2, { dev: true }] */
 module.exports = require('so-acceptance').extend({
   name: 'end-tenancy',
   tests: './apps/**/acceptance/features/*.js',

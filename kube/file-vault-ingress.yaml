@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: file-vault-ingress
+{{ file .INGRESS_EXTERNAL_ANNOTATIONS | indent 2 }}
+spec:
+  tls:
+  - hosts:
+    {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+    - fv-{{ .DRONE_BUILD_NUMBER }}.end-tenancy-branch.homeoffice.gov.uk
+    - fv-{{ .APP_NAME }}.end-tenancy-branch.homeoffice.gov.uk
+    {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
+    - file-vault-dev.notprod.ending-a-tenancy.homeoffice.gov.uk
+    {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
+    - file-vault.preprod.ending-a-tenancy.homeoffice.gov.uk
+    {{ else if eq .KUBE_NAMESPACE .PROD_ENV }}
+    - file-vault.prod.ending-a-tenancy.homeoffice.gov.uk
+    {{ end }}
+    secretName: file-vault-cert
+  rules:
+  {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+  - host: fv-{{ .APP_NAME }}.end-tenancy-branch.homeoffice.gov.uk
+  {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
+  - host: file-vault-dev.notprod.ending-a-tenancy.homeoffice.gov.uk
+  {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
+  - host: file-vault.preprod.ending-a-tenancy.homeoffice.gov.uk
+  {{ else if eq .KUBE_NAMESPACE .PROD_ENV }}
+  - host: file-vault.prod.ending-a-tenancy.homeoffice.gov.uk
+  {{ end }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: file-vault
+          servicePort: 10443

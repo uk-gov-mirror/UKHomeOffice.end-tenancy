@@ -1,6 +1,6 @@
 'use strict';
 
-const dateComponent = require('hof-component-date');
+const dateComponent = require('hof').components.date;
 
 module.exports = {
   what: {
@@ -70,7 +70,7 @@ module.exports = {
     disableRender: true,
     validate: 'required',
     className: ['typeahead', 'js-hidden'],
-    options: [''].concat(require('hof-util-countries')()),
+    options: [''].concat(require('hof').utils.countries()),
     dependent: {
       field: 'tenant-details',
       value: 'nationality'
