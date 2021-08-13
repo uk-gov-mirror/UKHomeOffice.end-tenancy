@@ -115,13 +115,13 @@ spec:
                   key: secret
             - name: FILE_VAULT_URL
             {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
-              value: https://file-vault.prod.ending-a-tenancy.homeoffice.gov.uk/file
+              value: https://file-vault.prod.{{ .APP_NAME }}.homeoffice.gov.uk/file
             {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-              value: https://file-vault.preprod.ending-a-tenancy.homeoffice.gov.uk/file
+              value: https://file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk/file
             {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-              value: https://file-vault-dev.notprod.ending-a-tenancy.homeoffice.gov.uk/file
+              value: https://file-vault-dev.notprod.{{ .APP_NAME }}.homeoffice.gov.uk/file
             {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-              value: https://fv-{{ .APP_NAME }}.end-tenancy-branch.homeoffice.gov.uk/file
+              value: https://fv-{{ .APP_NAME }}.{{ .BRANCH_ENV }}.homeoffice.gov.uk/file
             {{ end }}
             - name: PDF_CONVERTER_URL
               value: https://html-pdf-converter.{{ .KUBE_NAMESPACE }}.svc.cluster.local:10443/convert

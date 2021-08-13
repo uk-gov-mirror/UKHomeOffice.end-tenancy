@@ -43,13 +43,13 @@ spec:
               value: "0"
             - name: FILE_VAULT_URL
             {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
-              value: https://file-vault.prod.ending-a-tenancy.homeoffice.gov.uk
+              value: https://file-vault.prod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-              value: https://file-vault.preprod.ending-a-tenancy.homeoffice.gov.uk
+              value: https://file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-              value: https://file-vault-dev.notprod.ending-a-tenancy.homeoffice.gov.uk
+              value: https://file-vault-dev.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-              value: https://fv-{{ .APP_NAME }}.end-tenancy-branch.homeoffice.gov.uk
+              value: https://fv-{{ .APP_NAME }}.{{ .BRANCH_ENV }}.homeoffice.gov.uk
             - name: DEBUG
               value: "true"
             {{ end }}
@@ -113,13 +113,13 @@ spec:
               value: 127.0.0.1:3001
             - name: PROXY_REDIRECTION_URL
             {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
-              value: https://file-vault.prod.ending-a-tenancy.homeoffice.gov.uk
+              value: https://file-vault.prod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-              value: https://file-vault.preprod.ending-a-tenancy.homeoffice.gov.uk
+              value: https://file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-              value: https://file-vault-dev.notprod.ending-a-tenancy.homeoffice.gov.uk
+              value: https://file-vault-dev.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-              value: https://fv-{{ .APP_NAME }}.end-tenancy-branch.homeoffice.gov.uk
+              value: https://fv-{{ .APP_NAME }}.{{ .BRANCH_ENV }}.homeoffice.gov.uk
             {{ end }}
             - name: PROXY_UPSTREAM_URL
               value: "http://127.0.0.1:3000"

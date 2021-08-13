@@ -7,25 +7,24 @@ spec:
   tls:
   - hosts:
     {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-    - fv-{{ .DRONE_BUILD_NUMBER }}.end-tenancy-branch.homeoffice.gov.uk
-    - fv-{{ .APP_NAME }}.end-tenancy-branch.homeoffice.gov.uk
+    - fv-{{ .APP_NAME }}.{{ .BRANCH_ENV }}.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-    - file-vault-dev.notprod.ending-a-tenancy.homeoffice.gov.uk
+    - file-vault-dev.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-    - file-vault.preprod.ending-a-tenancy.homeoffice.gov.uk
+    - file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .PROD_ENV }}
-    - file-vault.prod.ending-a-tenancy.homeoffice.gov.uk
+    - file-vault.prod.{{ .APP_NAME }}.homeoffice.gov.uk
     {{ end }}
     secretName: file-vault-cert
   rules:
   {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-  - host: fv-{{ .APP_NAME }}.end-tenancy-branch.homeoffice.gov.uk
+  - host: fv-{{ .APP_NAME }}.{{ .BRANCH_ENV }}.homeoffice.gov.uk
   {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-  - host: file-vault-dev.notprod.ending-a-tenancy.homeoffice.gov.uk
+  - host: file-vault-dev.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
   {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-  - host: file-vault.preprod.ending-a-tenancy.homeoffice.gov.uk
+  - host: file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk
   {{ else if eq .KUBE_NAMESPACE .PROD_ENV }}
-  - host: file-vault.prod.ending-a-tenancy.homeoffice.gov.uk
+  - host: file-vault.prod.{{ .APP_NAME }}.homeoffice.gov.uk
   {{ end }}
     http:
       paths:
