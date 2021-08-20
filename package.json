@@ -20,7 +20,7 @@
     "ci": "NODE_ENV=ci DISABLE_CSP=true CASEWORKER_EMAIL=test@example.com node .",
     "test": "npm run test:lint && npm run test:unit",
     "test:unit": "nyc _mocha \"test/_unit/**/*.spec.js\"",
-    "test:acceptance": "funkie so-acceptance --steps",
+    "test:acceptance": "so-acceptance --steps",
     "test:lint": "npm run test:lint:app",
     "test:lint:app": "eslint . --config ./node_modules/eslint-config-hof/default.js",
     "test:lint:acceptance": "eslint --no-ignore -c ./node_modules/so-acceptance/.eslintrc ./apps/*/acceptance/**/*.js",
