@@ -54,7 +54,7 @@
     "sinon": "^11.1.2",
     "sinon-chai": "^3.7.0",
     "snyk": "^1.679.0",
-    "so-acceptance": "^7.0.0-beta-v4"
+    "so-acceptance": "6.1.0"
   },
   "resolutions": {
     "underscore": "^1.12.1"
