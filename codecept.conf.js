@@ -9,6 +9,18 @@ const pagesPath = page => path.resolve(__dirname,
 module.exports = require('so-acceptance').extend({
   name: 'end-tenancy',
   tests: './apps/**/acceptance/features/*.js',
+  helpers: {
+    WebDriverIO: {
+      host: 'localhost',
+      port: 4444,
+      path: '/wd/hub',
+      url: process.env.TEST_URL || 'http://localhost:8080',
+      browser: 'chrome',
+      desiredCapabilities: {
+        chromeOptions: { args: ['headless', 'disable-gpu'] }
+      }
+    }
+  },
   include: {
     whatPage: pagesPath('what.js'),
     reportDatePage: pagesPath('nldp-date.js'),
