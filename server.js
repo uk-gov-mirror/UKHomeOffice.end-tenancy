@@ -21,7 +21,6 @@ const app = hof(settings);
 
 app.use((req, res, next) => {
   res.locals.htmlLang = 'en';
-  res.locals.appName = 'Ending a Tenancy Service';
   res.locals.footerSupportLinks = [
     { path: '/cookies', property: 'base.cookies' },
     { path: '/privacy-policy', property: 'Privacy Policy' }
@@ -30,9 +29,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/cookies', (req, res, next) => {
-  res.locals = Object.assign({
-    cookieName: settings.session.name
-  }, res.locals, req.translate('cookies'));
+  res.locals = Object.assign({}, res.locals, req.translate('cookies'));
   next();
 });
 
