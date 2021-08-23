@@ -3,8 +3,6 @@
 const hof = require('hof');
 const config = require('./config');
 
-const sessionCookiesTable = require('./apps/end-tenancy/translations/src/en/cookies.json');
-
 let settings = require('./hof.settings');
 
 settings = Object.assign({}, settings, {
@@ -35,7 +33,6 @@ app.use('/cookies', (req, res, next) => {
   res.locals = Object.assign({
     cookieName: settings.session.name
   }, res.locals, req.translate('cookies'));
-  res.locals['session-cookies-table'] = sessionCookiesTable['session-cookies-table'];
   next();
 });
 
