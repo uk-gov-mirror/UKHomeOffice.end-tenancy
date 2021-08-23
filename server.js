@@ -32,7 +32,9 @@ app.use((req, res, next) => {
 });
 
 app.use('/cookies', (req, res, next) => {
-  res.locals = Object.assign({}, res.locals, req.translate('cookies'));
+  res.locals = Object.assign({
+    cookieName: settings.session.name
+  }, res.locals, req.translate('cookies'));
   res.locals['session-cookies-table'] = sessionCookiesTable['session-cookies-table'];
   next();
 });
