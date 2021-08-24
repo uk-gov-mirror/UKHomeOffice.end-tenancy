@@ -24,6 +24,14 @@ module.exports = Base => class extends mix(Base).with(Behaviour) {
     super.configure(req, res, callback);
   }
 
+  getValues(req, res, next) {
+    const isLandlord = req.sessionModel.get('who') === 'landlord';
+    if (isLandlord) {
+      req.sessionModel.unset('agent-address');
+    }
+    return super.getValues(req, res, next);
+  }
+
   getRowsForSummarySections(req) {
     const result = super.getRowsForSummarySections(req);
     const section = this.addLoopSection(req);
