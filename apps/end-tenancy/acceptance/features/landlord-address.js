@@ -11,17 +11,6 @@ Before((
   I.visitPage(landlordAddressPage, steps);
 });
 
-Scenario('I see the use previous checkbox if I am the landlord', function *(
-  I,
-  landlordAddressPage
-) {
-  yield I.setSessionData(steps.name, {
-    who: 'landlord'
-  });
-  yield I.refreshPage();
-  I.seeElements(landlordAddressPage.postcode.fields.usePrevious);
-});
-
 Scenario('I see an error if I submit the form without entering a postcode', (
   I,
   landlordAddressPage
