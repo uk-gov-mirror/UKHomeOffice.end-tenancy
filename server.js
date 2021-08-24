@@ -10,12 +10,12 @@ settings = Object.assign({}, settings, {
   routes: settings.routes.map(require),
   getCookies: false,
   getTerms: false,
-  start: false,
   redis: config.redis
 });
 
 if (!config.env || config.env === 'ci') {
   settings.middleware = [require('./mocks')];
+  settings.session.name = 'hod.sid';
 }
 
 const app = hof(settings);
@@ -34,4 +34,4 @@ app.use('/cookies', (req, res, next) => {
   next();
 });
 
-app.start();
+module.exports = app;
