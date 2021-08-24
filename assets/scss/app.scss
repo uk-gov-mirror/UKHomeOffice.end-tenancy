@@ -186,3 +186,9 @@ ul {
 input[name*="postcode"] {
   @extend .form-control-1-4;
 }
+
+.confirm-row.tenant {
+  display: inline;
+  border-top: 2px solid black;
+  padding-top: 0.5em;
+}

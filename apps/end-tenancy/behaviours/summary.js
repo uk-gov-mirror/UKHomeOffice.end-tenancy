@@ -24,8 +24,8 @@ module.exports = Base => class extends mix(Base).with(Behaviour) {
     super.configure(req, res, callback);
   }
 
-  parseSections(req) {
-    const result = super.parseSections(req);
+  getRowsForSummarySections(req) {
+    const result = super.getRowsForSummarySections(req);
     const section = this.addLoopSection(req);
     result.splice(1, 0, section);
     return result;

@@ -16,7 +16,7 @@
   "readme": "./README.md",
   "scripts": {
     "start": "node server.js",
-    "dev": "NODE_ENV=development hof-build watch",
+    "start:dev": "NODE_ENV=development hof-build watch",
     "ci": "NODE_ENV=ci DISABLE_CSP=true CASEWORKER_EMAIL=test@example.com node .",
     "test": "npm run test:lint && npm run test:unit",
     "test:unit": "nyc _mocha \"test/_unit/**/*.spec.js\"",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "debug": "^4.3.2",
-    "hof": "^19.7.3",
+    "hof": "^19.8.0",
     "hogan.js": "^3.0.2",
     "is-pdf": "^1.0.0",
     "jquery": "^3.6.0",
@@ -54,7 +54,7 @@
     "sinon": "^11.1.2",
     "sinon-chai": "^3.7.0",
     "snyk": "^1.679.0",
-    "so-acceptance": "^6.0.0"
+    "so-acceptance": "^6.0.1"
   },
   "resolutions": {
     "underscore": "^1.12.1"
