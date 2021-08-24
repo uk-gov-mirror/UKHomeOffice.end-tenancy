@@ -10,6 +10,7 @@ settings = Object.assign({}, settings, {
   routes: settings.routes.map(require),
   getCookies: false,
   getTerms: false,
+  start: false,
   redis: config.redis
 });
 
@@ -33,4 +34,4 @@ app.use('/cookies', (req, res, next) => {
   next();
 });
 
-module.exports = app;
+app.start();
