@@ -16,7 +16,7 @@
   "readme": "./README.md",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "NODE_ENV=development hof-build watch",
+    "dev": "NODE_ENV=development hof-build watch",
     "ci": "NODE_ENV=ci DISABLE_CSP=true CASEWORKER_EMAIL=test@example.com node .",
     "test": "npm run test:lint && npm run test:unit",
     "test:unit": "nyc _mocha \"test/_unit/**/*.spec.js\"",
