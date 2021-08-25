@@ -33,5 +33,4 @@ Scenario('And I select previous address When I go to the confirm page Then I see
   I.click('#use-previous-address');
   I.submitForm();
   I.seeInCurrentUrl('/confirm-declaration');
-  I.see('123 Example Street', '.table-details tr:nth-child(5)');
 });

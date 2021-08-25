@@ -1,6 +1,6 @@
 $path: "../img/";
 
-@import "hof-theme-govuk";
+@import "hof/frontend/themes/gov-uk/styles/govuk";
 
 @import "./icons.scss";
 
@@ -185,4 +185,10 @@ ul {
 
 input[name*="postcode"] {
   @extend .form-control-1-4;
+}
+
+.confirm-row.tenant {
+  display: inline;
+  border-top: 2px solid black;
+  padding-top: 0.5em;
 }

@@ -1,14 +1,12 @@
-/* eslint implicit-dependencies/no-implicit: [2, {dev:true}] */
 'use strict';
 
-const Model = require('hof-model');
+const Model = require('hof').model;
 const isPdf = require('is-pdf');
 const config = require('../../../config');
 const debug = require('debug')('pdf-model');
 const _ = require('lodash');
 
 module.exports = class PDFModel extends Model {
-
   requestConfig(options) {
     const settings = super.requestConfig(options);
     settings.encoding = null;
@@ -36,7 +34,6 @@ module.exports = class PDFModel extends Model {
       err.body = response.body;
     }
     err.status = response.statusCode;
-    callback(err, null, response.statusCode);
+    return callback(err, null, response.statusCode);
   }
-
 };

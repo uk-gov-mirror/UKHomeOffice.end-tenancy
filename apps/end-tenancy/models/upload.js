@@ -1,12 +1,12 @@
+/* eslint-disable node/no-deprecated-api */
 'use strict';
 
 const url = require('url');
-const Model = require('hof-model');
+const Model = require('hof').model;
 const config = require('../../../config');
 const debug = require('debug')('upload-model');
 
 module.exports = class UploadModel extends Model {
-
   save() {
     return new Promise((resolve, reject) => {
       const attributes = {
@@ -29,7 +29,7 @@ module.exports = class UploadModel extends Model {
           return reject(err);
         }
         debug('RESPONSE FROM FILE VAULT SAVE', err, data);
-        resolve(data);
+        return resolve(data);
       });
     });
   }
@@ -47,9 +47,9 @@ module.exports = class UploadModel extends Model {
       form: {
         username: config.keycloak.username,
         password: config.keycloak.password,
-        'grant_type': 'password',
-        'client_id': config.keycloak.clientId,
-        'client_secret': config.keycloak.clientSecret
+        grant_type: 'password',
+        client_id: config.keycloak.clientId,
+        client_secret: config.keycloak.clientSecret
       },
       method: 'POST'
     };
@@ -61,8 +61,8 @@ module.exports = class UploadModel extends Model {
         if (err) {
           return reject(err);
         }
-        resolve({
-          'bearer': JSON.parse(res.body).access_token
+        return resolve({
+          bearer: JSON.parse(res.body).access_token
         });
       });
     });

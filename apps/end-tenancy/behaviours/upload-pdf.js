@@ -11,7 +11,6 @@ const UploadModel = require('../models/upload');
 const summaryData = require('./summary');
 
 module.exports = superclass => class extends mix(superclass).with(summaryData) {
-
   process(req, res, next) {
     this.renderHTML(req, res)
       .then(html => {
@@ -33,13 +32,12 @@ module.exports = superclass => class extends mix(superclass).with(summaryData) {
       .then(() => {
         super.process(req, res, next);
       }, next)
-      .catch((err) => {
+      .catch(err => {
         next(err);
       });
   }
 
   renderHTML(req, res) {
-
     const locals = Object.assign({}, this.locals(req, res));
     locals.title = 'Request has been received';
     locals.dateTime = moment().format(config.dateTimeFormat) + ' (GMT)';
@@ -64,7 +62,7 @@ module.exports = superclass => class extends mix(superclass).with(summaryData) {
             if (err) {
               return reject(err);
             }
-            resolve(html);
+            return resolve(html);
           });
         });
       });
@@ -97,5 +95,4 @@ module.exports = superclass => class extends mix(superclass).with(summaryData) {
       });
     });
   }
-
 };

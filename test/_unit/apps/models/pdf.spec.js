@@ -1,3 +1,4 @@
+/* eslint-disable node/no-deprecated-api */
 'use strict';
 
 const config = require('../../../../config');
@@ -8,19 +9,15 @@ const Model = proxyquire('../../../../apps/end-tenancy/models/pdf', {
 });
 
 describe('PDF Model', () => {
-
   describe('url', () => {
-
     it('returns the pdf url', () => {
       const model = new Model();
       const url = model.url();
       expect(url).to.equal(config.pdf.hostname);
     });
-
   });
 
   describe('handleResponse', () => {
-
     beforeEach(() => {
       sinon.stub(Model.prototype, 'parseResponse');
     });
@@ -41,7 +38,7 @@ describe('PDF Model', () => {
       expect(Model.prototype.parseResponse).to.have.been.calledWith(res.statusCode, res.body, callback);
     });
 
-    it('passes errors to the callback', (done) => {
+    it('passes errors to the callback', done => {
       const model = new Model();
       isPdf.returns(false);
       const res = {
@@ -59,7 +56,7 @@ describe('PDF Model', () => {
       });
     });
 
-    it('decorate 400 client errors with a title and message', (done) => {
+    it('decorate 400 client errors with a title and message', done => {
       const model = new Model();
       isPdf.returns(false);
       const res = {
@@ -78,7 +75,5 @@ describe('PDF Model', () => {
         done();
       });
     });
-
   });
-
 });

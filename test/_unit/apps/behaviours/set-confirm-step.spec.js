@@ -1,10 +1,8 @@
 'use strict';
 
-const reqres = require('hof-util-reqres');
 const Behaviour = require('../../../../apps/end-tenancy/behaviours/set-confirm-step');
 
-describe.only('apps/behaviours/set-confirm-step', () => {
-
+describe('apps/behaviours/set-confirm-step', () => {
   it('exports a function', () => {
     expect(Behaviour).to.be.a('function');
   });
@@ -15,7 +13,7 @@ describe.only('apps/behaviours/set-confirm-step', () => {
   let req;
   let res;
   let instance;
-  let next = 'foo';
+  const next = 'foo';
 
   beforeEach(() => {
     req = reqres.req();
@@ -29,7 +27,6 @@ describe.only('apps/behaviours/set-confirm-step', () => {
   });
 
   describe('getNextStep', () => {
-
     it('always calls super.getNextStep', () => {
       instance.getNextStep(req, res);
       expect(Base.prototype.getNextStep).to.have.been.called;
@@ -53,6 +50,5 @@ describe.only('apps/behaviours/set-confirm-step', () => {
       instance.getNextStep(req, res);
       expect(instance.confirmStep).to.equal('/confirm-declaration');
     });
-
   });
 });

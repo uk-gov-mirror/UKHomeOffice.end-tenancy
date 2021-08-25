@@ -5,12 +5,13 @@ const env = process.env.NODE_ENV || 'production';
 const localhost = () => `${process.env.LISTEN_HOST || '0.0.0.0'}:${process.env.PORT || 8080}`;
 
 module.exports = {
+  env,
   DATE_FORMAT: 'YYYY-MM-DD',
   PRETTY_DATE_FORMAT: 'Do MMMM YYYY',
   dateTimeFormat: 'DD MMM YYYY HH:MM:SS ZZ',
   postcode: {
     mock: '/api/postcode-test',
-    hostname: env !== 'production' ?
+    hostname: (!env || env === 'ci') ?
       `http://${localhost()}/api/postcode-test` :
       process.env.POSTCODE_HOST
   },
@@ -34,11 +35,11 @@ module.exports = {
   },
   pdf: {
     mock: '/api/pdf-converter',
-    hostname: env !== 'production' ? `http://${localhost()}/api/pdf-converter` : process.env.PDF_CONVERTER_URL
+    hostname: (!env || env === 'ci') ? `http://${localhost()}/api/pdf-converter` : process.env.PDF_CONVERTER_URL
   },
   upload: {
     mock: '/api/file-upload',
-    hostname: env !== 'production' ? `http://${localhost()}/api/file-upload` : process.env.FILE_VAULT_URL
+    hostname: (!env || env === 'ci') ? `http://${localhost()}/api/file-upload` : process.env.FILE_VAULT_URL
   },
   keycloak: {
     tokenUrl: process.env.KEYCLOAK_TOKEN_URL,

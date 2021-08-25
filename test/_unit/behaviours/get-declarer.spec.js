@@ -1,6 +1,5 @@
 'use strict';
 
-const reqres = require('hof-util-reqres');
 const Behaviour = require('../../../apps/end-tenancy/behaviours/get-declarer');
 
 describe('apps/behaviours/get-declarer', () => {
@@ -37,7 +36,6 @@ describe('apps/behaviours/get-declarer', () => {
   });
 
   describe('locals', () => {
-
     it('returns extended locals from super with the declarer when the representative is the landlord ', () => {
       const declarer = {
         declarer: 'landlordDeclarer',

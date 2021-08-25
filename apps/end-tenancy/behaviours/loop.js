@@ -36,7 +36,6 @@ function formatValue(value, field, sections) {
 }
 
 module.exports = superclass => class extends superclass {
-
   constructor(options) {
     super(options);
     this.options.storeKey = this.options.storeKey || 'items';
@@ -124,7 +123,8 @@ module.exports = superclass => class extends superclass {
   }
 
   getValues(req, res, callback) {
-    super.getValues(req, res, (err, values) => {
+    super.getValues(req, res, (err, vals) => {
+      let values = vals;
       if (req.params.id !== undefined) {
         const items = this.getItems(req);
         values = Object.assign({}, values, items[req.params.id] || {});
@@ -179,7 +179,7 @@ module.exports = superclass => class extends superclass {
       return callback();
     }
     if (this.getNext(req, res) === steps[steps.length - 1]) {
-      return super.saveValues(req, res, (err) => {
+      return super.saveValues(req, res, err => {
         if (err) {
           return callback(err);
         }

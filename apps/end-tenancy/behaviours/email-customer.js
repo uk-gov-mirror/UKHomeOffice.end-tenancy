@@ -1,6 +1,6 @@
 'use strict';
 
-const Emailer = require('hof-behaviour-emailer');
+const Emailer = require('hof').components.emailer;
 const path = require('path');
 const moment = require('moment');
 const _ = require('lodash');
@@ -84,7 +84,7 @@ const getDataRows = (model, translate) => {
         { label: label('agent-phone-number'), value: model['agent-phone-number'] },
         { label: label('agent-address'), value: model['agent-address'] }
       ]
-    },
+    }
   ].filter(Boolean);
 };
 
