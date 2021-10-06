@@ -39,9 +39,21 @@
   "property-address-select": {
     "label": "Select an address"
   },
-  "property-address": {
-    "label": "Address",
-    "summary": "Property address"
+  "building": {
+    "label": "Property building and street",
+    "summary": "Property building and street"
+  },
+  "street": {
+    "label": "Property address line 2",
+    "summary": "Property address line 2"
+  },
+  "townOrCity": {
+    "label": "Property town or city",
+    "summary": "Property town or city"
+  },
+  "postcode": {
+    "label": "Property postcode",
+    "summary": "Property postcode"
   },
   "name": {
     "label": {
@@ -163,16 +175,40 @@
       "default": "Select an address from the list"
     }
   },
-  "landlord-address": {
-    "label": "Address",
-    "summary": "Landlord’s address"
+  "landlord-building": {
+    "label": "Building and street",
+    "summary": "Landlord's building and street"
+  },
+  "landlord-street": {
+    "label": "Address line 2",
+    "summary": "Landlord's address line 2"
+  },
+  "landlord-townOrCity": {
+    "label": "Town or city",
+    "summary": "Landlord's town or city"
+  },
+  "landlord-postcode": {
+    "label": "Postcode",
+    "summary": "Landlord's postcode"
   },
   "use-previous-address": {
     "label": "Use the address of the rental property I provided earlier"
   },
-  "agent-address": {
-    "label": "Address",
-    "summary": "Agent’s address"
+  "agent-building": {
+    "label": "Building and street",
+    "summary": "Agent's building and street"
+  },
+  "agent-street": {
+    "label": "Address line 2",
+    "summary": "Agent's address line 2"
+  },
+  "agent-townOrCity": {
+    "label": "Town or city",
+    "summary": "Agent's town or city"
+  },
+  "agent-postcode": {
+    "label": "Postcode",
+    "summary": "Agent's postcode"
   },
   "agent-address-select": {
     "label": "Select an address from the list."

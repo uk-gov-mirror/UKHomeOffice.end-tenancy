@@ -11,8 +11,17 @@
       "nldp-date": {
         "label": "NLDP date"
       },
-      "property-address": {
-        "label": "Property address"
+      "building": {
+        "label": "Property building and street"
+      },
+      "street": {
+        "label": "Property address line 2"
+      },
+      "townOrCity": {
+        "label": "Property town or city"
+      },
+      "postcode": {
+        "label": "Property postcode"
       },
       "tenancy-start": {
         "label": "Tenancy start"
@@ -44,8 +53,17 @@
       "landlord-phone-number": {
         "label": "Landlord’s phone number"
       },
-      "landlord-address": {
-        "label": "Landlord’s address"
+      "landlord-building": {
+        "label": "Landlord's building and street"
+      },
+      "landlord-street": {
+        "label": "Landlord's address line 2"
+      },
+      "landlord-townOrCity": {
+        "label": "Landlord's town or city"
+      },
+      "landlord-postcode": {
+        "label": "Landlord's postcode"
       },
       "landlord-name-agent": {
         "label": "Landlord’s name"
@@ -62,8 +80,17 @@
       "agent-phone-number": {
         "label": "Agent’s phone number"
       },
-      "agent-address": {
-        "label": "Agent’s address"
+      "agent-building": {
+        "label": "Agent's building and street"
+      },
+      "agent-street": {
+        "label": "Agent's address line 2"
+      },
+      "agent-townOrCity": {
+        "label": "Agent's town or city"
+      },
+      "agent-postcode": {
+        "label": "Agent's postcode"
       }
     }
   },

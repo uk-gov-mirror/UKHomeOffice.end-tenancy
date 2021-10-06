@@ -4,6 +4,10 @@ Feature('Request NLDP - Happy path');
 
 const values = {
   'what': 'check',
+  'building': 'Building',
+  'street': 'Street',
+  'townOrCity': 'Town',
+  'postcode' : 'CR0 2EU',
   'who': 'landlord',
   'landlord-email-address': 's@g.com',
   'add-another': 'no',
@@ -17,9 +21,10 @@ Before((
   I.amOnPage('/');
 });
 
-Scenario('An applicaton can be completed end-to-end', (
+Scenario('An application can be completed end-to-end', (
   I
 ) => {
   I.completeToStep('/confirmation', values);
+  I.seeInCurrentUrl('/confirmation');
 });
 

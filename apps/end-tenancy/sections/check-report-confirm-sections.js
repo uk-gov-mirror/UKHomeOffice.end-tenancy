@@ -10,7 +10,10 @@ module.exports = {
       field: 'nldp-date',
       parse: d => d && moment(d).format(config.PRETTY_DATE_FORMAT)
     },
-    'property-address',
+    'building',
+    'street',
+    'townOrCity',
+    'postcode',
     {
       field: 'tenancy-start',
       parse: d => d && moment(d).format(config.PRETTY_DATE_FORMAT)
@@ -34,7 +37,10 @@ module.exports = {
     'landlord-company',
     'landlord-email-address',
     'landlord-phone-number',
-    'landlord-address',
+    'landlord-building',
+    'landlord-street',
+    'landlord-townOrCity',
+    'landlord-postcode',
     'landlord-name-agent'
   ],
   'agent-details': [
@@ -42,6 +48,9 @@ module.exports = {
     'agent-name',
     'agent-email-address',
     'agent-phone-number',
-    'agent-address'
+    'agent-building',
+    'agent-street',
+    'agent-townOrCity',
+    'agent-postcode'
   ]
 };

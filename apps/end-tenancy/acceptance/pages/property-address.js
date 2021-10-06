@@ -12,57 +12,20 @@ module.exports = {
   },
 
   url: 'property-address',
-  postcode: {
-    url: 'step=postcode',
-    fields: {
-      postcode: '#property-address-postcode'
-    },
-    content: {
-      check: translations.default,
-      report: translations.what.report,
-      invalid: '12345',
-      valid: 'CR0 2EU',
-      notFound: 'AA11 1AA',
-      belfast: 'BT11 1AB',
-      welsh: 'CH5 1AB'
-    }
+  fields: {
+    building: '#building',
+    street: '#street',
+    townOrCity: '#townOrCity',
+    postcode: '#postcode'
   },
-  lookup: {
-    url: 'step=lookup',
-
-    fields: {
-      'address-select': '#property-address-select'
-    },
-
-    content: {
-      'address-select': '49 Sydenham Road, Croydon, CR0 2EU'
-    }
-  },
-  address: {
-    url: 'step=address',
-    failedMessage: '.alert-info',
-    content: '49 Sydenham Road\nCroydon\nCR0 2EU'
-  },
-  manual: {
-    url: 'step=manual',
-    fields: {
-      address: '#property-address'
-    }
-  },
-
-  links: {
-    'change-postcode': '.change-postcode',
-    'cant-find': '.cant-find'
-  },
-
-  enterValidPostcode() {
-    I.fillField(this.postcode.fields.postcode, this.postcode.content.valid);
-    I.submitForm();
-  },
-
-  selectAddressAndSubmit() {
-    this.enterValidPostcode();
-    I.selectOption(this.lookup.fields['address-select'], this.lookup.content['address-select']);
-    I.submitForm();
+  content: {
+    building: 'Building',
+    street: 'Street',
+    townOrCity: 'Town',
+    postcode: 'CR0 2EU',
+    invalidPostcode: 'xxxxxx',
+    invalidTownOrCity: 'Town 1',
+    check: translations.default,
+    report: translations.what.report,
   }
 };

@@ -10,55 +10,19 @@ module.exports = {
   },
 
   url: 'landlord-address',
-  postcode: {
-    url: 'step=postcode',
-    fields: {
-      postcode: '#landlord-address-postcode',
-      usePrevious: '#use-previous-address'
-    },
-    content: {
-      invalid: 'xxxxxx',
-      valid: 'CR0 2EU',
-      notFound: 'AA1 1AA',
-      belfast: 'BT11 1AB'
-    }
+  fields: {
+    'landlord-building': '#landlord-building',
+    'landlord-street': '#landlord-street',
+    'landlord-townOrCity': '#landlord-townOrCity',
+    'landlord-postcode': '#landlord-postcode',
+    usePrevious: '#use-previous-address'
   },
-  lookup: {
-    url: 'step=lookup',
-
-    fields: {
-      'address-select': '#landlord-address-select'
-    },
-
-    content: {
-      'address-select': '49 Sydenham Road, Croydon, CR0 2EU'
-    }
-  },
-  address: {
-    url: 'step=address',
-    failedMessage: '.alert-info',
-    content: '49 Sydenham Road\nCroydon\nCR0 2EU'
-  },
-  manual: {
-    url: 'step=manual',
-    fields: {
-      address: '#landlord-address'
-    }
-  },
-
-  links: {
-    'change-postcode': '.change-postcode',
-    'cant-find': '.cant-find'
-  },
-
-  enterValidPostcode() {
-    I.fillField(this.postcode.fields.postcode, this.postcode.content.valid);
-    I.submitForm();
-  },
-
-  selectAddressAndSubmit() {
-    this.enterValidPostcode();
-    I.selectOption(this.lookup.fields['address-select'], this.lookup.content['address-select']);
-    I.submitForm();
+  content: {
+    'landlord-building': 'Building',
+    'landlord-street': 'Street',
+    'landlord-townOrCity': 'Town',
+    'landlord-postcode': 'CR0 2EU',
+    invalidPostcode: 'xxxxxx',
+    invalidTownOrCity: 'Town 1'
   }
 };

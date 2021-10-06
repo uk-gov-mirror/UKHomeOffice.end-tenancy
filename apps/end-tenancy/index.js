@@ -1,6 +1,5 @@
 'use strict';
 
-const AddressLookup = require('hof').components.addressLookup;
 const UsePrevious = require('./behaviours/use-previous');
 const Loop = require('./behaviours/loop');
 const ResetOnChange = require('./behaviours/reset-on-change');
@@ -55,16 +54,7 @@ module.exports = {
       next: '/property-address'
     },
     '/property-address': {
-      behaviours: AddressLookup({
-        required: true,
-        addressKey: 'property-address',
-        apiSettings: {
-          hostname: config.postcode.hostname
-        },
-        validate: {
-          allowedCountries: ['england']
-        }
-      }),
+      fields: ['building', 'street', 'townOrCity', 'postcode'],
       next: '/tenant-details',
       forks: [{
         target: '/tenancy-start',
@@ -158,21 +148,21 @@ module.exports = {
       ]
     },
     '/landlord-address': {
-      addressKey: 'landlord-address',
+      buildingKey: 'landlord-building',
+      streetKey: 'landlord-street',
+      townKey: 'landlord-townOrCity',
+      postcodeKey: 'landlord-postcode',
+      fields: ['landlord-building', 'landlord-street', 'landlord-townOrCity', 'landlord-postcode'],
       behaviours: [
-        AddressLookup({
-          required: true,
-          addressKey: 'landlord-address',
-          apiSettings: {
-            hostname: config.postcode.hostname
-          }
-        }),
         UsePrevious({
           useWhen: {
             field: 'who',
             value: 'landlord'
           },
-          previousAddress: 'property-address'
+          previousBuilding: 'building',
+          previousStreet: 'street',
+          previousTown: 'townOrCity',
+          previousPostcode: 'postcode'
         })
       ],
       next: '/confirm-declaration',
@@ -193,13 +183,7 @@ module.exports = {
       next: '/agent-address'
     },
     '/agent-address': {
-      behaviours: AddressLookup({
-        required: true,
-        addressKey: 'agent-address',
-        apiSettings: {
-          hostname: config.postcode.hostname
-        }
-      }),
+      fields: ['agent-building', 'agent-street', 'agent-townOrCity', 'agent-postcode'],
       next: '/landlord-name'
     },
     '/landlord-name': {

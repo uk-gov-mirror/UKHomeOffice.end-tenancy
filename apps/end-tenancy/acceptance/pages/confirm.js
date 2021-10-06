@@ -22,7 +22,9 @@ module.exports = {
 
   'request-notice': {
     what: 'request',
-    'property-address': '123 Example Street Example',
+    building: '5 Street',
+    townOrCity: 'Town',
+    postcode : 'CR0 2EU',
     'tenancy-start': '1111-11-11',
     tenants: {
       0: {
@@ -35,7 +37,9 @@ module.exports = {
     'landlord-company': 'UK Home Office',
     'landlord-email-address': 'sterling@archer.com',
     'landlord-phone-number': '01234567890',
-    'landlord-address': '123 Example Street Example'
+    'landlord-building': '5 Street',
+    'landlord-townOrCity': 'Town',
+    'landlord-postcode': 'CR0 2EU'
   },
 
   setSessionData(name, data) {

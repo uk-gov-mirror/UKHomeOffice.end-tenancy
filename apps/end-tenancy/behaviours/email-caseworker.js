@@ -13,6 +13,9 @@ const getDataRows = (model, translate) => {
   const label = key => translate(`email.customer.fields.${key}.label`);
   const isAgent = model['agent-email-address'] !== undefined;
   const isNotRequest = model.what !== 'request';
+  const propertyHasStreet = model.street !== undefined;
+  const landlordHasStreet = model['landlord-street'] !== undefined;
+  const agentHasStreet = model['agent-street'] !== undefined;
   return [
     {
       table: [
@@ -27,8 +30,18 @@ const getDataRows = (model, translate) => {
           label: label('nldp-date'),
           value: moment(model['nldp-date']).format(config.PRETTY_DATE_FORMAT)
         }, {
-          label: label('property-address'),
-          value: model['property-address']
+          label: label('building'),
+          value: model.building
+        },
+        propertyHasStreet && {
+          label: label('street'),
+          value: model.street
+        }, {
+          label: label('townOrCity'),
+          value: model.townOrCity
+        }, {
+          label: label('postcode'),
+          value: model.postcode
         },
         model['tenancy-start'] && {
           label: label('tenancy-start'),
@@ -69,7 +82,10 @@ const getDataRows = (model, translate) => {
         !isAgent && { label: label('landlord-company'), value: model['landlord-company'] },
         !isAgent && { label: label('landlord-email-address'), value: model['landlord-email-address'] },
         !isAgent && { label: label('landlord-phone-number'), value: model['landlord-phone-number'] },
-        { label: label('landlord-address'), value: model['landlord-address'] },
+        { label: label('landlord-building'), value: model['landlord-building'] },
+        landlordHasStreet && { label: label('landlord-street'), value: model['landlord-street'] },
+        { label: label('landlord-townOrCity'), value: model['landlord-townOrCity'] },
+        { label: label('landlord-postcode'), value: model['landlord-postcode'] },
         { label: label('landlord-name-agent'), value: model['landlord-name-agent'] }
       ].filter(Boolean)
     },
@@ -80,7 +96,10 @@ const getDataRows = (model, translate) => {
         { label: label('agent-name'), value: model['agent-name'] },
         { label: label('agent-email-address'), value: model['agent-email-address'] },
         { label: label('agent-phone-number'), value: model['agent-phone-number'] },
-        { label: label('agent-address'), value: model['agent-address'] }
+        { label: label('agent-building'), value: model['agent-building'] },
+        agentHasStreet && { label: label('agent-street'), value: model['agent-street'] },
+        { label: label('agent-townOrCity'), value: model['agent-townOrCity'] },
+        { label: label('agent-postcode'), value: model['agent-postcode'] }
       ]
     }
   ].filter(Boolean);

@@ -10,10 +10,11 @@ Scenario('And I select previous address When I go to the confirm page Then I see
   I.completeToStep('/property-address', {
     what: 'check',
   });
-  I.click('a[href="?step=manual"]');
   I.completeToStep('/landlord-address', {
     what: 'check',
-    'property-address': '123 Example Street',
+    building: '5 Street',
+    townOrCity: 'Town',
+    postcode : 'CR0 2EU',
     'tenancy-start-day': '11',
     'tenancy-start-month': '11',
     'tenancy-start-year': '1111',

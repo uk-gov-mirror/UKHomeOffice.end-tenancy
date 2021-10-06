@@ -19,7 +19,7 @@ Scenario('I see the correct header if I previously selected "report"', function 
     what: 'report'
   });
   yield I.refreshPage();
-  I.see(propertyAddressPage.postcode.content.report);
+  I.see(propertyAddressPage.content.report);
 });
 
 Scenario('I see the correct header if I previously selected "check"', function *(
@@ -30,136 +30,81 @@ Scenario('I see the correct header if I previously selected "check"', function *
     what: 'check'
   });
   yield I.refreshPage();
-  I.see(propertyAddressPage.postcode.content.check);
+  I.see(propertyAddressPage.content.check);
 });
 
-Scenario('I see the postcode entry field', (
+Scenario('I see the correct fields on the page', (
   I,
   propertyAddressPage
 ) => {
-  I.seeElements(propertyAddressPage.postcode.fields.postcode);
+  I.seeElements([
+    propertyAddressPage.fields.building,
+    propertyAddressPage.fields.street,
+    propertyAddressPage.fields.townOrCity,
+    propertyAddressPage.fields.postcode
+  ]);
 });
 
-Scenario('I see an error if I submit the step without filling in the field', (
+Scenario('I see an error if I submit the form without entering a building', (
   I,
   propertyAddressPage
 ) => {
+  I.fillField(propertyAddressPage.fields.townOrCity,
+    propertyAddressPage.content.townOrCity);
+  I.fillField(propertyAddressPage.fields.postcode,
+    propertyAddressPage.content.postcode);
   I.submitForm();
-  I.seeErrors(propertyAddressPage.postcode.fields.postcode);
+  I.seeErrors([
+    propertyAddressPage.fields.building
+  ]);
 });
 
-Scenario('I see an error if I submit the step with an invalid postcode', (
+Scenario('I see an error if I submit the form without entering a town or city', (
   I,
   propertyAddressPage
 ) => {
-  I.fillField(propertyAddressPage.postcode.fields.postcode,
-    propertyAddressPage.postcode.content.invalid);
+  I.fillField(propertyAddressPage.fields.building,
+    propertyAddressPage.content.building);
+  I.fillField(propertyAddressPage.fields.postcode,
+    propertyAddressPage.content.postcode);
   I.submitForm();
-  I.seeErrors(propertyAddressPage.postcode.fields.postcode);
+  I.seeErrors([
+    propertyAddressPage.fields.townOrCity
+  ]);
 });
 
-Scenario('I see an error if I enter a postcode that isn\'t in England', (
+Scenario('I see an error if I submit the form without entering a postcode', (
   I,
   propertyAddressPage
 ) => {
-  I.fillField(propertyAddressPage.postcode.fields.postcode,
-    propertyAddressPage.postcode.content.welsh
-  );
+  I.fillField(propertyAddressPage.fields.building,
+    propertyAddressPage.content.building);
+  I.fillField(propertyAddressPage.fields.townOrCity,
+    propertyAddressPage.content.townOrCity);
   I.submitForm();
-  I.seeErrors(propertyAddressPage.postcode.fields.postcode);
+  I.seeErrors([
+    propertyAddressPage.fields.postcode
+  ]);
 });
 
-Scenario('I am taken to the address page if the postcode isn\'t found', (
+Scenario('I see an error if I enter an invalid town or city', (
   I,
   propertyAddressPage
 ) => {
-  I.fillField(propertyAddressPage.postcode.fields.postcode,
-    propertyAddressPage.postcode.content.notFound);
+  I.fillField(propertyAddressPage.fields.townOrCity,
+    propertyAddressPage.content.invalidTownOrCity);
   I.submitForm();
-  I.seeInCurrentUrl(propertyAddressPage.address.url);
-  I.seeElement(propertyAddressPage.address.failedMessage);
+  I.seeErrors(propertyAddressPage.fields.townOrCity);
 });
 
-Scenario('I am taken to the /lookup substep if I submit a valid postcode', (
+Scenario('I see an error if I enter an invalid postcode', (
   I,
   propertyAddressPage
 ) => {
-  I.fillField(propertyAddressPage.postcode.fields.postcode,
-    propertyAddressPage.postcode.content.valid);
+  I.fillField(propertyAddressPage.fields.postcode,
+    propertyAddressPage.content.invalidPostcode);
   I.submitForm();
-  I.seeInCurrentUrl(propertyAddressPage.lookup.url);
-});
-
-Scenario('I see an error if I submit a Belfast postcode', (
-  I,
-  propertyAddressPage
-) => {
-  I.fillField(propertyAddressPage.postcode.fields.postcode,
-    propertyAddressPage.postcode.content.belfast);
-  I.submitForm();
-  I.seeErrors(propertyAddressPage.postcode.fields.postcode);
-});
-
-Scenario('I see an error if I try and continue without selecting an address', (
-  I,
-  propertyAddressPage
-) => {
-  propertyAddressPage.enterValidPostcode();
-  I.submitForm();
-  I.seeErrors(propertyAddressPage.lookup.fields['address-select']);
-});
-
-Scenario('I am taken to the manual entry step if I click the cant-find link', (
-  I,
-  propertyAddressPage
-) => {
-  propertyAddressPage.enterValidPostcode();
-  I.click(propertyAddressPage.links['cant-find']);
-  I.seeInCurrentUrl(propertyAddressPage.manual.url);
-});
-
-Scenario('I see an error if I sumbit the manual step without completing', (
-  I,
-  propertyAddressPage
-) => {
-  propertyAddressPage.enterValidPostcode();
-  I.click(propertyAddressPage.links['cant-find']);
-  I.submitForm();
-  I.seeErrors(propertyAddressPage.manual.fields.address);
-});
-
-Scenario('I am taken to the tenant-details step if I fill in the manual address field and submit', (
-  I,
-  propertyAddressPage,
-  tenantDetailsPage
-) => {
-  propertyAddressPage.enterValidPostcode();
-  I.click(propertyAddressPage.links['cant-find']);
-  I.fillField(propertyAddressPage.manual.fields.address,
-    propertyAddressPage.address.content);
-  I.submitForm();
-  I.seeInCurrentUrl(tenantDetailsPage.url);
-});
-
-Scenario('I am taken to the postcode step if I click the change-postcode link', (
-  I,
-  propertyAddressPage
-) => {
-  propertyAddressPage.enterValidPostcode();
-  I.click(propertyAddressPage.links['change-postcode']);
-  I.seeInCurrentUrl(propertyAddressPage.postcode.url);
-});
-
-Scenario('I am taken to the tenant-details step if I select a valid address', (
-  I,
-  propertyAddressPage,
-  tenantDetailsPage
-) => {
-  propertyAddressPage.enterValidPostcode();
-  I.selectOption(propertyAddressPage.lookup.fields['address-select'],
-    propertyAddressPage.lookup.content['address-select']);
-  I.submitForm();
-  I.seeInCurrentUrl(tenantDetailsPage.url);
+  I.seeErrors(propertyAddressPage.fields.postcode);
 });
 
 Scenario('I am taken to the tenant-details page on a valid submission', (
@@ -167,7 +112,13 @@ Scenario('I am taken to the tenant-details page on a valid submission', (
   propertyAddressPage,
   tenantDetailsPage
 ) => {
-  propertyAddressPage.selectAddressAndSubmit();
+  I.fillField(propertyAddressPage.fields.building,
+    propertyAddressPage.content.building);
+  I.fillField(propertyAddressPage.fields.townOrCity,
+    propertyAddressPage.content.townOrCity);
+  I.fillField(propertyAddressPage.fields.postcode,
+    propertyAddressPage.content.postcode);
+  I.submitForm();
   I.seeInCurrentUrl(tenantDetailsPage.url);
 });
 
@@ -180,6 +131,13 @@ Scenario('I am taken to the tenancy-start page if I am requesting an nldp', func
     what: 'request'
   });
   yield I.refreshPage();
-  propertyAddressPage.selectAddressAndSubmit();
+  I.fillField(propertyAddressPage.fields.building,
+    propertyAddressPage.content.building);
+  I.fillField(propertyAddressPage.fields.townOrCity,
+    propertyAddressPage.content.townOrCity);
+  I.fillField(propertyAddressPage.fields.postcode,
+    propertyAddressPage.content.postcode);
+  I.submitForm();
   I.seeInCurrentUrl(tenancyStartPage.url);
 });
+
