@@ -192,3 +192,19 @@ input[name*="postcode"] {
   border-top: 2px solid black;
   padding-top: 0.5em;
 }
+
+.button-delete {
+  word-break: normal;
+}
+
+.loop-summary-table > table > tbody > tr > td {
+  word-break: break-word;
+}
+
+h1 {
+  word-break: break-word;
+}
+
+#tenant-details-group > fieldset > legend > span {
+  word-break: break-word;
+}

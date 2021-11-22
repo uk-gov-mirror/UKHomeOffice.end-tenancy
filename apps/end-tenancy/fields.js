@@ -31,10 +31,30 @@ module.exports = {
     labelClassName: 'visuallyhidden',
     validate: ['required', 'date', 'before']
   }),
-  'property-address': {},
+  building: {
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+    autocomplete: 'address-line1'
+  },
+  street: {
+    validate: ['notUrl', { type: 'maxlength', arguments: 50 }],
+    labelClassName: 'visuallyhidden',
+    autocomplete: 'address-line2'
+  },
+  townOrCity: {
+    validate: ['required', 'notUrl',
+      { type: 'regex', arguments: /^([^0-9]*)$/ },
+      { type: 'maxlength', arguments: 100 }
+    ],
+    autocomplete: 'address-level2'
+  },
+  postcode: {
+    validate: ['required', 'postcode'],
+    formatter: ['removespaces', 'uppercase'],
+    autocomplete: 'postal-code'
+  },
   name: {
     mixin: 'input-text',
-    validate: 'required'
+    validate: ['required', 'notUrl']
   },
   'date-left': dateComponent('date-left', {
     labelClassName: 'visuallyhidden',
@@ -78,7 +98,7 @@ module.exports = {
   },
   'reference-number': {
     disableRender: true,
-    validate: 'required',
+    validate: ['required', 'notUrl'],
     dependent: {
       field: 'tenant-details',
       value: 'reference-number'
@@ -95,7 +115,27 @@ module.exports = {
       'no'
     ]
   },
-  'landlord-address': {},
+  'landlord-building': {
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+    autocomplete: 'address-line1'
+  },
+  'landlord-street': {
+    validate: ['notUrl', { type: 'maxlength', arguments: 50 }],
+    labelClassName: 'visuallyhidden',
+    autocomplete: 'address-line2'
+  },
+  'landlord-townOrCity': {
+    validate: ['required', 'notUrl',
+      { type: 'regex', arguments: /^([^0-9]*)$/ },
+      { type: 'maxlength', arguments: 100 }
+    ],
+    autocomplete: 'address-level2'
+  },
+  'landlord-postcode': {
+    validate: ['required', 'postcode'],
+    formatter: ['removespaces', 'uppercase'],
+    autocomplete: 'postal-code'
+  },
   who: {
     mixin: 'radio-group',
     validate: 'required',
@@ -109,15 +149,16 @@ module.exports = {
   },
   'landlord-name': {
     mixin: 'input-text',
-    validate: 'required'
+    validate: ['required', 'notUrl']
   },
   'landlord-name-agent': {
     mixin: 'input-text',
-    validate: 'required',
+    validate: ['required', 'notUrl'],
     labelClassName: 'visuallyhidden'
   },
   'landlord-company': {
-    mixin: 'input-text'
+    mixin: 'input-text',
+    validate: ['notUrl']
   },
   'landlord-email-address': {
     mixin: 'input-text',
@@ -125,24 +166,44 @@ module.exports = {
   },
   'landlord-phone-number': {
     mixin: 'input-text',
-    validate: ['required']
+    validate: ['required', 'notUrl']
   },
   'agent-company': {
     mixin: 'input-text',
-    validate: 'required'
+    validate: ['required', 'notUrl']
   },
   'agent-name': {
     mixin: 'input-text',
-    validate: 'required'
+    validate: ['required', 'notUrl']
   },
-  'agent-address': {},
+  'agent-building': {
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+    autocomplete: 'address-line1'
+  },
+  'agent-street': {
+    validate: ['notUrl', { type: 'maxlength', arguments: 50 }],
+    labelClassName: 'visuallyhidden',
+    autocomplete: 'address-line2'
+  },
+  'agent-townOrCity': {
+    validate: ['required', 'notUrl',
+      { type: 'regex', arguments: /^([^0-9]*)$/ },
+      { type: 'maxlength', arguments: 100 }
+    ],
+    autocomplete: 'address-level2'
+  },
+  'agent-postcode': {
+    validate: ['required', 'postcode'],
+    formatter: ['removespaces', 'uppercase'],
+    autocomplete: 'postal-code'
+  },
   'agent-email-address': {
     mixin: 'input-text',
     validate: ['required', 'email']
   },
   'agent-phone-number': {
     mixin: 'input-text',
-    validate: ['required']
+    validate: ['required', 'notUrl']
   },
   'declaration-identity': {
     mixin: 'checkbox',

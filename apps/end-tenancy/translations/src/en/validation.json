@@ -12,19 +12,25 @@
     "date": "Enter a valid date",
     "before": "Date cannot be in the future"
   },
-  "property-address-postcode": {
-    "required": "Enter the postcode",
-    "postcode": "Enter a valid postcode",
-    "country": "This postcode is not in England. This service is only for rental property in England. If you are a landlord of a property in Scotland, Wales or Northern Ireland this legislation does not currently apply to you."
+  "building": {
+    "required": "Enter details of the property building and street",
+    "notUrl": "Enter a valid building and street"
   },
-  "property-address-select": {
-    "required": "Select an address"
+  "street": {
+    "notUrl": "Enter a valid street"
   },
-  "property-address": {
-    "required": "Enter the property address"
+  "townOrCity": {
+    "required": "Enter a town or city",
+    "regex": "Enter a town or city without including digits",
+    "notUrl": "Enter a valid town or city"
+  },
+  "postcode": {
+    "required": "Enter the property's postcode",
+    "postcode": "Enter a valid postcode"
   },
   "name": {
-    "required": "Enter the person’s name"
+    "required": "Enter the person’s name",
+    "notUrl": "Enter a valid name"
   },
   "date-left": {
     "required": "Enter a date",
@@ -45,7 +51,8 @@
     "equal": "Pick a country from the list"
   },
   "reference-number": {
-    "required": "Enter a reference number"
+    "required": "Enter a reference number",
+    "notUrl": "Enter a valid reference number"
   },
   "add-another": {
     "required": "Select an option"
@@ -54,60 +61,71 @@
     "required": "Select an option"
   },
   "landlord-name": {
-    "required": "Enter your full name"
+    "required": "Enter your full name",
+    "notUrl": "Enter a valid name"
   },
   "landlord-name-agent": {
-    "required": "Enter the landlord’s full name"
+    "required": "Enter the landlord’s full name",
+    "notUrl": "Enter a valid name"
+  },
+  "landlord-company": {
+    "notUrl": "Enter a valid company name"
   },
   "landlord-email-address": {
     "required": "Enter your email address",
     "email": "Enter a valid email address"
   },
   "landlord-phone-number": {
-    "required": "Enter your phone number"
+    "required": "Enter your phone number",
+    "notUrl": "Enter a valid phone number"
+  },
+  "landlord-building": {
+    "required": "Enter details of the building and street",
+    "notUrl": "Enter a valid building and street"
+  },
+  "landlord-street": {
+    "notUrl": "Enter a valid street"
+  },
+  "landlord-townOrCity": {
+    "required": "Enter a town or city",
+    "regex": "Enter a town or city without including digits",
+    "notUrl": "Enter a valid town or city"
+  },
+  "landlord-postcode": {
+    "required": "Enter a postcode",
+    "postcode": "Enter a valid postcode"
   },
   "agent-company": {
-    "required": "Enter your company name"
+    "required": "Enter your company name",
+    "notUrl": "Enter a valid company name"
   },
   "agent-name": {
-    "required": "Enter your full name"
+    "required": "Enter your full name",
+    "notUrl": "Enter a valid name"
   },
   "agent-email-address": {
     "required": "Enter your email address",
     "email": "Enter a valid email address"
   },
   "agent-phone-number": {
-    "required": "Enter your phone number"
+    "required": "Enter your phone number",
+    "notUrl": "Enter a valid phone number"
   },
-  "agent-address-postcode": {
-    "required": "Enter the agent’s postcode",
+  "agent-building": {
+    "required": "Enter details of the building and street",
+    "notUrl": "Enter a valid building and street"
+  },
+  "agent-street": {
+    "notUrl": "Enter a valid street"
+  },
+  "agent-townOrCity": {
+    "required": "Enter a town or city",
+    "regex": "Enter a town or city without including digits",
+    "notUrl": "Enter a valid town or city"
+  },
+  "agent-postcode": {
+    "required": "Enter a postcode",
     "postcode": "Enter a valid postcode"
-  },
-  "agent-address-select": {
-    "required": "Select an address"
-  },
-  "agent-address": {
-    "required": "Enter the agent’s address"
-  },
-  "landlord-address-postcode": {
-    "required": {
-      "who": {
-        "landlord": "Enter your postcode"
-      },
-      "default": "Enter the landlord’s postcode"
-    },
-    "postcode": "Enter a valid postcode"
-  },
-  "landlord-address-select": {
-    "required": "Select an address"
-  },
-  "landlord-address": {
-    "required": {
-      "who": {
-        "landlord": "Enter your address"
-      },
-      "default": "Enter the landlord’s address"
-    }
   },
   "declaration-identity": {
     "required": {
