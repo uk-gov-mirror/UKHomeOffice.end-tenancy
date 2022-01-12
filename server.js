@@ -25,7 +25,8 @@ app.use((req, res, next) => {
   res.locals.htmlLang = 'en';
   res.locals.footerSupportLinks = [
     { path: '/cookies', property: 'base.cookies' },
-    { path: '/privacy-policy', property: 'Privacy Policy' }
+    { path: '/privacy-policy', property: 'Privacy Policy' },
+    { path: '/accessibility', property: 'base.accessibility' }
   ];
   return next();
 });

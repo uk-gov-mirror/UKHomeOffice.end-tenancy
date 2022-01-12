@@ -31,14 +31,6 @@ linting: &linting
   commands:
     - yarn run test:lint
 
-unit_tests: &unit_tests
-  pull: if-not-exists
-  image: node:14
-  environment:
-    NOTIFY_KEY: USE_MOCK
-  commands:
-    - yarn run test:unit
-
 sonar_scanner: &sonar_scanner
   pull: if-not-exists
   image: quay.io/ukhomeofficedigital/sonar-scanner-node:549b75f593f28da1c4a0a6f79877ec69d3b21037
@@ -87,13 +79,13 @@ steps:
           - master
       event: push
 
-  - name: unit_tests_deploy
-    <<: *unit_tests
-    when:
-      branch:
-        include:
-          - master
-      event: push
+#  - name: unit_tests_deploy
+#    <<: *unit_tests
+#    when:
+#      branch:
+#        include:
+#          - master
+#      event: push
 
   - name: sonar_scanner_deploy
     <<: *sonar_scanner
@@ -169,14 +161,14 @@ steps:
           - feature/*
       event: pull_request
 
-  - name: unit_tests_branch
-    <<: *unit_tests
-    when:
-      branch:
-        include:
-          - master
-          - feature/*
-      event: pull_request
+#  - name: unit_tests_branch
+#    <<: *unit_tests
+#    when:
+#      branch:
+#        include:
+#          - master
+#          - feature/*
+#      event: pull_request
 
   - name: sonar_scanner_branch
     <<: *sonar_scanner
@@ -187,27 +179,15 @@ steps:
           - feature/*
       event: pull_request
 
-  - name: build_acceptance_branch
-    pull: if-not-exists
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
-    commands:
-    - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
-    - docker build -f Dockerfile-acceptance -t acceptance-$${DRONE_COMMIT_SHA} .
-    when:
-      branch: master
-      event: pull_request
-
   - name: test_acceptance_branch
-    pull: if-not-exists
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+    <<: *acceptance_tests
+    environment:
+      NOTIFY_STUB: true
     commands:
-    - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
-    - docker run -d --name=redis-$${DRONE_COMMIT_SHA} redis
-    - docker run -d -e NODE_ENV=ci -e DISABLE_CSP=true -e CASEWORKER_EMAIL=test@example.com --net=container:redis-$${DRONE_COMMIT_SHA} --name=app-$${DRONE_COMMIT_SHA} $${IMAGE_REPO}:$${DRONE_COMMIT_SHA}
-    - docker run -d --net=container:app-$${DRONE_COMMIT_SHA} --name=selenium-$${DRONE_COMMIT_SHA} selenium/standalone-chrome
-    - sleep 5
-    - docker run --rm -e NODE_ENV=ci -e DISABLE_CSP=true -e CASEWORKER_EMAIL=test@example.com  --net=container:app-$${DRONE_COMMIT_SHA} acceptance-$${DRONE_COMMIT_SHA}
-    - docker rm -vf "app-$${DRONE_COMMIT_SHA}" "redis-$${DRONE_COMMIT_SHA}" "selenium-$${DRONE_COMMIT_SHA}"
+      - export ACCEPTANCE_HOST_NAME=https://ukviet-$${DRONE_SOURCE_BRANCH}.internal.$${BRANCH_ENV}.homeoffice.gov.uk
+      - export CUCUMBER_PUBLISH_ENABLED=true
+      - npx playwright install
+      - npm run test:acceptance
     when:
       branch: master
       event: pull_request
@@ -255,27 +235,13 @@ steps:
       branch: master
       event: push
 
-  - name: build_acceptance_uat
-    pull: if-not-exists
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
-    commands:
-    - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
-    - docker build -f Dockerfile-acceptance -t acceptance-$${DRONE_COMMIT_SHA} .
-    when:
-      branch: master
-      event: push
-
   - name: test_acceptance_uat
-    pull: if-not-exists
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+    <<: *acceptance_tests
     commands:
-    - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
-    - docker run -d --name=redis-$${DRONE_COMMIT_SHA} redis
-    - docker run -d -e NODE_ENV=ci -e DISABLE_CSP=true -e CASEWORKER_EMAIL=test@example.com --net=container:redis-$${DRONE_COMMIT_SHA} --name=app-$${DRONE_COMMIT_SHA} $${IMAGE_REPO}:$${DRONE_COMMIT_SHA}
-    - docker run -d --net=container:app-$${DRONE_COMMIT_SHA} --name=selenium-$${DRONE_COMMIT_SHA} selenium/standalone-chrome
-    - sleep 5
-    - docker run --rm -e NODE_ENV=ci -e DISABLE_CSP=true -e CASEWORKER_EMAIL=test@example.com  --net=container:app-$${DRONE_COMMIT_SHA} acceptance-$${DRONE_COMMIT_SHA}
-    - docker rm -vf "app-$${DRONE_COMMIT_SHA}" "redis-$${DRONE_COMMIT_SHA}" "selenium-$${DRONE_COMMIT_SHA}"
+      - export ACCEPTANCE_HOST_NAME=https://$${PROD_ENV}.uat.internal.sas-notprod.homeoffice.gov.uk
+      - export CUCUMBER_PUBLISH_ENABLED=true
+      - npx playwright install
+      - npm run test:acceptance
     when:
       branch: master
       event: push

@@ -5,14 +5,10 @@ const Loop = require('./behaviours/loop');
 const ResetOnChange = require('./behaviours/reset-on-change');
 const LocalSummary = require('./behaviours/summary');
 const ExposeEmail = require('./behaviours/expose-email');
-const UploadPDF = require('./behaviours/upload-pdf');
 const GetDeclarer = require('./behaviours/get-declarer');
 const SetConfirmStep = require('./behaviours/set-confirm-step');
-const config = require('../../config');
 
-const emailPDFCaseworker = require('./behaviours/email-pdf-caseworker')(config.email);
-const emailCaseworker = require('./behaviours/email-caseworker')(config.email);
-const emailCustomer = require('./behaviours/email-customer')(config.email);
+const newEmail = require('./behaviours/email-base');
 
 const requestRoute = req => req.sessionModel.get('what') === 'request';
 const checkRoute = req => req.sessionModel.get('what') === 'check';
@@ -22,7 +18,8 @@ module.exports = {
   params: '/:action?/:id?/:edit?',
   pages: {
     '/privacy-policy': 'privacy-policy',
-    '/cookies': 'cookies'
+    '/cookies': 'cookies',
+    '/accessibility': 'accessibility'
   },
   behaviours: SetConfirmStep,
   steps: {
@@ -195,8 +192,7 @@ module.exports = {
     '/confirm-declaration': {
       behaviours: [
         LocalSummary,
-        emailCustomer,
-        emailCaseworker,
+        newEmail,
         'complete'
       ],
       fields: [
@@ -212,11 +208,10 @@ module.exports = {
     },
     '/declaration': {
       behaviours: [
+        LocalSummary,
         ExposeEmail,
         GetDeclarer,
-        emailCustomer,
-        UploadPDF,
-        emailPDFCaseworker,
+        newEmail,
         'complete'
       ],
       sections: require('./sections/pdf-data-sections'),
