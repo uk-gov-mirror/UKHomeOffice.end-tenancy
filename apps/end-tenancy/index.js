@@ -22,7 +22,8 @@ module.exports = {
   params: '/:action?/:id?/:edit?',
   pages: {
     '/privacy-policy': 'privacy-policy',
-    '/cookies': 'cookies'
+    '/cookies': 'cookies',
+    '/accessibility': 'accessibility'
   },
   behaviours: SetConfirmStep,
   steps: {
