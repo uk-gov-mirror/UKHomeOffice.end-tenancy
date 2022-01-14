@@ -1,4 +1,7 @@
 {
+  "accessibility": {
+    "header": "Accessibility statement for this Home Office Forms Application"
+  },
   "key-details": {
     "header": "Key details"
   },
