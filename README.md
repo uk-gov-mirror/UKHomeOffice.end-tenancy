@@ -16,6 +16,13 @@ Install the dependencies and build the project resources
 $ npm install
 ```
 
+You'll also need a pdf-generator to the run the app fully end to end.  The recommended one is https://github.com/UKHomeOffice/html-pdf-converter.
+
+You'll need to set the port number accordingly with the pdf generator.  In docker you set the port number, `docker run -p 8080:8001 [image-name]`
+
+You'll then need to set an environment variable for the end-tenancy app PDF_CONVERTER_URL=http://localhost:8001/convert
+
+
 [Install Docker Compose](https://docs.docker.com/compose/install/)
 
 Run the services locally with Docker Compose
