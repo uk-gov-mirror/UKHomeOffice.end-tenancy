@@ -110,8 +110,23 @@
         "report": "By submitting this report (tick the following):"
       },
       "default": "By submitting this enquiry (tick the following):"
+    },
+    "sections": {
+      "key-details": {
+        "header": "Key details"
+      },
+      "tenants-left": {
+        "header": "Notice requested for"
+      },
+      "landlord-details": {
+        "header": "Landlord details"
+      },
+      "agent-details": {
+        "header": "Agent details"
+      }
     }
   },
+
   "declaration": {
     "header": "Declaration",
     "initial-paragraph": "By submitting this request:",

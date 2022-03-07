@@ -1,6 +1,6 @@
 'use strict';
 
-const Behaviour = require('../../../../apps/end-tenancy/behaviours/set-confirm-step');
+const Behaviour = require('../../../apps/end-tenancy/behaviours/set-confirm-step');
 
 describe('apps/behaviours/set-confirm-step', () => {
   it('exports a function', () => {
