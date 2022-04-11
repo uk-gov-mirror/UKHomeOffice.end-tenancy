@@ -15,8 +15,6 @@ settings = Object.assign({}, settings, {
 
 if (!config.env || config.env === 'ci') {
   settings.middleware = [require('./mocks')];
-  // TODO Remove once so-acceptance module has been removed
-  settings.session.name = 'hod.sid';
 }
 
 const app = hof(settings);

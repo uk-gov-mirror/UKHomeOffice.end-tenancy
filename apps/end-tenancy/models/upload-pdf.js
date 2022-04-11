@@ -4,11 +4,10 @@ const moment = require('moment');
 const config = require('../../../config');
 const utils = require('../../../lib/utils');
 const _ = require('lodash');
-const NotifyClient = utils.NotifyClient;
 const PDFModel = require('hof').apis.pdfConverter;
 const FileVaultModel = utils.FileVaultModel;
 
-module.exports = class UploadPDFBase {
+module.exports = class UploadPDF {
   constructor(behaviourConfig) {
     this.behaviourConfig = behaviourConfig;
   }
@@ -56,80 +55,27 @@ module.exports = class UploadPDFBase {
     return fileVaultModel.save();
   }
 
-  async sendCaseworkerEmailWithAttachment(req, pdfData, fvLink) {
-    const caseworkerEmail = config.notify.caseworkerEmail;
-    const notifyKey = config.notify.apiKey;
-
-    const route = req.sessionModel.get('what');
-    const title = `A ${route} has been sent`;
-
+  async save(req, res, locals) {
     try {
-      const notifyClient = new NotifyClient(notifyKey);
+      const html = await this.renderHTML(req, res, locals);
 
-      if (notifyKey === 'USE_MOCK') {
-        req.log('warn', '*** Notify API Key set to USE_MOCK. Ensure disabled in production! ***');
-      }
+      const pdfModel = new PDFModel();
+      pdfModel.set({ template: html });
 
-      await notifyClient.sendEmail(config.notify.templatePDF, caseworkerEmail, {
-        personalisation: Object.assign({}, {title: title}, {
-          'form id': fvLink
-        })
-      });
-      req.log('info', 'ukviet.submit_form.create_email_with_file_notify.successful');
+      const pdfData = await pdfModel.save();
 
-      return await this.sendCustomerEmailWithAttachment(req, notifyClient, pdfData, route);
-    } catch (err) {
-      const error = _.get(err, 'response.data.errors[0]', err.message || err);
-      req.log('error', 'ukviet.submit_form.create_email_with_file_notify.error', error);
-      throw new Error(error);
-    }
-  }
-
-  async sendCustomerEmailWithAttachment(req, notifyClient, pdfData, route) {
-    const applicantEmail = req.sessionModel.get('landlord-email-address')
-      ? req.sessionModel.get('landlord-email-address')
-      : req.sessionModel.get('agent-email-address');
-
-    const title = `Your ${route} has been sent`;
-
-    try {
-      await notifyClient.sendEmail(config.notify.templateCustomer, applicantEmail, {
-        personalisation: Object.assign({}, {title: title}, {
-          'form id': notifyClient.prepareUpload(pdfData)
-        })
-      });
-      req.log('info', 'ukviet.send_customer_email.create_email_notify.successful');
-    } catch (err) {
-      req.log('error', 'ukviet.send_customer_email.create_email_notify.error', err.message || err);
-      throw err;
-    }
-  }
-
-  async send(req, res, locals) {
-    const html = await this.renderHTML(req, res, locals);
-
-    const pdfModel = new PDFModel();
-    pdfModel.set({ template: html });
-    const pdfData = await pdfModel.save();
-
-    let fvLink;
-
-    try {
-      fvLink = await this.uploadFileVault({
+      const result = await this.uploadFileVault({
         name: 'application_form.pdf',
         data: pdfData,
         mimetype: 'application/pdf'
-      })
-        .then(result => {
-          return result.url;
-        });
+      });
 
       req.log('info', 'ukviet.upload_pdf.filevault.successful');
+      return { pdfData, fvLink: result.url };
     } catch (err) {
       req.log('error', 'ukviet.upload_pdf.filevault.error', err.message || err);
+      throw err;
     }
-
-    return await this.sendCaseworkerEmailWithAttachment(req, pdfData, fvLink);
   }
 
   sortSections(locals) {

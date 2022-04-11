@@ -7,8 +7,7 @@ const LocalSummary = require('./behaviours/summary');
 const ExposeEmail = require('./behaviours/expose-email');
 const GetDeclarer = require('./behaviours/get-declarer');
 const SetConfirmStep = require('./behaviours/set-confirm-step');
-
-const newEmail = require('./behaviours/email-base');
+const SendEmail = require('./behaviours/send-email');
 
 const requestRoute = req => req.sessionModel.get('what') === 'request';
 const checkRoute = req => req.sessionModel.get('what') === 'check';
@@ -192,7 +191,7 @@ module.exports = {
     '/confirm-declaration': {
       behaviours: [
         LocalSummary,
-        newEmail,
+        SendEmail,
         'complete'
       ],
       fields: [
@@ -211,7 +210,7 @@ module.exports = {
         LocalSummary,
         ExposeEmail,
         GetDeclarer,
-        newEmail,
+        SendEmail,
         'complete'
       ],
       sections: require('./sections/pdf-data-sections'),

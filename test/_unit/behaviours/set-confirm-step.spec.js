@@ -16,8 +16,8 @@ describe('apps/behaviours/set-confirm-step', () => {
   const next = 'foo';
 
   beforeEach(() => {
-    req = reqres.req();
-    res = reqres.res();
+    req = request();
+    res = response();
     sinon.stub(Base.prototype, 'getNextStep').returns(next);
     instance = new (Behaviour(Base))();
   });

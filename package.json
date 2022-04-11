@@ -24,16 +24,14 @@
     "test:acceptance": "TAGS=\"${TAGS:=@feature}\" npm run test:cucumber",
     "test:acceptance_browser": "ACCEPTANCE_WITH_BROWSER=true TAGS=\"${TAGS:=@feature}\" yarn run test:cucumber",
     "test:cucumber": "cucumber-js -f @cucumber/pretty-formatter \"test/_acceptance/features/*.feature\" --require test/_acceptance/test.setup.js --require \"test/_acceptance/step_definitions/**/*.js\" --tags $TAGS",
-    "test:lint": "npm run test:lint:app",
-    "test:lint:app": "eslint . --config ./node_modules/eslint-config-hof/default.js",
-    "test:lint:acceptance": "eslint --no-ignore -c ./node_modules/so-acceptance/.eslintrc ./apps/*/acceptance/**/*.js",
+    "test:lint": "eslint . --config ./node_modules/eslint-config-hof/default.js",
     "test:snyk": "snyk config set api=SNYK_TOKEN && snyk test",
     "build": "hof-build",
     "postinstall": "npm run build"
   },
   "dependencies": {
     "debug": "^4.3.2",
-    "hof": "^19.13.4",
+    "hof": "^19.13.10",
     "hogan.js": "^3.0.2",
     "is-pdf": "^1.0.0",
     "jquery": "^3.6.0",

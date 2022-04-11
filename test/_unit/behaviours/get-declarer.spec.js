@@ -11,7 +11,6 @@ describe('apps/behaviours/get-declarer', () => {
     locals() {}
   }
   let req;
-  let request;
   let res;
   let GetDeclarer;
   let instance;
@@ -21,11 +20,10 @@ describe('apps/behaviours/get-declarer', () => {
   };
 
   beforeEach(() => {
-    request = reqres.req;
     req = request();
+    res = response();
     req.sessionModel.get = sinon.stub();
     req.translate = sinon.stub();
-    res = reqres.res();
     sinon.stub(Base.prototype, 'locals').returns(superLocals);
     GetDeclarer = Behaviour(Base);
     instance = new GetDeclarer();

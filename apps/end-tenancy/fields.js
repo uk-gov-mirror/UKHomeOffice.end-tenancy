@@ -21,15 +21,18 @@ module.exports = {
       value: 'report',
       toggle: 'report-toggle-content',
       child: 'partials/panel'
-    }]
+    }],
+    appendToChangeLink: true
   },
   'nldp-date': dateComponent('nldp-date', {
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before']
+    validate: ['required', 'date', 'before'],
+    appendToChangeLink: 'day'
   }),
   'tenancy-start': dateComponent('tenancy-start', {
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before']
+    validate: ['required', 'date', 'before'],
+    appendToChangeLink: 'day'
   }),
   building: {
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
@@ -58,7 +61,8 @@ module.exports = {
   },
   'date-left': dateComponent('date-left', {
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before']
+    validate: ['required', 'date', 'before'],
+    appendToChangeLink: 'day'
   }),
   'tenant-details': {
     mixin: 'checkbox-group',
@@ -84,7 +88,8 @@ module.exports = {
     dependent: {
       field: 'tenant-details',
       value: 'date-of-birth'
-    }
+    },
+    appendToChangeLink: 'day'
   }),
   nationality: {
     disableRender: true,

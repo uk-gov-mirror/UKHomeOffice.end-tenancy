@@ -118,21 +118,6 @@ spec:
                 secretKeyRef:
                   name: notify-key
                   key: notify_key
-            - name: CASEWORKER_EMAIL
-              valueFrom:
-                secretKeyRef:
-                  name: caseworker-email
-                  key: caseworker_email
-            - name: TEMPLATE_PDF
-              valueFrom:
-                secretKeyRef:
-                  name: template-pdf
-                  key: template_pdf
-            - name: TEMPLATE_CUSTOMER
-              valueFrom:
-                secretKeyRef:
-                  name: template-customer
-                  key: template_customer
             - name: FILE_VAULT_URL
             {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
               value: https://file-vault.prod.{{ .APP_NAME }}.homeoffice.gov.uk/file

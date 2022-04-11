@@ -17,7 +17,7 @@ Feature: Report that a disqualified person has left your property
     Then I use the same address as previously provided
     Then I should be on the 'confirm-declaration' page
     Then I confirm the declaration
-    Then I submit the page
+    Then I submit the application
     Then I should be on the 'confirmation' page
 
   Scenario: Complete 'report' application - multiple tenants, agent
@@ -39,5 +39,5 @@ Feature: Report that a disqualified person has left your property
     Then I use the same address as previously provided
     Then I should be on the 'confirm-declaration' page
     Then I confirm the declaration
-    Then I submit the page
+    Then I submit the application
     Then I should be on the 'confirmation' page

@@ -13,8 +13,7 @@ module.exports = {
     apiKey: process.env.NOTIFY_STUB === 'true' ? 'USE_MOCK' : process.env.NOTIFY_KEY,
     caseworkerEmail: process.env.CASEWORKER_EMAIL,
     templateCaseworker: process.env.TEMPLATE_CASEWORKER,
-    templateCustomer: process.env.TEMPLATE_CUSTOMER,
-    templatePDF: process.env.TEMPLATE_PDF
+    templateCustomer: process.env.TEMPLATE_CUSTOMER
   },
   redis: {
     password: process.env.REDIS_PASSWORD

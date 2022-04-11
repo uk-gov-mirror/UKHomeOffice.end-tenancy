@@ -33,10 +33,34 @@ module.exports = Base => class extends mix(Base).with(Behaviour) {
   }
 
   getRowsForSummarySections(req) {
-    const result = super.getRowsForSummarySections(req);
+    const fieldsConfig = req.form.options.fieldsConfig;
+    let result = super.getRowsForSummarySections(req);
     const section = this.addLoopSection(req);
     result.splice(1, 0, section);
+    // these append to change links on the summary page to ensure fields
+    // are highlighted properly when redirected to a field a user wants to change
+    _.each(Object.keys(fieldsConfig), key => {
+      const changeLink = fieldsConfig[key].appendToChangeLink;
+      if (typeof changeLink === 'boolean' && req.sessionModel.get(key)) {
+        result = this.addToChangeLink(req, result, key, req.sessionModel.get(key));
+      } else if (changeLink) {
+        result = this.addToChangeLink(req, result, key, changeLink);
+      }
+    });
+
     return result;
+  }
+
+  addToChangeLink(req, result, field, addition) {
+    return _.map(result, obj => {
+      obj.fields = _.map(obj.fields, attrs => {
+        if (attrs.field === field) {
+          attrs.changeLink = `${req.baseUrl}${attrs.step}/edit#${attrs.field}-${addition}`;
+        }
+        return attrs;
+      });
+      return obj;
+    });
   }
 
   getStepForField(key, steps, model) {
