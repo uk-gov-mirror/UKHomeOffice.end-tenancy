@@ -16,7 +16,7 @@ spec:
     {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
     - file-vault-uat.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-    - file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk
+    - file-vault-stg.prod.{{ .APP_NAME }}.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .PROD_ENV }}
     - file-vault.prod.{{ .APP_NAME }}.homeoffice.gov.uk
     {{ end }}
@@ -31,7 +31,7 @@ spec:
   {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
   - host: file-vault-uat.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
   {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-  - host: file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk
+  - host: file-vault-stg.prod.{{ .APP_NAME }}.homeoffice.gov.uk
   {{ else if eq .KUBE_NAMESPACE .PROD_ENV }}
   - host: file-vault.prod.{{ .APP_NAME }}.homeoffice.gov.uk
   {{ end }}
