@@ -318,19 +318,20 @@ steps:
       branch: master
       event: push
 
-  # - name: deploy_to_stg
-  #   pull: if-not-exists
-  #   image: quay.io/ukhomeofficedigital/kd:v1.14.0
-  #   environment:
-  #     KUBE_SERVER:
-  #       from_secret: kube_server_dev
-  #     KUBE_TOKEN:
-  #       from_secret: kube_token_dev
-  #   commands:
-  #     - bin/deploy.sh $${STG_ENV}
-  #   when:
-  #     branch: master
-  #     event: push
+  # Deploy to Master STG environment
+  - name: deploy_to_stg
+    pull: if-not-exists
+    image: quay.io/ukhomeofficedigital/kd:v1.14.0
+    environment:
+      KUBE_SERVER:
+        from_secret: kube_server_stg
+      KUBE_TOKEN:
+        from_secret: kube_token_stg
+    commands:
+      - bin/deploy.sh $${STG_ENV}
+    when:
+      branch: master
+      event: push
 
   # Checks a build being promoted has passed, is on master which effectively means a healthy build on Staging
   - name: sanity_check_build_prod
@@ -415,31 +416,31 @@ steps:
       cron: security_scans
       event: cron
 
-  - name: cron_snyk_scan
-    pull: if-not-exists
-    image: node:14
-    environment:
-      SNYK_TOKEN:
-        from_secret: snyk_token
-    commands:
-      - yarn install --frozen-lockfile
-      - yarn run postinstall
-      - yarn run test:snyk
-    when:
-      cron: security_scans
-      event: cron
-
-  - name: cron_anchore_scan
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
-    pull: always
-    environment:
-      IMAGE_NAME: end-tenancy:${DRONE_COMMIT_SHA}
-      LOCAL_IMAGE: true
-      TOLERATE: medium
-      WHITELIST_FILE: hof-services-config/UKVI_End_Tenancy/anchore-cve-exceptions.txt
-    when:
-      cron: security_scans
-      event: cron
+  # - name: cron_snyk_scan
+  #   pull: if-not-exists
+  #   image: node:14
+  #   environment:
+  #     SNYK_TOKEN:
+  #       from_secret: snyk_token
+  #   commands:
+  #     - yarn install --frozen-lockfile
+  #     - yarn run postinstall
+  #     - yarn run test:snyk
+  #   when:
+  #     cron: security_scans
+  #     event: cron
+  #
+  # - name: cron_anchore_scan
+  #   image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
+  #   pull: always
+  #   environment:
+  #     IMAGE_NAME: end-tenancy:${DRONE_COMMIT_SHA}
+  #     LOCAL_IMAGE: true
+  #     TOLERATE: medium
+  #     WHITELIST_FILE: hof-services-config/UKVI_End_Tenancy/anchore-cve-exceptions.txt
+  #   when:
+  #     cron: security_scans
+  #     event: cron
 
   # Slack notification upon a CRON job fail
   - name: cron_notify_slack_tear_down_pr_envs
