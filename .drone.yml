@@ -229,32 +229,32 @@ steps:
       event: pull_request
 
   # Snyk & Anchore security scans which run after branch deployment to prevent blocking of PR UAT tests
-  - name: snyk_scan
-    pull: if-not-exists
-    image: node:14
-    environment:
-      SNYK_TOKEN:
-        from_secret: snyk_token
-    commands:
-      - yarn run test:snyk
-    when:
-      branch:
-        include:
-          - master
-          - feature/*
-      event: pull_request
-
-  - name: anchore_scan
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
-    pull: always
-    environment:
-      IMAGE_NAME: end-tenancy:${DRONE_COMMIT_SHA}
-      LOCAL_IMAGE: true
-      TOLERATE: medium
-      WHITELIST_FILE: hof-services-config/UKVI_End_Tenancy/anchore-cve-exceptions.txt
-    when:
-      branch: master
-      event: pull_request
+  # - name: snyk_scan
+  #   pull: if-not-exists
+  #   image: node:14
+  #   environment:
+  #     SNYK_TOKEN:
+  #       from_secret: snyk_token
+  #   commands:
+  #     - yarn run test:snyk
+  #   when:
+  #     branch:
+  #       include:
+  #         - master
+  #         - feature/*
+  #     event: pull_request
+  #
+  # - name: anchore_scan
+  #   image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
+  #   pull: always
+  #   environment:
+  #     IMAGE_NAME: end-tenancy:${DRONE_COMMIT_SHA}
+  #     LOCAL_IMAGE: true
+  #     TOLERATE: medium
+  #     WHITELIST_FILE: hof-services-config/UKVI_End_Tenancy/anchore-cve-exceptions.txt
+  #   when:
+  #     branch: master
+  #     event: pull_request
 
   # Deploy to Master UAT environment
   - name: deploy_to_uat
@@ -416,31 +416,31 @@ steps:
       cron: security_scans
       event: cron
 
-  # - name: cron_snyk_scan
-  #   pull: if-not-exists
-  #   image: node:14
-  #   environment:
-  #     SNYK_TOKEN:
-  #       from_secret: snyk_token
-  #   commands:
-  #     - yarn install --frozen-lockfile
-  #     - yarn run postinstall
-  #     - yarn run test:snyk
-  #   when:
-  #     cron: security_scans
-  #     event: cron
-  #
-  # - name: cron_anchore_scan
-  #   image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
-  #   pull: always
-  #   environment:
-  #     IMAGE_NAME: end-tenancy:${DRONE_COMMIT_SHA}
-  #     LOCAL_IMAGE: true
-  #     TOLERATE: medium
-  #     WHITELIST_FILE: hof-services-config/UKVI_End_Tenancy/anchore-cve-exceptions.txt
-  #   when:
-  #     cron: security_scans
-  #     event: cron
+  - name: cron_snyk_scan
+    pull: if-not-exists
+    image: node:14
+    environment:
+      SNYK_TOKEN:
+        from_secret: snyk_token
+    commands:
+      - yarn install --frozen-lockfile
+      - yarn run postinstall
+      - yarn run test:snyk
+    when:
+      cron: security_scans
+      event: cron
+
+  - name: cron_anchore_scan
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
+    pull: always
+    environment:
+      IMAGE_NAME: end-tenancy:${DRONE_COMMIT_SHA}
+      LOCAL_IMAGE: true
+      TOLERATE: medium
+      WHITELIST_FILE: hof-services-config/UKVI_End_Tenancy/anchore-cve-exceptions.txt
+    when:
+      cron: security_scans
+      event: cron
 
   # Slack notification upon a CRON job fail
   - name: cron_notify_slack_tear_down_pr_envs
