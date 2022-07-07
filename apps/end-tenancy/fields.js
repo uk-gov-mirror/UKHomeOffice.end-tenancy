@@ -6,9 +6,7 @@ module.exports = {
   what: {
     mixin: 'radio-group',
     validate: 'required',
-    legend: {
-      className: 'visuallyhidden'
-    },
+    isPageHeading: true,
     options: [{
       value: 'request',
       toggle: 'request-toggle-content',
@@ -25,11 +23,12 @@ module.exports = {
     appendToChangeLink: true
   },
   'nldp-date': dateComponent('nldp-date', {
-    labelClassName: 'visuallyhidden',
+    isPageHeading: 'true',
     validate: ['required', 'date', 'before'],
     appendToChangeLink: 'day'
   }),
   'tenancy-start': dateComponent('tenancy-start', {
+    isPageHeading: 'true',
     labelClassName: 'visuallyhidden',
     validate: ['required', 'date', 'before'],
     appendToChangeLink: 'day'
@@ -143,10 +142,8 @@ module.exports = {
   },
   who: {
     mixin: 'radio-group',
+    isPageHeading: true,
     validate: 'required',
-    legend: {
-      className: 'visuallyhidden'
-    },
     options: [
       'landlord',
       'agent'
@@ -158,8 +155,9 @@ module.exports = {
   },
   'landlord-name-agent': {
     mixin: 'input-text',
-    validate: ['required', 'notUrl'],
-    labelClassName: 'visuallyhidden'
+    isPageHeading: true,
+    labelClassName: ['govuk-label--l'],
+    validate: ['required', 'notUrl']
   },
   'landlord-company': {
     mixin: 'input-text',
@@ -212,12 +210,10 @@ module.exports = {
   },
   'declaration-identity': {
     mixin: 'checkbox',
-    validate: 'required',
-    className: 'label'
+    validate: 'required'
   },
   declaration: {
     mixin: 'checkbox',
-    validate: 'required',
-    className: 'label'
+    validate: 'required'
   }
 };

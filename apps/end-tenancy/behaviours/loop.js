@@ -244,11 +244,13 @@ module.exports = superclass => class extends superclass {
       })
     );
     const intro = hoganRender(conditionalTranslate(`pages.${pagePath}.intro`, req.translate), res.locals);
+    const header = title;
 
     const outro = conditionalTranslate(`pages.${pagePath}.outro`, req.translate);
 
     return Object.assign({}, locals, {
       title,
+      header,
       headers,
       intro,
       outro,

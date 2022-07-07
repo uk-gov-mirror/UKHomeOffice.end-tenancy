@@ -33,6 +33,9 @@ const app = hof(settings);
 
 app.use((req, res, next) => {
   res.locals.htmlLang = 'en';
+  // Set feedback url, required to display phase banner
+  res.locals.feedbackUrl = 'https://eforms.homeoffice.gov.uk/outreach/feedback.ofml';
+  res.locals.startPageRedirectUrl = config.startPageRedirectUrl;
   res.locals.footerSupportLinks = [
     { path: '/cookies', property: 'base.cookies' },
     { path: '/privacy-policy', property: 'Privacy Policy' },

@@ -22,9 +22,6 @@
     "header": "Agent details",
     "intro": "We will use these details if we need to contact you."
   },
-  "what": {
-    "header": "What do you want to do?"
-  },
   "property-address": {
     "header": {
       "what": {
