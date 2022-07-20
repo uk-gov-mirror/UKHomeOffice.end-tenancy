@@ -62,7 +62,7 @@
       },
       "default": "Full name as it’s written on the Notice of Letting to a Disqualified Person"
     },
-    "summary": "Name"
+    "summary": "Name of Tenant"
   },
   "date-left": {
     "legend": "When did the tenant leave?",

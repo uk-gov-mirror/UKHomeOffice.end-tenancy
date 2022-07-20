@@ -176,5 +176,33 @@
         "Friday 9am to 4:30pm"
       ]
     }
+  },
+  "pdf": {
+    "header": {
+      "report": "Report Application",
+      "check": "Check Application",
+      "request": "Request Application",
+      "default": "End Tenancy Application"
+    },
+    "sections": {
+      "key-details": {
+        "header": "Key details"
+      },
+      "tenants-left": {
+        "header": "Tenants who have left"
+      },
+      "tenants-request": {
+        "header": "Notice requested for"
+      },
+      "tenants-check": {
+        "header": "Tenants you are checking"
+      },
+      "landlord-details": {
+        "header": "Landlord details"
+      },
+      "agent-details": {
+        "header": "Agent details"
+      }
+    }
   }
 }

@@ -221,6 +221,7 @@ steps:
     environment:
       NOTIFY_STUB: true
     commands:
+      - export DRONE_SOURCE_BRANCH=$(echo $DRONE_SOURCE_BRANCH | tr '[:upper:]' '[:lower:]' | tr '/' '-')
       - export ACCEPTANCE_HOST_NAME=https://ukviet-$${DRONE_SOURCE_BRANCH}.internal.$${BRANCH_ENV}.homeoffice.gov.uk
       - export CUCUMBER_PUBLISH_ENABLED=true
       - npx playwright install

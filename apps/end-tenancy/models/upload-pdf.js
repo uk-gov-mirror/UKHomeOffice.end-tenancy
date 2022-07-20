@@ -38,6 +38,7 @@ module.exports = class UploadPDF {
       locals = this.sortSections(locs);
     }
 
+    locals.title = this.generatePDFTitle(req.sessionModel.get('what'));
     locals.dateTime = moment().format(config.dateTimeFormat);
     locals.values = req.sessionModel.toJSON();
     locals.htmlLang = res.locals.htmlLang || 'en';
@@ -78,12 +79,27 @@ module.exports = class UploadPDF {
     }
   }
 
+  generatePDFTitle(route) {
+    const translations = require('../../end-tenancy/translations/src/en/pages.json');
+
+    switch (route) {
+      case 'request':
+        return translations.pdf.header.request;
+      case 'check':
+        return translations.pdf.header.check;
+      case 'report':
+        return translations.pdf.header.report;
+      default:
+        return translations.pdf.header.default;
+    }
+  }
+
   sortSections(locals) {
     const translations = require('../../end-tenancy/translations/src/en/pages.json');
-    const sectionHeaders = Object.values(translations.confirm.sections);
+    const sectionHeaders = Object.values(translations.pdf.sections);
     const orderedSections = _.map(sectionHeaders, obj => obj.header);
-    let rows = locals.rows;
 
+    let rows = locals.rows;
     rows = rows.slice().sort((a, b) => orderedSections.indexOf(a.section) - orderedSections.indexOf(b.section));
 
     locals.rows = rows;
