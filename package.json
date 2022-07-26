@@ -37,7 +37,7 @@
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "mixwith": "^0.1.1",
-    "moment": "^2.29.3",
+    "moment": "^2.29.4",
     "notifications-node-client": "^5.1.0",
     "typeahead-aria": "^1.0.4"
   },
