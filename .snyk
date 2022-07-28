@@ -2,6 +2,19 @@
 version: v1.22.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
+  SNYK-JS-MINIMIST-2429795:
+    - hof > browserify > module-deps > detective > minimist:
+      reason: Cannot update browserify, latest version is 17.0.0
+      expires: '2022-10-26T11:10:21.865Z'
+    - hof > browserify > module-deps > subarg > minimist:
+      reason: Cannot update browserify, latest version is 17.0.0
+      expires: '2022-10-26T11:10:21.865Z'
+    - hof > browserify > deps-sort > subarg > minimist:
+      reason: Cannot update browserify, latest version is 17.0.0
+      expires: '2022-10-26T11:10:21.865Z'
+    - hof > browserify > subarg > minimist:
+      reason: Cannot update browserify, latest version is 17.0.0
+      expires: '2022-10-26T11:10:21.865Z'
   SNYK-JS-USERAGENT-174737:
     - device > useragent:
         reason: No available patch currently in circulation
