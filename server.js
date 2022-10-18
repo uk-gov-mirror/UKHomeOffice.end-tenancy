@@ -10,6 +10,7 @@ settings = Object.assign({}, settings, {
   routes: settings.routes.map(require),
   getCookies: false,
   getTerms: false,
+  getAccessibility: false,
   redis: config.redis,
   csp: {
     imgSrc: [
