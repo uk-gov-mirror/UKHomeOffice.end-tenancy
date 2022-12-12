@@ -84,7 +84,7 @@ module.exports = {
     disableRender: true,
     labelClassName: 'visuallyhidden',
     validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
-    dependent: {
+    validationLink: {
       field: 'tenant-details',
       value: 'date-of-birth'
     },
@@ -93,17 +93,17 @@ module.exports = {
   nationality: {
     disableRender: true,
     validate: 'required',
-    className: ['typeahead', 'js-hidden'],
-    options: [''].concat(require('hof').utils.countries()),
-    dependent: {
+    validationLink: {
       field: 'tenant-details',
       value: 'nationality'
-    }
+    },
+    className: ['typeahead', 'js-hidden'],
+    options: [''].concat(require('hof').utils.countries())
   },
   'reference-number': {
     disableRender: true,
     validate: ['required', 'notUrl'],
-    dependent: {
+    validationLink: {
       field: 'tenant-details',
       value: 'reference-number'
     }
