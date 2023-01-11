@@ -9,5 +9,11 @@
   ],
   "session": {
     "name": "ukvi-end-tenancy.hof.sid"
+  },
+  "build" : {
+    "sass": {
+      "quietDeps": true,
+      "outputStyle": "compressed"
+    }
   }
 }
