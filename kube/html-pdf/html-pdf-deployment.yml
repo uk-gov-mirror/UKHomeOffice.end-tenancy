@@ -2,9 +2,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+#   {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+#   name: html-pdf-converter-{{ .DRONE_SOURCE_BRANCH }}
+#   {{ else }}
+#   name: html-pdf-converter
+#   {{ end }}
+# spec:
+#   {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
+#   replicas: 2
+#   {{ else }}
+#   replicas: 1
+#   {{ end }}
+  {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
+  name: html-pdf-converter
+  {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+  annotations:
+    downscaler/uptime: {{ .NON_PROD_AVAILABILITY }}
   name: html-pdf-converter-{{ .DRONE_SOURCE_BRANCH }}
   {{ else }}
+  annotations:
+    downscaler/uptime: {{ .NON_PROD_AVAILABILITY }}
   name: html-pdf-converter
   {{ end }}
 spec:
