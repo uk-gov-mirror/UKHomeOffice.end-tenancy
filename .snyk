@@ -26,9 +26,9 @@ ignore:
   SNYK-JS-SHELLQUOTE-1766506:
     - hof > browserify > shell-quote:
         reason: Cannot update browserify
-        expires: '2021-12-18T15:02:19.415Z'
+        expires: '2023-12-18T15:02:19.415Z'
   SNYK-JS-JSONSCHEMA-1920922:
     - hof > request > http-signature > jsprim > json-schema:
         reason: Need to replace request
-        expires: '2021-12-18T15:02:19.416Z'
+        expires: '2023-12-18T15:02:19.416Z'
 patch: {}
