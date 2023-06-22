@@ -10,7 +10,19 @@ settings = Object.assign({}, settings, {
   routes: settings.routes.map(require),
   getCookies: false,
   getTerms: false,
-  redis: config.redis
+  redis: config.redis,
+  csp: {
+    imgSrc: [
+      'www.google-analytics.com',
+      'ssl.gstatic.com',
+      'www.google.co.uk/ads/ga-audiences'
+    ],
+    connectSrc: [
+      'https://www.google-analytics.com',
+      'https://region1.google-analytics.com',
+      'https://region1.analytics.google.com'
+    ]
+  }
 });
 
 if (!config.env || config.env === 'ci') {
