@@ -5,30 +5,30 @@ ignore:
   SNYK-JS-MINIMIST-2429795:
     - hof > browserify > module-deps > detective > minimist:
       reason: Cannot update browserify, latest version is 17.0.0
-      expires: '2022-10-26T11:10:21.865Z'
+      expires: '2023-10-26T11:10:21.865Z'
     - hof > browserify > module-deps > subarg > minimist:
       reason: Cannot update browserify, latest version is 17.0.0
-      expires: '2022-10-26T11:10:21.865Z'
+      expires: '2023-10-26T11:10:21.865Z'
     - hof > browserify > deps-sort > subarg > minimist:
       reason: Cannot update browserify, latest version is 17.0.0
-      expires: '2022-10-26T11:10:21.865Z'
+      expires: '2023-10-26T11:10:21.865Z'
     - hof > browserify > subarg > minimist:
       reason: Cannot update browserify, latest version is 17.0.0
-      expires: '2022-10-26T11:10:21.865Z'
+      expires: '2023-10-26T11:10:21.865Z'
   SNYK-JS-USERAGENT-174737:
     - device > useragent:
         reason: No available patch currently in circulation
-        expires: '2021-11-01T17:02:21.865Z'
+        expires: '2023-11-01T17:02:21.865Z'
   SNYK-JS-REQUEST-1314897:
     - hof > request:
         reason: Need to replace request in HOF
-        expires: '2022-09-18T14:58:46.388Z'
+        expires: '2023-09-18T14:58:46.388Z'
   SNYK-JS-SHELLQUOTE-1766506:
     - hof > browserify > shell-quote:
         reason: Cannot update browserify
-        expires: '2021-12-18T15:02:19.415Z'
+        expires: '2023-12-18T15:02:19.415Z'
   SNYK-JS-JSONSCHEMA-1920922:
     - hof > request > http-signature > jsprim > json-schema:
         reason: Need to replace request
-        expires: '2021-12-18T15:02:19.416Z'
+        expires: '2023-12-18T15:02:19.416Z'
 patch: {}
