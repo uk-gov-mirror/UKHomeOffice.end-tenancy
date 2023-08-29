@@ -2,6 +2,14 @@
 version: v1.22.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
+  SNYK-JS-REQUEST-3361831:
+    - '*':
+      reason: HOF framework needs updating to remove request.js
+      expires: 2024-03-01T00:00:00.000Z
+  SNYK-JS-TOUGHCOOKIE-5672873:
+    - '*':
+      reason: HOF framework needs updating to remove request.js of which this is a dependency
+      expires: 2024-03-01T00:00:00.000Z
   SNYK-JS-MINIMIST-2429795:
     - hof > browserify > module-deps > detective > minimist:
       reason: Cannot update browserify, latest version is 17.0.0

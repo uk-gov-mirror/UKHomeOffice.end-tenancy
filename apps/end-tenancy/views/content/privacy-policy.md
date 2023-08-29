@@ -1,4 +1,4 @@
-This privacy policy relates to the Home Office service asdsadsa [Ending a tenancy due to immigration status](https://www.ending-a-tenancy.homeoffice.gov.uk/what).
+This privacy policy relates to the Home Office service [Ending a tenancy due to immigration status](https://www.ending-a-tenancy.homeoffice.gov.uk/what).
 ## Information we ask for
 
 When you use this service we’ll ask you for your:

@@ -23,13 +23,15 @@ module.exports = {
     appendToChangeLink: true
   },
   'nldp-date': dateComponent('nldp-date', {
-    isPageHeading: 'true',
+    isPageHeading: true,
+    mixin: 'input-date',
     validate: ['required', 'date', 'before'],
     appendToChangeLink: 'day'
   }),
   'tenancy-start': dateComponent('tenancy-start', {
     isPageHeading: 'true',
     labelClassName: 'visuallyhidden',
+    mixin: 'input-date',
     validate: ['required', 'date', 'before'],
     appendToChangeLink: 'day'
   }),
@@ -47,11 +49,13 @@ module.exports = {
       { type: 'regex', arguments: /^([^0-9]*)$/ },
       { type: 'maxlength', arguments: 100 }
     ],
+    className: ['govuk-input', 'govuk-!-width-two-thirds'],
     autocomplete: 'address-level2'
   },
   postcode: {
     validate: ['required', 'postcode'],
     formatter: ['removespaces', 'uppercase'],
+    className: ['govuk-input', 'govuk-input--width-10'],
     autocomplete: 'postal-code'
   },
   name: {
@@ -60,6 +64,7 @@ module.exports = {
   },
   'date-left': dateComponent('date-left', {
     labelClassName: 'visuallyhidden',
+    mixin: 'input-date',
     validate: ['required', 'date', 'before'],
     appendToChangeLink: 'day'
   }),
@@ -83,6 +88,7 @@ module.exports = {
   'date-of-birth': dateComponent('date-of-birth', {
     disableRender: true,
     labelClassName: 'visuallyhidden',
+    mixin: 'input-date',
     validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
     validationLink: {
       field: 'tenant-details',
@@ -133,11 +139,13 @@ module.exports = {
       { type: 'regex', arguments: /^([^0-9]*)$/ },
       { type: 'maxlength', arguments: 100 }
     ],
+    className: ['govuk-input', 'govuk-!-width-two-thirds'],
     autocomplete: 'address-level2'
   },
   'landlord-postcode': {
     validate: ['required', 'postcode'],
     formatter: ['removespaces', 'uppercase'],
+    className: ['govuk-input', 'govuk-input--width-10'],
     autocomplete: 'postal-code'
   },
   who: {
@@ -156,7 +164,6 @@ module.exports = {
   'landlord-name-agent': {
     mixin: 'input-text',
     isPageHeading: true,
-    labelClassName: ['govuk-label--l'],
     validate: ['required', 'notUrl']
   },
   'landlord-company': {
@@ -169,6 +176,7 @@ module.exports = {
   },
   'landlord-phone-number': {
     mixin: 'input-text',
+    className: ['govuk-input govuk-input--width-20'],
     validate: ['required', 'notUrl']
   },
   'agent-company': {
@@ -193,11 +201,13 @@ module.exports = {
       { type: 'regex', arguments: /^([^0-9]*)$/ },
       { type: 'maxlength', arguments: 100 }
     ],
+    className: ['govuk-input', 'govuk-!-width-two-thirds'],
     autocomplete: 'address-level2'
   },
   'agent-postcode': {
     validate: ['required', 'postcode'],
     formatter: ['removespaces', 'uppercase'],
+    className: ['govuk-input', 'govuk-input--width-10'],
     autocomplete: 'postal-code'
   },
   'agent-email-address': {
@@ -206,6 +216,7 @@ module.exports = {
   },
   'agent-phone-number': {
     mixin: 'input-text',
+    className: ['govuk-input govuk-input--width-20'],
     validate: ['required', 'notUrl']
   },
   'declaration-identity': {

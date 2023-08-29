@@ -182,10 +182,6 @@ ul {
   margin-bottom: 0;
 }
 
-input[name*="postcode"] {
-  @extend .form-control-1-4;
-}
-
 .confirm-row.tenant {
   display: inline;
   border-top: 2px solid black;
@@ -206,4 +202,8 @@ h1 {
 
 #tenant-details-group > fieldset > legend > span {
   word-break: break-word;
+}
+
+a {
+  @extend .govuk-link;
 }
