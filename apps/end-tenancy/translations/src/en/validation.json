@@ -5,12 +5,14 @@
   "nldp-date": {
     "required": "Enter a date",
     "date": "Enter a valid date",
-    "before": "Date cannot be in the future"
+    "before": "Date cannot be in the future",
+    "after": "Date cannot be before the 20th Century"
   },
   "tenancy-start": {
     "required": "Enter a date",
     "date": "Enter a valid date",
-    "before": "Date cannot be in the future"
+    "before": "Date cannot be in the future",
+    "after": "Date cannot be before the 20th Century"
   },
   "building": {
     "required": "Enter details of the property building and street",
@@ -35,7 +37,8 @@
   "date-left": {
     "required": "Enter a date",
     "date": "Enter a valid date",
-    "before": "Date cannot be in the future"
+    "before": "Date cannot be in the future",
+    "after": "Date cannot be before the 20th Century"
   },
   "tenant-details": {
     "required": "Select at least one option"
@@ -77,7 +80,8 @@
   },
   "landlord-phone-number": {
     "required": "Enter your phone number",
-    "notUrl": "Enter a valid phone number"
+    "notUrl": "Enter a valid phone number",
+    "internationalPhoneNumber": "Enter a valid phone number"
   },
   "landlord-building": {
     "required": "Enter details of the building and street",
@@ -109,7 +113,8 @@
   },
   "agent-phone-number": {
     "required": "Enter your phone number",
-    "notUrl": "Enter a valid phone number"
+    "notUrl": "Enter a valid phone number",
+    "internationalPhoneNumber": "Enter a valid phone number"
   },
   "agent-building": {
     "required": "Enter details of the building and street",
