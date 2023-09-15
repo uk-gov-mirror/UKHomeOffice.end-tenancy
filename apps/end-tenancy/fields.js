@@ -26,12 +26,12 @@ module.exports = {
   },
   'nldp-date': dateComponent('nldp-date', {
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before'],
+    validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
     appendToChangeLink: 'day'
   }),
   'tenancy-start': dateComponent('tenancy-start', {
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before'],
+    validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
     appendToChangeLink: 'day'
   }),
   building: {
@@ -61,7 +61,7 @@ module.exports = {
   },
   'date-left': dateComponent('date-left', {
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before'],
+    validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
     appendToChangeLink: 'day'
   }),
   'tenant-details': {
@@ -171,7 +171,7 @@ module.exports = {
   },
   'landlord-phone-number': {
     mixin: 'input-text',
-    validate: ['required', 'notUrl']
+    validate: ['required', 'notUrl', 'internationalPhoneNumber']
   },
   'agent-company': {
     mixin: 'input-text',
@@ -208,7 +208,7 @@ module.exports = {
   },
   'agent-phone-number': {
     mixin: 'input-text',
-    validate: ['required', 'notUrl']
+    validate: ['required', 'notUrl', 'internationalPhoneNumber']
   },
   'declaration-identity': {
     mixin: 'checkbox',
