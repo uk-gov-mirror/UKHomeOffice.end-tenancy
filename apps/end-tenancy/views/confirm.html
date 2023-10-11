@@ -1,29 +1,7 @@
 {{<partials-page}}
   {{$page-content}}
     {{#rows}}
-      <div>
-        <h2 class="section-header">{{section}}</h2>
-      </div>
-      <dl>
-        {{#fields}}
-          {{^omitFromSummary}}
-            <div class="confirm-row {{className}}">
-              {{#isSeparator}}
-              {{/isSeparator}}
-              {{^isSeparator}}
-                <dt class="confirm-label">{{label}}</dt>
-                <dd class="confirm-value" data-value="{{value}}">{{value}}</dd>
-                {{#changeLink}}
-                  <dd><span class="link"><a href="{{changeLink}}" id="{{field}}-change-{{index}}">{{#t}}buttons.change{{/t}} <span class="visuallyhidden">{{changeLinkDescription}} from {{value}}</span></a></span></dd>
-                {{/changeLink}}
-                {{^changeLink}}
-                  <dd><span class="link"><a href="{{baseUrl}}{{step}}/edit#{{field}}" id="{{field}}-change">{{#t}}buttons.change{{/t}} <span class="visuallyhidden">{{changeLinkDescription}} from {{value}}</span></a></span></dd>
-                {{/changeLink}}
-              {{/isSeparator}}
-            </div>
-          {{/omitFromSummary}}
-        {{/fields}}
-      </dl>
+      {{> partials-summary-table}}
     {{/rows}}
     {{#input-submit}}continue-declaration{{/input-submit}}
   {{/page-content}}

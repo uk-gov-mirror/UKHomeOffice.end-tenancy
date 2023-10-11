@@ -18,7 +18,7 @@
     }
   },
   "nldp-date": {
-    "label": "What was the date of issue for the Notice of Letting to a Disqualified Person?",
+    "legend": "What was the date of issue for the Notice of Letting to a Disqualified Person?",
     "hint": "For example, 2 11 2016",
     "summary": "Date of issue of Notice of Letting to a Disqualified Person"
   },

@@ -17,7 +17,6 @@ $path: "../img/";
     border-bottom: $black 1px solid;
     color: $black;
     text-decoration: none;
-    background: url("../images/icons/icon-caret-left.png") no-repeat 0 4px;
     @include media(mobile) {
       background-position: 0 1px;
     }
@@ -183,10 +182,6 @@ ul {
   margin-bottom: 0;
 }
 
-input[name*="postcode"] {
-  @extend .form-control-1-4;
-}
-
 .confirm-row.tenant {
   display: inline;
   border-top: 2px solid black;
@@ -207,4 +202,8 @@ h1 {
 
 #tenant-details-group > fieldset > legend > span {
   word-break: break-word;
+}
+
+a {
+  @extend .govuk-link;
 }

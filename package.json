@@ -10,13 +10,14 @@
     "url": "https://github.com/UKHomeOffice/end-tenancy"
   },
   "engines": {
-    "node": "^14.15.0"
+    "node": ">=18.12.1"
   },
   "license": "./LICENSE",
   "readme": "./README.md",
   "scripts": {
     "start": "node server.js",
     "start:dev": "NODE_ENV=development hof-build watch",
+    "dev": "NODE_ENV=development hof-build watch --env",
     "start:mock": "node server.js mock-notify",
     "ci": "NODE_ENV=ci DISABLE_CSP=true CASEWORKER_EMAIL=test@example.com node server.js",
     "test": "npm run test:lint && npm run test:unit",
@@ -31,14 +32,14 @@
   },
   "dependencies": {
     "debug": "^4.3.2",
-    "hof": "^19.14.13",
+    "hof": "^20.2.16",
     "hogan.js": "^3.0.2",
     "is-pdf": "^1.0.0",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "mixwith": "^0.1.1",
     "moment": "^2.29.4",
-    "notifications-node-client": "^5.1.0",
+    "notifications-node-client": "^6.0.0",
     "typeahead-aria": "^1.0.4"
   },
   "devDependencies": {

@@ -6,7 +6,6 @@ module.exports = config => superclass => class extends superclass {
       Object.assign(req.form.options.fields, {
         'use-previous-address': {
           mixin: 'checkbox',
-          className: 'label',
           useWhen: config.useWhen
         }
       });

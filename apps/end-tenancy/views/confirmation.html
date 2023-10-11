@@ -1,9 +1,10 @@
 {{<partials-page}}
+  {{$header}}Report sent{{/header}}
   {{$page-content}}
-    <div class="alert-complete" role="alert">
+    <div class="govuk-panel govuk-panel--confirmation" role="alert">
       <span role="presentation"></span>
       <div class="alert-message">
-        <h1>{{#t}}pages.confirmation.alert{{/t}}</h1>
+        <h1 class="govuk-panel__title">{{#t}}pages.confirmation.alert{{/t}}</h1>
       </div>
     </div>
     <h2>{{#t}}pages.confirmation.subheader{{/t}}</h2>

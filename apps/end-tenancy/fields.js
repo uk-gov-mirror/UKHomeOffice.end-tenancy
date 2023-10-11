@@ -6,9 +6,7 @@ module.exports = {
   what: {
     mixin: 'radio-group',
     validate: 'required',
-    legend: {
-      className: 'visuallyhidden'
-    },
+    isPageHeading: true,
     options: [{
       value: 'request',
       toggle: 'request-toggle-content',
@@ -25,13 +23,16 @@ module.exports = {
     appendToChangeLink: true
   },
   'nldp-date': dateComponent('nldp-date', {
-    labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before'],
+    isPageHeading: true,
+    mixin: 'input-date',
+    validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
     appendToChangeLink: 'day'
   }),
   'tenancy-start': dateComponent('tenancy-start', {
+    isPageHeading: 'true',
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before'],
+    validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
+    mixin: 'input-date',
     appendToChangeLink: 'day'
   }),
   building: {
@@ -48,11 +49,13 @@ module.exports = {
       { type: 'regex', arguments: /^([^0-9]*)$/ },
       { type: 'maxlength', arguments: 100 }
     ],
+    className: ['govuk-input', 'govuk-!-width-two-thirds'],
     autocomplete: 'address-level2'
   },
   postcode: {
     validate: ['required', 'postcode'],
     formatter: ['removespaces', 'uppercase'],
+    className: ['govuk-input', 'govuk-input--width-10'],
     autocomplete: 'postal-code'
   },
   name: {
@@ -61,7 +64,8 @@ module.exports = {
   },
   'date-left': dateComponent('date-left', {
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'date', 'before'],
+    mixin: 'input-date',
+    validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
     appendToChangeLink: 'day'
   }),
   'tenant-details': {
@@ -84,8 +88,9 @@ module.exports = {
   'date-of-birth': dateComponent('date-of-birth', {
     disableRender: true,
     labelClassName: 'visuallyhidden',
+    mixin: 'input-date',
     validate: ['required', 'date', 'before', {type: 'after', arguments: '1900-01-01'}],
-    dependent: {
+    validationLink: {
       field: 'tenant-details',
       value: 'date-of-birth'
     },
@@ -94,17 +99,17 @@ module.exports = {
   nationality: {
     disableRender: true,
     validate: 'required',
-    className: ['typeahead', 'js-hidden'],
-    options: [''].concat(require('hof').utils.countries()),
-    dependent: {
+    validationLink: {
       field: 'tenant-details',
       value: 'nationality'
-    }
+    },
+    className: ['typeahead', 'js-hidden'],
+    options: [''].concat(require('hof').utils.countries())
   },
   'reference-number': {
     disableRender: true,
     validate: ['required', 'notUrl'],
-    dependent: {
+    validationLink: {
       field: 'tenant-details',
       value: 'reference-number'
     }
@@ -134,19 +139,19 @@ module.exports = {
       { type: 'regex', arguments: /^([^0-9]*)$/ },
       { type: 'maxlength', arguments: 100 }
     ],
+    className: ['govuk-input', 'govuk-!-width-two-thirds'],
     autocomplete: 'address-level2'
   },
   'landlord-postcode': {
     validate: ['required', 'postcode'],
     formatter: ['removespaces', 'uppercase'],
+    className: ['govuk-input', 'govuk-input--width-10'],
     autocomplete: 'postal-code'
   },
   who: {
     mixin: 'radio-group',
+    isPageHeading: true,
     validate: 'required',
-    legend: {
-      className: 'visuallyhidden'
-    },
     options: [
       'landlord',
       'agent'
@@ -158,8 +163,8 @@ module.exports = {
   },
   'landlord-name-agent': {
     mixin: 'input-text',
-    validate: ['required', 'notUrl'],
-    labelClassName: 'visuallyhidden'
+    isPageHeading: true,
+    validate: ['required', 'notUrl']
   },
   'landlord-company': {
     mixin: 'input-text',
@@ -171,7 +176,8 @@ module.exports = {
   },
   'landlord-phone-number': {
     mixin: 'input-text',
-    validate: ['required', 'notUrl']
+    className: ['govuk-input govuk-input--width-20'],
+    validate: ['required', 'notUrl', 'internationalPhoneNumber']
   },
   'agent-company': {
     mixin: 'input-text',
@@ -195,11 +201,13 @@ module.exports = {
       { type: 'regex', arguments: /^([^0-9]*)$/ },
       { type: 'maxlength', arguments: 100 }
     ],
+    className: ['govuk-input', 'govuk-!-width-two-thirds'],
     autocomplete: 'address-level2'
   },
   'agent-postcode': {
     validate: ['required', 'postcode'],
     formatter: ['removespaces', 'uppercase'],
+    className: ['govuk-input', 'govuk-input--width-10'],
     autocomplete: 'postal-code'
   },
   'agent-email-address': {
@@ -208,16 +216,15 @@ module.exports = {
   },
   'agent-phone-number': {
     mixin: 'input-text',
-    validate: ['required', 'notUrl']
+    className: ['govuk-input govuk-input--width-20'],
+    validate: ['required', 'notUrl', 'internationalPhoneNumber']
   },
   'declaration-identity': {
     mixin: 'checkbox',
-    validate: 'required',
-    className: 'label'
+    validate: 'required'
   },
   declaration: {
     mixin: 'checkbox',
-    validate: 'required',
-    className: 'label'
+    validate: 'required'
   }
 };
