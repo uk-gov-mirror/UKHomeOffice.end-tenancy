@@ -2,7 +2,6 @@ FROM node:lts-alpine@sha256:19eaf41f3b8c2ac2f609ac8103f9246a6a6d46716cdbe49103fd
 
 USER root
 
-# Update packages as a result of Anchore security vulnerability checks
 RUN apk update && \
     apk add --upgrade gnutls binutils nodejs apk-tools libjpeg-turbo libcurl libx11 libxml2
 
