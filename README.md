@@ -13,7 +13,7 @@ $ git clone git@github.com:UKHomeOffice/end-tenancy.git && cd end-tenancy
 
 Install the dependencies and build the project resources
 ```bash
-$ npm install
+$ yarn install
 ```
 
 You'll also need a pdf-generator to the run the app fully end to end.  The recommended one is https://github.com/UKHomeOffice/html-pdf-converter.
@@ -34,7 +34,7 @@ $ docker-compose up
 
 Run the services locally outside of Docker Compose (You'll need [Redis](http://redis.io/) for this)
 ```bash
-$ npm run dev
+$ yarn run dev
 ```
 
 For anything else end-tenancy-related, look in [package.json](./package.json) for a full list of scripts etc, and
