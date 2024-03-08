@@ -2,9 +2,11 @@
 'use strict';
 
 const url = require('url');
+const FormData = require('form-data');
 const Model = require('hof').model;
 const config = require('../../../config');
 const debug = require('debug')('upload-model');
+const axios = require('axios');
 
 module.exports = class UploadModel extends Model {
   save() {
@@ -13,25 +15,29 @@ module.exports = class UploadModel extends Model {
         url: config.upload.hostname
       };
       const reqConf = url.parse(this.url(attributes));
-      reqConf.formData = {
-        document: {
-          value: this.get('data'),
-          options: {
-            filename: this.get('name'),
-            contentType: this.get('mimetype')
-          }
-        }
-      };
+      const formData = new FormData();
+      formData.append('document', this.get('data'), {
+        filename: this.get('name'),
+        contentType: this.get('mimetype')
+      });
+      reqConf.data = formData;
       reqConf.method = 'POST';
-      debug('SAVE PDF DATA', reqConf);
-      this.request(reqConf, (err, data) => {
+      reqConf.headers = {
+        ...formData.getHeaders()
+      };
+      return this.request(reqConf, (err, data) => {
         if (err) {
           return reject(err);
         }
-        debug('RESPONSE FROM FILE VAULT SAVE', err, data);
         return resolve(data);
       });
-    });
+    })
+      .then(result => {
+        return this.set({ url: result.url });
+      })
+      .then(() => {
+        return this.unset('data');
+      });
   }
 
   auth() {
@@ -44,7 +50,8 @@ module.exports = class UploadModel extends Model {
     }
     const tokenReq = {
       url: config.keycloak.tokenUrl,
-      form: {
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
         username: config.keycloak.username,
         password: config.keycloak.password,
         grant_type: 'password',
@@ -53,18 +60,14 @@ module.exports = class UploadModel extends Model {
       },
       method: 'POST'
     };
-
-    return new Promise((resolve, reject) => {
-      debug('REQUEST DATA', tokenReq);
-      this._request(tokenReq, (err, res) => {
-        debug('RESPONSE FROM FILE VAULT', err, res);
-        if (err) {
-          return reject(err);
-        }
-        return resolve({
-          bearer: JSON.parse(res.body).access_token
-        });
+    debug('REQUEST DATA', tokenReq);
+    return axios(tokenReq).then(response => {
+      debug('RESPONSE FROM FILE VAULT', response);
+      return { bearer: response.data.access_token };
+    })
+      .catch(err => {
+        console.log(`Error: ${err.response.data.error} - ${err.response.data.error_description}`);
+        throw err;
       });
-    });
   }
 };

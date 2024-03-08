@@ -31,8 +31,9 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
+    "axios": "^1.6.7",
     "debug": "^4.3.2",
-    "hof": "^20.4.0",
+    "hof": "21.0.0-axios-beta.4",
     "hogan.js": "^3.0.2",
     "is-pdf": "^1.0.0",
     "jquery": "^3.6.0",

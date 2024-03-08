@@ -72,7 +72,7 @@ module.exports = class UploadPDF {
       });
 
       req.log('info', 'ukviet.upload_pdf.filevault.successful');
-      return { pdfData, fvLink: result.url };
+      return { pdfData, fvLink: result.attributes.url };
     } catch (err) {
       req.log('error', 'ukviet.upload_pdf.filevault.error', err.message || err);
       throw err;

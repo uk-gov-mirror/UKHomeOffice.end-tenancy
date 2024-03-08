@@ -389,7 +389,7 @@ describe('Upload PDF Behaviour', () => {
       pdfSetStub = sinon.stub();
       pdfSaveStub = sinon.stub().resolves('pdf-data');
       fvSetStub = sinon.stub();
-      fvSaveStub = sinon.stub().resolves({ url: 'fv-url' });
+      fvSaveStub = sinon.stub().resolves({ attributes: { url: 'fv-url' } });
 
       pdfConverterStub = sinon.stub().returns({ set: pdfSetStub, save: pdfSaveStub });
       fileVaultStub = sinon.stub().returns({ set: fvSetStub, save: fvSaveStub });
