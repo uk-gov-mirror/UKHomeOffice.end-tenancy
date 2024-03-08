@@ -93,27 +93,27 @@ spec:
                 secretKeyRef:
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
                   name: endtenancy-notprod-s3
-                  {{else}}
+                  {{ else }}
                   name: s3-bucket
-                  {{end}}
+                  {{ end }}
                   key: access_key_id
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
                   name: endtenancy-notprod-s3
-                  {{else}}
+                  {{ else }}
                   name: s3-bucket
-                  {{end}}
+                  {{ end }}
                   key: secret_access_key
             - name: AWS_KMS_KEY_ID
               valueFrom:
                 secretKeyRef:
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
                   name: endtenancy-notprod-s3
-                  {{else}}
+                  {{ else }}
                   name: s3-bucket
-                  {{end}}
+                  {{ end }}
                   key: kms_key_id
             - name: AWS_PASSWORD
               valueFrom:
@@ -126,10 +126,10 @@ spec:
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
                   name: endtenancy-notprod-s3
                   key: name
-                  {{else}}
+                  {{ else }}
                   name: s3-bucket
                   key: bucket_name
-                  {{end}}
+                  {{ end }}
           securityContext:
             runAsNonRoot: true
 
