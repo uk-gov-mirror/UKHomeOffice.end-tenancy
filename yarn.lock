@@ -1013,7 +1013,7 @@ axios@^0.25.0:
   dependencies:
     follow-redirects "^1.14.7"
 
-axios@^1.5.1, axios@^1.6.7:
+axios@^1.5.1, axios@^1.6.1, axios@^1.6.7:
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.7.tgz#7b48c2e27c96f9c68a2f8f31e2ab19f59b06b0a7"
   integrity sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==
@@ -4440,6 +4440,14 @@ notifications-node-client@^6.0.0:
   integrity sha512-QP4BSODBJROy2YU6sLHSx0uXKeINNyFcdMSHjczeffTMLlQ51SHrP+0n+UHMA0ta+gWuGGsjHfG3tpPtsZ1uNg==
   dependencies:
     axios "^0.25.0"
+    jsonwebtoken "^9.0.0"
+
+notifications-node-client@^7.0.0:
+  version "7.0.6"
+  resolved "https://registry.yarnpkg.com/notifications-node-client/-/notifications-node-client-7.0.6.tgz#5c23e9add5a9af7625f6f9d328e8f95c2debe705"
+  integrity sha512-qo6eZMGdyaQnj/bkOnPb/d0a0sHIjiBzXlmICLPXYSD4pB3LYa537OhuZGuaFcSnkrM4NzbQhbQHAYX1NnbQgw==
+  dependencies:
+    axios "^1.6.1"
     jsonwebtoken "^9.0.0"
 
 nyc@^15.1.0:

@@ -40,7 +40,7 @@
     "lodash": "^4.17.21",
     "mixwith": "^0.1.1",
     "moment": "^2.29.4",
-    "notifications-node-client": "^6.0.0",
+    "notifications-node-client": "^7.0.0",
     "typeahead-aria": "^1.0.4"
   },
   "devDependencies": {
