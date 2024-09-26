@@ -5,11 +5,11 @@ ignore:
   SNYK-JS-REQUEST-3361831:
     - '*':
       reason: HOF framework needs updating to remove request.js
-      expires: 2024-03-01T00:00:00.000Z
+      expires: 2024-12-26T00:00:00.000Z
   SNYK-JS-TOUGHCOOKIE-5672873:
     - '*':
       reason: HOF framework needs updating to remove request.js of which this is a dependency
-      expires: 2024-03-01T00:00:00.000Z
+      expires: 2024-12-26T00:00:00.000Z
   SNYK-JS-MINIMIST-2429795:
     - hof > browserify > module-deps > detective > minimist:
       reason: Cannot update browserify, latest version is 17.0.0
@@ -39,4 +39,32 @@ ignore:
     - hof > request > http-signature > jsprim > json-schema:
         reason: Need to replace request
         expires: '2024-12-18T15:02:19.416Z'
+  SNYK-JS-AXIOS-6032459:
+    - '*':
+        reason: no direct upgrade
+        expires: '2024-12-26T00:00:00.000Z'
+  SNYK-JS-AXIOS-6124857:
+    - '*':
+          reason: no direct upgrade
+          expires: '2024-12-26T00:00:00.000Z'       
+  SNYK-JS-PATHTOREGEXP-7925106:
+    - '*':
+        reason: no direct upgrade
+        expires: '2024-12-26T00:00:00.000Z'
+  SNYK-JS-MARKDOWNIT-6483324:
+    - '*':
+          reason: no direct upgrade
+          expires: '2024-12-26T00:00:00.000Z'
+  SNYK-JS-INFLIGHT-6095116:
+    - '*':
+          reason: no direct upgrade
+          expires: '2024-12-26T00:00:00.000Z'
+  SNYK-JS-EXPRESS-7926867:
+    - '*':
+          reason: no direct upgrade
+          expires: '2024-12-26T00:00:00.000Z'
+  SNYK-JS-EXPRESS-6474509:
+    - '*':
+        reason: no direct upgrade
+        expires: '2024-12-26T00:00:00.000Z'
 patch: {}
