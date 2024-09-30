@@ -78,7 +78,7 @@ spec:
             {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
               value: https://file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-              value: https://file-vault-dev.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
+              value: https://file-vault-uat.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
               value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.{{ .BRANCH_ENV }}.homeoffice.gov.uk
             - name: DEBUG
@@ -91,17 +91,29 @@ spec:
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
+                  {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
+                  name: endtenancy-notprod-s3
+                  {{else}}
                   name: s3-bucket
+                  {{end}}
                   key: access_key_id
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
+                  {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
+                  name: endtenancy-notprod-s3
+                  {{else}}
                   name: s3-bucket
+                  {{end}}
                   key: secret_access_key
             - name: AWS_KMS_KEY_ID
               valueFrom:
                 secretKeyRef:
+                  {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
+                  name: endtenancy-notprod-s3
+                  {{else}}
                   name: s3-bucket
+                  {{end}}
                   key: kms_key_id
             - name: AWS_PASSWORD
               valueFrom:
@@ -111,8 +123,13 @@ spec:
             - name: AWS_BUCKET
               valueFrom:
                 secretKeyRef:
+                  {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
+                  name: endtenancy-notprod-s3
+                  key: name
+                  {{else}}
                   name: s3-bucket
                   key: bucket_name
+                  {{end}}
           securityContext:
             runAsNonRoot: true
 
@@ -148,7 +165,7 @@ spec:
             {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
               value: https://file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-              value: https://file-vault-dev.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
+              value: https://file-vault-uat.notprod.{{ .APP_NAME }}.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
               value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.{{ .BRANCH_ENV }}.homeoffice.gov.uk
             {{ end }}

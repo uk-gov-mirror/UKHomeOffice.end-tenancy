@@ -124,7 +124,7 @@ spec:
             {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
               value: https://file-vault.preprod.{{ .APP_NAME }}.homeoffice.gov.uk/file
             {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-              value: https://file-vault-dev.notprod.{{ .APP_NAME }}.homeoffice.gov.uk/file
+              value: https://file-vault-uat.notprod.{{ .APP_NAME }}.homeoffice.gov.uk/file
             {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
               value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.{{ .BRANCH_ENV }}.homeoffice.gov.uk/file
             {{ end }}
