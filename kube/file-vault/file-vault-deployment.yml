@@ -2,17 +2,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  # {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-  # annotations:
-  #   downscaler/uptime: {{ .NON_PROD_AVAILABILITY }}
-  # name: file-vault-{{ .DRONE_SOURCE_BRANCH }}
-  # {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-  # annotations:
-  #   downscaler/uptime: {{ .NON_PROD_AVAILABILITY }}
-  # name: file-vault
-  # {{ else }}
-  # name: file-vault
-  # {{ end }}
   {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
   name: file-vault
   {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
@@ -52,7 +41,10 @@ spec:
     spec:
       containers:
         - name: file-vault
-          image: quay.io/ukhomeofficedigital/file-vault:bab000624c4323823cd4df723b44bc3bd29fec2c
+        # This is in relation to PR HOFF-403: Fix security vulnerabilities in file-vault
+        # https://github.com/UKHomeOffice/file-vault/pull/90/commits/8e8c7813936dc9a2d778e30dd8270c841308876e
+        # This is only for testing purposes in the branch
+          image: quay.io/ukhomeofficedigital/file-vault:8e8c7813936dc9a2d778e30dd8270c841308876e
           imagePullPolicy: Always
           resources:
             requests:
