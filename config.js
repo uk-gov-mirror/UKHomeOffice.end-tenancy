@@ -9,6 +9,7 @@ module.exports = {
   DATE_FORMAT: 'YYYY-MM-DD',
   PRETTY_DATE_FORMAT: 'Do MMMM YYYY',
   dateTimeFormat: 'DD MMM YYYY HH:MM:SS ZZ',
+  feedbackUrl: process.env.FEEDBACK_URL,
   notify: {
     apiKey: process.env.NOTIFY_STUB === 'true' ? 'USE_MOCK' : process.env.NOTIFY_KEY,
     caseworkerEmail: process.env.CASEWORKER_EMAIL,
