@@ -2,7 +2,8 @@
   "appName": "UKVI Ending of Tenancy",
   "theme": "govUK",
   "behaviours": [
-    "hof/components/clear-session"
+    "hof/components/clear-session",
+    "hof/components/session-timeout-warning"
   ],
   "routes": [
     "./apps/end-tenancy"

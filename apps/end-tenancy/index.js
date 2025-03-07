@@ -219,6 +219,8 @@ module.exports = {
     '/confirmation': {
       behaviours: [ExposeEmail],
       backLink: false
-    }
+    },
+    '/session-timeout': {},
+    '/exit': {}
   }
 };

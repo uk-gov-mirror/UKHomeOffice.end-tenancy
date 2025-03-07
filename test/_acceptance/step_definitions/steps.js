@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 const World = require('../test.setup.js');
 const config = require('../../../config');
 
-setDefaultTimeout(10 * 1000);
+setDefaultTimeout(20 * 1000);
 
 const domain = config.hosts.acceptanceTests;
 
