@@ -1,7 +1,18 @@
-{{<partials-page}}
-  {{$header}}Privacy policy{{/header}}
-  {{$page-content}}
+{{<layout}}
+  {{$journeyHeader}}
+    {{#t}}journey.header{{/t}}
+  {{/journeyHeader}}
+
+  {{$propositionHeader}}
+    {{> partials-navigation}}
+  {{/propositionHeader}}
+
+  {{$header}}
+    Privacy policy
+  {{/header}}
+  
+  {{$content}}
     <h1 class="govuk-heading-l">Privacy policy</h1>
     {{#markdown}}privacy-policy{{/markdown}}
-  {{/page-content}}
-{{/partials-page}}
+  {{/content}}
+{{/layout}}
