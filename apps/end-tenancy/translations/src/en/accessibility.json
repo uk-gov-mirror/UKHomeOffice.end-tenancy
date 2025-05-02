@@ -5,7 +5,7 @@
   "enforcement-p1-link": "contact the Equality Advisory and Support Service (EASS)",
   "enforcement-p2": "If you are in Northern Ireland and are not happy with how we respond to your complaint you can contact the <a href='https://www.equalityni.org/Home'>Equalities Commission for Northern Ireland</a> who are responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’) in Northern Ireland.",
   "technical-info-p1": "The Home Office is committed to making its online services accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.",
-  "compliance-p1": "This service is partially compliant with the <a href='https://www.w3.org/TR/WCAG22/'>Web Content Accessibility Guidelines (WCAG) 2.2</a> due to the non-compliances listed below.",
+  "compliance-p1": "This service is partially compliant with the <a href='https://www.w3.org/TR/WCAG22/'>Web Content Accessibility Guidelines (WCAG) 2.2</a> AA standard due to the non-compliances listed below.",
   "non-compliance-li1": "We are aware of and working to address the following issues.",
   "non-compliance-li2": "On several pages, we have identified an issue where some elements may not function as expected (use invalid ARIA roles) which may cause screen readers to misinterpret or ignore these elements. This does not meet WCAG 4.1.2 – Name, Role, Value.",
   "non-compliance-li4": "If you find an issue that we have yet to identify, please contact us using one of the routes described in the ‘Reporting accessibility problems with this website’ section of this statement.",
