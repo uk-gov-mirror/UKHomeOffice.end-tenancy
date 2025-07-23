@@ -42,5 +42,14 @@ fi
 sleep $READY_FOR_TEST_DELAY
 
 if [[ ${KUBE_NAMESPACE} == ${BRANCH_ENV} ]]; then
-  echo "Branch - ukviet-$DRONE_SOURCE_BRANCH.internal.$BRANCH_ENV.homeoffice.gov.uk"
+  echo "External Branch url - ukviet-$DRONE_SOURCE_BRANCH.$BRANCH_ENV.homeoffice.gov.uk"
+  echo "Internal Branch url - ukviet-$DRONE_SOURCE_BRANCH.internal.$BRANCH_ENV.homeoffice.gov.uk"
+elif [[ ${KUBE_NAMESPACE} == ${UAT_ENV} ]]; then
+  echo "External UAT url - $APP_NAME.uat.sas-notprod.homeoffice.gov.uk"
+  echo "Internal UAT url - $APP_NAME.uat.internal.sas-notprod.homeoffice.gov.uk"
+elif [[ ${KUBE_NAMESPACE} == ${STG_ENV} ]]; then
+  echo "External STG url - preprod.$APP_NAME.homeoffice.gov.uk"
+  echo "Internal STG url - stg.internal.$APP_NAME.sas.homeoffice.gov.uk"
+elif [[ ${KUBE_NAMESPACE} == ${PROD_ENV} ]]; then
+  echo "External PROD url - $PRODUCTION_URL"
 fi
