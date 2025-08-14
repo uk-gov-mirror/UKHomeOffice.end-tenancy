@@ -244,7 +244,6 @@ steps:
   #     event: pull_request
 
   - name: test_acceptance_branch
-    image: *node_image
     <<: *acceptance_tests
     environment:
       NOTIFY_STUB: true
