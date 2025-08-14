@@ -257,6 +257,7 @@ steps:
       branch: master
       event: pull_request
     depends_on:
+      - setup
       - deploy_to_branch
 
   # Deploy to Master UAT environment
