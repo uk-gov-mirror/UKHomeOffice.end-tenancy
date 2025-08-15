@@ -245,7 +245,6 @@ steps:
 
   - name: test_acceptance_branch
     <<: *acceptance_tests
-    image: node:20.17.0
     environment:
       NOTIFY_STUB: true
     commands:
