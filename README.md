@@ -1,4 +1,4 @@
-A# End Tenancy
+# End Tenancy
 
 [![Docker Repository on Quay.io](https://quay.io/repository/ukhomeofficedigital/end-tenancy/status "Docker Repository on Quay.io")](https://quay.io/repository/ukhomeofficedigital/end-tenancy) [![Build Status](https://travis-ci.org/UKHomeOffice/end-tenancy.svg?branch=master)](https://travis-ci.org/UKHomeOffice/end-tenancy)
 
